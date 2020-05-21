@@ -1,19 +1,18 @@
-import 'addidea.dart';
-import '../UI/login_page.dart';
-import 'manageidea.dart';
-import 'managejob.dart';
 import 'package:flutter/material.dart';
-import '../utilities/constants.dart';
+import 'package:successroad/api//databasehelper.dart';
+import 'package:successroad/jobs/dashboard.dart';
+import 'package:successroad/utilities/constants.dart';
 
-class AddJobs extends StatefulWidget {
+
+
+class EditData extends StatefulWidget {
+  List list;
+  int index;
+  EditData({this.index, this.list});
+
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return AddJobsState();
-  }
+  EditDataState createState() => EditDataState();
 }
-
-
 
 
 class Gender {
@@ -26,6 +25,8 @@ class Gender {
   }
 }
 
+
+
 class Manage {
   String man;
 
@@ -36,18 +37,8 @@ class Manage {
   }
 }
 
+class EditDataState extends State<EditData> {
 
-
-
-
-
-
-
-
-
-class AddJobsState extends State<AddJobs> {
-  @override
-  //ده الي هيتحطلي من البدايه
   List<Gender> _get_Gender = Gender.getGender();
   List<DropdownMenuItem<Gender>> _DropdownMenuItem;
   Gender _Selected_Gender;
@@ -56,18 +47,36 @@ class AddJobsState extends State<AddJobs> {
   List<DropdownMenuItem<Manage>> _DropdownMenuItem_Manage;
   Manage _Selected_Manage;
 
-  @override
-  //ده الي هيتحطلي من البدايه
-  void initState() {
-    _DropdownMenuItem =
-        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
+  DatabaseHelper databaseHelper = new DatabaseHelper();
 
-    _Selected_Gender = _DropdownMenuItem[0].value;
+  TextEditingController _jobTitleController = new TextEditingController();
+  TextEditingController _jobTypeController = new TextEditingController();
+  TextEditingController _jobCategoryController = new TextEditingController();
+  TextEditingController _addressController = new TextEditingController();
+  TextEditingController _salaryController = new TextEditingController();
+  TextEditingController _genderController = new TextEditingController();
+  TextEditingController _countryController = new TextEditingController();
+  TextEditingController _cityController = new TextEditingController();
+  TextEditingController _qualificationController = new TextEditingController();
+  TextEditingController _experienceController = new TextEditingController();
+  TextEditingController _jobDescriptionController = new TextEditingController();
 
-    _DropdownMenuItem_Manage =
-        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
-    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
-  }
+//  TextEditingController _nameController  ;
+//  TextEditingController _priceController  ;
+
+
+//  @override
+//  //ده الي هيتحطلي من البدايه
+//  void initState() {
+//    _DropdownMenuItem =
+//        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
+//
+//    _Selected_Gender = _DropdownMenuItem[0].value;
+//
+//    _DropdownMenuItem_Manage =
+//        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
+//    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
+//  }
 
   //
   List<DropdownMenuItem<Gender>> buildDropdownMenuIte(List _Clicked_Gender) {
@@ -105,7 +114,6 @@ class AddJobsState extends State<AddJobs> {
       _Selected_Manage = select;
     });
   }
-
   Widget _jobTitle() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -113,6 +121,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _jobTitleController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -140,6 +149,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _jobTypeController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -167,6 +177,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _jobCategoryController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -194,6 +205,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _addressController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -221,6 +233,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _salaryController,
         keyboardType: TextInputType.number,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -241,6 +254,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+  //gender not have controller
   Widget _gender() {
     return DropdownButtonFormField(
       hint: Text("hello"),
@@ -273,6 +287,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _countryController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -300,6 +315,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _cityController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -327,6 +343,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _qualificationController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -354,6 +371,7 @@ class AddJobsState extends State<AddJobs> {
       height: 50.0,
       //width: 140.0,
       child: TextField(
+        controller: _experienceController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -374,13 +392,14 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-  Widget _ideaDescription() {
+  Widget _jobDescription() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 150.0,
       //width: 200.0,
       child: TextField(
+        controller: _jobDescriptionController,
         keyboardType: TextInputType.multiline,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -403,47 +422,43 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-
-//  Widget _buildLoginBtn() {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 25.0),
-//      width: 150.0,
-//      child: RaisedButton(
-//        elevation: 20.0,
-//        onPressed: () => print('Login Button Pressed'),
-//        padding: EdgeInsets.all(15.0),
-//        shape: RoundedRectangleBorder(
-//          borderRadius: BorderRadius.circular(30.0),
-//        ),
-//        color: Color(0xFF0a2f52),
-//        child: Text(
-//          'Upload Files',
-//          style: TextStyle(
-//            color: Colors.white,
-//            letterSpacing: 1.5,
-//            fontSize: 18.0,
-//            fontWeight: FontWeight.bold,
-//            fontFamily: 'OpenSans',
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-
   Widget _buildLoginBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: ()
+//        {
+//////                    databaseHelper.editData(widget.list[widget.index]['id']
+//////                        , _nameController.text.trim(), _priceController.text.trim());
+////                    Navigator.of(context).push(new MaterialPageRoute(
+////                      builder: (BuildContext context) => new Dashboard(),
+////                    ));
+////                  },
+        {
+          databaseHelper.editDataJobs(
+              widget.list[widget.index]['id'],
+              _jobTitleController.text.trim(),
+              _jobTypeController.text.trim(),
+              _jobCategoryController.text.trim(),
+              _addressController.text.trim(),
+              _salaryController.text.trim(),
+              _genderController.text.trim(),
+              _countryController.text.trim(),
+              _cityController.text.trim(),
+              _qualificationController.text.trim(),
+              _experienceController.text.trim(),
+              _jobDescriptionController.text.trim());
+          print("Edit");
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
         color: Color(0xFF0a2f52),
         child: Text(
-          'Add Job',
+          'Edit Jobs',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -456,54 +471,110 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
+  @override
+  void initState() {
+    _jobTitleController =
+    new TextEditingController(text: widget.list[widget.index]['title']);
+    _jobTypeController = new TextEditingController(
+        text: widget.list[widget.index]['ideacatagory']);
+    _jobCategoryController =
+    new TextEditingController(text: widget.list[widget.index]['funding']);
+    _addressController = new TextEditingController(
+        text: widget.list[widget.index]['Management']);
+    _salaryController =
+    new TextEditingController(text: widget.list[widget.index]['address']);
+    _genderController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _countryController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _cityController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _qualificationController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _experienceController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _jobDescriptionController = new TextEditingController(
+        text: widget.list[widget.index]['ideaDescription']);
+    _DropdownMenuItem =
+        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
 
+    _Selected_Gender = _DropdownMenuItem[0].value;
+
+    _DropdownMenuItem_Manage =
+        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
+    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      title: 'Update Idea',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Update Idea',
+            style: TextStyle(
+              fontSize: 22.0,
+            ),
+          ),
+          centerTitle: true,
+          //backgroundColor: Color(0xffEC7063),
+          //backgroundColor: Color(0xFFdadada),
+          //backgroundColor: Color(0xff2E86C1),
+          //backgroundColor: Color(0xFF233f5c),
+          backgroundColor: Colors.transparent,
+        ),
 
-        // yellow backgroundColor: Color(0xffF7DC6F),
-        backgroundColor: Color(0xffEC7063),
+        backgroundColor: Color(0xff2E86C1),
+
         body: ListView(
-         padding: EdgeInsets.only(top: 0),
+          //padding: EdgeInsets.only(top: 0),
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 150.0),
-                  child: ClipPath(
-                    clipper: WaveClipper2(),
-                    child: Container(
-                      padding: EdgeInsets.only(),
-                      width: double.infinity,
-                      height: 588,
-
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xff5DADE2),
-                              Color(0xffF2F3F4),
-                            ],
-                          )),
-                    ),
+                /*  Container(
+                padding: EdgeInsets.only(top: 150.0),
+                child: ClipPath(
+                  clipper: WaveClipper2(),
+                  child: Container(
+                    padding: EdgeInsets.only(),
+                    width: double.infinity,
+                    height: 485,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+//                        Color(0xff5DADE2),
+//                        Color(0xffF2F3F4),
+                        Color(0xff2E86C1),
+                        Color(0xff85C1E9)
+                      ],
+                    )),
                   ),
                 ),
-                /*  Container(
+              ),
+
+              */
+
+                /*
+                Container(
                padding: EdgeInsets.only(top: 450),
                child:  ClipPath(
                  clipper: WaveClipper3(),
                  child: Container(
-
                    width: double.infinity,
                    height: 350,
                    decoration: BoxDecoration(
                        gradient: LinearGradient(colors: [
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xff85C1E9)
+//                         Color(0xffF1C40F),
+//                         Color(0xffF1C40F),
+//                         Color(0xffF1C40F),
+//                         Color(0xff85C1E9)
+
+                         Color(0xFF0a2f52),
+                         Color(0xff2E86C1),
+                         Color(0xFFdadada),
                        ])),
                  ),
                ),
@@ -525,26 +596,6 @@ class AddJobsState extends State<AddJobs> {
                   ),
                 ),
                 Stack(
-/*
-          decoration: BoxDecoration(
-
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF337db1),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-              ],
-              stops: [
-                0.1,
-                0.3,
-                0.5,
-                0.7
-              ],
-            ),
-          ),*/
                   children: <Widget>[
                     SingleChildScrollView(
                       //padding: EdgeInsets.only(top: 0.0),
@@ -555,7 +606,7 @@ class AddJobsState extends State<AddJobs> {
                           //Padding(padding: EdgeInsets.all(10.0)),
                           Container(
                             //Controlling the white place Shape
-                            height: 755.0,
+                            height: 650.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(75.0),
@@ -574,7 +625,7 @@ class AddJobsState extends State<AddJobs> {
                                 ListView(
                                   children: <Widget>[
                                     Container(
-                                      height:MediaQuery.of(context).size.height+250,//height: 1200,
+                                      height: MediaQuery.of(context).size.height * 1.6,
                                       padding: EdgeInsets.only(top: 30.0),
                                       alignment: Alignment.topCenter,
                                       child: Column(
@@ -655,7 +706,7 @@ class AddJobsState extends State<AddJobs> {
                                           SizedBox(
                                             height: 20.0,
                                           ),
-                                          _ideaDescription(),
+                                          _jobDescription(),
                                           SizedBox(
                                             height: 20.0,
                                           ),
@@ -688,186 +739,91 @@ class AddJobsState extends State<AddJobs> {
             ),
           ],
         ),
-        drawer: Drawer(
-          child: Column(
-            children: [
-              Container(
-                height: 290.0,
-                alignment: Alignment.center,
-                color: Color(0xFF0a2f52),
-                //color:Color(0xffEC7063),
-                //color: Colors.deepPurpleAccent,
-                child:  DrawerHeader(
-                  //padding: EdgeInsets.only(top: 0),
-                  //margin: EdgeInsets.only(left:  2),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xFF0a2f52)),
-                    image: DecorationImage(
-                      image: AssetImage("image/logo.png"),
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
 
-//                  child: Text(
-////                  "Main",
-////                  style: TextStyle(fontSize: 30, color: Colors.white),
-////                ),
-                ),
-
-                // ),
-              ),
-              Expanded(
-                //flex: 1,
-                child: ListView(children: [
-                  Container(
-                      color: Colors.white,
-                      height: 500,
-                      child: Column(
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "Dashboard",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.dashboard,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Add A New Job",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.add,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Add A New Idea",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.add,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              //Navigator.of(context).pop();
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => AddIdea()),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Manage Jobs",
-                              style: TextStyle(
-                                 fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.business_center,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => ManageJob()),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Manage Idea",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.edit_attributes,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => ManageIdea()),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Edit Profile",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Color(0xFF0a2f52),
-                              ),
-                            ),
-                            trailing: Icon(
-                              Icons.edit,
-                              color: Color(0xFF0a2f52),
-                              size: 25,
-                            ),
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-
-                          FloatingActionButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyLoginPage()),
-                              );
-                            },
-                            tooltip: "Sign Out",
-                            child: Icon(
-                              Icons.call_missed,
-                              size: 55.0,
-                            ),
-                            backgroundColor: Color(0xFF0a2f52),
-                            //focusColor: Colors.pinkAccent,
-                          ),
-                          SizedBox(
-                            height: 12.0,
-                          ),
-                          // Padding(padding: EdgeInsets.only(top: 10.0,right: 100.0)),
-                          Text(
-                            "Sign Up",
-                            style: TextStyle(
-                                color: Color(0xFF337db1),
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0),
-                          )
-                        ],
-                      ))
-                ]),
-              ),
-            ],
-          ),
-        ));
+//        body: Container(
+//          child: ListView(
+//            padding: const EdgeInsets.only(
+//                top: 62, left: 12.0, right: 12.0, bottom: 12.0),
+//            children: <Widget>[
+//              Container(
+//                height: 50,
+//                child: new TextField(
+//                  controller: _nameController,
+//                  keyboardType: TextInputType.emailAddress,
+//                  decoration: InputDecoration(
+//                    labelText: 'Name',
+//                    hintText: 'Product Name',
+//                    icon: new Icon(Icons.email),
+//                  ),
+//                ),
+//              ),
+//              Container(
+//                height: 50,
+//                child: new TextField(
+//                  controller: _priceController,
+//                  keyboardType: TextInputType.text,
+//                  decoration: InputDecoration(
+//                    labelText: 'Price',
+//                    hintText: 'Place your price',
+//                    icon: new Icon(Icons.vpn_key),
+//                  ),
+//                ),
+//              ),
+//              new Padding(
+//                padding: new EdgeInsets.only(top: 44.0),
+//              ),
+//              Container(
+//                height: 50,
+//                child: new RaisedButton(
+//                  onPressed: () {
+////                    databaseHelper.editData(widget.list[widget.index]['id']
+////                        , _nameController.text.trim(), _priceController.text.trim());
+//                    Navigator.of(context).push(new MaterialPageRoute(
+//                      builder: (BuildContext context) => new Dashboard(),
+//                    ));
+//                  },
+//                  color: Colors.blue,
+//                  child: new Text(
+//                    'Update',
+//                    style: new TextStyle(
+//                        color: Colors.white, backgroundColor: Colors.blue),
+//                  ),
+//                ),
+//              ),
+//              new Padding(
+//                padding: new EdgeInsets.only(top: 44.0),
+//              ),
+//            ],
+//          ),
+//        ),
+      ),
+    );
   }
+
+//  void _showDialog(){
+//    showDialog(
+//        context:context ,
+//        builder:(BuildContext context){
+//          return AlertDialog(
+//            title: new Text('Failed'),
+//            content:  new Text('Check your email or password'),
+//            actions: <Widget>[
+//              new RaisedButton(
+//
+//                child: new Text(
+//                  'Close',
+//                ),
+//
+//                onPressed: (){
+//                  Navigator.of(context).pop();
+//                },
+//
+//              ),
+//            ],
+//          );
+//        }
+//    );
+//  }
 }
 
 class WaveClipper1 extends CustomClipper<Path> {
@@ -909,14 +865,11 @@ class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-
     path.lineTo(0.0, size.height/2+30);
-
     var firstEndPoint = Offset(size.width/2-20, size.height /2+10);
     var firstControlPoint = Offset(size.width * .25, size.height - 60 - 50);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
-
     var secondEndPoint = Offset(size.width, size.height - 40);
     var secondControlPoint = Offset(size.width * 0.84, size.height - 30);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
@@ -926,13 +879,12 @@ class WaveClipper1 extends CustomClipper<Path> {
     path.close();
     return path;
   }
-
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
   }
-}*/
-
+}
+*/
 class WaveClipper2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

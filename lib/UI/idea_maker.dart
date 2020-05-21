@@ -569,68 +569,68 @@ class _Idea_Maker extends State<Idea_Maker> {
                                         Row(
                                           children: <Widget>[
                                             _firstname(),
-                                            Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                            Divider(thickness: 1.0,color: Colors.black,),
 
                                             _lastname(),
                                           ],
                                         ),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Email(),
 
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
 
                                         _Pass(),
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Phone(),
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _address(),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _categoey(),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Gender(),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Manage(),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Experince(),
 
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
 
                                         _Qualification(),
 
-                                        Divider(thickness: 1.0,color: Color(0xff5DADE2),),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _build_Save(),

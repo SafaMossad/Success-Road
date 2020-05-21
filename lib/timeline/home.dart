@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/UI/profile.dart';
+import 'package:successroad/ideas/dashboard.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -233,11 +234,7 @@ class _HomeState extends State<Home> {
         title: Text("Time Line"),
         centerTitle: true,
       ),
-      body: Container(
-        child: Center(
-          child: (Text("This is Time line ")),
-        ),
-      ),
+      body: Dashboard()
     );
   }
 }

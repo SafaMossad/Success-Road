@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
-
 import 'package:successroad/timeline/choocenavigation.dart';
 
 class MyLoginPage extends StatefulWidget {
-
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -169,51 +166,45 @@ class _MyLoginPage extends State<MyLoginPage> {
   read() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
-    final value = prefs.get(key ) ?? 0;
-    if(value != '0'){
-//      Navigator.of(context).push(
-//          new MaterialPageRoute(
-//            builder: (BuildContext context) => new Dashboard(),
-//          )
-//      );
-      print("Read Function is done.....");
+    final value = prefs.get(key) ?? 0;
+    if (value != '0') {
+     /* Navigator.of(context).push(
+          new MaterialPageRoute(
+            builder: (BuildContext context) => new Timeline(),
+         )
+      );*/
+
     }
   }
 
   @override
-  initState(){
+  initState() {
     read();
   }
-
-
 
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
 
-
-
-  _onPressed(){
+  _onPressed() {
     setState(() {
-      if(_emailController.text.trim().toLowerCase().isNotEmpty &&
-          _passwordController.text.trim().isNotEmpty ){
-        databaseHelper.loginData(
-            _emailController.text.trim().toLowerCase(),
-
-            _passwordController.text.trim()).whenComplete((){
-          if(databaseHelper.status){
+      if (_emailController.text.trim().toLowerCase().isNotEmpty &&
+          _passwordController.text.trim().isNotEmpty) {
+        databaseHelper
+            .loginData(_emailController.text.trim().toLowerCase(),
+                _passwordController.text.trim())
+            .whenComplete(() {
+          if (databaseHelper.status) {
             _showDialog();
             msgStatus = 'Check email or password';
-          }else{
+          } else {
             //Navigator.pushReplacementNamed(context, '/dashboard');
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Timeline()));
-
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Timeline()));
           }
         });
       }
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -233,11 +224,11 @@ class _MyLoginPage extends State<MyLoginPage> {
                   height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        Color(0xFF0a2f52),
-                        Color(0xff2E86C1),
+                    Color(0xFF0a2f52),
+                    Color(0xff2E86C1),
 //                    Color(0xff85C1E9),
 //                    Color(0xff5DADE2),
-                        Color(0xff85C1E9)
+                    Color(0xff85C1E9)
                   ])),
                 ),
               ),
@@ -249,10 +240,10 @@ class _MyLoginPage extends State<MyLoginPage> {
                   height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        Color(0xFF0a2f52),
-                        Color(0xff2E86C1),
+                    Color(0xFF0a2f52),
+                    Color(0xff2E86C1),
 //                        Color(0xffe6e6e6),
-                        Color(0xFFdadada),
+                    Color(0xFFdadada),
                   ])),
                 ),
               ),
@@ -266,9 +257,9 @@ class _MyLoginPage extends State<MyLoginPage> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                            //color: Color(0xFF337db1),
-                            shape: BoxShape.circle,
-                           ),
+                          //color: Color(0xFF337db1),
+                          shape: BoxShape.circle,
+                        ),
                         child: Image.asset(
                           "assets/Prlogo.png",
                           height: 160.0,
@@ -285,14 +276,14 @@ class _MyLoginPage extends State<MyLoginPage> {
                                         fontFamily: 'maintitle',
                                         color: Color(0xFFe7e7e7),
                                         fontStyle: FontStyle.italic,
-                                        
+
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 50.0)),
                                 SizedBox(width: 10.0),
                                 Text('Road',
                                     style: TextStyle(
                                         fontFamily: 'maintitle',
-                                        color:Color(0xFFe7e7e7),
+                                        color: Color(0xFFe7e7e7),
                                         fontStyle: FontStyle.italic,
                                         fontSize: 50.0)),
                               ],
@@ -397,7 +388,8 @@ class _MyLoginPage extends State<MyLoginPage> {
           ),
           Center(
             child: FlatButton(
-                onPressed: () => Navigator.of(context).pushNamed("/ForgetPassword"),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed("/ForgetPassword"),
                 child: Text(
                   "FORGOT PASSWORD ?",
                   style: TextStyle(
@@ -436,29 +428,44 @@ class _MyLoginPage extends State<MyLoginPage> {
       ),
     );
   }
-  void _showDialog(){
+
+  void _snackbar() {
+    SnackBar(
+      elevation: 6.0,
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(milliseconds: 500),
+        content: Row(
+          children: <Widget>[
+            Icon(Icons.error),
+            SizedBox(
+              width: 20.0,
+            ),
+            Expanded(
+              child: Text("invalid Email or Password"),
+            )
+          ],
+        ));
+  }
+
+  void _showDialog() {
     showDialog(
-        context:context ,
-        builder:(BuildContext context){
+        context: context,
+        builder: (BuildContext context) {
           return AlertDialog(
             title: new Text('Failed'),
-            content:  new Text('Check your email or password'),
+            content: new Text('Check your email or password'),
             actions: <Widget>[
               new RaisedButton(
-
                 child: new Text(
                   'Close',
                 ),
-
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(context).pop();
                 },
-
               ),
             ],
           );
-        }
-    );
+        });
   }
 /*  @override
   Widget build(BuildContext context) {
@@ -674,6 +681,3 @@ class WaveClipper2 extends CustomClipper<Path> {
     return false;
   }
 }
-
-
-
