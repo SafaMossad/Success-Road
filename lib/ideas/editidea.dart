@@ -300,92 +300,17 @@ class EditDataState extends State<EditData> {
     return MaterialApp(
       title: 'Update Idea',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Update Idea',
-          style: TextStyle(
-            fontSize: 22.0,
-          ),
-        ),
-        centerTitle: true,
-        //backgroundColor: Color(0xffEC7063),
-        //backgroundColor: Color(0xFFdadada),
-        //backgroundColor: Color(0xff2E86C1),
-        //backgroundColor: Color(0xFF233f5c),
-        backgroundColor: Colors.transparent,
-        ),
 
 
 
-        backgroundColor: Color(0xff2E86C1),
+
+
 
 body: ListView(
-  //padding: EdgeInsets.only(top: 0),
   children: <Widget>[
     Stack(
       children: <Widget>[
-        /*  Container(
-                padding: EdgeInsets.only(top: 150.0),
-                child: ClipPath(
-                  clipper: WaveClipper2(),
-                  child: Container(
-                    padding: EdgeInsets.only(),
-                    width: double.infinity,
-                    height: 485,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-//                        Color(0xff5DADE2),
-//                        Color(0xffF2F3F4),
-                        Color(0xff2E86C1),
-                        Color(0xff85C1E9)
-                      ],
-                    )),
-                  ),
-                ),
-              ),
 
-              */
-
-        /*
-                Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-//                         Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xff85C1E9)
-
-                         Color(0xFF0a2f52),
-                         Color(0xff2E86C1),
-                         Color(0xFFdadada),
-                       ])),
-                 ),
-               ),
-             ),*/
-        ClipPath(
-          clipper: WaveClipper1(),
-          child: Container(
-            width: double.infinity,
-            height: 350,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFF0a2f52),
-                    Color(0xff2E86C1),
-                  ],
-                )),
-          ),
-        ),
         Stack(
           children: <Widget>[
             SingleChildScrollView(
@@ -397,13 +322,12 @@ body: ListView(
                   //Padding(padding: EdgeInsets.all(10.0)),
                   Container(
                     //Controlling the white place Shape
-                    height: 650.0,
+                    height: 660.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(75.0),
                         bottomRight: Radius.circular(75.0),
-                        // bottomLeft: Radius.circular(75.0),
-                        //   topRight: Radius.circular(75.0)
+
                       ),
                     ),
                     padding: EdgeInsets.all(20.0),
@@ -416,8 +340,7 @@ body: ListView(
                         ListView(
                           children: <Widget>[
                             Container(
-                              height: MediaQuery.of(context).size.height *
-                                  1.3,
+                              height: MediaQuery.of(context).size.height-145,
                               padding: EdgeInsets.only(top: 30.0),
                               alignment: Alignment.topCenter,
                               child: Column(
@@ -504,62 +427,7 @@ body: ListView(
 
 
 
-//        body: Container(
-//          child: ListView(
-//            padding: const EdgeInsets.only(
-//                top: 62, left: 12.0, right: 12.0, bottom: 12.0),
-//            children: <Widget>[
-//              Container(
-//                height: 50,
-//                child: new TextField(
-//                  controller: _nameController,
-//                  keyboardType: TextInputType.emailAddress,
-//                  decoration: InputDecoration(
-//                    labelText: 'Name',
-//                    hintText: 'Product Name',
-//                    icon: new Icon(Icons.email),
-//                  ),
-//                ),
-//              ),
-//              Container(
-//                height: 50,
-//                child: new TextField(
-//                  controller: _priceController,
-//                  keyboardType: TextInputType.text,
-//                  decoration: InputDecoration(
-//                    labelText: 'Price',
-//                    hintText: 'Place your price',
-//                    icon: new Icon(Icons.vpn_key),
-//                  ),
-//                ),
-//              ),
-//              new Padding(
-//                padding: new EdgeInsets.only(top: 44.0),
-//              ),
-//              Container(
-//                height: 50,
-//                child: new RaisedButton(
-//                  onPressed: () {
-////                    databaseHelper.editData(widget.list[widget.index]['id']
-////                        , _nameController.text.trim(), _priceController.text.trim());
-//                    Navigator.of(context).push(new MaterialPageRoute(
-//                      builder: (BuildContext context) => new Dashboard(),
-//                    ));
-//                  },
-//                  color: Colors.blue,
-//                  child: new Text(
-//                    'Update',
-//                    style: new TextStyle(
-//                        color: Colors.white, backgroundColor: Colors.blue),
-//                  ),
-//                ),
-//              ),
-//              new Padding(
-//                padding: new EdgeInsets.only(top: 44.0),
-//              ),
-//            ],
-//          ),
-//        ),
+
 
 
 
@@ -568,30 +436,6 @@ body: ListView(
     );
   }
 
-//  void _showDialog(){
-//    showDialog(
-//        context:context ,
-//        builder:(BuildContext context){
-//          return AlertDialog(
-//            title: new Text('Failed'),
-//            content:  new Text('Check your email or password'),
-//            actions: <Widget>[
-//              new RaisedButton(
-//
-//                child: new Text(
-//                  'Close',
-//                ),
-//
-//                onPressed: (){
-//                  Navigator.of(context).pop();
-//                },
-//
-//              ),
-//            ],
-//          );
-//        }
-//    );
-//  }
 }
 
 

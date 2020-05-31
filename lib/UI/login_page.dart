@@ -413,7 +413,7 @@ class _MyLoginPage extends State<MyLoginPage> {
               ),
               FlatButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/category");
+                  Navigator.of(context).pushNamed("/signup");
                 },
                 child: Text("Sign UP",
                     style: TextStyle(

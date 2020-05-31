@@ -47,7 +47,7 @@ class _Tabs extends State<Tabs> {
       backgroundColor: Color(0xff1B4F72),
       body: TabBarView(
         children: <Widget>[
-          Idea_Maker(),
+          IdeaMaker(),
           Sponsor(),
           Employee(),
 

@@ -241,6 +241,7 @@ class AddIdeaState extends State<AddIdea> {
               _addressController.text.trim(),
               _fundingController.text.trim(),
               _ideaDescriptionController.text.trim());
+
           Navigator.of(context).push(
               new MaterialPageRoute(
                 builder: (BuildContext context) => new Dashboard(),
@@ -268,13 +269,10 @@ class AddIdeaState extends State<AddIdea> {
   }
 
 
-  final TextEditingController _ideaTitleController =
-  new TextEditingController();
-  final TextEditingController _ideaCategoryController =
-  new TextEditingController();
+  final TextEditingController _ideaTitleController = new TextEditingController();
+  final TextEditingController _ideaCategoryController = new TextEditingController();
   final TextEditingController _fundingController = new TextEditingController();
-  final TextEditingController _managementTypeController =
-  new TextEditingController();
+  final TextEditingController _managementTypeController = new TextEditingController();
   final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _ideaDescriptionController = new TextEditingController();
   @override

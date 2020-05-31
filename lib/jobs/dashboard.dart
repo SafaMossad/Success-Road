@@ -43,11 +43,11 @@ class DashboardState extends State<Dashboard> {
                 icon: Icon(Icons.cancel),
                 onPressed: (){
                   _save('0');
-                Navigator.of(context).push(
-                    new MaterialPageRoute(
-                      builder: (BuildContext context) => new MyLoginPage(),
-                    )
-                );
+                  Navigator.of(context).push(
+                      new MaterialPageRoute(
+                        builder: (BuildContext context) => new MyLoginPage(),
+                      )
+                  );
                 },
               )
             ],
@@ -96,8 +96,13 @@ class ItemList extends StatelessWidget {
               ) ,
               child: new Card(
                 child: new ListTile(
-                  title: new Text(list[i]['title']),
-                  leading: new Icon(Icons.apps),
+                  title: new Text(list[i]['title'],
+                      style: TextStyle(
+                          fontSize: 22.0,
+                          color: Color(0xFF0a2f52),
+                          fontWeight: FontWeight.bold
+                      )),
+                  leading: new Icon(Icons.apps , color: Color(0xFF0a2f52),size: 35.5,),
                   subtitle: new Text('Job Catagory : ${list[i]['category']}'),
                 ),
               ),

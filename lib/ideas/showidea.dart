@@ -26,7 +26,13 @@ class ShowDataState extends State<ShowData> {
       title: 'Show Idea',
       home: Scaffold(
 
+appBar: AppBar(
+  actions: <Widget>[
+    IconButton(icon:
+    (Icon(Icons.arrow_back,)),onPressed: ()=> Navigator.of(context).pop(),)
 
+  ],
+),
 
 
         body: Container(
@@ -35,94 +41,84 @@ class ShowDataState extends State<ShowData> {
             children: <Widget>[
 
               Container(
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+
+              ),
                 height: 50,
                 child: new Text(
                   "Idea Title : ${ widget.list[widget.index]['title']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
 
 
-              new Padding(padding: new EdgeInsets.only(top: 44.0),),
+              new Padding(padding: new EdgeInsets.only(top: 30.0),),
               Container(
                 height: 50,
                 child: new Text(
                   "Idea Catagory : ${widget.list[widget.index]['ideacatagory']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
 
-              new Padding(padding: new EdgeInsets.only(top: 44.0),),
+              new Padding(padding: new EdgeInsets.only(top: 30.0),),
               Container(
                 height: 50,
                 child: new Text(
                   "Funding : ${widget.list[widget.index]['funding']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
 
 
-              new Padding(padding: new EdgeInsets.only(top: 44.0),),
+              new Padding(padding: new EdgeInsets.only(top: 30.0),),
               Container(
                 height: 50,
                 child: new Text(
                   "Management Type : ${widget.list[widget.index]['Management']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
 
 
-              new Padding(padding: new EdgeInsets.only(top: 44.0),),
+              new Padding(padding: new EdgeInsets.only(top: 30.0),),
               Container(
                 height: 50,
                 child: new Text(
                   "Address : ${widget.list[widget.index]['address']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
 
 
-              new Padding(padding: new EdgeInsets.only(top: 44.0),),
+              new Padding(padding: new EdgeInsets.only(top: 30.0),),
               Container(
                 height: 50,
                 child: new Text(
+
                   "Idea Description : ${widget.list[widget.index]['ideaDescription']}",
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
                 ),
               ),
               new Padding(padding: new EdgeInsets.only(top: 44.0),),
 
-              Container(
-                height: 50,
-                child: new Text(
-                  " Created at : ${widget.list[widget.index]['created_at']}",
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
 
-              Container(
-                height: 50,
-                child: new Text(
-                  " Updated at : ${widget.list[widget.index]['updated_at']}",
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
+
+
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +126,7 @@ class ShowDataState extends State<ShowData> {
                   Container(
                     height: 50,
                     child: new RaisedButton(
-                      elevation: 20.0,
+                      elevation: 10.0,
                       onPressed: () =>
                           Navigator.of(context).push(
                               new MaterialPageRoute(

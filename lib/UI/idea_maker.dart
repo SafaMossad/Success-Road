@@ -1,17 +1,19 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/home.dart';
 import '../utilities/constants.dart';
 void main(){
   runApp(MaterialApp(
-    home:  Idea_Maker(),
+    home:  IdeaMaker(),
   ));
 }
-class  Idea_Maker extends StatefulWidget {
+class  IdeaMaker extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return  _Idea_Maker();
+    return  _IdeaMaker();
   }
 }
 class Gender {
@@ -33,35 +35,49 @@ class Manage {
   }
 }
 
-class _Idea_Maker extends State<Idea_Maker> {
-  List<Gender> _get_Gender = Gender.getGender();
-  List<DropdownMenuItem<Gender>> _DropdownMenuItem;
-  Gender _Selected_Gender;
+class _IdeaMaker extends State<IdeaMaker> {
 
-  List<Manage> _get_Manage = Manage.getManage();
-  List<DropdownMenuItem<Manage>> _DropdownMenuItem_Manage;
-  Manage _Selected_Manage;
+  DatabaseHelper databaseHelper = new DatabaseHelper();
+  final TextEditingController _nameController  = new TextEditingController();
+  final TextEditingController _jobtitleController  = new TextEditingController();
+  final TextEditingController _addreeController  = new TextEditingController();
+  final TextEditingController _locationController  = new TextEditingController();
+  final TextEditingController _GanderController  = new TextEditingController();
+  final TextEditingController _qualifictionController  = new TextEditingController();
+  final TextEditingController _mobileController  = new TextEditingController();
+  final TextEditingController _interstingfieldController  = new TextEditingController();
+  final TextEditingController _indestryController  = new TextEditingController();
+
+
+
+  List<Gender> _getGender = Gender.getGender();
+  List<DropdownMenuItem<Gender>> _dropdownMenuItem;
+  Gender _selectedGender;
+
+  List<Manage> _getManage = Manage.getManage();
+  List<DropdownMenuItem<Manage>> _dropdownMenuItemManage;
+  Manage _selectedManage;
 
   @override
   //ده الي هيتحطلي من البدايه
   // ignore: must_call_super
   void initState() {
 
-    _DropdownMenuItem =
-        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
+    _dropdownMenuItem =
+        buildDropdownMenuIte(_getGender).cast<DropdownMenuItem<Gender>>();
 
-    _Selected_Gender = _DropdownMenuItem[0].value;
+    _selectedGender = _dropdownMenuItem[0].value;
 
-    _DropdownMenuItem_Manage =
-        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
-    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
+    _dropdownMenuItemManage =
+        buildDropdownMenuItem(_getManage).cast<DropdownMenuItem<Manage>>();
+    _selectedManage = _dropdownMenuItemManage[0].value;
   }
 
   //
-  List<DropdownMenuItem<Gender>> buildDropdownMenuIte(List _Clicked_Gender) {
+  List<DropdownMenuItem<Gender>> buildDropdownMenuIte(List _clickedGender) {
     List<DropdownMenuItem<Gender>> item = List();
 
-    for (Gender x in _Clicked_Gender) {
+    for (Gender x in _clickedGender) {
       item.add(DropdownMenuItem(
         value: x,
         child: Text(x.gender),
@@ -70,10 +86,10 @@ class _Idea_Maker extends State<Idea_Maker> {
     return item;
   }
 
-  List<DropdownMenuItem<Manage>> buildDropdownMenuItem(List _Clicked_Manage) {
+  List<DropdownMenuItem<Manage>> buildDropdownMenuItem(List _clickedManage) {
     List<DropdownMenuItem<Manage>> manage = List();
 
-    for (Manage m in _Clicked_Manage) {
+    for (Manage m in _clickedManage) {
       manage.add(DropdownMenuItem(
         value: m,
         child: Text(m.man),
@@ -84,18 +100,18 @@ class _Idea_Maker extends State<Idea_Maker> {
 
   onChanging1(Gender selected) {
     setState(() {
-      _Selected_Gender = selected;
+      _selectedGender = selected;
     });
   }
 
   onChanging2(Manage select) {
     setState(() {
-      _Selected_Manage = select;
+      _selectedManage = select;
     });
   }
 
 
-  Widget _firstname() {
+  Widget _name() {
     return Container(
       // alignment: Alignment.topCenter,
       // padding: EdgeInsets.only(bottom:10.0),
@@ -105,6 +121,8 @@ class _Idea_Maker extends State<Idea_Maker> {
       height: 60.0,
       width: 165.0,
       child: TextField(
+        controller: _nameController,
+
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -123,86 +141,14 @@ class _Idea_Maker extends State<Idea_Maker> {
     );
   }
 
-  Widget _lastname() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      width: 165.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style:kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Last Name',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Email() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.lock,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "E-mail",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Pass() {
+  Widget _phone() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,      // width: 150.0,
       child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.lock,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Password",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
+        controller: _mobileController,
 
-  Widget _Phone() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
-      child: TextField(
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -227,6 +173,33 @@ class _Idea_Maker extends State<Idea_Maker> {
       decoration: kBoxDecorationStyle,
       height: 60.0,      // width: 150.0,
       child: TextField(
+        controller: _addreeController,
+
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.home,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Address",
+          //labelStyle: kLabelStyle,
+          hintText: "Address",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _location() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,      // width: 150.0,
+      child: TextField(
+        controller: _locationController,
+
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -245,39 +218,8 @@ class _Idea_Maker extends State<Idea_Maker> {
     );
   }
 
-  Widget _Manage() {
-    return Container(
-       padding: EdgeInsets.only(left: 11.0),
-        alignment: Alignment.centerLeft,
-
-        decoration: kBoxDecorationStyle,
-        height: 63.0,
-        child: DropdownButtonFormField(
-
-          hint: Text("hello"),
-          value: _Selected_Manage,
-          items: _DropdownMenuItem_Manage,
-          onChanged: onChanging2,
-          decoration: new InputDecoration(
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
-            icon: Icon(Icons.beenhere),
-            contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
-
-            // hoverColor: Colors.orange,
-            // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
-            hintText: 'Chose Tybe Of Managment',
-            //focusColor: Colors.orange,
-
-            labelText: "Magment",
-             labelStyle: TextStyle(color: Colors.white,fontSize: 20),
-            hintStyle: kHintTextStyle,
-            //icon: new Icon(Icons.person)
-          ),
-        )
-    );
-  }
-
-  Widget _Gender() {
+/*
+  Widget _gender() {
     return Container(
       padding: EdgeInsets.only(left: 11.0),
       alignment: Alignment.centerLeft,
@@ -287,8 +229,8 @@ class _Idea_Maker extends State<Idea_Maker> {
       child: DropdownButtonFormField(
 
         hint: Text("hello",style: TextStyle(color: Colors.white),),
-        value: _Selected_Gender,
-        items: _DropdownMenuItem,
+        value: _selectedGender,
+        items: _dropdownMenuItem,
         onChanged: onChanging1,
         decoration: new InputDecoration(
           icon: Icon(Icons.supervisor_account),
@@ -309,13 +251,40 @@ class _Idea_Maker extends State<Idea_Maker> {
       ),
     );
   }
+*/
+  Widget _gender() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,      // width: 150.0,
+      child: TextField(
+        controller: _GanderController,
 
-  Widget _categoey() {
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.home,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Address",
+          //labelStyle: kLabelStyle,
+          hintText: "Address",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _interstingfield() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 63.0,
       child: TextField(
+        controller: _interstingfieldController,
+
         keyboardType: TextInputType.emailAddress,
         style:kLabelStyle,
         decoration: InputDecoration(
@@ -334,40 +303,14 @@ class _Idea_Maker extends State<Idea_Maker> {
     );
   }
 
-  /*Widget _Tybe() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.category,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Tybe",
-          //labelStyle: kLabelStyle,
-          hintText: "Tybe",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }*/
-
-  Widget _Experince() {
+  Widget _jobtitle() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
+        controller: _jobtitleController,
+
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -385,16 +328,14 @@ class _Idea_Maker extends State<Idea_Maker> {
       ),
     );
   }
-
-
-
-  Widget _Qualification() {
+  Widget _qualification() {
     return Container(
       alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
         maxLines: 10,
+        controller: _qualifictionController,
 
         keyboardType: TextInputType.multiline,
         style: kLabelStyle,
@@ -413,14 +354,57 @@ class _Idea_Maker extends State<Idea_Maker> {
       ),
     );
   }
+  Widget indestry() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _indestryController,
 
-  Widget _build_Save() {
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.description,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText:  "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 200.0,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () {
+          databaseHelper.ideaMakerRegister(
+              _nameController.text.trim(),
+              _jobtitleController.text.trim(),
+              _addreeController.text.trim(),
+              _locationController.text.trim(),
+              _GanderController.text.trim(),
+              _qualifictionController.text.trim(),
+              _mobileController.text.trim(),
+              _interstingfieldController.text.trim(),
+              _indestryController.text.trim());
+
+          Navigator.of(context).push(
+              new MaterialPageRoute(
+                builder: (BuildContext context) => new Timeline(),
+              )
+          );
+          print("Save");
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -568,31 +552,20 @@ class _Idea_Maker extends State<Idea_Maker> {
 
                                         Row(
                                           children: <Widget>[
-                                            _firstname(),
-                                            Divider(thickness: 1.0,color: Colors.black,),
+                                            _name(),
 
-                                            _lastname(),
                                           ],
                                         ),
 
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+                                        _jobtitle(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-                                        _Email(),
-
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-
-                                        _Pass(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _Phone(),
+                                        _phone(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
@@ -601,39 +574,32 @@ class _Idea_Maker extends State<Idea_Maker> {
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
+                                        _location(),
 
 
-                                        _categoey(),
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+                                        _interstingfield(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-                                        _Gender(),
+                                        _gender(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
+                                        indestry(),
 
-                                        _Manage(),
 
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _qualification(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-                                        _Experince(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-
-                                        _Qualification(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _build_Save(),
+                                        _buildSave(),
 
 
 

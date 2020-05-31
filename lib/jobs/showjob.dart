@@ -27,6 +27,7 @@ class ShowDataState extends State<ShowData> {
       title: 'Show Jobs',
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xff2E86C1),
           title:  Text('Show Jobs'),
           actions: <Widget>[
             IconButton(
@@ -197,38 +198,61 @@ class ShowDataState extends State<ShowData> {
                 children: <Widget>[
                   Container(
                     height: 50,
-                    child: new FlatButton(
-                      onPressed: ()=>Navigator.of(context).push(
-                          new MaterialPageRoute(
-                            builder: (BuildContext context) => new EditData(list:widget.list , index:widget.index),
-                          )
+                    child: new RaisedButton(
+                      elevation: 20.0,
+                      onPressed: () =>
+                          Navigator.of(context).push(
+                              new MaterialPageRoute(
+                                builder: (BuildContext context) => new EditData(list:widget.list , index:widget.index),
+                              )
+                          ),
+                      padding: EdgeInsets.all(15.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      color: Colors.green,
+                      color: Color(0xFF0a2f52),
                       child: new Text(
                         'Edit',
-                        style: new TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
-                        ),),
+                          letterSpacing: 1.5,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'OpenSans',
+                        ),
+                      ),
                     ),
                   ),
-
+                  new Padding(
+                    padding: EdgeInsets.all(20),
+                  ),
                   Container(
                     height: 50,
-                    child: new FlatButton(
-                      onPressed: (){
-                        databaseHelper.deleteDataJobs(widget.list[widget.index]['id']);
+                    child: new RaisedButton(
+                      elevation: 20.0,
+                      onPressed: () {
+                        databaseHelper.deleteData(widget.list[widget.index]['id']);
                         Navigator.of(context).push(
                             new MaterialPageRoute(
                               builder: (BuildContext context) => new Dashboard(),
                             )
                         );
                       },
-                      color: Colors.blue,
+                      padding: EdgeInsets.all(15.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      color: Color(0xFF0a2f52),
                       child: new Text(
                         'Delete',
-                        style: new TextStyle(
-                          color: Colors.red,
-                        ),),
+                        style: TextStyle(
+                          color: Colors.white,
+                          letterSpacing: 1.5,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'OpenSans',
+                        ),
+                      ),
                     ),
                   ),
                 ],

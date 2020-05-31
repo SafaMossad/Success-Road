@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api//databasehelper.dart';
 import 'package:successroad/jobs/dashboard.dart';
-import 'package:successroad/utilities/constants.dart';
+import 'package:successroad/utilities/job_and_idea.dart';
 
 
 
@@ -450,6 +450,9 @@ class EditDataState extends State<EditData> {
               _qualificationController.text.trim(),
               _experienceController.text.trim(),
               _jobDescriptionController.text.trim());
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new Dashboard(),
+          ));
           print("Edit");
         },
         padding: EdgeInsets.all(15.0),

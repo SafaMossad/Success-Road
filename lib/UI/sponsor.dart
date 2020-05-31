@@ -117,7 +117,7 @@ class  _Sponsor extends State< Sponsor> {
     );
   }
 
-  Widget _lastname() {
+ /* Widget _lastname() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
@@ -191,7 +191,7 @@ class  _Sponsor extends State< Sponsor> {
       ),
     );
   }
-
+*/
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -540,27 +540,12 @@ class  _Sponsor extends State< Sponsor> {
                                         Row(
                                           children: <Widget>[
                                             _firstname(),
-                                            SizedBox(
-                                              width: 10.0,
-                                            ),
-                                            _lastname(),
                                           ],
                                         ),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
-                                        _Email(),
-
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-                                        _Pass(),
-
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Phone(),
@@ -590,19 +575,7 @@ class  _Sponsor extends State< Sponsor> {
 
                                         _Manage(),
 
-
                                         Divider(thickness: 1.0,color: Colors.black,),
-
-                                        _Experince(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _Qualification(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
 
                                         _build_Save(),
                                         SizedBox(
