@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:successroad/UI/signup.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/timeline/choocenavigation.dart';
 
 class MyLoginPage extends StatefulWidget {
@@ -189,17 +191,34 @@ class _MyLoginPage extends State<MyLoginPage> {
     setState(() {
       if (_emailController.text.trim().toLowerCase().isNotEmpty &&
           _passwordController.text.trim().isNotEmpty) {
-        databaseHelper
-            .loginData(_emailController.text.trim().toLowerCase(),
+        databaseHelper.loginData(_emailController.text.trim().toLowerCase(),
                 _passwordController.text.trim())
             .whenComplete(() {
           if (databaseHelper.status) {
             _showDialog();
             msgStatus = 'Check email or password';
-          } else {
-            //Navigator.pushReplacementNamed(context, '/dashboard');
+          }
+          else {
+            if (databaseHelper.ideamaker) {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Timeline()));
+              print("U R fucken ideamaker");
+
+            }
+         else if (databaseHelper.sponsor) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Timeline()));
+                context, MaterialPageRoute(builder: (context) => Signup()));
+            print("U R fucken Sponsor");
+
+          }
+          else  if (databaseHelper.employee) {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddJobs()));
+              print("U R fucken emp");
+
+            }
+            //Navigator.pushReplacementNamed(context, '/dashboard');
+
           }
         });
       }

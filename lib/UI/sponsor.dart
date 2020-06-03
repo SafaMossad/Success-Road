@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/timeline/choocenavigation.dart';
 import '../utilities/constants.dart';
 void main(){
   runApp(MaterialApp(
@@ -32,6 +34,17 @@ class Manage {
 }
 
 class  _Sponsor extends State< Sponsor> {
+
+  DatabaseHelper databaseHelper = new DatabaseHelper();
+  final TextEditingController _nameController  = new TextEditingController();
+  final TextEditingController _addreeController  = new TextEditingController();
+  final TextEditingController _categoryController  = new TextEditingController();
+  final TextEditingController _fundingController  = new TextEditingController();
+  final TextEditingController _typemanagmentController  = new TextEditingController();
+  final TextEditingController _GenderController  = new TextEditingController();
+  final TextEditingController _phoneController  = new TextEditingController();
+
+
   List<Gender> _get_Gender = Gender.getGender();
   List<DropdownMenuItem<Gender>> _DropdownMenuItem;
   Gender _Selected_Gender;
@@ -99,6 +112,7 @@ class  _Sponsor extends State< Sponsor> {
       height: 50.0,
       width: 165.0,
       child: TextField(
+        controller: _nameController,
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -199,6 +213,7 @@ class  _Sponsor extends State< Sponsor> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _addreeController,
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -224,6 +239,7 @@ class  _Sponsor extends State< Sponsor> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _phoneController,
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -249,6 +265,7 @@ class  _Sponsor extends State< Sponsor> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _categoryController,
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -266,7 +283,7 @@ class  _Sponsor extends State< Sponsor> {
       ),
     );
   }
-
+/*
   Widget _Manage() {
     return Container(
        padding: EdgeInsets.only(left: 11.0),
@@ -331,15 +348,41 @@ class  _Sponsor extends State< Sponsor> {
         ),
       ),
     );
-  }
+  }*/
 
-  Widget _Experince() {
+  Widget _funding() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
 
       child: TextField(
+        controller: _fundingController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.description,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText:  "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _gender() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+
+      child: TextField(
+        controller: _GenderController,
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -358,7 +401,7 @@ class  _Sponsor extends State< Sponsor> {
     );
   }
 
-  Widget _Qualification() {
+  Widget _typeofmanagment() {
     return Container(
       alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
@@ -366,7 +409,7 @@ class  _Sponsor extends State< Sponsor> {
 
       child: TextField(
         maxLines: 10,
-
+controller: _typemanagmentController,
         keyboardType: TextInputType.multiline,
         style: kLabelStyle,
         decoration: InputDecoration(
@@ -391,7 +434,22 @@ class  _Sponsor extends State< Sponsor> {
       width: 200.0,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () {
+          databaseHelper.sponsorRegister(
+              _nameController.text.trim(),
+              _addreeController.text.trim(),
+              _phoneController.text.trim(),
+              _categoryController.text.trim(),
+              _GenderController.text.trim(),
+              _fundingController.text.trim(),
+              _typemanagmentController.text.trim(),);
+
+          Navigator.of(context).push(
+              new MaterialPageRoute(
+                builder: (BuildContext context) => new Timeline(),
+              )
+          );
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -547,17 +605,10 @@ class  _Sponsor extends State< Sponsor> {
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-
-                                        _Phone(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
                                         _address(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
-
 
                                         _categoey(),
 
@@ -565,15 +616,32 @@ class  _Sponsor extends State< Sponsor> {
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-                                        _Gender(),
-
+                                   /*     _Gender(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-
                                         _Manage(),
+
+                                        Divider(thickness: 1.0,color: Colors.black,),*/
+
+                                        _gender(),
+
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _funding(),
+
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _typeofmanagment(),
+
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+                                        _Phone(),
+
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 

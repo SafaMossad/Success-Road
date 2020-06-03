@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/timeline/choocenavigation.dart';
 import '../utilities/constants.dart';
 void main(){
   runApp(MaterialApp(
@@ -32,6 +34,25 @@ class Manage {
 }
 
 class _Employee extends State<Employee> {
+
+
+
+  DatabaseHelper databaseHelper = new DatabaseHelper();
+  final TextEditingController _nameController  = new TextEditingController();
+  final TextEditingController _jobtybeController  = new TextEditingController();
+  final TextEditingController _jobcategoryController  = new TextEditingController();
+  final TextEditingController _addressController  = new TextEditingController();
+  final TextEditingController _salaryController  = new TextEditingController();
+  final TextEditingController _ganderController  = new TextEditingController();
+  final TextEditingController _qualifcationController  = new TextEditingController();
+  final TextEditingController _mobileController  = new TextEditingController();
+  final TextEditingController _degreeController  = new TextEditingController();
+  final TextEditingController _indestryController  = new TextEditingController();
+  final TextEditingController _exprenseController  = new TextEditingController();
+
+
+
+
   List<Gender> _get_Gender = Gender.getGender();
   List<DropdownMenuItem<Gender>> _DropdownMenuItem;
   Gender _Selected_Gender;
@@ -99,6 +120,7 @@ class _Employee extends State<Employee> {
       height: 50.0,
       width: 165.0,
       child: TextField(
+        controller: _nameController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -120,6 +142,7 @@ class _Employee extends State<Employee> {
     );
   }
 
+/*
   Widget _lastname() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -147,14 +170,16 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+*/
 
-  Widget _Email() {
+  Widget _jobtybe() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _jobtybeController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -176,13 +201,14 @@ class _Employee extends State<Employee> {
     );
   }
 
-  Widget _Pass() {
+  Widget _jobcategory() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _jobcategoryController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -203,35 +229,6 @@ class _Employee extends State<Employee> {
       ),
     );
   }
-
-  Widget _Phone() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.phone_android,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -239,6 +236,7 @@ class _Employee extends State<Employee> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
+        controller: _addressController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -260,7 +258,210 @@ class _Employee extends State<Employee> {
     );
   }
 
-  Widget _Gender() {
+
+  Widget _salary() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _salaryController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_android,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _gander() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _ganderController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_android,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _qualification() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 100.0,
+
+      child: TextField(
+        controller: _qualifcationController,
+        maxLines: 10,
+
+        keyboardType: TextInputType.multiline,
+        style: TextStyle(
+
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.description,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Qualification",
+          // labelStyle: kLabelStyle,
+          hintText:  "Qualification",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _phone() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _mobileController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_android,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _degree() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _degreeController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_android,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _inndestory() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _indestryController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_android,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _experince() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+
+      child: TextField(
+        controller: _exprenseController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText:  "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+
+
+  /*Widget _Gender() {
     return Container(
       padding: EdgeInsets.only(left: 11.0),
       alignment: Alignment.centerLeft,
@@ -291,64 +492,8 @@ class _Employee extends State<Employee> {
         ),
       ),
     );
-  }
-  Widget _Experince() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
+  }*/
 
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.format_align_left,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText:  "Experince",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Qualification() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 100.0,
-
-      child: TextField(      maxLines: 10,
-
-        keyboardType: TextInputType.multiline,
-        style: TextStyle(
-
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.description,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Qualification",
-          // labelStyle: kLabelStyle,
-          hintText:  "Qualification",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
 
   Widget _build_Save() {
     return Container(
@@ -356,8 +501,30 @@ class _Employee extends State<Employee> {
       width: 200.0,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
-        padding: EdgeInsets.all(15.0),
+        onPressed: () {
+          databaseHelper.employeeRegister(
+              _nameController.text.trim(),
+               _jobtybeController.text.trim(),
+          _jobcategoryController.text.trim(),
+           _addressController.text.trim(),
+          _salaryController.text.trim(),
+           _ganderController.text.trim(),
+          _qualifcationController.text.trim(),
+           _mobileController.text.trim(),
+          _degreeController.text.trim(),
+         _indestryController.text.trim(),
+           _exprenseController.text.trim()
+
+
+          );
+
+          Navigator.of(context).push(
+              new MaterialPageRoute(
+                builder: (BuildContext context) => new Timeline(),
+              )
+          );
+          print("Save");
+        },        padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -505,32 +672,39 @@ class _Employee extends State<Employee> {
                                         Row(
                                           children: <Widget>[
                                             _firstname(),
-                                            Divider(thickness: 1.0,color: Colors.black,),
-                                            _lastname(),
                                           ],
                                         ),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _Email(),
+                                        _jobtybe(),
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _Pass(),
-                                        Divider(thickness: 1.0,color: Colors.black,),
-                                        _Phone(),
-
+                                        _jobcategory(),
                                         Divider(thickness: 1.0,color: Colors.black,),
                                         _address(),
 
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _salary(),
+
 
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _Gender(),
+                                        _gander(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
-                                        _Experince(),
+                                        _qualification(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _Qualification(),
+                                        _phone(),
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _degree(),
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _inndestory(),
+
+                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _experince(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
                                         _build_Save(),
