@@ -28,8 +28,7 @@ class ShowDataState extends State<ShowData> {
 
 appBar: AppBar(
   actions: <Widget>[
-    IconButton(icon:
-    (Icon(Icons.arrow_back,)),onPressed: ()=> Navigator.of(context).pop(),)
+    IconButton(icon: (Icon(Icons.arrow_back,)),onPressed: ()=> Navigator.of(context).pop(),)
 
   ],
 ),

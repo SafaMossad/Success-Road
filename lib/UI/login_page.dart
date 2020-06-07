@@ -202,19 +202,19 @@ class _MyLoginPage extends State<MyLoginPage> {
             if (databaseHelper.ideamaker) {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Timeline()));
-              print("U R fucken ideamaker");
+              print("U R ideamaker");
 
             }
          else if (databaseHelper.sponsor) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Signup()));
-            print("U R fucken Sponsor");
+                context, MaterialPageRoute(builder: (context) => Timeline()));
+            print("U R Sponsor");
 
           }
           else  if (databaseHelper.employee) {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddJobs()));
-              print("U R fucken emp");
+                  context, MaterialPageRoute(builder: (context) => Timeline()));
+              print("U R emp");
 
             }
             //Navigator.pushReplacementNamed(context, '/dashboard');
@@ -363,9 +363,12 @@ class _MyLoginPage extends State<MyLoginPage> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: TextField(
                 controller: _passwordController,
+                keyboardType: TextInputType.number,
+
                 onChanged: (String value) {},
                 cursorColor: Color(0xff1B4F72),
                 decoration: InputDecoration(
+
                     hintText: "Password",
                     prefixIcon: Material(
                       elevation: 0,
@@ -392,6 +395,7 @@ class _MyLoginPage extends State<MyLoginPage> {
                   color: Color(0xff1B4F72),
                 ),
                 child: FlatButton(
+
                   child: Text(
                     "Login",
                     style: TextStyle(

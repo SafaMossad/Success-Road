@@ -37,16 +37,40 @@ class Manage {
 
 class _IdeaMaker extends State<IdeaMaker> {
 
+
+
+
+//gender controlling
+  String genderDropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String genderHolder = '';
+
+  List<String> genderItems = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItemGender() {
+    setState(() {
+      genderHolder = genderDropdownValue;
+    });
+  }
+
   DatabaseHelper databaseHelper = new DatabaseHelper();
   final TextEditingController _nameController  = new TextEditingController();
   final TextEditingController _jobtitleController  = new TextEditingController();
   final TextEditingController _addreeController  = new TextEditingController();
   final TextEditingController _locationController  = new TextEditingController();
-  final TextEditingController _GanderController  = new TextEditingController();
+ // final TextEditingController _GanderController  = new TextEditingController();
   final TextEditingController _qualifictionController  = new TextEditingController();
   final TextEditingController _mobileController  = new TextEditingController();
   final TextEditingController _interstingfieldController  = new TextEditingController();
   final TextEditingController _indestryController  = new TextEditingController();
+
+
+/*
 
 
 
@@ -109,6 +133,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       _selectedManage = select;
     });
   }
+*/
 
 
   Widget _name() {
@@ -253,28 +278,56 @@ class _IdeaMaker extends State<IdeaMaker> {
   }
 */
   Widget _gender() {
-    return Container(
+    return   Container(
+
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
-      child: TextField(
-        controller: _GanderController,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 50.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Text(
+              "Gender:", style: kLabelStyle,
+            ),
+            SizedBox(
+              width: 100.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
 
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.home,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
-          hintStyle: kHintTextStyle,
+                value: genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    genderDropdownValue = data;
+                  });
+                },
+                items:
+                genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-      ),
+      ]),
     );
   }
   Widget _interstingfield() {
@@ -302,7 +355,6 @@ class _IdeaMaker extends State<IdeaMaker> {
       ),
     );
   }
-
   Widget _jobtitle() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -392,7 +444,7 @@ class _IdeaMaker extends State<IdeaMaker> {
               _jobtitleController.text.trim(),
               _addreeController.text.trim(),
               _locationController.text.trim(),
-              _GanderController.text.trim(),
+              genderDropdownValue.trim(),
               _qualifictionController.text.trim(),
               _mobileController.text.trim(),
               _interstingfieldController.text.trim(),

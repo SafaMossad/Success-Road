@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigation.dart';
+
 import '../utilities/constants.dart';
-void main(){
+
+void main() {
   runApp(MaterialApp(
-    home:  Employee(),
+    home: Employee(),
   ));
 }
+
 class Employee extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return  _Employee();
+    return _Employee();
   }
 }
+
 class Gender {
   String gender;
 
@@ -23,6 +27,7 @@ class Gender {
     return <Gender>[Gender("MAle"), Gender("Female"), Gender("Not prefer")];
   }
 }
+
 class Manage {
   String man;
 
@@ -34,23 +39,38 @@ class Manage {
 }
 
 class _Employee extends State<Employee> {
+//gender controlling
+  String _genderDropdownValue = 'male';
 
+  // To show Selected Item in Text.
+  String genderHolder = '';
 
+  List<String> genderItems = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItemGender() {
+    setState(() {
+      genderHolder = _genderDropdownValue;
+    });
+  }
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
-  final TextEditingController _nameController  = new TextEditingController();
-  final TextEditingController _jobtybeController  = new TextEditingController();
-  final TextEditingController _jobcategoryController  = new TextEditingController();
-  final TextEditingController _addressController  = new TextEditingController();
-  final TextEditingController _salaryController  = new TextEditingController();
-  final TextEditingController _ganderController  = new TextEditingController();
-  final TextEditingController _qualifcationController  = new TextEditingController();
-  final TextEditingController _mobileController  = new TextEditingController();
-  final TextEditingController _degreeController  = new TextEditingController();
-  final TextEditingController _indestryController  = new TextEditingController();
-  final TextEditingController _exprenseController  = new TextEditingController();
+  final TextEditingController _nameController = new TextEditingController();
+  final TextEditingController _jobtybeController = new TextEditingController();
+  final TextEditingController _jobcategoryController = new TextEditingController();
+  final TextEditingController _addressController = new TextEditingController();
+  final TextEditingController _salaryController = new TextEditingController();
+  final TextEditingController _ganderController = new TextEditingController();
+  final TextEditingController _qualifcationController = new TextEditingController();
+  final TextEditingController _mobileController = new TextEditingController();
+  final TextEditingController _degreeController = new TextEditingController();
+  final TextEditingController _indestryController = new TextEditingController();
+  final TextEditingController _exprenseController = new TextEditingController();
 
-
+/*
 
 
   List<Gender> _get_Gender = Gender.getGender();
@@ -110,7 +130,7 @@ class _Employee extends State<Employee> {
       _Selected_Manage = select;
     });
   }
-
+*/
 
   Widget _firstname() {
     return Container(
@@ -122,10 +142,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _nameController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+         style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -181,10 +199,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _jobtybeController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -210,10 +226,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _jobcategoryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -229,6 +243,7 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -238,10 +253,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -258,7 +271,6 @@ class _Employee extends State<Employee> {
     );
   }
 
-
   Widget _salary() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -268,10 +280,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _salaryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -287,50 +297,72 @@ class _Employee extends State<Employee> {
       ),
     );
   }
-  Widget _gander() {
-    return Container(
+
+  Widget _gender() {
+    return   Container(
+
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 50.0),
       // width: 150.0,
-      child: TextField(
-        controller: _ganderController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Text(
+              "Gender:", style: kLabelStyle,
+            ),
+            SizedBox(
+              width: 100.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+
+                value: _genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    _genderDropdownValue = data;
+                  });
+                },
+                items:
+                genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.phone_android,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
+      ]),
     );
   }
+
   Widget _qualification() {
     return Container(
       alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
       height: 100.0,
-
       child: TextField(
         controller: _qualifcationController,
         maxLines: 10,
-
         keyboardType: TextInputType.multiline,
-        style: TextStyle(
+        style: kLabelStyle,
 
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -340,12 +372,13 @@ class _Employee extends State<Employee> {
           ),
           //labelText: "Qualification",
           // labelStyle: kLabelStyle,
-          hintText:  "Qualification",
+          hintText: "Qualification",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _phone() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -355,10 +388,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _mobileController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -374,6 +405,7 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+
   Widget _degree() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -383,10 +415,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _degreeController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -402,6 +432,7 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+
   Widget _inndestory() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -411,10 +442,8 @@ class _Employee extends State<Employee> {
       child: TextField(
         controller: _indestryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -430,19 +459,17 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+
   Widget _experince() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
-
       child: TextField(
         controller: _exprenseController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -452,14 +479,12 @@ class _Employee extends State<Employee> {
           ),
           //labelText: "Experince",
           //labelStyle: kLabelStyle,
-          hintText:  "Experince",
+          hintText: "Experince",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
-
-
 
   /*Widget _Gender() {
     return Container(
@@ -494,7 +519,6 @@ class _Employee extends State<Employee> {
     );
   }*/
 
-
   Widget _build_Save() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -504,27 +528,23 @@ class _Employee extends State<Employee> {
         onPressed: () {
           databaseHelper.employeeRegister(
               _nameController.text.trim(),
-               _jobtybeController.text.trim(),
-          _jobcategoryController.text.trim(),
-           _addressController.text.trim(),
-          _salaryController.text.trim(),
-           _ganderController.text.trim(),
-          _qualifcationController.text.trim(),
-           _mobileController.text.trim(),
-          _degreeController.text.trim(),
-         _indestryController.text.trim(),
-           _exprenseController.text.trim()
+              _jobtybeController.text.trim(),
+              _jobcategoryController.text.trim(),
+              _addressController.text.trim(),
+              _salaryController.text.trim(),
+              _genderDropdownValue.trim(),
+              _qualifcationController.text.trim(),
+              _mobileController.text.trim(),
+              _degreeController.text.trim(),
+              _indestryController.text.trim(),
+              _exprenseController.text.trim());
 
-
-          );
-
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context) => new Timeline(),
-              )
-          );
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new Timeline(),
+          ));
           print("Save");
-        },        padding: EdgeInsets.all(15.0),
+        },
+        padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -543,8 +563,6 @@ class _Employee extends State<Employee> {
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -557,7 +575,7 @@ class _Employee extends State<Employee> {
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 150.0),
-                child:  ClipPath(
+                child: ClipPath(
                   clipper: WaveClipper2(),
                   child: Container(
                     padding: EdgeInsets.only(),
@@ -565,13 +583,13 @@ class _Employee extends State<Employee> {
                     height: 485,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xff5DADE2),
-                            Color(0xffF2F3F4  ),
-                          ],
-                        )),
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff5DADE2),
+                        Color(0xffF2F3F4),
+                      ],
+                    )),
                   ),
                 ),
               ),
@@ -596,18 +614,17 @@ class _Employee extends State<Employee> {
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
-
-                  width:double.infinity,
-                  height:350,
+                  width: double.infinity,
+                  height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFF0a2f52),
-                          Color(0xff2E86C1),
-                        ],
-                      )),
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF0a2f52),
+                      Color(0xff2E86C1),
+                    ],
+                  )),
                 ),
               ),
               Stack(
@@ -645,7 +662,6 @@ class _Employee extends State<Employee> {
                           //Controlling the white place Shape
                           height: 650.0,
                           decoration: BoxDecoration(
-
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(75.0),
                               bottomRight: Radius.circular(75.0),
@@ -675,43 +691,101 @@ class _Employee extends State<Employee> {
                                           ],
                                         ),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _jobtybe(),
-                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _jobcategory(),
-                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _address(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _salary(),
 
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
-                                        _gander(),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        _gender(),
+
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
 
                                         _qualification(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _phone(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _degree(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         _inndestory(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _experince(),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+
                                         _build_Save(),
+
+
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                       ],
                                     ),
                                   ),
@@ -720,8 +794,6 @@ class _Employee extends State<Employee> {
                             ],
                           ),
                         ),
-
-
                       ],
                     ),
                   ),
@@ -729,40 +801,31 @@ class _Employee extends State<Employee> {
               ),
             ],
           ),
-
         ],
       ),
     );
   }
 }
+
 class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
     //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
     //ده كدا خط مستقيم علي الشمال
-    path.lineTo(0.0, size.height );
+    path.lineTo(0.0, size.height);
 //دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
     // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
 
-    var firstEndPoint = Offset(size.width /2-20, size.height-60);
+    var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
 
-
-
-    var firstControlPoint = Offset(size.width/2-150, size.height -60);
+    var firstControlPoint = Offset(size.width / 2 - 150, size.height - 60);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-
-
     var secondEndPoint = Offset(
-        size.width,//كدا معناها ان كمل بقي خلاص لحد اخر العرض
-        size.height/2);//كده معناه ان الطول نقص منه 2
-
-
-
-
-
+        size.width, //كدا معناها ان كمل بقي خلاص لحد اخر العرض
+        size.height / 2); //كده معناه ان الطول نقص منه 2
 
     var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
@@ -772,6 +835,7 @@ class WaveClipper1 extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
@@ -810,16 +874,15 @@ class WaveClipper2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(0.0, size.height );
+    path.lineTo(0.0, size.height);
 
-    var firstEndPoint = Offset(size.width /2-20, size.height );
+    var firstEndPoint = Offset(size.width / 2 - 20, size.height);
     var firstControlPoint = Offset(size.width * .25, size.height);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-
     var secondEndPoint = Offset(size.width, size.height - 200);
-    var secondControlPoint = Offset(size.width /2-20, size.height - 120);
+    var secondControlPoint = Offset(size.width / 2 - 20, size.height - 120);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
     path.lineTo(size.width, size.height);

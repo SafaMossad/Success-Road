@@ -13,6 +13,7 @@ class DatabaseHelper {
   var employee ;
 
 
+
   signup(String email, String password, String passwordConfirmation) async {
     // set up POST request arguments
     String url = "https://successsroadv2.herokuapp.com/api/v1/users";
@@ -21,6 +22,7 @@ class DatabaseHelper {
         '{"user":{"email": "$email","password": "$password","password_confirmation": "$passwordConfirmation"}}';
     // make POST request
     Response response = await post(url, headers: headers, body: b);
+
     //int statusCode = response.statusCode;
     // this API passes back the id of the new item added to the body
     //String body = response.body;
@@ -226,14 +228,39 @@ class DatabaseHelper {
 
     } else {
       print('Token : ${data['auth_token']}');
-      _save('data ["auth_token"]');
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
+
+
+      print('login id is : ${data['id']}');
+
+      final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+      prefsididlogin.setInt('loginid', data['id']);
     }
 
   }
 
 
+  Future<Map<String,dynamic>> getProfile() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
+
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
+    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    http.Response response = await http.get(myUrl, headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    print(response.body);
+    return json.decode(response.body.toString());
+  }
 
   void addDataIdea(String ideaTitle, String managementType, String ideaCategory,
       String address, String funding, String ideaDescription) async {
@@ -271,6 +298,24 @@ class DatabaseHelper {
 //    print('Response status : ${response.statusCode}');
 
 //    print('data : ${data['auth_token']}');
+  }
+
+  Future<List> getAllData() async {
+//    final prefs = await SharedPreferences.getInstance();
+//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
+//    final value = prefs.get(key) ?? 0;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/Jobhome";
+    http.Response response = await http.get(myUrl, headers: {
+      //'Accept':'*/*',
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    return json.decode(response.body);
   }
 
   Future<List> getData() async {

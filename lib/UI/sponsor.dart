@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigation.dart';
+
 import '../utilities/constants.dart';
-void main(){
+
+void main() {
   runApp(MaterialApp(
-    home:  Sponsor(),
+    home: Sponsor(),
   ));
 }
-class   Sponsor extends StatefulWidget {
+
+class Sponsor extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return  _Sponsor();
+    return _Sponsor();
   }
 }
+/*
 class Gender {
   String gender;
 
@@ -32,18 +36,76 @@ class Manage {
     return <Manage>[Manage("fully"), Manage("semi"), Manage("Non")];
   }
 }
+*/
 
-class  _Sponsor extends State< Sponsor> {
+class _Sponsor extends State<Sponsor> {
+/*
+  String dropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String holder = '';
+
+  List<String> actorsName = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItem() {
+    setState(() {
+      holder = dropdownValue;
+    });
+  }
+
+*/
+
+
+//gender controlling
+  String genderDropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String genderHolder = '';
+
+  List<String> genderItems = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItemGender() {
+    setState(() {
+      genderHolder = genderDropdownValue;
+    });
+  }
+
+  //mangment controlling
+
+  String mangmentdropdownValue = 'fully';
+
+  // To show Selected Item in Text.
+  String mangmentholder = '';
+
+  List<String> mangmentItems = [
+    'fully',
+    'semi',
+
+  ];
+
+  void getDropDownItemanagemangment() {
+    setState(() {
+      mangmentholder = mangmentdropdownValue;
+    });
+  }
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
-  final TextEditingController _nameController  = new TextEditingController();
-  final TextEditingController _addreeController  = new TextEditingController();
-  final TextEditingController _categoryController  = new TextEditingController();
-  final TextEditingController _fundingController  = new TextEditingController();
-  final TextEditingController _typemanagmentController  = new TextEditingController();
-  final TextEditingController _GenderController  = new TextEditingController();
-  final TextEditingController _phoneController  = new TextEditingController();
+  final TextEditingController _nameController = new TextEditingController();
+  final TextEditingController _addreeController = new TextEditingController();
+  final TextEditingController _categoryController = new TextEditingController();
+  final TextEditingController _fundingController = new TextEditingController();
+ // final TextEditingController _typemanagmentController = new TextEditingController();
+  final TextEditingController _phoneController = new TextEditingController();
 
+/*
 
   List<Gender> _get_Gender = Gender.getGender();
   List<DropdownMenuItem<Gender>> _DropdownMenuItem;
@@ -102,36 +164,8 @@ class  _Sponsor extends State< Sponsor> {
       _Selected_Manage = select;
     });
   }
-
-
-  Widget _firstname() {
-    return Container(
-      /* alignment: Alignment.topCenter,
-      padding: EdgeInsets.only(bottom:10.0),*/
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      width: 165.0,
-      child: TextField(
-        controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'First Name',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
- /* Widget _lastname() {
+*/
+  /* Widget _lastname() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
@@ -206,83 +240,6 @@ class  _Sponsor extends State< Sponsor> {
     );
   }
 */
-  Widget _address() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _addreeController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.location_city,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Phone() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _phoneController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.phone_forwarded,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _categoey() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _categoryController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.category,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "categoey",
-          //labelStyle: kLabelStyle,
-          hintText: "categoey",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
 /*
   Widget _Manage() {
     return Container(
@@ -350,12 +307,144 @@ class  _Sponsor extends State< Sponsor> {
     );
   }*/
 
+  Widget _firstname() {
+    return Container(
+      /* alignment: Alignment.topCenter,
+      padding: EdgeInsets.only(bottom:10.0),*/
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      width: 165.0,
+      child: TextField(
+        controller: _nameController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.person,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "First Name",
+          // labelStyle: kLabelStyle,
+          hintText: 'First Name',
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _address() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _addreeController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.location_city,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Address",
+          //labelStyle: kLabelStyle,
+          hintText: "Address",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _categoey() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _categoryController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.category,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "categoey",
+          //labelStyle: kLabelStyle,
+          hintText: "categoey",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _gender() {
+    return   Container(
+
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 50.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Text(
+              "Gender:", style: kHintTextStyle,
+            ),
+            SizedBox(
+              width: 100.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+
+                value: genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    genderDropdownValue = data;
+                  });
+                },
+                items:
+                genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
   Widget _funding() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
-
       child: TextField(
         controller: _fundingController,
         keyboardType: TextInputType.emailAddress,
@@ -369,32 +458,7 @@ class  _Sponsor extends State< Sponsor> {
           ),
           //labelText: "Experince",
           //labelStyle: kLabelStyle,
-          hintText:  "Experince",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-  Widget _gender() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-
-      child: TextField(
-        controller: _GenderController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.description,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText:  "Experince",
+          hintText: "Experince",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -403,30 +467,86 @@ class  _Sponsor extends State< Sponsor> {
 
   Widget _typeofmanagment() {
     return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 100.0,
 
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 50.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Text(
+              "Mangment" ,style: kHintTextStyle,
+
+            ),
+            SizedBox(
+              width: 100.0,
+            ),
+            Container(
+              width: 80.0,
+              child: DropdownButton<String>(
+                value: mangmentdropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    mangmentdropdownValue = data;
+                  });
+                },
+                items:
+                mangmentItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _Phone() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
       child: TextField(
-        maxLines: 10,
-controller: _typemanagmentController,
-        keyboardType: TextInputType.multiline,
+        controller: _phoneController,
+        keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.favorite_border,
+            Icons.phone_forwarded,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Qualification",
+          // labelText: "Phone",
           // labelStyle: kLabelStyle,
-          hintText:  "Qualification",
+          hintText: "Phone",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
+
+
 
   Widget _build_Save() {
     return Container(
@@ -436,19 +556,19 @@ controller: _typemanagmentController,
         elevation: 5.0,
         onPressed: () {
           databaseHelper.sponsorRegister(
-              _nameController.text.trim(),
-              _addreeController.text.trim(),
-              _phoneController.text.trim(),
-              _categoryController.text.trim(),
-              _GenderController.text.trim(),
-              _fundingController.text.trim(),
-              _typemanagmentController.text.trim(),);
+            _nameController.text.trim(),
+            _addreeController.text.trim(),
+            _categoryController.text.trim(),
+            _fundingController.text.trim(),
+            genderDropdownValue.trim(),
+            mangmentdropdownValue.trim(),
+            _phoneController.text.trim(),
 
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context) => new Timeline(),
-              )
           );
+
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new Timeline(),
+          ));
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -469,8 +589,6 @@ controller: _typemanagmentController,
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -483,7 +601,7 @@ controller: _typemanagmentController,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(top: 150.0),
-                child:  ClipPath(
+                child: ClipPath(
                   clipper: WaveClipper2(),
                   child: Container(
                     padding: EdgeInsets.only(),
@@ -491,13 +609,13 @@ controller: _typemanagmentController,
                     height: 485,
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xff5DADE2),
-                            Color(0xffF2F3F4  ),
-                          ],
-                        )),
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff5DADE2),
+                        Color(0xffF2F3F4),
+                      ],
+                    )),
                   ),
                 ),
               ),
@@ -522,18 +640,17 @@ controller: _typemanagmentController,
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
-
-                  width:double.infinity,
-                  height:350,
+                  width: double.infinity,
+                  height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFF0a2f52),
-                          Color(0xff2E86C1),
-                        ],
-                      )),
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF0a2f52),
+                      Color(0xff2E86C1),
+                    ],
+                  )),
                 ),
               ),
               Stack(
@@ -571,7 +688,6 @@ controller: _typemanagmentController,
                           //Controlling the white place Shape
                           height: 650.0,
                           decoration: BoxDecoration(
-
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(75.0),
                               bottomRight: Radius.circular(75.0),
@@ -601,55 +717,73 @@ controller: _typemanagmentController,
                                           ],
                                         ),
 
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
+                                        /*  DropdownButton<String>(
+                                          value: dropdownValue,
+                                          icon: Icon(Icons.arrow_drop_down),
+                                          iconSize: 24,
+                                          elevation: 16,
+                                          style: TextStyle(color: Colors.red, fontSize: 18),
+                                          underline: Container(
+                                            height: 2,
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                          onChanged: (String data) {
+                                            setState(() {
+                                              dropdownValue = data;
+                                            });
+                                          },
+                                          items: actorsName.map<DropdownMenuItem<String>>((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                        ),*/
 
                                         _address(),
 
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
                                         _categoey(),
 
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                   /*     _Gender(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _Manage(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),*/
-
-                                        _gender(),
+                                       _gender(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
+
                                         _funding(),
 
-
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _typeofmanagment(),
 
+                                        _typeofmanagment(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
                                         _Phone(),
 
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
                                         _build_Save(),
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                       ],
                                     ),
                                   ),
@@ -658,8 +792,6 @@ controller: _typemanagmentController,
                             ],
                           ),
                         ),
-
-
                       ],
                     ),
                   ),
@@ -667,40 +799,31 @@ controller: _typemanagmentController,
               ),
             ],
           ),
-
         ],
       ),
     );
   }
 }
+
 class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
     //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
     //ده كدا خط مستقيم علي الشمال
-    path.lineTo(0.0, size.height );
+    path.lineTo(0.0, size.height);
 //دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
     // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
 
-    var firstEndPoint = Offset(size.width /2-20, size.height-60);
+    var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
 
-
-
-    var firstControlPoint = Offset(size.width/2-150, size.height -60);
+    var firstControlPoint = Offset(size.width / 2 - 150, size.height - 60);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-
-
     var secondEndPoint = Offset(
-        size.width,//كدا معناها ان كمل بقي خلاص لحد اخر العرض
-        size.height/2);//كده معناه ان الطول نقص منه 2
-
-
-
-
-
+        size.width, //كدا معناها ان كمل بقي خلاص لحد اخر العرض
+        size.height / 2); //كده معناه ان الطول نقص منه 2
 
     var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
@@ -710,6 +833,7 @@ class WaveClipper1 extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
@@ -748,16 +872,15 @@ class WaveClipper2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(0.0, size.height );
+    path.lineTo(0.0, size.height);
 
-    var firstEndPoint = Offset(size.width /2-20, size.height );
+    var firstEndPoint = Offset(size.width / 2 - 20, size.height);
     var firstControlPoint = Offset(size.width * .25, size.height);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-
     var secondEndPoint = Offset(size.width, size.height - 200);
-    var secondControlPoint = Offset(size.width /2-20, size.height - 120);
+    var secondControlPoint = Offset(size.width / 2 - 20, size.height - 120);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
     path.lineTo(size.width, size.height);
