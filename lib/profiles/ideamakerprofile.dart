@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/profileedit/ideaMakerEdit.dart';
 
 class IdeaMakerProfile extends StatefulWidget {
   @override
@@ -254,6 +256,14 @@ class ProfileFinal extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Idea Maker"),
                                           ),
+                                          Padding(padding: EdgeInsets.only(right: 5),
+                                          child: FlatButton(onPressed: ()=> Navigator.of(context).push(
+                                              new MaterialPageRoute(
+                                                builder: (BuildContext context) => new IdeaMakerEditData(map),
+                                              )
+                                          ),
+                                            child: Text("Edit",textAlign: TextAlign.right,),
+                                          ),)
                                         ],
                                       ),
                                     ),

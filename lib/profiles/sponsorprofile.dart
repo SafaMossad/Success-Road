@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/profileedit/sponsorEdit.dart';
 
 class SponsorProfile extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _ProfileState extends State<SponsorProfile> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dashboard',
+      title: 'SponsorProfile',
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xff1B4F72),
@@ -40,7 +41,7 @@ class _ProfileState extends State<SponsorProfile> {
                 return Container();
               }else
                 return projectSnap.hasData
-                    ? new ProfileFinal(map: projectSnap.data)
+                    ? new ProfileFinall(map: projectSnap.data)
                     :Center(child: CircularProgressIndicator());
             },
           )),
@@ -48,10 +49,10 @@ class _ProfileState extends State<SponsorProfile> {
   }
 }
 
-class ProfileFinal extends StatelessWidget {
+class ProfileFinall extends StatelessWidget {
   Map map;
 
-  ProfileFinal({this.map});
+  ProfileFinall({this.map});
 
   @override
   Widget build(BuildContext context) {
@@ -254,6 +255,15 @@ class ProfileFinal extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Sponsor"),
                                           ),
+                                          Padding(padding: EdgeInsets.only(right: 5),
+                                            child: FlatButton(onPressed: ()=> Navigator.of(context).push(
+                                                new MaterialPageRoute(
+                                                  builder: (BuildContext context) => new SponsorEditData(map),
+                                                )
+                                            ),
+                                              child: Text("Edit",textAlign: TextAlign.right,),
+                                            ),)
+
                                         ],
 
 

@@ -217,8 +217,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
-
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -247,8 +245,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
-
   Widget _salary() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -277,10 +273,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
-
-
-
   //gender not have controller
   Widget _gender() {
     return DropdownButtonFormField(
@@ -312,8 +304,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
-
 
   Widget _country() {
     return Container(

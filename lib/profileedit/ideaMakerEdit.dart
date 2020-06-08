@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/profiles/ideamakerprofile.dart';
 import 'package:successroad/utilities/constants.dart';
 
 
-class EditData extends StatefulWidget {
-  List list;
-  int index;
-  EditData({this.index, this.list});
+class IdeaMakerEditData extends StatefulWidget {
+  Map map;
+
+
+  IdeaMakerEditData(this.map);
 
   @override
   EditDataState createState() => EditDataState();
 }
 
-class EditDataState extends State<EditData> {
+class EditDataState extends State<IdeaMakerEditData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-  TextEditingController _ideaTitleController = new TextEditingController();
-  TextEditingController _ideaCategoryController = new TextEditingController();
-  TextEditingController _fundingController = new TextEditingController();
-  TextEditingController _managementTypeController = new TextEditingController();
-  TextEditingController _addressController = new TextEditingController();
-  TextEditingController _ideaDescriptionController = new TextEditingController();
+  TextEditingController _nameController = new TextEditingController();
+  TextEditingController _jobtitleController = new TextEditingController();
+  TextEditingController _addreeController = new TextEditingController();
+  TextEditingController _locationController = new TextEditingController();
+  TextEditingController _GanderController = new TextEditingController();
+  TextEditingController _qualifictionController = new TextEditingController();
+  TextEditingController _mobileController = new TextEditingController();
+  TextEditingController _interstingfieldController = new TextEditingController();
+  TextEditingController _indestryController = new TextEditingController();
 
-//  TextEditingController _nameController  ;
-//  TextEditingController _priceController  ;
-
-
-
-  Widget _ideaTitle() {
+  Widget _name() {
     return Container(
       // alignment: Alignment.topCenter,
       // padding: EdgeInsets.only(bottom:10.0),
@@ -36,7 +36,7 @@ class EditDataState extends State<EditData> {
       height: 50.0,
       //width: 165.0,
       child: TextField(
-        controller: _ideaTitleController,
+        controller: _nameController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -58,14 +58,14 @@ class EditDataState extends State<EditData> {
     );
   }
 
-  Widget _ideaCategory() {
+  Widget _jobtitle() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       //width: 165.0,
       child: TextField(
-        controller: _ideaCategoryController,
+        controller: _jobtitleController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -87,14 +87,14 @@ class EditDataState extends State<EditData> {
     );
   }
 
-  Widget _funding() {
+  Widget _addree() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _fundingController,
+        controller: _addreeController,
         keyboardType: TextInputType.number,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -116,14 +116,14 @@ class EditDataState extends State<EditData> {
     );
   }
 
-  Widget _managementType() {
+  Widget _location() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _managementTypeController,
+        controller: _locationController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -145,14 +145,14 @@ class EditDataState extends State<EditData> {
     );
   }
 
-  Widget _address() {
+  Widget _Gander() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _addressController,
+        controller: _GanderController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -174,14 +174,101 @@ class EditDataState extends State<EditData> {
     );
   }
 
-  Widget _ideaDescription() {
+  Widget _qualifiction() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 150.0,
       //width: MediaQuery.of(context).size.width,
       child: TextField(
-        controller: _ideaDescriptionController,
+        controller: _qualifictionController,
+        keyboardType: TextInputType.multiline,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        maxLines: 20,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.description,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Address",
+          //labelStyle: kLabelStyle,
+          hintText: "Idea Description",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _mobile() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _mobileController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.merge_type,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Password",
+          //labelStyle: kLabelStyle,
+          hintText: "Management Type",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _interstingfield() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _interstingfieldController,
+        keyboardType: TextInputType.emailAddress,
+        style: TextStyle(
+          color: Color(0xFF0a2f52),
+          fontFamily: 'OpenSans',
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.add_location,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Address",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _indestry() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 150.0,
+      //width: MediaQuery.of(context).size.width,
+      child: TextField(
+        controller: _indestryController,
         keyboardType: TextInputType.multiline,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -204,31 +291,7 @@ class EditDataState extends State<EditData> {
     );
   }
 
-//  Widget _buildLoginBtn() {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 25.0),
-//      width: 150.0,
-//      child: RaisedButton(
-//        elevation: 20.0,
-//        onPressed: () => print('Login Button Pressed'),
-//        padding: EdgeInsets.all(15.0),
-//        shape: RoundedRectangleBorder(
-//          borderRadius: BorderRadius.circular(30.0),
-//        ),
-//        color: Color(0xFF0a2f52),
-//        child: Text(
-//          'Upload Files',
-//          style: TextStyle(
-//            color: Colors.white,
-//            letterSpacing: 1.5,
-//            fontSize: 18.0,
-//            fontWeight: FontWeight.bold,
-//            fontFamily: 'OpenSans',
-//          ),
-//        ),
-//      ),
-//    );
-//  }
+
 
   Widget _buildLoginBtns() {
     return Container(
@@ -245,16 +308,20 @@ class EditDataState extends State<EditData> {
 //                    ));
 //                  },
         {
-          databaseHelper.editDataIdea(widget.list[widget.index]['id'],
-              _ideaTitleController.text.trim(),
-              _managementTypeController.text.trim(),
-              _ideaCategoryController.text.trim(),
-              _addressController.text.trim(),
-              _fundingController.text.trim(),
-              _ideaDescriptionController.text.trim());
+
+          databaseHelper.editIdeaMakerData(
+              _nameController.text.trim(),
+              _jobtitleController.text.trim(),
+              _addreeController.text.trim(),
+              _locationController.text.trim(),
+              _GanderController.text.trim(),
+              _qualifictionController.text.trim(),
+              _mobileController.text.trim(),
+              _interstingfieldController.text.trim(),
+              _indestryController.text.trim());
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new Dashboard(),
+                builder: (BuildContext context) => new IdeaMakerProfile(),
               )
           );
           print("Edit");
@@ -265,7 +332,7 @@ class EditDataState extends State<EditData> {
         ),
         color: Color(0xFF0a2f52),
         child: Text(
-          'Edit Idea',
+          'Edit Profile',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -280,18 +347,15 @@ class EditDataState extends State<EditData> {
 
   @override
   void initState() {
-    _ideaTitleController =
-    new TextEditingController(text: widget.list[widget.index]['title']);
-    _ideaCategoryController = new TextEditingController(
-        text: widget.list[widget.index]['ideacatagory']);
-    _fundingController =
-    new TextEditingController(text: widget.list[widget.index]['funding']);
-    _managementTypeController = new TextEditingController(
-        text: widget.list[widget.index]['Management']);
-    _addressController =
-    new TextEditingController(text: widget.list[widget.index]['address']);
-    _ideaDescriptionController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
+    _nameController = new TextEditingController(text: widget.map['name']);
+    _jobtitleController = new TextEditingController(text: widget.map['jobtitle']);
+    _addreeController = new TextEditingController(text: widget.map['addree']);
+    _locationController = new TextEditingController(text: widget.map['location']);
+    _GanderController = new TextEditingController(text: widget.map['Gander']);
+    _qualifictionController = new TextEditingController(text: widget.map['qualifiction']);
+    _mobileController = new TextEditingController(text: widget.map['mobile']);
+    _interstingfieldController = new TextEditingController(text: widget.map['interstingfield']);
+    _indestryController = new TextEditingController(text: widget.map['indestry']);
   }
 
   @override
@@ -300,51 +364,46 @@ class EditDataState extends State<EditData> {
       title: 'Update Idea',
       home: Scaffold(
 
-
-
-
-
-
-body: ListView(
-  children: <Widget>[
-    Stack(
-      children: <Widget>[
-
-        Stack(
+        body: ListView(
           children: <Widget>[
-            SingleChildScrollView(
-              //padding: EdgeInsets.only(top: 0.0),
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  //Padding(padding: EdgeInsets.all(10.0)),
-                  Container(
-                    //Controlling the white place Shape
-                    height: 660.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(75.0),
-                        bottomRight: Radius.circular(75.0),
+            Stack(
+              children: <Widget>[
 
-                      ),
-                    ),
-                    padding: EdgeInsets.all(20.0),
+                Stack(
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      //padding: EdgeInsets.only(top: 0.0),
+                      physics: AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          //Padding(padding: EdgeInsets.all(10.0)),
+                          Container(
+                            //Controlling the white place Shape
+                            height: 800.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(75.0),
+                                bottomRight: Radius.circular(75.0),
 
-                    //Stack That Controlling Data In Container
-                    child: Stack(
-                      //primary: false,
-                      //padding: EdgeInsets.only(left: 25.0, right: 20.0),
-                      children: <Widget>[
-                        ListView(
-                          children: <Widget>[
-                            Container(
-                              height: MediaQuery.of(context).size.height-145,
-                              padding: EdgeInsets.only(top: 30.0),
-                              alignment: Alignment.topCenter,
-                              child: Column(
-                                children: <Widget>[
-                                  // Padding(padding: EdgeInsets.only(top: 2.0)),
+                              ),
+                            ),
+                            padding: EdgeInsets.all(20.0),
+
+                            //Stack That Controlling Data In Container
+                            child: Stack(
+                              //primary: false,
+                              //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+                              children: <Widget>[
+                                ListView(
+                                  children: <Widget>[
+                                    Container(
+                                      height: MediaQuery.of(context).size.height*1.3,
+                                      padding: EdgeInsets.only(top: 30.0),
+                                      alignment: Alignment.topCenter,
+                                      child: Column(
+                                        children: <Widget>[
+                                          // Padding(padding: EdgeInsets.only(top: 2.0)),
 
 //                                        Row(
 //                                          children: <Widget>[
@@ -356,69 +415,82 @@ body: ListView(
 //                                          ],
 //                                        ),
 
-                                  _ideaTitle(),
+                                          _name(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
 
-                                  _ideaCategory(),
+                                          _jobtitle(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
 
-                                  _funding(),
+                                          _addree(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
 
-                                  _managementType(),
+                                          _location(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
 
-                                  _address(),
+                                          _Gander(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
-                                  _ideaDescription(),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+                                          _qualifiction(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+                                          _mobile(),
 
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    children: <Widget>[
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),_interstingfield(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),_indestry(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: <Widget>[
 //                                              _buildLoginBtn(),
 //                                              SizedBox(
 //                                                width: 20,
 //                                              ),
-                                      _buildLoginBtns(),
-                                    ],
-                                  )
-                                ],
-                              ),
+                                              _buildLoginBtns(),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                          ],
-                        )
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
-      ],
-    ),
-  ],
-),
 
 
 

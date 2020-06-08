@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/profileedit/employeeEdit.dart';
 
 class EmployeeProfile extends StatefulWidget {
   @override
@@ -254,6 +254,14 @@ class ProfileFinal extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Emplpyee"),
                                           ),
+                                          Padding(padding: EdgeInsets.only(right: 5),
+                                            child: FlatButton(onPressed: ()=> Navigator.of(context).push(
+                                                new MaterialPageRoute(
+                                                  builder: (BuildContext context) => new EmployeeEditData(map),
+                                                )
+                                            ),
+                                              child: Text("Edit",textAlign: TextAlign.right,),
+                                            ),)
                                         ],
                                       ),
                                     ),
@@ -290,54 +298,54 @@ class ProfileFinal extends StatelessWidget {
                                 ),
 
                                 ListTile(
-                                  title: Text("job tybe :"),
+                                  title: Text("job tybe "),
                                   subtitle:Text("${map["jobtybe"]}"),
                                   leading: Icon(Icons.title),
                                 ),
                                 ListTile(
-                                  title: Text("job category: "),
+                                  title: Text("job category "),
                                   subtitle:Text("${map["jobcategory"]}"),
                                   leading: Icon(Icons.add_location),
                                 ),
                                 ListTile(
-                                  title: Text("address :"),
+                                  title: Text("address "),
                                   subtitle:Text("${map["address"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
                                 ListTile(
-                                  title: Text("salary :"),
+                                  title: Text("salary "),
                                   subtitle:Text("${map["salary"]}"),
                                   leading: Icon(Icons.person_add),
                                 ),
                                 ListTile(
-                                  title: Text("Gender :"),
+                                  title: Text("Gender "),
                                   subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),
                                 ListTile(
-                                  title: Text("Qualifcation :"),
+                                  title: Text("Qualifcation "),
                                   subtitle:Text("${map["Qualifcation"]}"),
                                   leading: Icon(Icons.phone),
                                 ),
                                 ListTile(
-                                  title: Text("mobile :"),
+                                  title: Text("mobile "),
                                   subtitle:Text("${map["mobile"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
                                 ListTile(
-                                  title: Text("Degree :"),
+                                  title: Text("Degree "),
 
                                   subtitle:Text("${map["Degree"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
                                 ListTile(
-                                  title: Text("Indestry :"),
+                                  title: Text("Indestry "),
 
                                   subtitle:Text("${map["Indestry"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
                                 ListTile(
-                                  title: Text("Exprense :"),
+                                  title: Text("Exprense"),
 
                                   subtitle:Text("${map["Exprense"]}"),
                                   leading: Icon(Icons.subject),

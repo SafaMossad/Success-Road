@@ -92,9 +92,7 @@ class _TimelineState extends State<Timeline> {
 
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:successroad/ideas/addidea.dart';
-import 'package:successroad/ideas/dashboard.dart';
-import 'package:successroad/jobs/addjob.dart';
+
 import 'package:successroad/profiles/sponsorprofile.dart';
 
 import 'package:successroad/timeline/home.dart';
