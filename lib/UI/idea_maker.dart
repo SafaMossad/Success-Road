@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/timeline/home.dart';
 import '../utilities/constants.dart';
 void main(){
@@ -452,7 +452,7 @@ class _IdeaMaker extends State<IdeaMaker> {
 
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new Timeline(),
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
               )
           );
           print("Save");

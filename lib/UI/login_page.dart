@@ -3,7 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/UI/signup.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/jobs/addjob.dart';
-import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/choocenavigationEmployee.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
+import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
 class MyLoginPage extends StatefulWidget {
   @override
@@ -200,20 +202,20 @@ class _MyLoginPage extends State<MyLoginPage> {
           }
           else {
             if (databaseHelper.ideamaker) {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Timeline()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => IdeaMakerTimeline()));
               print("U R ideamaker");
 
             }
          else if (databaseHelper.sponsor) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Timeline()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => SponsorTimeline()));
             print("U R Sponsor");
 
           }
           else  if (databaseHelper.employee) {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Timeline()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => EmployeeTimeline()));
               print("U R emp");
 
             }

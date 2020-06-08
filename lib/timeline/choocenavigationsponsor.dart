@@ -92,15 +92,15 @@ class _TimelineState extends State<Timeline> {
 
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:successroad/UI/profile.dart';
 import 'package:successroad/ideas/addidea.dart';
 import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
+import 'package:successroad/profiles/sponsorprofile.dart';
 
 import 'package:successroad/timeline/home.dart';
 
 
-class Timeline extends StatelessWidget {
+class SponsorTimeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -141,19 +141,20 @@ class _TimeLineStateState extends State<TimeLineState> {
 
           ),
 
-          TabData(
+         /* TabData(
               iconData: Icons.add_comment,
               title: "Add Idea",
-              /*onclick: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => ManageIdea()))*/
+              *//*onclick: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ManageIdea()))*//*
               //this on click for navigate to anothe page when click on it
               ),
           TabData(
             iconData: Icons.add,
             title: "Add job",
 
-          ),
+          ),*/
           TabData(
+            onclick: ()=> Navigator.of(context).pop(),
             iconData: Icons.person_pin,
             title: "Profile",
           ),
@@ -181,16 +182,16 @@ class _TimeLineStateState extends State<TimeLineState> {
         return Home();
         break;
 
-
+/*
       case 1:
         return  AddIdea();
         break;
       case 2:
         return AddJobs();
-        break;
+        break;*/
 
-      case 3:
-        return Profile();
+      case 1:
+        return SponsorProfile();
         break;
 
       default:

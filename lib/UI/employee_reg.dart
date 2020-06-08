@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/choocenavigationEmployee.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 
 import '../utilities/constants.dart';
 
@@ -540,7 +541,7 @@ class _Employee extends State<Employee> {
               _exprenseController.text.trim());
 
           Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new Timeline(),
+            builder: (BuildContext context) => new EmployeeTimeline(),
           ));
           print("Save");
         },

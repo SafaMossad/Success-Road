@@ -1,10 +1,14 @@
 import 'dart:developer';
 import 'package:successroad/UI/forget_password.dart';
-import 'package:successroad/UI/profile.dart';
 import 'package:successroad/UI/signup.dart';
 import 'package:successroad/ideas/showidea.dart';
+import 'package:successroad/profiles/emmployeeprofile.dart';
+import 'package:successroad/profiles/ideamakerprofile.dart';
+import 'package:successroad/profiles/sponsorprofile.dart';
+import 'package:successroad/timeline/choocenavigationEmployee.dart';
+import 'package:successroad/timeline/choocenavigationsponsor.dart';
 import 'package:successroad/timeline/home.dart';
-import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import "package:flutter/material.dart";
 import './UI/category.dart';
 import './UI/login_page.dart';
@@ -37,8 +41,15 @@ class Navigation extends StatelessWidget {
         "/employee": (BuildContext context) => new Employee(),
         "/home": (BuildContext context) => new Home(),
         "/ForgetPassword": (BuildContext context) => new ForgetPassword(),
-        "/timeline": (BuildContext context) => new Timeline(),
-        "/profile":(BuildContext context)=> new Profile(),
+        "/IdeaMakertimeline": (BuildContext context) => new IdeaMakerTimeline(),
+        "/Sponsortimeline": (BuildContext context) => new SponsorTimeline(),
+        "/Employeetimeline": (BuildContext context) => new EmployeeTimeline(),
+
+        "/IdeaMakerprofile":(BuildContext context)=> new IdeaMakerProfile(),
+        "/Sponsorprofile":(BuildContext context)=> new SponsorProfile(),
+        "/Employeeprofile":(BuildContext context)=> new EmployeeProfile(),
+
+
         "/showidea":(BuildContext context)=> new ShowData(),
         "/signup":(BuildContext context)=> new Signup(),
 

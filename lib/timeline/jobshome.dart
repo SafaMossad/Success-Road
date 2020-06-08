@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/jobs/dashboard.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -81,9 +81,9 @@ class _HomeState extends State<Home> {
         title: Text("Time Line"),
         centerTitle: true,
       ),*/
-      body: Dashboard(
+        body: Dashboard(
 
-      )
+        )
     );
   }
 }

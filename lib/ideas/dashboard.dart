@@ -1,4 +1,3 @@
-import 'package:successroad/UI/profile.dart';
 import 'package:successroad/ui/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
@@ -51,16 +50,7 @@ class DashboardState extends State<Dashboard> {
                     backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
                   ),
                 ),
-                ListTile(
-                  title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
-                  trailing: Icon(
-                    Icons.arrow_back_ios,
-                    color: Color(0xff1B4F72),
-                  ),
-                  onTap: () => Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Profile())),
-                ),
-                Divider(),
+
                 ListTile(
                   title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
                   trailing: Icon(
@@ -99,7 +89,8 @@ class DashboardState extends State<Dashboard> {
                       Icons.close,
                       color: Color(0xff1B4F72),
                     ),
-                    onTap: () => Navigator.of(context).pop()),
+                    onTap: () => Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (context) => MyLoginPage()))),
               ],
             ),
           ),

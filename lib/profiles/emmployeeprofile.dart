@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
 
-class Profile extends StatefulWidget {
+class EmployeeProfile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<EmployeeProfile> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
   //final prefs = await SharedPreferences.getInstance();
@@ -244,16 +244,15 @@ class ProfileFinal extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
                                           //name of user
-                                          Text(
-                                            "Little Butterfly",
+                                          Text("${map["name"]}",
                                             style: Theme.of(context).textTheme.title,
                                           ),
                                           ListTile(
                                             contentPadding: EdgeInsets.all(0),
                                             //email of user
-                                            title: Text("Product Designer"),
+                                            title: Text("User Type"),
                                             //age of user
-                                            subtitle: Text("Kathmandu"),
+                                            subtitle: Text("Emplpyee"),
                                           ),
                                         ],
                                       ),
@@ -291,44 +290,56 @@ class ProfileFinal extends StatelessWidget {
                                 ),
 
                                 ListTile(
-                                  title: Text("jobtitle"),
-                                  subtitle:Text("${map["jobtitle"]}"),
+                                  title: Text("job tybe :"),
+                                  subtitle:Text("${map["jobtybe"]}"),
                                   leading: Icon(Icons.title),
                                 ),
                                 ListTile(
-                                  title: Text("addree"),
-                                  subtitle:Text("${map["addree"]}"),
+                                  title: Text("job category: "),
+                                  subtitle:Text("${map["jobcategory"]}"),
                                   leading: Icon(Icons.add_location),
                                 ),
                                 ListTile(
-                                  title: Text("location"),
-                                  subtitle:Text("${map["location"]}"),
+                                  title: Text("address :"),
+                                  subtitle:Text("${map["address"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
                                 ListTile(
-                                  title: Text("Gander"),
-                                  subtitle:Text("${map["Gander"]}"),
+                                  title: Text("salary :"),
+                                  subtitle:Text("${map["salary"]}"),
                                   leading: Icon(Icons.person_add),
                                 ),
                                 ListTile(
-                                  title: Text("qualifiction"),
-                                  subtitle:Text("${map["qualifiction"]}"),
+                                  title: Text("Gender :"),
+                                  subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),
                                 ListTile(
-                                  title: Text("phone"),
-                                  subtitle:Text("${map["mobile"]}"),
+                                  title: Text("Qualifcation :"),
+                                  subtitle:Text("${map["Qualifcation"]}"),
                                   leading: Icon(Icons.phone),
                                 ),
                                 ListTile(
-                                  title: Text("interstingfield"),
-                                  subtitle:Text("${map["interstingfield"]}"),
+                                  title: Text("mobile :"),
+                                  subtitle:Text("${map["mobile"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
                                 ListTile(
-                                  title: Text("indestry"),
+                                  title: Text("Degree :"),
 
-                                  subtitle:Text("${map["indestry"]}"),
+                                  subtitle:Text("${map["Degree"]}"),
+                                  leading: Icon(Icons.subject),
+                                ),
+                                ListTile(
+                                  title: Text("Indestry :"),
+
+                                  subtitle:Text("${map["Indestry"]}"),
+                                  leading: Icon(Icons.subject),
+                                ),
+                                ListTile(
+                                  title: Text("Exprense :"),
+
+                                  subtitle:Text("${map["Exprense"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
                               ],

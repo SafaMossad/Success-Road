@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigation.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
+import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
 import '../utilities/constants.dart';
 
@@ -567,7 +568,7 @@ class _Sponsor extends State<Sponsor> {
           );
 
           Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new Timeline(),
+            builder: (BuildContext context) => new SponsorTimeline(),
           ));
         },
         padding: EdgeInsets.all(15.0),
