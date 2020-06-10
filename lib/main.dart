@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:successroad/UI/forget_password.dart';
 import 'package:successroad/UI/signup.dart';
 import 'package:successroad/ideas/showidea.dart';
@@ -26,10 +25,8 @@ void main() {
 }
 
 class Navigation extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: "Success Road",
       home: new MyLoginPage(),
@@ -51,7 +48,7 @@ class Navigation extends StatelessWidget {
 
         "/showidea":(BuildContext context)=> new ShowData(),
         "/signup":(BuildContext context)=> new Signup(),
-
+        //Hello World
 
 
       },
