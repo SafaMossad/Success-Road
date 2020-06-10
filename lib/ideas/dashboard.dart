@@ -101,7 +101,7 @@ class DashboardState extends State<Dashboard> {
           ),
 
           body: new FutureBuilder<List>(
-            future: databaseHelper.getAllData(),
+            future: databaseHelper.getDataIdeaHome(),
             builder: (context ,snapshot){
               if(snapshot.hasError) print(snapshot.error);
               return snapshot.hasData

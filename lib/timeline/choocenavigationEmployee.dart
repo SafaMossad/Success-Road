@@ -96,6 +96,7 @@ import 'package:flutter/material.dart';
 import 'package:successroad/profiles/emmployeeprofile.dart';
 
 import 'package:successroad/timeline/home.dart';
+import 'package:successroad/timeline/timelinejob.dart';
 
 
 class EmployeeTimeline extends StatelessWidget {
@@ -165,7 +166,7 @@ class _TimeLineStateState extends State<TimeLineState> {
     switch (page) {
 
       case 0:
-        return Home();
+        return TimeLineJobs();
         break;
 
 

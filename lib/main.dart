@@ -49,7 +49,6 @@ class Navigation extends StatelessWidget {
         "/Sponsorprofile":(BuildContext context)=> new SponsorProfile(),
         "/Employeeprofile":(BuildContext context)=> new EmployeeProfile(),
 
-
         "/showidea":(BuildContext context)=> new ShowData(),
         "/signup":(BuildContext context)=> new Signup(),
 

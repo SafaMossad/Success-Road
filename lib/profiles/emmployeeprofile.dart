@@ -255,12 +255,28 @@ class ProfileFinal extends StatelessWidget {
                                             subtitle: Text("Emplpyee"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                            child: FlatButton(onPressed: ()=> Navigator.of(context).push(
-                                                new MaterialPageRoute(
-                                                  builder: (BuildContext context) => new EmployeeEditData(map),
-                                                )
-                                            ),
-                                              child: Text("Edit",textAlign: TextAlign.right,),
+                                            child: RaisedButton(
+                                              elevation: 20.0,
+                                              onPressed: ()=> Navigator.of(context).push(
+                                                  new MaterialPageRoute(
+                                                    builder: (BuildContext context) => new EmployeeEditData(map),
+                                                  )
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                              ),
+                                              color: Color(0xFF0a2f52),
+                                              child: Text(
+                                                'Edit',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.5,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'OpenSans',
+                                                ),
+                                              ),
                                             ),)
                                         ],
                                       ),

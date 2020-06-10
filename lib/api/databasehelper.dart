@@ -450,7 +450,22 @@ class DatabaseHelper {
 //    print('data : ${data['auth_token']}');
   }
 
-  Future<List> getAllData() async {
+
+  Future<List> getDataIdeaHome() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/Ideahome";
+    http.Response response = await http.get(myUrl, headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    return json.decode(response.body);
+  }
+
+  Future<List> getAllJobData() async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key) ?? 0;

@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/profileedit/ideaMakerEdit.dart';
 
+import '../profileedit/ideaMakerEdit.dart';
+
 class IdeaMakerProfile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -257,13 +259,29 @@ class ProfileFinal extends StatelessWidget {
                                             subtitle: Text("Idea Maker"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                          child: FlatButton(onPressed: ()=> Navigator.of(context).push(
-                                              new MaterialPageRoute(
-                                                builder: (BuildContext context) => new IdeaMakerEditData(map),
-                                              )
-                                          ),
-                                            child: Text("Edit",textAlign: TextAlign.right,),
-                                          ),)
+                                            child: RaisedButton(
+                                              elevation: 20.0,
+                                              onPressed: ()=> Navigator.of(context).push(
+                                                  new MaterialPageRoute(
+                                                    builder: (BuildContext context) => new IdeaMakerEditData(map),
+                                                  )
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                              ),
+                                              color: Color(0xFF0a2f52),
+                                              child: Text(
+                                                'Edit',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.5,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'OpenSans',
+                                                ),
+                                              ),
+                                            ),)
                                         ],
                                       ),
                                     ),
@@ -285,7 +303,7 @@ class ProfileFinal extends StatelessWidget {
                               children: <Widget>[
                                 ListTile(
                                   title: Text(
-                                    "User information",
+                                    "Personal information",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 20, fontWeight: FontWeight.w600),
@@ -299,47 +317,127 @@ class ProfileFinal extends StatelessWidget {
                                   leading: Icon(Icons.person_outline),
                                 ),
 
-                                ListTile(
-                                  title: Text("jobtitle"),
-                                  subtitle:Text("${map["jobtitle"]}"),
-                                  leading: Icon(Icons.title),
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
+
+
                                 ListTile(
                                   title: Text("addree"),
                                   subtitle:Text("${map["addree"]}"),
                                   leading: Icon(Icons.add_location),
                                 ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                                 ListTile(
                                   title: Text("location"),
                                   subtitle:Text("${map["location"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                                 ListTile(
                                   title: Text("Gander"),
                                   subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.person_add),
                                 ),
+
+
+                                Divider(
+                                  thickness: 1.0,
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+
+                          SizedBox(height: 20.0),
+
+
+                          //user info from regestration
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                    "Field Information",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                Divider(),
+
+
+
+
+                                ListTile(
+                                  title: Text("jobtitle"),
+                                  subtitle:Text("${map["jobtitle"]}"),
+                                  leading: Icon(Icons.title),
+                                ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                
+
                                 ListTile(
                                   title: Text("qualifiction"),
                                   subtitle:Text("${map["qualifiction"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),
-                                ListTile(
-                                  title: Text("phone"),
-                                  subtitle:Text("${map["mobile"]}"),
-                                  leading: Icon(Icons.phone),
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
+
+
                                 ListTile(
                                   title: Text("interstingfield"),
                                   subtitle:Text("${map["interstingfield"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                                 ListTile(
                                   title: Text("indestry"),
 
                                   subtitle:Text("${map["indestry"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                               ],
                             ),
                           ),

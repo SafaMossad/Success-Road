@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/profileedit/sponsorEdit.dart';
 
+import '../profileedit/sponsorEdit.dart';
+
 class SponsorProfile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -256,12 +258,28 @@ class ProfileFinall extends StatelessWidget {
                                             subtitle: Text("Sponsor"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                            child: FlatButton(onPressed: ()=> Navigator.of(context).push(
-                                                new MaterialPageRoute(
-                                                  builder: (BuildContext context) => new SponsorEditData(map),
-                                                )
-                                            ),
-                                              child: Text("Edit",textAlign: TextAlign.right,),
+                                            child: RaisedButton(
+                                              elevation: 20.0,
+                                              onPressed: ()=> Navigator.of(context).push(
+                                                  new MaterialPageRoute(
+                                                    builder: (BuildContext context) => new SponsorEditData(map),
+                                                  )
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                              ),
+                                              color: Color(0xFF0a2f52),
+                                              child: Text(
+                                                'Edit',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.5,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'OpenSans',
+                                                ),
+                                              ),
                                             ),)
 
                                         ],

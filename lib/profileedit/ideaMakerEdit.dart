@@ -293,20 +293,13 @@ class EditDataState extends State<IdeaMakerEditData> {
 
 
 
-  Widget _buildLoginBtns() {
+  Widget _buildIMBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: 150.0,
+      //width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
         onPressed: ()
-//        {
-////                    databaseHelper.editData(widget.list[widget.index]['id']
-////                        , _nameController.text.trim(), _priceController.text.trim());
-//                    Navigator.of(context).push(new MaterialPageRoute(
-//                      builder: (BuildContext context) => new Dashboard(),
-//                    ));
-//                  },
         {
 
           databaseHelper.editIdeaMakerData(
@@ -332,7 +325,35 @@ class EditDataState extends State<IdeaMakerEditData> {
         ),
         color: Color(0xFF0a2f52),
         child: Text(
-          'Edit Profile',
+          'Save',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+  Widget _buildIMBtnsBack() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      //width: 150.0,
+      child: RaisedButton(
+        elevation: 20.0,
+        onPressed: ()
+        {
+          Navigator.of(context).pop();
+        },
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Color(0xFF0a2f52),
+        child: Text(
+          'Back',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -363,8 +384,135 @@ class EditDataState extends State<IdeaMakerEditData> {
     return MaterialApp(
       title: 'Update Idea',
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xff1B4F72),
+          title: Text("profile"),
+          centerTitle: true,
+        ),
+        body:  new Container(
+          child:SingleChildScrollView(
+            padding: const EdgeInsets.all(10.0),
+            // children: <Widget>[
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 0.0),
+                  child: Column(
+                    children: <Widget>[
+                      //user info from regestration
+                      Container(
+                        //height: 800,
+                        decoration: BoxDecoration(
+                          color:  Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
 
-        body: ListView(
+                            _name(),
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _jobtitle(),
+
+
+                            Divider(
+
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _addree(),
+
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _location(),
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+                            _Gander(),
+
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _qualifiction(),
+
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _mobile(),
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _interstingfield(),
+
+
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+
+
+                            _indestry(),
+
+
+                          ],
+                        ),
+                      ),
+                      //SizedBox(height: 20.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          _buildIMBtns(),
+                          SizedBox(width: 20.0),
+                          _buildIMBtnsBack(),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            //],
+
+          ),
+
+
+        ),
+
+
+
+
+
+
+
+        /*
+        ListView(
           children: <Widget>[
             Stack(
               children: <Widget>[
@@ -493,9 +641,7 @@ class EditDataState extends State<IdeaMakerEditData> {
         ),
 
 
-
-
-
+*/
 
 
 
@@ -514,11 +660,11 @@ class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
-    //ده كدا خط مستقيم علي الشمال
+    //ÇãÔí ãä ÇáÈÏÇíå Úáí ÇáÔãÇá áÍÏ Øæá ÇáßæäÊíäÑ æäÞÕ ãä Øæáå 50
+    //Ïå ßÏÇ ÎØ ãÓÊÞíã Úáí ÇáÔãÇá
     path.lineTo(0.0, size.height);
-//دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
-    // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
+//ÏáæÞÊí ÇäÇ æÇÞÝ Úáí ÇáÔãÇá Úä Øæá ÇáßæäÊíäÑ - 50 æåÚãá ÍÇÌÊíä
+    // æåÊÍÑ ãä äÞØÊí Çáí äÞØå ÇáãæÌå Çáí åíÇ ßäÊÑæá ÈæíäÊ æåÊÌÑß ÈÚÏíä ááÇäÏ ÈæíäÊ Çáí åíÇ Ýí äÕ ÇáãæÌå áãÇ ÊÒá
 
     var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
 
@@ -527,8 +673,8 @@ class WaveClipper1 extends CustomClipper<Path> {
         firstEndPoint.dx, firstEndPoint.dy);
 
     var secondEndPoint = Offset(
-        size.width, //كدا معناها ان كمل بقي خلاص لحد اخر العرض
-        size.height / 2); //كده معناه ان الطول نقص منه 2
+        size.width, //ßÏÇ ãÚäÇåÇ Çä ßãá ÈÞí ÎáÇÕ áÍÏ ÇÎÑ ÇáÚÑÖ
+        size.height / 2); //ßÏå ãÚäÇå Çä ÇáØæá äÞÕ ãäå 2
 
     var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
