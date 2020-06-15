@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/profiles/ideamakerprofile.dart';
 import 'package:successroad/utilities/constants.dart';
 
-
 class IdeaMakerEditData extends StatefulWidget {
   Map map;
-
 
   IdeaMakerEditData(this.map);
 
@@ -25,7 +22,8 @@ class EditDataState extends State<IdeaMakerEditData> {
   TextEditingController _GanderController = new TextEditingController();
   TextEditingController _qualifictionController = new TextEditingController();
   TextEditingController _mobileController = new TextEditingController();
-  TextEditingController _interstingfieldController = new TextEditingController();
+  TextEditingController _interstingfieldController =
+      new TextEditingController();
   TextEditingController _indestryController = new TextEditingController();
 
   Widget _name() {
@@ -33,7 +31,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       // alignment: Alignment.topCenter,
       // padding: EdgeInsets.only(bottom:10.0),
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       //width: 165.0,
       child: TextField(
         controller: _nameController,
@@ -62,7 +60,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       //width: 165.0,
       child: TextField(
         controller: _jobtitleController,
@@ -91,7 +89,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
@@ -120,7 +118,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       // width: 150.0,
       child: TextField(
         controller: _locationController,
@@ -149,7 +147,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       // width: 150.0,
       child: TextField(
         controller: _GanderController,
@@ -178,7 +176,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 150.0,
+      height: 100.0,
       //width: MediaQuery.of(context).size.width,
       child: TextField(
         controller: _qualifictionController,
@@ -203,11 +201,12 @@ class EditDataState extends State<IdeaMakerEditData> {
       ),
     );
   }
+
   Widget _mobile() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
@@ -236,7 +235,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 75.0,
       // width: 150.0,
       child: TextField(
         controller: _interstingfieldController,
@@ -265,7 +264,7 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 150.0,
+      height: 75.0,
       //width: MediaQuery.of(context).size.width,
       child: TextField(
         controller: _indestryController,
@@ -291,17 +290,13 @@ class EditDataState extends State<IdeaMakerEditData> {
     );
   }
 
-
-
-  Widget _buildIMBtns() {
+ /* Widget _buildIMBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
-        onPressed: ()
-        {
-
+        onPressed: () {
           databaseHelper.editIdeaMakerData(
               _nameController.text.trim(),
               _jobtitleController.text.trim(),
@@ -312,11 +307,9 @@ class EditDataState extends State<IdeaMakerEditData> {
               _mobileController.text.trim(),
               _interstingfieldController.text.trim(),
               _indestryController.text.trim());
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context) => new IdeaMakerProfile(),
-              )
-          );
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new IdeaMakerProfile(),
+          ));
           print("Edit");
         },
         padding: EdgeInsets.all(15.0),
@@ -337,14 +330,14 @@ class EditDataState extends State<IdeaMakerEditData> {
       ),
     );
   }
+
   Widget _buildIMBtnsBack() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
-        onPressed: ()
-        {
+        onPressed: () {
           Navigator.of(context).pop();
         },
         padding: EdgeInsets.all(15.0),
@@ -364,152 +357,176 @@ class EditDataState extends State<IdeaMakerEditData> {
         ),
       ),
     );
-  }
+  }*/
 
   @override
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
-    _jobtitleController = new TextEditingController(text: widget.map['jobtitle']);
+    _jobtitleController =
+        new TextEditingController(text: widget.map['jobtitle']);
     _addreeController = new TextEditingController(text: widget.map['addree']);
-    _locationController = new TextEditingController(text: widget.map['location']);
+    _locationController =
+        new TextEditingController(text: widget.map['location']);
     _GanderController = new TextEditingController(text: widget.map['Gander']);
-    _qualifictionController = new TextEditingController(text: widget.map['qualifiction']);
+    _qualifictionController =
+        new TextEditingController(text: widget.map['qualifiction']);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
-    _interstingfieldController = new TextEditingController(text: widget.map['interstingfield']);
-    _indestryController = new TextEditingController(text: widget.map['indestry']);
+    _interstingfieldController =
+        new TextEditingController(text: widget.map['interstingfield']);
+    _indestryController =
+        new TextEditingController(text: widget.map['indestry']);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Update Idea',
+      title: 'Update User Data',
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
           backgroundColor: Color(0xff1B4F72),
-          title: Text("profile"),
+          title: Text("Edit profile"),
           centerTitle: true,
+          actions: <Widget>[
+            RaisedButton(
+              elevation: 20.0,
+              onPressed: () {
+                databaseHelper.editIdeaMakerData(
+                    _nameController.text.trim(),
+                    _jobtitleController.text.trim(),
+                    _addreeController.text.trim(),
+                    _locationController.text.trim(),
+                    _GanderController.text.trim(),
+                    _qualifictionController.text.trim(),
+                    _mobileController.text.trim(),
+                    _interstingfieldController.text.trim(),
+                    _indestryController.text.trim());
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new IdeaMakerProfile(),
+                ));
+                print("Edit");
+              },
+              padding: EdgeInsets.all(15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              //color: Color(0xFF0a2f52),
+              child: Text(
+                'Save',
+                style: TextStyle(
+
+                  //color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                ),
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new IdeaMakerProfile(),
+              )),
+            ),
+          ],
         ),
-        body:  new Container(
-          child:SingleChildScrollView(
-            padding: const EdgeInsets.all(10.0),
+        body: new Container(
+          padding: const EdgeInsets.all(10.0),
+          height: 1100,
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            //padding: const EdgeInsets.all(10.0),
             // children: <Widget>[
             child: Stack(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 0.0),
+                  height: 1100,
+                  margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
                   child: Column(
                     children: <Widget>[
                       //user info from regestration
                       Container(
                         //height: 800,
                         decoration: BoxDecoration(
-                          color:  Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(25.0),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Column(
                           children: <Widget>[
-
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Center(
+                              child: Text(
+                                "Personal information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
                             _name(),
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
-                            _jobtitle(),
-
-
-                            Divider(
-
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
+                            Divider(),
                             _addree(),
-
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
+                            Divider(),
                             _location(),
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
+                            Divider(),
                             _Gander(),
-
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
-                            _qualifiction(),
-
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
+                            Divider(),
                             _mobile(),
+                            Divider(),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
 
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
+                      Container(
+                        //height: 800,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 15.0,
                             ),
-
-
+                            Center(
+                              child: Text(
+                                "Field Information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            _jobtitle(),
+                            Divider(),
+                            _qualifiction(),
+                            Divider(),
                             _interstingfield(),
-
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
+                            Divider(),
                             _indestry(),
-
-
                           ],
                         ),
                       ),
                       //SizedBox(height: 20.0),
-                      Row(
+                  /*    Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           _buildIMBtns(),
                           SizedBox(width: 20.0),
                           _buildIMBtnsBack(),
                         ],
-                      )
+                      )*/
                     ],
                   ),
                 ),
               ],
             ),
             //],
-
           ),
-
-
         ),
-
-
-
-
-
-
 
         /*
         ListView(
@@ -642,103 +659,7 @@ class EditDataState extends State<IdeaMakerEditData> {
 
 
 */
-
-
-
-
-
-
-
       ),
     );
   }
-
 }
-
-
-class WaveClipper1 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    //ÇãÔí ãä ÇáÈÏÇíå Úáí ÇáÔãÇá áÍÏ Øæá ÇáßæäÊíäÑ æäÞÕ ãä Øæáå 50
-    //Ïå ßÏÇ ÎØ ãÓÊÞíã Úáí ÇáÔãÇá
-    path.lineTo(0.0, size.height);
-//ÏáæÞÊí ÇäÇ æÇÞÝ Úáí ÇáÔãÇá Úä Øæá ÇáßæäÊíäÑ - 50 æåÚãá ÍÇÌÊíä
-    // æåÊÍÑ ãä äÞØÊí Çáí äÞØå ÇáãæÌå Çáí åíÇ ßäÊÑæá ÈæíäÊ æåÊÌÑß ÈÚÏíä ááÇäÏ ÈæíäÊ Çáí åíÇ Ýí äÕ ÇáãæÌå áãÇ ÊÒá
-
-    var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
-
-    var firstControlPoint = Offset(size.width / 2 - 150, size.height - 60);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    var secondEndPoint = Offset(
-        size.width, //ßÏÇ ãÚäÇåÇ Çä ßãá ÈÞí ÎáÇÕ áÍÏ ÇÎÑ ÇáÚÑÖ
-        size.height / 2); //ßÏå ãÚäÇå Çä ÇáØæá äÞÕ ãäå 2
-
-    var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-
-/*class WaveClipper3 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0.0, size.height/2+30);
-    var firstEndPoint = Offset(size.width/2-20, size.height /2+10);
-    var firstControlPoint = Offset(size.width * .25, size.height - 60 - 50);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-    var secondEndPoint = Offset(size.width, size.height - 40);
-    var secondControlPoint = Offset(size.width * 0.84, size.height - 30);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-*/
-class WaveClipper2 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0.0, size.height);
-
-    var firstEndPoint = Offset(size.width / 2 - 20, size.height);
-    var firstControlPoint = Offset(size.width * .25, size.height);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstEndPoint.dx, firstEndPoint.dy);
-
-    var secondEndPoint = Offset(size.width, size.height - 200);
-    var secondControlPoint = Offset(size.width / 2 - 20, size.height - 120);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondEndPoint.dx, secondEndPoint.dy);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-

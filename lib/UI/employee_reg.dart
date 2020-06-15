@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
-import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 
 import '../utilities/constants.dart';
 
@@ -64,7 +63,7 @@ class _Employee extends State<Employee> {
   final TextEditingController _jobcategoryController = new TextEditingController();
   final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _salaryController = new TextEditingController();
-  final TextEditingController _ganderController = new TextEditingController();
+//  final TextEditingController _ganderController = new TextEditingController();
   final TextEditingController _qualifcationController = new TextEditingController();
   final TextEditingController _mobileController = new TextEditingController();
   final TextEditingController _degreeController = new TextEditingController();
@@ -520,7 +519,7 @@ class _Employee extends State<Employee> {
     );
   }*/
 
-  Widget _build_Save() {
+  Widget _buildSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 200.0,
@@ -781,7 +780,7 @@ class _Employee extends State<Employee> {
                                         ),
 
 
-                                        _build_Save(),
+                                        _buildSave(),
 
 
                                         SizedBox(

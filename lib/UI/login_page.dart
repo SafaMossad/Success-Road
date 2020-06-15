@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:successroad/UI/signup.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/timeline/choocenavigationsponsor.dart';
@@ -454,6 +452,7 @@ class _MyLoginPage extends State<MyLoginPage> {
     );
   }
 
+/*
   void _snackbar() {
     SnackBar(
       elevation: 6.0,
@@ -471,6 +470,7 @@ class _MyLoginPage extends State<MyLoginPage> {
           ],
         ));
   }
+*/
 
   void _showDialog() {
     showDialog(

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
-import 'package:successroad/timeline/home.dart';
 import '../utilities/constants.dart';
 void main(){
   runApp(MaterialApp(

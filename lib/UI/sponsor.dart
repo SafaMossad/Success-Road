@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
 import '../utilities/constants.dart';

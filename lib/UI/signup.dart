@@ -12,7 +12,7 @@ class Signup extends StatefulWidget {
 }
 
 class _MySignup extends State<Signup> {
-  @override
+
   DatabaseHelper databaseHelper = new DatabaseHelper();
   String msgStatus = '';
 
@@ -47,6 +47,7 @@ class _MySignup extends State<Signup> {
     });
 
   }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       // yellow backgroundColor: Color(0xffF7DC6F),

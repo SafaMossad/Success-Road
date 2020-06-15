@@ -37,9 +37,6 @@ class DatabaseHelper {
     //  _save('data ["auth_token"]');
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
-
-
-
       print('id : ${data['id']}');
      // int z=  data ["id"];
       //_saveId(z);
@@ -228,6 +225,7 @@ class DatabaseHelper {
 
     } else {
       print('Token : ${data['auth_token']}');
+
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
 
