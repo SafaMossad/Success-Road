@@ -8,10 +8,10 @@ class DatabaseHelper {
   String serverUrl = "http://flutterapitutorial.codeforiraq.org/api";
   var status;
   var auth_token;
-  var ideamaker ;
-  var sponsor;
-  var employee ;
+  var ideamaker;
 
+  var sponsor;
+  var employee;
 
 
   signup(String email, String password, String passwordConfirmation) async {
@@ -34,28 +34,26 @@ class DatabaseHelper {
       print('data : ${data['error']}');
     } else {
       print('token : ${data['auth_token']}');
-    //  _save('data ["auth_token"]');
+      //  _save('data ["auth_token"]');
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
       print('id : ${data['id']}');
-     // int z=  data ["id"];
+      // int z=  data ["id"];
       //_saveId(z);
       final SharedPreferences prefsidid = await SharedPreferences.getInstance();
       prefsidid.setInt('id now is', data['id']);
-
-
-
-
     }
 //    print('Response status : $statusCode');
 //    print('Response body : $body');
   }
 
-  ideaMakerRegister(String name, String jobtitle,
-      String mobile,String address,
-      String gender, String location, String qualifiction,
-      String interstingfield,String indestry) async {
-
+  ideaMakerRegister(String name, String jobtitle, String mobile,
+      String address,
+      String gender,
+      String location,
+      String qualifiction,
+      String interstingfield,
+      String indestry) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -63,13 +61,12 @@ class DatabaseHelper {
     final SharedPreferences prefsidid = await SharedPreferences.getInstance();
     var idis = prefsidid.getInt('id now is');
     // set up POST request arguments
-    String url = "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
+    String url =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
 
-    final Map<String, dynamic> b =
-    {
+    final Map<String, dynamic> b = {
       "profile_type": 3,
-      "ideamaker":
-      {
+      "ideamaker": {
         "name": "$name",
         "jobtitle": "$jobtitle",
         "addree": "$address",
@@ -79,20 +76,20 @@ class DatabaseHelper {
         "mobile": "$mobile",
         "interstingfield": "$interstingfield",
         "indestry": "$indestry"
-
       }
     };
     // make POST request
     final response = await http.post(
-        url, body: json.encode(b)
-      ,headers: {
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/json',
-      'Authorization': '$token'
-        },
-        );
+      url,
+      body: json.encode(b),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
+    );
     print('Response status : ${response.statusCode}');
     print('Response body : ${response.body}');
     print('id final : $idis');
@@ -101,11 +98,8 @@ class DatabaseHelper {
 //    print('Response body : $body');
   }
 
-
- sponsorRegister(String name, String address,
-      String catagory,String funding,
+  sponsorRegister(String name, String address, String catagory, String funding,
       String gender, String typemanagment, String phone) async {
-
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -113,13 +107,12 @@ class DatabaseHelper {
     final SharedPreferences prefsidid = await SharedPreferences.getInstance();
     var idis = prefsidid.getInt('id now is');
     // set up POST request arguments
-    String url = "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
+    String url =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
 
-    final Map<String, dynamic> body =
-    {
+    final Map<String, dynamic> body = {
       "profile_type": 2,
-      "sponser":
-      {
+      "sponser": {
         "name": "$name",
         "Address": "$address",
         "Catagory": "$catagory",
@@ -132,14 +125,15 @@ class DatabaseHelper {
 
     // make POST request
     final response = await http.post(
-      url, body: json.encode(body)
-      ,headers: {
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/json',
-      'Authorization': '$token'
-    },
+      url,
+      body: json.encode(body),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
     );
     print('Response status : ${response.statusCode}');
     print('Response body : ${response.body}');
@@ -149,13 +143,14 @@ class DatabaseHelper {
 //    print('Response body : $body');
   }
 
-
-  employeeRegister(String name, String jobtybe,
-      String jobcategory,String address,
-      String salary, String gander, String qualifcation,
-      String mobile, String degree, String indestry,
+  employeeRegister(String name, String jobtybe, String jobcategory, String address,
+      String salary,
+      String gander,
+      String qualifcation,
+      String mobile,
+      String degree,
+      String indestry,
       String exprense) async {
-
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -163,18 +158,17 @@ class DatabaseHelper {
     final SharedPreferences prefsidid = await SharedPreferences.getInstance();
     var idis = prefsidid.getInt('id now is');
     // set up POST request arguments
-    String url = "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
+    String url =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idis/profile";
 
-    final Map<String, dynamic> body =
-    {
+    final Map<String, dynamic> body = {
       "profile_type": 1,
-      "employee":
-      {
+      "employee": {
         "name": "$name",
         "jobtybe": "$jobtybe",
         "jobcategory": "$jobcategory",
         "address": "$address",
-        "salary": "$salary" ,
+        "salary": "$salary",
         "Gander": "$gander",
         "Qualifcation": "$qualifcation",
         "mobile": "$mobile",
@@ -184,17 +178,17 @@ class DatabaseHelper {
       }
     };
 
-
     // make POST request
     final response = await http.post(
-      url, body: json.encode(body)
-      ,headers: {
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/json',
-      'Authorization': '$token'
-    },
+      url,
+      body: json.encode(body),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
     );
     print('Response status : ${response.statusCode}');
     print('Response body : ${response.body}');
@@ -216,30 +210,228 @@ class DatabaseHelper {
     //the additional code
     status = response.body.contains('error');
 
-   ideamaker =response.body.contains('ideamaker');
-    sponsor =response.body.contains('sponser');
-    employee =response.body.contains('employee');
+    ideamaker = response.body.contains('ideamaker');
+    sponsor = response.body.contains('sponser');
+    employee = response.body.contains('employee');
     var data = json.decode(response.body);
     if (status) {
       print('data : ${data['error']}');
-
     } else {
       print('Token : ${data['auth_token']}');
 
+
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
-
-
       print('login id is : ${data['id']}');
+
 
       final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
       prefsididlogin.setInt('loginid', data['id']);
     }
+  }
+
+
+  void addDataJobs(
+      String jobTitle, String jobType, String jobCategory, String address, String salary,
+      String gander, String country, String city, String qualification, String experience, String description) async {
+//    final prefs = await SharedPreferences.getInstance();
+//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
+//    final value = prefs.get(key ) ?? 0;
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    String addDataJobs = "https://successsroadv2.herokuapp.com/api/v1/jobs";
+    //print('Token : iAWGJsMzWFN9CEB1RmkU');
+    print('Token : $token');
+    final Map<String, dynamic> orderData = {
+      "title": "$jobTitle",
+      "jtype": "$jobType",
+      "catagory": "$jobCategory",
+      "address": "$address",
+      "salary": "$salary",
+      "gander": "$gander",
+      "country": "$country",
+      "city": "$city",
+      "qualification": "$qualification",
+      "experience": "$experience",
+      "description": "$description"
+    };
+    final response = await http.post(
+      addDataJobs,
+      body: json.encode(orderData),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
+    );
+    print('Response status : ${response.statusCode}');
+    print('Response body : ${response.body}');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  applyjop(int jobid )async{
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
+
+
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
+    String applyjobapi = "https://successsroadv2.herokuapp.com/api/v1/submittings?id =$idislogin";
+
+    final Map<String, dynamic> orderData = {
+    "user_id": "$idislogin",
+    "job_id" : "$jobid",
+
+    };
+
+    final response = await http.post(
+      applyjobapi,
+      body: json.encode(orderData),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
+    );
+    print('Response status : ${response.statusCode}');
+    print('Response body : ${response.body}');
 
   }
 
 
-  Future<Map<String,dynamic>> getProfile() async {
+
+  Future<Map<List, dynamic>> getEmployeejob() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
+
+
+    String getemployeejob = "https://successsroadv2.herokuapp.com/api/v1/submittings";
+    http.Response response = await http.get(getemployeejob, headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    print("bodu now now now ${response.body}");
+    return json.decode(response.body.toString());
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Future<Map<String, dynamic>> getProfile() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -248,7 +440,8 @@ class DatabaseHelper {
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    String myUrl =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
     http.Response response = await http.get(myUrl, headers: {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
@@ -260,7 +453,16 @@ class DatabaseHelper {
     return json.decode(response.body.toString());
   }
 
-  void editIdeaMakerData(String name, String jobtitle, String address, String location, String gender, String qualifiction, String mobile, String interstingfield, String indestry) async {
+  void editIdeaMakerData(
+      String name,
+      String jobtitle,
+      String address,
+      String location,
+      String gender,
+      String qualifiction,
+      String mobile,
+      String interstingfield,
+      String indestry) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key ) ?? 0;
@@ -269,25 +471,27 @@ class DatabaseHelper {
     var token = prefs.getString('token');
     print('Token : $token');
 
-
-    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    final SharedPreferences prefsididlogin =
+        await SharedPreferences.getInstance();
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    String myUrl =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
     final Map<String, dynamic> orderData = {
       "profile_type": 3,
-      "ideamaker":{
-      "name": "$name",
-      "jobtitle": "$jobtitle",
-      "addree": "$address",
-      "location": "$location",
-      "Gander": "$gender",
-      "qualifiction": "$qualifiction",
-      "mobile": "$mobile",
-      "interstingfield": "$interstingfield",
-      "indestry": "$indestry"
-    }};
+      "ideamaker": {
+        "name": "$name",
+        "jobtitle": "$jobtitle",
+        "addree": "$address",
+        "location": "$location",
+        "Gander": "$gender",
+        "qualifiction": "$qualifiction",
+        "mobile": "$mobile",
+        "interstingfield": "$interstingfield",
+        "indestry": "$indestry"
+      }
+    };
     final response = await http.put(
       myUrl,
       body: json.encode(orderData),
@@ -306,8 +510,15 @@ class DatabaseHelper {
 //    print('data : ${data['auth_token']}');
   }
 
-  void editSponsorData(String name, String address, String catagory,String gender,String funding,
-      String typemanagment, String phone) async {
+
+
+
+
+
+
+
+  void editSponsorData(String name, String address, String catagory,
+      String gender, String funding, String typemanagment, String phone) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key ) ?? 0;
@@ -316,16 +527,16 @@ class DatabaseHelper {
     var token = prefs.getString('token');
     print('Token : $token');
 
-
-    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    final SharedPreferences prefsididlogin =
+        await SharedPreferences.getInstance();
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
-    final Map<String, dynamic> orderData ={
+    String myUrl =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    final Map<String, dynamic> orderData = {
       "profile_type": 2,
-      "sponser":
-      {
+      "sponser": {
         "name": "$name",
         "Address": "$address",
         "Catagory": "$catagory",
@@ -353,10 +564,10 @@ class DatabaseHelper {
 //    print('data : ${data['auth_token']}');
   }
 
-  void editEmployeeData(String name, String jobtybe,
-      String jobcategory,String address,
-      String salary, String gander, String qualifcation,
-      String mobile, String degree, String indestry,
+  void editEmployeeData(String name, String jobtybe, String jobcategory, String address, String salary, String gander, String qualifcation,
+      String mobile,
+      String degree,
+      String indestry,
       String exprense) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
@@ -366,21 +577,21 @@ class DatabaseHelper {
     var token = prefs.getString('token');
     print('Token : $token');
 
-
-    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    final SharedPreferences prefsididlogin =
+        await SharedPreferences.getInstance();
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
-    final Map<String, dynamic> orderData ={
+    String myUrl =
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    final Map<String, dynamic> orderData = {
       "profile_type": 1,
-      "employee":
-      {
+      "employee": {
         "name": "$name",
         "jobtybe": "$jobtybe",
         "jobcategory": "$jobcategory",
         "address": "$address",
-        "salary": "$salary" ,
+        "salary": "$salary",
         "Gander": "$gander",
         "Qualifcation": "$qualifcation",
         "mobile": "$mobile",
@@ -406,6 +617,23 @@ class DatabaseHelper {
 
 //    print('data : ${data['auth_token']}');
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -448,7 +676,6 @@ class DatabaseHelper {
 //    print('data : ${data['auth_token']}');
   }
 
-
   Future<List> getDataIdeaHome() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -467,6 +694,7 @@ class DatabaseHelper {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key) ?? 0;
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     String myUrl = "https://successsroadv2.herokuapp.com/api/v1/Jobhome";
@@ -478,6 +706,7 @@ class DatabaseHelper {
       'Content-Type': 'application/json',
       'Authorization': '$token'
     });
+   // print(json.decode(response.body));
     return json.decode(response.body);
   }
 
@@ -542,7 +771,6 @@ class DatabaseHelper {
 //    print('data : ${data['auth_token']}');
   }
 
-
   void deleteData(int id) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
@@ -565,54 +793,7 @@ class DatabaseHelper {
 
   //Start Api Jobs.
 
-  void addDataJobs(
-      String jobTitle,
-      String jobType,
-      String jobCategory,
-      String address,
-      String salary,
-      String gander,
-      String country,
-      String city,
-      String qualification,
-      String experience,
-      String description) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
 
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
-    String addDataJobs = "https://successsroadv2.herokuapp.com/api/v1/jobs";
-    //print('Token : iAWGJsMzWFN9CEB1RmkU');
-    print('Token : $token');
-    final Map<String, dynamic> orderData = {
-      "title": "$jobTitle",
-      "jtype": "$jobType",
-      "catagory": "$jobCategory",
-      "address": "$address",
-      "salary": "$salary",
-      "gander": "$gander",
-      "country": "$country",
-      "city": "$city",
-      "qualification": "$qualification",
-      "experience": "$experience",
-      "description": "$description"
-    };
-    final response = await http.post(
-      addDataJobs,
-      body: json.encode(orderData),
-      headers: {
-        'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Content-Type': 'application/json',
-        'Authorization': '$token'
-      },
-    );
-    print('Response status : ${response.statusCode}');
-    print('Response body : ${response.body}');
-  }
 
   void editDataJobs(
       int id,
@@ -703,9 +884,6 @@ class DatabaseHelper {
     final value = token;
     prefs.setString(key, value);
   }
-
-
-
 
   read() async {
     final prefs = await SharedPreferences.getInstance();

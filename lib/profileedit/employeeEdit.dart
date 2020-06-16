@@ -509,6 +509,7 @@ class EditDataState extends State<EmployeeEditData> {
     return MaterialApp(
       title: 'Edit Profile',
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Color(0xff1B4F72),
           title: Text("Edit Profile"),

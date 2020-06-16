@@ -94,6 +94,7 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:successroad/profiles/emmployeeprofile.dart';
+import 'package:successroad/timeline/getemployeejob.dart';
 
 import 'package:successroad/timeline/home.dart';
 import 'package:successroad/timeline/timelinejob.dart';
@@ -140,6 +141,11 @@ class _TimeLineStateState extends State<TimeLineState> {
 
           ),
 
+          TabData(
+            iconData: Icons.home,
+            title: "show job",
+
+          ),
 
           TabData(
             iconData: Icons.person_pin,
@@ -169,10 +175,15 @@ class _TimeLineStateState extends State<TimeLineState> {
         return TimeLineJobs();
         break;
 
-
       case 1:
+        return Employeejob();
+        break;
+
+      case 2:
         return EmployeeProfile();
         break;
+
+
 
       default:
         return Column(

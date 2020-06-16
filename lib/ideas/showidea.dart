@@ -8,6 +8,7 @@ import 'package:successroad/ideas/editidea.dart';
 class ShowData extends StatefulWidget{
 
   List list;
+
   int index;
   ShowData({this.index , this.list}) ;
 
@@ -18,6 +19,7 @@ class ShowData extends StatefulWidget{
 
 class ShowDataState extends State<ShowData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,43 +1,20 @@
-//import 'package:flutterapp/UI/profile.dart';
-//import 'package:flutterapp/ui/login_page.dart';
-
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/jobs/showjob.dart';
 
-/*import '../jobs/addjob.dart';
-import '../profiles/emmployeeprofile.dart';*/
-//import 'package:shared_preferences/shared_preferences.dart';
-
-class TimeLineJobs extends StatefulWidget {
-  TimeLineJobs({Key key, this.title}) : super(key: key);
-  final String title;
-
+class Employeejob extends StatefulWidget {
   @override
-  TimeLineJobsState createState() => TimeLineJobsState();
+  _EmployeejobState createState() => _EmployeejobState();
 }
 
-final primary = Color(0xff1B4F72);
-final secondary = Color(0xfff29a94);
-
-class TimeLineJobsState extends State<TimeLineJobs> {
-  DatabaseHelper databaseHelper = new DatabaseHelper();
-
-
+class _EmployeejobState extends State<Employeejob> {
+  DatabaseHelper databaseHelper = DatabaseHelper();
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: Color(0xfff0f0f0),
-      /*floatingActionButton: new FloatingActionButton(
-        child: new Icon(Icons.add),
-        onPressed: ()=>Navigator.of(context).push(
-            new MaterialPageRoute(
-              builder: (BuildContext context) => new AddJobs(),
-            )
-        ),
-      ),*/
-      body: SingleChildScrollView(
+     /* body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -47,10 +24,10 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                 padding: EdgeInsets.only(top: 145),
                 height: MediaQuery.of(context).size.height,
                 width: double.infinity,
-                child: new FutureBuilder<List>(
-                  future: databaseHelper.getAllJobData(),
+                child: new FutureBuilder<Map<String, dynamic>>(
+                  future: databaseHelper.getEmployeejob(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasError) print(snapshot.error);
+                    if (snapshot.hasError) print("snapshot.error");
                     return snapshot.hasData
                         ? new ItemList(list: snapshot.data)
                         : new Center(
@@ -58,65 +35,36 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                     );
                   },
                 ),
-              ),
-              Container(
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-
-//                      IconButton(
-//                        onPressed: () {},
-//                        icon: Icon(
-//                          Icons.menu,
-//                          color: Colors.white,
-//                        ),
-//                      ),
-
-
-
-                      Text(
-                        "TimeLine",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-
-
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.filter_list,
-                          color: Colors.white,
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
+//                  child: ListView.builder(
+//                      itemCount: schoolLists.length,
+//                      itemBuilder: (BuildContext context, int index) {
+//                        return buildList(context, index);
+//                      }),
               ),
             ],
-
           ),
-
         ),
-      ),
-
+      ),*/
+        body: new FutureBuilder<Map<List,dynamic>>(
+          future: databaseHelper.getEmployeejob(),
+          builder: (context, projectSnap) {
+            if (projectSnap.connectionState == ConnectionState.none &&
+                projectSnap.hasData == null) {
+              print('project snapshot data is: ${projectSnap.data}');
+              return Container();
+            }else
+              return projectSnap.hasData
+                  ? new ItemList(list: projectSnap.data)
+                  :Center(child: CircularProgressIndicator());
+          },
+        )
     );
   }
 }
-
 class ItemList extends StatelessWidget {
 
 
-  List list;
+  Map list;
   ItemList({this.list});
 
   @override
@@ -128,12 +76,14 @@ class ItemList extends StatelessWidget {
           return new Container(
             padding: const EdgeInsets.all(10.0),
             child: new GestureDetector(
-              onTap: () {
+              /*onTap: () {
+
+                print('khaled');
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
                 );
-              },
+              },*/
               child: new Container(
                 decoration: BoxDecoration(
 //                  borderRadius: BorderRadius.circular(5),
@@ -141,32 +91,21 @@ class ItemList extends StatelessWidget {
                   color: Colors.white,
                 ),
                 width: double.infinity,
-                height: 110,
+                height: 115,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.only(top: 13),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: Colors.white),
-                          image: DecorationImage(
-                              image: new ExactAssetImage('assets/Prlogo.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
+
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              list[i]['title'],
+                              list[i]['job'],
                               style: TextStyle(
-                                  color: primary,
+                                  //color: primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18),
                             ),
@@ -174,28 +113,20 @@ class ItemList extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                              list[i]['title'],
+                              list[i]['job'],
                               style: TextStyle(
-                                  color: primary,
+                                  //color: primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15),
                             ),
 
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
+
                           ],
                         ),
-                      )
+                      ),
                     ]
                 ),
+
 //                child: new ListTile(
 //                  title: new Text(list[i]['title'],
 //                      style: TextStyle(
@@ -298,6 +229,7 @@ class ItemList extends StatelessWidget {
                */
             ),
           );
+
         });
   }
 }
