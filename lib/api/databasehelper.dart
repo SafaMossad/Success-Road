@@ -328,7 +328,7 @@ class DatabaseHelper {
 
 
 
-  Future<Map<List, dynamic>> getEmployeejob() async {
+  Future<List<dynamic>> getEmployeejob() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -342,89 +342,9 @@ class DatabaseHelper {
       'Content-Type': 'application/json',
       'Authorization': '$token'
     });
-    print("bodu now now now ${response.body}");
+    print("body now in get emp job ${response.body}");
     return json.decode(response.body.toString());
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

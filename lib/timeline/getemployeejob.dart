@@ -45,26 +45,24 @@ class _EmployeejobState extends State<Employeejob> {
           ),
         ),
       ),*/
-        body: new FutureBuilder<Map<List,dynamic>>(
+        body: new FutureBuilder <List<dynamic>> (
           future: databaseHelper.getEmployeejob(),
-          builder: (context, projectSnap) {
-            if (projectSnap.connectionState == ConnectionState.none &&
-                projectSnap.hasData == null) {
-              print('project snapshot data is: ${projectSnap.data}');
-              return Container();
-            }else
-              return projectSnap.hasData
-                  ? new ItemList(list: projectSnap.data)
-                  :Center(child: CircularProgressIndicator());
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? new ItemList(list: snapshot.data)
+                : new Center(
+              child: new CircularProgressIndicator(),
+            );
           },
-        )
+        ),
     );
   }
 }
 class ItemList extends StatelessWidget {
 
 
-  Map list;
+  List list;
   ItemList({this.list});
 
   @override
@@ -84,26 +82,21 @@ class ItemList extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
                 );
               },*/
-              child: new Container(
+              child: new Container( alignment: Alignment.topLeft,
                 decoration: BoxDecoration(
 //                  borderRadius: BorderRadius.circular(5),
                   borderRadius: BorderRadius.circular(25),
                   color: Colors.white,
                 ),
                 width: double.infinity,
-                height: 115,
+                height: 325,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-
-                      Expanded(
-                        child: Column(
+                child:Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              list[i]['job'],
+                              list[i]["job"]["title"],
                               style: TextStyle(
                                   //color: primary,
                                   fontWeight: FontWeight.bold,
@@ -112,19 +105,116 @@ class ItemList extends StatelessWidget {
                             SizedBox(
                               height: 6,
                             ),
+
                             Text(
-                              list[i]['job'],
+                              list[i]["job"]["jtype"],
                               style: TextStyle(
-                                  //color: primary,
+                                //color: primary,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              list[i]["job"]["catagory"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+
+                            Text(
+                              list[i]["job"]["address"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              list[i]["job"]["salary"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+
+                            Text(
+                              list[i]["job"]["gander"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              list[i]["job"]["country"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+
+                            Text(
+                              list[i]["job"]["city"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              list[i]["job"]["qualification"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+
+                            Text(
+                              list[i]["job"]["experience"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              list[i]["job"]["description"],
+                              style: TextStyle(
+                                //color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            SizedBox(
+                              height: 6,
                             ),
 
 
+
                           ],
-                        ),
-                      ),
-                    ]
+
                 ),
 
 //                child: new ListTile(

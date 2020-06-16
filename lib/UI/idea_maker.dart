@@ -15,24 +15,6 @@ class  IdeaMaker extends StatefulWidget {
     return  _IdeaMaker();
   }
 }
-class Gender {
-  String gender;
-
-  Gender(this.gender);
-
-  static List<Gender> getGender() {
-    return <Gender>[Gender("MAle"), Gender("Female"), Gender("Not prefer")];
-  }
-}
-class Manage {
-  String man;
-
-  Manage(this.man);
-
-  static List<Manage> getManage() {
-    return <Manage>[Manage("fully"), Manage("semi"), Manage("Non")];
-  }
-}
 
 class _IdeaMaker extends State<IdeaMaker> {
 

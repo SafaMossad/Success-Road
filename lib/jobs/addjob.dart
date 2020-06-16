@@ -3,6 +3,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
+import 'package:successroad/timeline/timelinejob.dart';
 //import 'package:successroad/utilities/constants.dart';
 import 'package:successroad/utilities/job_and_idea.dart';
 import 'package:successroad/api/databasehelper.dart';
@@ -23,47 +25,28 @@ class AddJobs extends StatefulWidget {
 
 
 
-class Gender {
-  String gender;
-
-  Gender(this.gender);
-
-  static List<Gender> getGender() {
-    return <Gender>[Gender("Male"), Gender("Female"), Gender("Not prefer")];
-  }
-}
-
-
-
-class Manage {
-  String man;
-
-  Manage(this.man);
-
-  static List<Manage> getManage() {
-    return <Manage>[Manage("fully"), Manage("semi"), Manage("Non")];
-  }
-}
-
-
-
-
-
-
-
-
-
-
 class AddJobsState extends State<AddJobs> {
   @override
   //ده الي هيتحطلي من البدايه
-  List<Gender> _get_Gender = Gender.getGender();
-  List<DropdownMenuItem<Gender>> _DropdownMenuItem;
-  Gender _Selected_Gender;
 
-  List<Manage> _get_Manage = Manage.getManage();
-  List<DropdownMenuItem<Manage>> _DropdownMenuItem_Manage;
-  Manage _Selected_Manage;
+//gender controlling
+  String genderDropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String genderHolder = '';
+
+  List<String> genderItems = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItemGender() {
+    setState(() {
+      genderHolder = genderDropdownValue;
+    });
+  }
+
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
@@ -85,53 +68,8 @@ class AddJobsState extends State<AddJobs> {
 
   @override
   //ده الي هيتحطلي من البدايه
-  void initState() {
-    _DropdownMenuItem =
-        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
 
-    _Selected_Gender = _DropdownMenuItem[0].value;
 
-    _DropdownMenuItem_Manage =
-        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
-    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
-  }
-
-  //
-  List<DropdownMenuItem<Gender>> buildDropdownMenuIte(List _Clicked_Gender) {
-    List<DropdownMenuItem<Gender>> item = List();
-
-    for (Gender x in _Clicked_Gender) {
-      item.add(DropdownMenuItem(
-        value: x,
-        child: Text(x.gender),
-      ));
-    }
-    return item;
-  }
-
-  List<DropdownMenuItem<Manage>> buildDropdownMenuItem(List _Clicked_Manage) {
-    List<DropdownMenuItem<Manage>> manage = List();
-
-    for (Manage m in _Clicked_Manage) {
-      manage.add(DropdownMenuItem(
-        value: m,
-        child: Text(m.man),
-      ));
-    }
-    return manage;
-  }
-
-  onChanging1(Gender selected) {
-    setState(() {
-      _Selected_Gender = selected;
-    });
-  }
-
-  onChanging2(Manage select) {
-    setState(() {
-      _Selected_Manage = select;
-    });
-  }
 
   Widget _jobTitle() {
     return Container(
@@ -275,33 +213,56 @@ class AddJobsState extends State<AddJobs> {
   }
   //gender not have controller
   Widget _gender() {
-    return DropdownButtonFormField(
-      hint: Text("hello"),
-      value: _Selected_Gender,
-      items: _DropdownMenuItem,
-      onChanged: onChanging1,
-//      style: TextStyle(
-//        //backgroundColor: Colors.deepPurpleAccent,
-//        color: Colors.white,
-//      ),
-      decoration: new InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            borderSide: BorderSide(
-              width: 2.0,
-            )
+    return   Container(
+
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 50.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Text(
+              "Gender:", style: kLabelStyle,
+            ),
+            SizedBox(
+              width: 100.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+
+                value: genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    genderDropdownValue = data;
+                  });
+                },
+                items:
+                genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-        //hoverColor: Colors.orange,
-        enabledBorder: OutlineInputBorder(
-            gapPadding: 21.0, borderRadius: BorderRadius.circular(30.0)
-        ),
-        hintText: 'Gender',
-        //focusColor: Colors.orange,
-        labelText: "Gender",
-        // labelStyle: ,
-        hintStyle: kHintTextStyle,
-        //icon: new Icon(Icons.person)
-      ),
+      ]),
     );
   }
 
@@ -494,7 +455,7 @@ class AddJobsState extends State<AddJobs> {
               _jobCategoryController.text.trim(),
               _addressController.text.trim(),
               _salaryController.text.trim(),
-              _genderController.text.trim(),
+              genderDropdownValue.trim(),
               _countryController.text.trim(),
               _cityController.text.trim(),
               _qualificationController.text.trim(),
@@ -502,7 +463,7 @@ class AddJobsState extends State<AddJobs> {
               _jobDescriptionController.text.trim());
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new Dashboard(),
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
               )
           );
           print("Save");

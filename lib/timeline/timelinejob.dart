@@ -83,7 +83,6 @@ class TimeLineJobsState extends State<TimeLineJobs> {
 //                      ),
 
 
-
                       Text(
                         "TimeLine",
                         style: TextStyle(color: Colors.white, fontSize: 24),

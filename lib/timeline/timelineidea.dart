@@ -33,7 +33,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
           child: Stack(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 145),
+                padding: EdgeInsets.only(top: 120),
                 height: MediaQuery.of(context).size.height,
                 width: double.infinity,
                 child: new FutureBuilder<List>(
@@ -116,7 +116,8 @@ class ItemList extends StatelessWidget {
                 print('khaled');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
+                  MaterialPageRoute(builder: (context) =>
+                      ShowData(list:list , index:i)),
                 );
               },
               child: new Container(
@@ -126,15 +127,15 @@ class ItemList extends StatelessWidget {
                   color: Colors.white,
                 ),
                 width: double.infinity,
-                height: 115,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                height: 180,
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 100,
+                        height: 100,
                         margin: EdgeInsets.only(top: 13),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
@@ -144,7 +145,9 @@ class ItemList extends StatelessWidget {
                               fit: BoxFit.cover),
                         ),
                       ),
-                      Expanded(
+                      SizedBox(width: 15.0,),
+                      Container(
+                        alignment: Alignment.topLeft,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
@@ -152,7 +155,7 @@ class ItemList extends StatelessWidget {
                               list[i]['title'],
                               style: TextStyle(
                                   color: primary,
-                                  fontWeight: FontWeight.bold,
+
                                   fontSize: 18),
                             ),
                             SizedBox(
@@ -162,19 +165,19 @@ class ItemList extends StatelessWidget {
                               list[i]['title'],
                               style: TextStyle(
                                   color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+
+                                  fontSize: 18),
                             ),
 
                             SizedBox(
                               height: 6,
                             ),
                             Text(
-                              list[i]['title'],
+                             " ist[i]['title']",
                               style: TextStyle(
                                   color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
+
+                                  fontSize: 18),
                             ),
 
                           ],
