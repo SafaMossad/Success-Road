@@ -25,8 +25,157 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff0f0f0),
-      body: SingleChildScrollView(
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff1B4F72),
+              ),
+              accountName: Text("Safa"),
+              accountEmail: Text("Eng:Safa El-Helely"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
+              ),
+            ),
+            ListTile(
+              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => {},
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.filter_frames,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.textsms,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+                trailing: Icon(
+                  Icons.close,
+                  color: Color(0xff1B4F72),
+                ),
+                onTap: () => Navigator.of(context).pop()),
+          ],
+        ),
+      ),
+     backgroundColor: Color(0xfff0f0f0),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+
+            expandedHeight: 180.0,
+            backgroundColor: Colors.cyan,
+
+            actions: <Widget>[
+
+              IconButton(
+                icon: Icon(Icons.favorite_border, color: Colors.white,),
+                onPressed: (){},
+              ),
+            ],
+            floating: true,
+            flexibleSpace: ListView(
+              children: <Widget>[
+                SizedBox(height: 70.0,),
+                Text("Type your Location", textAlign: TextAlign.center,style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0
+                )),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                  padding: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(40.0)
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Bouddha, Kathmandu",
+                      border: InputBorder.none,
+                      icon: IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+                    ),
+                  ),
+                ),
+              ],
+            ) ,
+          ),
+          SliverToBoxAdapter(child: SizedBox(height: 20.0,),),
+          SliverToBoxAdapter(
+
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      color: Colors.purpleAccent,
+                     // padding: EdgeInsets.only(top: 120),
+                      height: MediaQuery.of(context).size.height,
+                      width: double.infinity,
+                      child: new FutureBuilder<List>(
+                        future: databaseHelper.getDataIdeaHome(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) print(snapshot.error);
+                          return snapshot.hasData
+                              ? new ItemList(list: snapshot.data)
+                              : new Center(
+                            child: new CircularProgressIndicator(),
+                          );
+                        },
+                      ),
+//                  child: ListView.builder(
+//                      itemCount: schoolLists.length,
+//                      itemBuilder: (BuildContext context, int index) {
+//                        return buildList(context, index);
+//                      }),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+
+        ],
+      ),
+
+
+
+
+      /*SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -53,45 +202,11 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
 //                        return buildList(context, index);
 //                      }),
               ),
-              Container(
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "TimeLine",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.filter_list,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
 }
@@ -173,7 +288,7 @@ class ItemList extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                             " ist[i]['title']",
+                             list[i]['title'],
                               style: TextStyle(
                                   color: primary,
 
