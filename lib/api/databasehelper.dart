@@ -277,7 +277,39 @@ class DatabaseHelper {
 
 
 
+  applyFunding(int ideaid ) async {
 
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
+
+
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
+    String applyFunding = "https://successsroadv2.herokuapp.com/api/v1/funds?id =$idislogin";
+
+    final Map<String, dynamic> orderData = {
+      "user_id": "$idislogin",
+      "idea_id" : "$ideaid",
+    };
+
+    final response = await http.post(
+      applyFunding,
+      body: json.encode(orderData),
+      headers: {
+        'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'Authorization': '$token'
+      },
+    );
+    print('Response status : ${response.statusCode}');
+    print('Response body : ${response.body}');
+
+  }
 
 
 

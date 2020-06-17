@@ -21,7 +21,6 @@ final secondary = Color(0xfff29a94);
 class TimeLineIdeaState extends State<TimeLineIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +39,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
               ),
             ),
             ListTile(
-              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Account",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.arrow_back_ios,
                 color: Color(0xff1B4F72),
@@ -49,7 +53,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Favorites",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.favorite,
                 color: Colors.red,
@@ -57,7 +66,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Setting",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
@@ -65,7 +79,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "About Us",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.filter_frames,
                 color: Color(0xff1B4F72),
@@ -73,7 +92,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "help&feedback",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.textsms,
                 color: Color(0xff1B4F72),
@@ -81,7 +105,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+                title: Text(
+                  "Close",
+                  style: TextStyle(
+                    color: Color(0xff1B4F72),
+                  ),
+                ),
                 trailing: Icon(
                   Icons.close,
                   color: Color(0xff1B4F72),
@@ -90,91 +119,96 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
           ],
         ),
       ),
-     backgroundColor: Color(0xfff0f0f0),
+      backgroundColor: Color(0xfff0f0f0),
       body: CustomScrollView(
+
         slivers: <Widget>[
           SliverAppBar(
-
+            centerTitle: true,
             expandedHeight: 180.0,
             backgroundColor: Colors.cyan,
-
+            pinned: true,
             actions: <Widget>[
-
               IconButton(
-                icon: Icon(Icons.favorite_border, color: Colors.white,),
-                onPressed: (){},
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
               ),
             ],
             floating: true,
             flexibleSpace: ListView(
               children: <Widget>[
-                SizedBox(height: 70.0,),
-                Text("Type your Location", textAlign: TextAlign.center,style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0
-                )),
+                SizedBox(
+                  height: 70.0,
+                ),
+                Text("Type your Location",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0)),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   padding: EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(40.0)
-                  ),
+                      borderRadius: BorderRadius.circular(40.0)),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Bouddha, Kathmandu",
                       border: InputBorder.none,
-                      icon: IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+                      icon: IconButton(
+                          onPressed: () {}, icon: Icon(Icons.search)),
                     ),
                   ),
                 ),
               ],
-            ) ,
+            ),
+            stretch: true,
+            snap: true,
           ),
-          SliverToBoxAdapter(child: SizedBox(height: 20.0,),),
           SliverToBoxAdapter(
-
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.purpleAccent,
-                     // padding: EdgeInsets.only(top: 120),
-                      height: MediaQuery.of(context).size.height,
-                      width: double.infinity,
-                      child: new FutureBuilder<List>(
-                        future: databaseHelper.getDataIdeaHome(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasError) print(snapshot.error);
-                          return snapshot.hasData
-                              ? new ItemList(list: snapshot.data)
-                              : new Center(
-                            child: new CircularProgressIndicator(),
-                          );
-                        },
-                      ),
+            child: SizedBox(
+              height: 20.0,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.all(0),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    color: Colors.purpleAccent,
+                    // padding: EdgeInsets.only(top: 120),
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: new FutureBuilder<List>(
+                      future: databaseHelper.getDataIdeaHome(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) print(snapshot.error);
+                        return snapshot.hasData
+                            ? new ItemList(list: snapshot.data)
+                            : new Center(
+                                child: new CircularProgressIndicator(),
+                              );
+                      },
+                    ),
 //                  child: ListView.builder(
 //                      itemCount: schoolLists.length,
 //                      itemBuilder: (BuildContext context, int index) {
 //                        return buildList(context, index);
 //                      }),
-                    ),
-
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-
-
+          ),
         ],
       ),
-
-
-
-
       /*SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -211,10 +245,11 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   }
 }
 
+
+
 class ItemList extends StatelessWidget {
-
-
   List list;
+
   ItemList({this.list});
 
   @override
@@ -227,12 +262,11 @@ class ItemList extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: new GestureDetector(
               onTap: () {
-
                 print('khaled');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>
-                      ShowData(list:list , index:i)),
+                  MaterialPageRoute(
+                      builder: (context) => ShowData(list: list, index: i)),
                 );
               },
               child: new Container(
@@ -260,7 +294,9 @@ class ItemList extends StatelessWidget {
                               fit: BoxFit.cover),
                         ),
                       ),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Container(
                         alignment: Alignment.topLeft,
                         child: Column(
@@ -268,38 +304,26 @@ class ItemList extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-
-                                  fontSize: 18),
+                              style: TextStyle(color: primary, fontSize: 18),
                             ),
                             SizedBox(
                               height: 6,
                             ),
                             Text(
                               list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-
-                                  fontSize: 18),
+                              style: TextStyle(color: primary, fontSize: 18),
                             ),
-
                             SizedBox(
                               height: 6,
                             ),
                             Text(
-                             list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-
-                                  fontSize: 18),
+                              list[i]['title'],
+                              style: TextStyle(color: primary, fontSize: 18),
                             ),
-
                           ],
                         ),
                       ),
-                    ]
-                ),
+                    ]),
 
 //                child: new ListTile(
 //                  title: new Text(list[i]['title'],
@@ -403,7 +427,6 @@ class ItemList extends StatelessWidget {
                */
             ),
           );
-
         });
   }
 }

@@ -28,11 +28,11 @@ class ShowDataState extends State<ShowData> {
       title: 'Show Idea',
       home: Scaffold(
 
-appBar: AppBar(
-  actions: <Widget>[
-    IconButton(icon: (Icon(Icons.arrow_back,)),onPressed: ()=> Navigator.of(context).pop(),)
+  appBar: AppBar(
+    actions: <Widget>[
+      IconButton(icon: (Icon(Icons.arrow_back,)),onPressed: ()=> Navigator.of(context).pop(),)
 
-  ],
+    ],
 ),
 
 
@@ -159,12 +159,12 @@ appBar: AppBar(
                     child: new RaisedButton(
                       elevation: 20.0,
                       onPressed: () {
-                        databaseHelper.deleteData(widget.list[widget.index]['id']);
-                        Navigator.of(context).push(
+                        databaseHelper.applyFunding(widget.list[widget.index]['id']);
+                      /*  Navigator.of(context).push(
                             new MaterialPageRoute(
                               builder: (BuildContext context) => new Dashboard(),
                             )
-                        );
+                        );*/
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
@@ -172,7 +172,7 @@ appBar: AppBar(
                       ),
                       color: Color(0xFF0a2f52),
                       child: new Text(
-                        'Delete',
+                        'Funding',
                         style: TextStyle(
                           color: Colors.white,
                           letterSpacing: 1.5,
