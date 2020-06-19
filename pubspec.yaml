@@ -51,7 +51,9 @@ flutter:
     - assets/newlogofinal.png
     - assets/Prlogo.png
     - assets/IMG_20190815_184001.jpg
-    - assets/94393013-team-work-in-training-room-with-planning-board.jpg
+    - assets/lolo.jpg
+    - assets/team.jpg
+    - assets/business.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
