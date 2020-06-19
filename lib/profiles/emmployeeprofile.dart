@@ -255,19 +255,25 @@ class ProfileFinal extends StatelessWidget {
                                             subtitle: Text("Emplpyee"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                            child: RaisedButton(
-                                              elevation: 20.0,
+
+
+
+
+                                            child: IconButton(
+                                              icon: Icon(Icons.edit ,size: 25,),
+                                              tooltip:'edit',
+                                              //elevation: 20.0,
                                               onPressed: ()=> Navigator.of(context).push(
                                                   new MaterialPageRoute(
                                                     builder: (BuildContext context) => new EmployeeEditData(map),
                                                   )
                                               ),
                                               padding: EdgeInsets.all(10.0),
-                                              shape: RoundedRectangleBorder(
+                                             /* shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(30.0),
-                                              ),
+                                              ),*/
                                               color: Color(0xFF0a2f52),
-                                              child: Text(
+                                          /*    child: Text(
                                                 'Edit',
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -276,8 +282,13 @@ class ProfileFinal extends StatelessWidget {
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: 'OpenSans',
                                                 ),
-                                              ),
-                                            ),)
+                                              ),*/
+                                            ),
+
+
+
+
+                                          )
                                         ],
                                       ),
                                     ),
@@ -290,6 +301,7 @@ class ProfileFinal extends StatelessWidget {
                           SizedBox(height: 20.0),
 
                           //user info from regestration
+
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -297,9 +309,11 @@ class ProfileFinal extends StatelessWidget {
                             ),
                             child: Column(
                               children: <Widget>[
+
+
                                 ListTile(
                                   title: Text(
-                                    "User information",
+                                    "Personal information",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 20, fontWeight: FontWeight.w600),
@@ -313,40 +327,114 @@ class ProfileFinal extends StatelessWidget {
                                   leading: Icon(Icons.person_outline),
                                 ),
 
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                                 ListTile(
                                   title: Text("job tybe "),
                                   subtitle:Text("${map["jobtybe"]}"),
                                   leading: Icon(Icons.title),
                                 ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
                                 ListTile(
                                   title: Text("job category "),
                                   subtitle:Text("${map["jobcategory"]}"),
                                   leading: Icon(Icons.add_location),
                                 ),
-                                ListTile(
-                                  title: Text("address "),
-                                  subtitle:Text("${map["address"]}"),
-                                  leading: Icon(Icons.location_on),
-                                ),
-                                ListTile(
-                                  title: Text("salary "),
-                                  subtitle:Text("${map["salary"]}"),
-                                  leading: Icon(Icons.person_add),
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
                                 ListTile(
                                   title: Text("Gender "),
                                   subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
                                 ListTile(
-                                  title: Text("Qualifcation "),
-                                  subtitle:Text("${map["Qualifcation"]}"),
-                                  leading: Icon(Icons.phone),
+                                  title: Text("address "),
+                                  subtitle:Text("${map["address"]}"),
+                                  leading: Icon(Icons.location_on),
+                                ),
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
                                 ListTile(
                                   title: Text("mobile "),
                                   subtitle:Text("${map["mobile"]}"),
                                   leading: Icon(Icons.calendar_view_day),
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+
+
+                          SizedBox(height: 20.0),
+
+
+
+                          //user info from regestration
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                    "Field Information",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                Divider(),
+
+
+                                ListTile(
+                                  title: Text("salary "),
+                                  subtitle:Text("${map["salary"]}"),
+                                  leading: Icon(Icons.person_add),
+                                ),
+
+
+
+
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+                                ListTile(
+                                  title: Text("Qualifcation "),
+                                  subtitle:Text("${map["Qualifcation"]}"),
+                                  leading: Icon(Icons.phone),
+                                ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
                                 ListTile(
                                   title: Text("Degree "),
@@ -354,11 +442,23 @@ class ProfileFinal extends StatelessWidget {
                                   subtitle:Text("${map["Degree"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
                                 ListTile(
                                   title: Text("Indestry "),
 
                                   subtitle:Text("${map["Indestry"]}"),
                                   leading: Icon(Icons.subject),
+                                ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
                                 ListTile(
                                   title: Text("Exprense"),
@@ -366,10 +466,13 @@ class ProfileFinal extends StatelessWidget {
                                   subtitle:Text("${map["Exprense"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
+
+
                               ],
                             ),
                           ),
                           SizedBox(height: 20.0),
+
                         ],
                       ),
                     ),

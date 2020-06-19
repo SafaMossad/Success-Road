@@ -46,6 +46,8 @@ class EditDataState extends State<EmployeeEditData> {
   TextEditingController _degreeController = new TextEditingController();
   TextEditingController _indestryController = new TextEditingController();
   TextEditingController _exprenseController = new TextEditingController();
+  TextEditingController _genderController = new TextEditingController();
+  TextEditingController _experinceController = new TextEditingController();
 
   Widget _firstname() {
     return Container(
@@ -115,7 +117,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _jobtybeController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -173,7 +175,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -202,7 +204,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _salaryController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -260,7 +262,7 @@ class EditDataState extends State<EmployeeEditData> {
                   });
                 },
                 items:
-                genderItems.map<DropdownMenuItem<String>>((String value) {
+                    genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -312,7 +314,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _mobileController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -370,7 +372,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _indestryController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -398,7 +400,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _exprenseController,
         keyboardType: TextInputType.emailAddress,
-        style:  TextStyle(
+        style: TextStyle(
           color: Colors.black,
           fontSize: 15,
         ),
@@ -424,8 +426,7 @@ class EditDataState extends State<EmployeeEditData> {
       //width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
-        onPressed: ()
-        {
+        onPressed: () {
           databaseHelper.editEmployeeData(
               _nameController.text.trim(),
               _jobtybeController.text.trim(),
@@ -468,8 +469,7 @@ class EditDataState extends State<EmployeeEditData> {
       //width: 150.0,
       child: RaisedButton(
         elevation: 20.0,
-        onPressed: ()
-        {
+        onPressed: () {
           Navigator.of(context).pop();
         },
         padding: EdgeInsets.all(15.0),
@@ -495,13 +495,16 @@ class EditDataState extends State<EmployeeEditData> {
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
     _jobtybeController = new TextEditingController(text: widget.map['jobtybe']);
-    _jobcategoryController = new TextEditingController(text: widget.map['jobcategory']);
+    _jobcategoryController =
+        new TextEditingController(text: widget.map['jobcategory']);
     _addressController = new TextEditingController(text: widget.map['address']);
     _salaryController = new TextEditingController(text: widget.map['salary']);
-    _qualifcationController = new TextEditingController(text: widget.map['qualifcation']);
+    _qualifcationController =
+        new TextEditingController(text: widget.map['qualifcation']);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
     _degreeController = new TextEditingController(text: widget.map['degree']);
-    _indestryController = new TextEditingController(text: widget.map['indestry']);
+    _indestryController =
+        new TextEditingController(text: widget.map['indestry']);
   }
 
   @override
@@ -512,13 +515,56 @@ class EditDataState extends State<EmployeeEditData> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Color(0xff1B4F72),
-          title: Text("Edit Profile"),
+          title: Text("Edit profile"),
           centerTitle: true,
+          leading: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Icon(
+              Icons.arrow_back, // add custom icons also
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              //elevation: 20.0,
+              onPressed: () {
+                databaseHelper.editEmployeeData(
+                    _nameController.text.trim(),
+                    _jobtybeController.text.trim(),
+                    _jobcategoryController.text.trim(),
+                    _addressController.text.trim(),
+                    _salaryController.text.trim(),
+                    _qualifcationController.text.trim(),
+                    _mobileController.text.trim(),
+                    _degreeController.text.trim(),
+                    _indestryController.text.trim(),
+                    _genderController.text.trim(),
+                    _experinceController.text.trim());
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new EmployeeProfile(),
+                ));
+                print("Save");
+              },
+              padding: EdgeInsets.all(15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+
+              child: Text(
+                'Save',
+                style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                ),
+              ),
+            ),
+          ],
         ),
         body:
 
-
-        /*
+            /*
         ListView(
           children: <Widget>[
             Stack(
@@ -667,20 +713,8 @@ class EditDataState extends State<EmployeeEditData> {
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-        new Container(
-          child:SingleChildScrollView(
+            new Container(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(10.0),
             // children: <Widget>[
             child: Stack(
@@ -689,99 +723,50 @@ class EditDataState extends State<EmployeeEditData> {
                   margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 0.0),
                   child: Column(
                     children: <Widget>[
-                      //user info from regestration
                       Container(
-                        height: 800,
                         decoration: BoxDecoration(
-                          color:  Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(25.0),
+                          //color: Colors.white,
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Column(
                           children: <Widget>[
-
+                            ListTile(
+                              title: Text(
+                                "Personal information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
                             _firstname(),
-
                             Divider(
                               thickness: 1.0,
                               color: Color(0xff1B4F72),
                             ),
-
-
                             _jobtybe(),
-
-
                             Divider(
                               thickness: 1.0,
                               color: Color(0xff1B4F72),
                             ),
-
-
                             _jobcategory(),
-
-
                             Divider(
                               thickness: 1.0,
                               color: Color(0xff1B4F72),
                             ),
-
-
                             _address(),
-
                             Divider(
                               thickness: 1.0,
                               color: Color(0xff1B4F72),
                             ),
-
-                            _salary(),
-
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
                             _gender(),
-
-
                             Divider(
                               thickness: 1.0,
                               color: Color(0xff1B4F72),
                             ),
-
-
-                            _qualification(),
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
                             _phone(),
 
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
 
-
-                            _degree(),
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-                            _inndestory(),
-
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
-
-
-                            _experince(),
 
 
 
@@ -789,30 +774,76 @@ class EditDataState extends State<EmployeeEditData> {
                           ],
                         ),
                       ),
+
+
+
+//user info from regestration
+
+                      Container(
+                        decoration: BoxDecoration(
+                          //color: Colors.white,
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text(
+                                "Field Information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+
+
+
+
+                            _salary(),
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+                            _qualification(),
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+                            _degree(),
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+                            _inndestory(),
+                            Divider(
+                              thickness: 1.0,
+                              color: Color(0xff1B4F72),
+                            ),
+                            _experince(),
+
+
+                          ],
+                        ),
+                      ),
                       SizedBox(height: 20.0),
-                      Row(
+
+
+                      /*  Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           _buildEditEmpBtnsSave(),
                           SizedBox(width: 20.0),
                           _buildEditEmpBtnsBack(),
                         ],
-                      )
+                      )*/
                     ],
                   ),
                 ),
               ],
             ),
             //],
-
           ),
-
-
         ),
-
-
-
-
 
 //        ListView(
 //          children: <Widget>[
@@ -957,9 +988,6 @@ class EditDataState extends State<EmployeeEditData> {
 //            ),
 //          ],
 //        ),
-
-
-
       ),
     );
   }

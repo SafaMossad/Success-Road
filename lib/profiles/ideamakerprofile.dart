@@ -259,7 +259,33 @@ class ProfileFinal extends StatelessWidget {
                                             subtitle: Text("Idea Maker"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                            child: RaisedButton(
+                                            child: IconButton(
+                                              icon: Icon(Icons.edit ,size: 25,),
+                                              tooltip:'edit',
+                                              //elevation: 20.0,
+                                              onPressed: ()=> Navigator.of(context).push(
+                                                  new MaterialPageRoute(
+                                                    builder: (BuildContext context) => new IdeaMakerEditData(map),
+                                                  )
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              /* shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                              ),*/
+                                              color: Color(0xFF0a2f52),
+                                              /*    child: Text(
+                                                'Edit',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.5,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'OpenSans',
+                                                ),
+                                              ),*/
+                                            ),
+
+                                         /*   child: RaisedButton(
                                               elevation: 20.0,
                                               onPressed: ()=> Navigator.of(context).push(
                                                   new MaterialPageRoute(
@@ -281,7 +307,10 @@ class ProfileFinal extends StatelessWidget {
                                                   fontFamily: 'OpenSans',
                                                 ),
                                               ),
-                                            ),)
+                                            ),*/
+
+
+                                          )
                                         ],
                                       ),
                                     ),
@@ -289,6 +318,10 @@ class ProfileFinal extends StatelessWidget {
                                   ],
                                 ),
                               ),
+
+
+
+
                             ],
                           ),
                           SizedBox(height: 20.0),
@@ -355,9 +388,6 @@ class ProfileFinal extends StatelessWidget {
                                 ),
 
 
-                                Divider(
-                                  thickness: 1.0,
-                                ),
 
                               ],
                             ),
@@ -430,11 +460,6 @@ class ProfileFinal extends StatelessWidget {
 
                                   subtitle:Text("${map["indestry"]}"),
                                   leading: Icon(Icons.subject),
-                                ),
-
-                                Divider(
-
-                                  thickness: 1.0,
                                 ),
 
 

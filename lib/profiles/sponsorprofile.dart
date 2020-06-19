@@ -258,7 +258,35 @@ class ProfileFinall extends StatelessWidget {
                                             subtitle: Text("Sponsor"),
                                           ),
                                           Padding(padding: EdgeInsets.only(right: 5),
-                                            child: RaisedButton(
+
+
+                                            child: IconButton(
+                                              icon: Icon(Icons.edit ,size: 25,),
+                                              tooltip:'edit',
+                                              //elevation: 20.0,
+                                              onPressed: ()=> Navigator.of(context).push(
+                                                  new MaterialPageRoute(
+                                                    builder: (BuildContext context) => new SponsorEditData(map),
+                                                  )
+                                              ),
+                                              padding: EdgeInsets.all(10.0),
+                                              /* shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                              ),*/
+                                              color: Color(0xFF0a2f52),
+                                              /*    child: Text(
+                                                'Edit',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  letterSpacing: 1.5,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'OpenSans',
+                                                ),
+                                              ),*/
+                                            ),
+
+                                        /*    child: RaisedButton(
                                               elevation: 20.0,
                                               onPressed: ()=> Navigator.of(context).push(
                                                   new MaterialPageRoute(
@@ -280,7 +308,10 @@ class ProfileFinall extends StatelessWidget {
                                                   fontFamily: 'OpenSans',
                                                 ),
                                               ),
-                                            ),)
+                                            ),*/
+
+
+                                          )
 
                                         ],
 
@@ -319,31 +350,40 @@ class ProfileFinall extends StatelessWidget {
                                   leading: Icon(Icons.person_outline),
                                 ),
 
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+
                                 ListTile(
                                   title: Text("Address"),
                                   subtitle:Text("${map["Address"]}"),
                                   leading: Icon(Icons.title),
                                 ),
-                                ListTile(
-                                  title: Text("Catagory"),
-                                  subtitle:Text("${map["Catagory"]}"),
-                                  leading: Icon(Icons.add_location),
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
+
+
                                 ListTile(
                                   title: Text("Gender"),
                                   subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
-                                ListTile(
-                                  title: Text("Funding"),
-                                  subtitle:Text("${map["Funding"]}"),
-                                  leading: Icon(Icons.person_add),
+
+
+
+
+                                Divider(
+
+                                  thickness: 1.0,
                                 ),
-                                ListTile(
-                                  title: Text("Typemanagment"),
-                                  subtitle:Text("${map["Typemanagment"]}"),
-                                  leading: Icon(Icons.textsms),
-                                ),
+
+
+
                                 ListTile(
                                   title: Text("phone"),
                                   subtitle:Text("${map["phone"]}"),
@@ -353,7 +393,70 @@ class ProfileFinall extends StatelessWidget {
                               ],
                             ),
                           ),
+
+
+
+
+
                           SizedBox(height: 20.0),
+
+
+
+                          //user info from regestration
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                    "Field Information",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 20, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                Divider(),
+
+
+
+
+
+                                ListTile(
+                                  title: Text("Catagory"),
+                                  subtitle:Text("${map["Catagory"]}"),
+                                  leading: Icon(Icons.add_location),
+                                ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+                                  title: Text("Funding"),
+                                  subtitle:Text("${map["Funding"]}"),
+                                  leading: Icon(Icons.person_add),
+                                ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+                                  title: Text("Typemanagment"),
+                                  subtitle:Text("${map["Typemanagment"]}"),
+                                  leading: Icon(Icons.textsms),
+                                ),
+
+
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),

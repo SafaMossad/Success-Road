@@ -315,6 +315,296 @@ class EditDataState extends State<SponsorEditData> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    return MaterialApp(
+      title: 'Update User Data',
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.grey.shade300,
+        appBar: AppBar(
+          backgroundColor: Color(0xff1B4F72),
+          title: Text("Edit profile"),
+          centerTitle: true,
+          leading: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Icon(
+              Icons.arrow_back,  // add custom icons also
+            ),
+          ),
+          actions: <Widget>[
+
+            FlatButton(
+              //elevation: 20.0,
+              onPressed: ()
+              {
+                databaseHelper.editSponsorData(
+                    _nameController.text.trim(),
+                    _AddressController.text.trim(),
+                    _CatagoryController.text.trim(),
+                    _GanderController.text.trim(),
+                    _FundingController.text.trim(),
+                    _TypemanagmentController.text.trim(),
+                    _phoneController.text.trim());
+                Navigator.of(context).push(
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new SponsorProfile(),
+                    )
+                );
+                print("Edit");
+              },
+              padding: EdgeInsets.all(15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+
+              child: Text(
+                'Save',
+                style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans',
+                ),
+              ),
+            ),
+          ],
+        ),
+        body: new Container(
+          color: Colors.white,
+          padding: const EdgeInsets.all(10.0),
+          height: 1100,
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            //padding: const EdgeInsets.all(10.0),
+            // children: <Widget>[
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
+                  child: Column(
+                    children: <Widget>[
+                      //user info from regestration
+                      Container(
+                        //height: 800,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Center(
+                              child: Text(
+                                "Personal information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            _name(),
+                            Divider(),
+                            _address(),
+                            Divider(),
+                            _catagory(),
+                            Divider(),
+                            _gender(),
+
+
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+
+                      Container(
+                        //height: 800,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 15.0,
+                            ),
+                            Center(
+                              child: Text(
+                                "Field Information",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            _funding(),
+                            Divider(),
+                            _Typemanagment(),
+                            Divider(),
+                            _phone(),
+
+                          ],
+                        ),
+                      ),
+                      //SizedBox(height: 20.0),
+                      /*    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          _buildIMBtns(),
+                          SizedBox(width: 20.0),
+                          _buildIMBtnsBack(),
+                        ],
+                      )*/
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            //],
+          ),
+        ),
+
+        /*
+        ListView(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+
+                Stack(
+                  children: <Widget>[
+                    SingleChildScrollView(
+                      //padding: EdgeInsets.only(top: 0.0),
+                      physics: AlwaysScrollableScrollPhysics(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          //Padding(padding: EdgeInsets.all(10.0)),
+                          Container(
+                            //Controlling the white place Shape
+                            height: 800.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(75.0),
+                                bottomRight: Radius.circular(75.0),
+
+                              ),
+                            ),
+                            padding: EdgeInsets.all(20.0),
+
+                            //Stack That Controlling Data In Container
+                            child: Stack(
+                              //primary: false,
+                              //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+                              children: <Widget>[
+                                ListView(
+                                  children: <Widget>[
+                                    Container(
+                                      height: MediaQuery.of(context).size.height*1.3,
+                                      padding: EdgeInsets.only(top: 30.0),
+                                      alignment: Alignment.topCenter,
+                                      child: Column(
+                                        children: <Widget>[
+                                          // Padding(padding: EdgeInsets.only(top: 2.0)),
+
+//                                        Row(
+//                                          children: <Widget>[
+//                                            _ideaTitle(),
+//                                            SizedBox(
+//                                              width: 10.0,
+//                                            ),
+//                                            _ideaCategory(),
+//                                          ],
+//                                        ),
+
+                                          _name(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          _jobtitle(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          _addree(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          _location(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          _Gander(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+                                          _qualifiction(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+                                          _mobile(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),_interstingfield(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),_indestry(),
+
+                                          SizedBox(
+                                            height: 20.0,
+                                          ),
+
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: <Widget>[
+//                                              _buildLoginBtn(),
+//                                              SizedBox(
+//                                                width: 20,
+//                                              ),
+                                              _buildLoginBtns(),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+
+
+*/
+      ),
+    );
+
+
+
+
+
+    /*
     return MaterialApp(
       title: 'Edit Sponsor',
       home: Scaffold(
@@ -570,6 +860,8 @@ class EditDataState extends State<SponsorEditData> {
 
       ),
     );
+
+     */
   }
 
 }
