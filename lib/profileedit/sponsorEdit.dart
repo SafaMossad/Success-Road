@@ -372,9 +372,9 @@ class EditDataState extends State<SponsorEditData> {
           ],
         ),
         body: new Container(
-          color: Colors.white,
+         color: Colors.grey.shade300,
           padding: const EdgeInsets.all(10.0),
-          height: 1100,
+          //height: 900,
           child: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             //padding: const EdgeInsets.all(10.0),
@@ -382,7 +382,7 @@ class EditDataState extends State<SponsorEditData> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height-170,
                   margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
                   child: Column(
                     children: <Widget>[
@@ -390,7 +390,7 @@ class EditDataState extends State<SponsorEditData> {
                       Container(
                         //height: 800,
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Column(
@@ -423,7 +423,7 @@ class EditDataState extends State<SponsorEditData> {
                       Container(
                         //height: 800,
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Column(

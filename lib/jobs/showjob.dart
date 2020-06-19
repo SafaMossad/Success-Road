@@ -81,7 +81,7 @@ class ShowDataState extends State<ShowData> {
                   height: 300,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/lolo.jpg',
+                    'assets/94393013-team-work-in-training-room-with-planning-board.jpg',
                     fit: BoxFit.fill,
                   )),
               Container(
@@ -98,7 +98,7 @@ class ShowDataState extends State<ShowData> {
                       "${widget.list[widget.index]['title']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.headline4,
+                      //style: Theme.of(context).textTheme.headline4,
 //                      TextStyle(
 //                        fontWeight: FontWeight.bold,
 //                        //fontSize: 20.0,

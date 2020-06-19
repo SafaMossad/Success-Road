@@ -495,16 +495,12 @@ class EditDataState extends State<EmployeeEditData> {
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
     _jobtybeController = new TextEditingController(text: widget.map['jobtybe']);
-    _jobcategoryController =
-        new TextEditingController(text: widget.map['jobcategory']);
+    _jobcategoryController = new TextEditingController(text: widget.map['jobcategory']);
     _addressController = new TextEditingController(text: widget.map['address']);
-    _salaryController = new TextEditingController(text: widget.map['salary']);
-    _qualifcationController =
-        new TextEditingController(text: widget.map['qualifcation']);
+    _salaryController = new TextEditingController(text: widget.map['salary']);_qualifcationController = new TextEditingController(text: widget.map['qualifcation']);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
     _degreeController = new TextEditingController(text: widget.map['degree']);
-    _indestryController =
-        new TextEditingController(text: widget.map['indestry']);
+    _indestryController = new TextEditingController(text: widget.map['indestry']);
   }
 
   @override
@@ -513,6 +509,7 @@ class EditDataState extends State<EmployeeEditData> {
       title: 'Edit Profile',
       home: Scaffold(
         resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
           backgroundColor: Color(0xff1B4F72),
           title: Text("Edit profile"),
@@ -726,7 +723,7 @@ class EditDataState extends State<EmployeeEditData> {
                       Container(
                         decoration: BoxDecoration(
                           //color: Colors.white,
-                          color: Colors.grey.shade300,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Column(
@@ -740,30 +737,20 @@ class EditDataState extends State<EmployeeEditData> {
                               ),
                             ),
                             _firstname(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _jobtybe(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _jobcategory(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _address(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _gender(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _phone(),
 
 
@@ -775,6 +762,7 @@ class EditDataState extends State<EmployeeEditData> {
                         ),
                       ),
 
+                      SizedBox(height: 20.0),
 
 
 //user info from regestration
@@ -782,7 +770,7 @@ class EditDataState extends State<EmployeeEditData> {
                       Container(
                         decoration: BoxDecoration(
                           //color: Colors.white,
-                          color: Colors.grey.shade300,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Column(
@@ -800,25 +788,17 @@ class EditDataState extends State<EmployeeEditData> {
 
 
                             _salary(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _qualification(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _degree(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _inndestory(),
-                            Divider(
-                              thickness: 1.0,
-                              color: Color(0xff1B4F72),
-                            ),
+                            Divider(),
+
                             _experince(),
 
 

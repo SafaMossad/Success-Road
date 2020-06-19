@@ -1,219 +1,308 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 
-
-class Signup extends StatefulWidget {
+class Signupfinal extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _MySignup();
+    return _ConfirmPass();
   }
 }
 
-class _MySignup extends State<Signup> {
+class _ConfirmPass extends State<Signupfinal> {
+  bool enable = false;
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   String msgStatus = '';
-
 
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
   final TextEditingController _confirmpassword = new TextEditingController();
 
-
-  _onPressed(){
+  _onPressed() {
     setState(() {
-      if(
-      _emailController.text.trim().toLowerCase().isNotEmpty &&
+      if (_emailController.text.trim().toLowerCase().isNotEmpty &&
           _passwordController.text.trim().isNotEmpty &&
-          _confirmpassword.text.trim().isNotEmpty ){
-        databaseHelper.signup(
-
-            _emailController.text.trim().toLowerCase(),
-            _passwordController.text.trim().toLowerCase(),
+          _confirmpassword.text.trim().isNotEmpty) {
+        databaseHelper
+            .signup(
+          _emailController.text.trim().toLowerCase(),
+          _passwordController.text.trim().toLowerCase(),
           _confirmpassword.text.trim().toLowerCase(),
-        ).whenComplete((){
-          if(databaseHelper.status){
+        )
+            .whenComplete(() {
+          if (databaseHelper.status) {
             _showDialog();
             msgStatus = 'Check email or password';
-          }else{
+          } else {
             Navigator.pushReplacementNamed(context, '/category');
-
-
           }
         });
       }
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
-      // yellow backgroundColor: Color(0xffF7DC6F),
-      backgroundColor: Colors.white,
-      body: ListView(
-        padding: EdgeInsets.only(top: 0),
-        children: <Widget>[
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFF0a2f52),
+                Color(0xff2E86C1),
+              ]),
+        ),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: ListView(children: <Widget>[
           Stack(
             children: <Widget>[
+/*
 
+                Container(
 
+                  child:Container(
+                    margin: EdgeInsets.only(left: 105.0,top: 20),
+                    height: 150.0,
+                    width: 150.0,
+                    decoration: BoxDecoration(
 
-              Container(
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 80,
+                      border: Border.all(color: Colors.white),
+                      //color: Colors.grey,
+                      image: DecorationImage(
+                          image: AssetImage("Logo/Prlogo.png"),
+                          fit: BoxFit.cover
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                      //boxShadow: [BoxShadow(blurRadius: 2.0,color: Colors.grey)]
                     ),
 
-                    Container(
-                      // padding: EdgeInsets.only(left: 5.0),
-                      child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Welcome To Success Road',
-                                  style: TextStyle(
+                  ),
+                ),
+*/
 
-                                      fontFamily: 'maintitle',
-                                      color: Colors.black,
-                                      fontStyle: FontStyle.italic,
+              Padding(
+                  padding: EdgeInsets.only(left: 15, top: 50, right: 15.0),
+                  child: ClipPath(
+                    clipper: Clipper(),
+                    child: Container(
+                      //margin: EdgeInsets.only(left:20,top: 50),
+                      width: MediaQuery.of(context).size.width * 1,
+                      height: 500,
+                      decoration: BoxDecoration(
 
-                                      //fontWeight: FontWeight.bold,
-                                      fontSize: 20.0)),
-                              SizedBox(
-                                height: 20,
+                        color: Color(0xfffbf7f5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 90,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 20),
+                              child: TextField(
+                                controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
+                                style: TextStyle(color: Colors.black),
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Email address",
+                                    hintStyle: TextStyle(
+                                      color: Color(0xff1B4F72),
+                                    ),
+                                    icon: Icon(
+                                      Icons.email,
+                                      color: Color(0xff1B4F72),
+
+                                    )),
+                              )),
+                          Container(
+                            child: Divider(
+                              color: Color(0xff1B4F72),
+                            ),
+                            padding: EdgeInsets.only(
+                                left: 20.0, right: 20.0, bottom: 10.0),
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Column(
+                                children: <Widget>[
+                                  TextField(
+                                    controller: _passwordController,
+                                    style: TextStyle(color: Colors.black),
+                                    decoration: InputDecoration(
+                                      hintText: "Password",
+                                      hintStyle: TextStyle(
+                                        color: Color(0xff1B4F72),
+
+                                      ),
+                                      icon: Icon(
+                                        Icons.lock,
+                                        color: Color(0xff1B4F72),
+
+                                      ),
+                                      border: InputBorder.none,
+                                    ),
+                                  )
+                                ],
+                              )),
+                          Container(
+                            child: Divider(
+                              color: Color(0xff1B4F72),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 20),
+                            child: TextField(
+                              controller: _confirmpassword,
+                              style: TextStyle(
+                                color: Colors.black,
                               ),
-                              Text(' Please Enter Your Basic Information',
-                                  style: TextStyle(
-                                      fontFamily: 'maintitle',
-                                      color: Colors.black,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20.0)),
-                            ],
-                          )),
+                              decoration: InputDecoration(
+                                hintText: "Confirm Password",
+                                hintStyle: TextStyle(
+                                  color: Color(0xff1B4F72),
+
+                                ),
+                                border: InputBorder.none,
+                                icon: Icon(
+                                  Icons.lock,
+                                  color: Color(0xff1B4F72),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Divider(
+                              color: Color(0xff1B4F72),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 115),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 45,
+                      backgroundColor: Colors.blue,
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                    )
                   ],
                 ),
-                width: double.infinity,
-                height: 250,
-
               ),
+              Container(
+                  height: 540,
 
-            ],
-          ),
-
-          Center(
-
-            child: Container(
-              width: 360,
-              padding: EdgeInsets.only(bottom: 50.0),
-
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60.0),
-
-                color:Color(0xFFdadada),
-              ),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 40.0,
-                        backgroundColor: Color(0xFF0a2f52),
-                        child: Icon(Icons.person,color: Colors.white,),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 60.0,),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: TextField(
-                      controller: _emailController,
-
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                          hintText: "Email",
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: InputBorder.none,
-                          icon: Icon(Icons.lock, color: Colors.white70,)
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: RaisedButton(onPressed:  _onPressed,
+                      color: Color(0xff1B4F72),
+                      child:Text('  Sign Up  ',
+                        style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),) ,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
                   ),
-                  Container(child: Divider(color: Colors.black),
-                    padding: EdgeInsets.only(left: 20.0,right: 20.0, bottom: 10.0),),
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
-                        controller: _passwordController,
+                ),
+              Padding(
+                padding: EdgeInsets.only(top: 50, left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    FloatingActionButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      backgroundColor: Colors.grey.shade300,
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Color(0xff1B4F72),
 
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            hintText: "password",
-                            hintStyle: TextStyle(color: Colors.black),
-                            border: InputBorder.none,
-                            icon: Icon(Icons.lock, color: Colors.white70,)
-                        ),
-                      )
-                  ),
-                  Container(child: Divider(color: Colors.black),
-                    padding: EdgeInsets.only(left: 20.0,right: 20.0, bottom: 10.0),),
-                  Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      child: TextField(
-                        controller: _confirmpassword,
-
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            hintText: "Confirm password",
-                            hintStyle: TextStyle(color: Colors.black),
-                            border: InputBorder.none,
-                            icon: Icon(Icons.lock, color: Colors.white70,)
-                        ),
-                      )
-                  ),
-                ],
+                        size: 30,
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          )
-
-        ],
+            ],
+          ),
+        ]),
       ),
-      floatingActionButton: FloatingActionButton.extended(
+    /*  floatingActionButton: FloatingActionButton.extended(
         onPressed: _onPressed,
-
-        label: Text('Continue....'),
-
-        backgroundColor: Color(0xFF0a2f52),
-      ),
+        label: Text(
+          'Continue....',
+          style: TextStyle(
+            color: Color(0xff1B4F72),
+          ),
+        ),
+        backgroundColor: Colors.grey.shade300,
+      ),*/
     );
   }
 
-
-  void _showDialog(){
+  void _showDialog() {
     showDialog(
-        context:context ,
-        builder:(BuildContext context){
+        context: context,
+        builder: (BuildContext context) {
           return AlertDialog(
             title: new Text('Failed'),
-            content:  new Text('Check your email or password'),
+            content: new Text('Check your email or password'),
             actions: <Widget>[
               new RaisedButton(
-
                 child: new Text(
                   'Close',
                 ),
-
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(context).pop();
                 },
-
               ),
             ],
           );
-        }
-    );
+        });
+  }
+}
+
+class Clipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var X = 50.0;
+    //round factor
+
+    var path = Path();
+
+    path.moveTo(0, size.height * 0.33);
+    path.lineTo(0, size.height - X);
+    path.quadraticBezierTo(0, size.height, X, size.height);
+    path.lineTo(size.width - X, size.height);
+    path.quadraticBezierTo(
+        size.width, size.height, size.width, size.height - X);
+    path.lineTo(size.width, X * 2);
+    path.quadraticBezierTo(size.width - 10, X, size.width - X * 1.5, X * 1.5);
+    path.lineTo(X * 0.6, size.height * 0.33 - X * 0.3);
+    path.quadraticBezierTo(0, size.height * 0.33, 0, size.height * 0.33 + X);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }

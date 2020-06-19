@@ -94,6 +94,7 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:successroad/profiles/sponsorprofile.dart';
+import 'package:successroad/timeline/getsponsorinvest.dart';
 
 import 'package:successroad/timeline/home.dart';
 
@@ -145,12 +146,12 @@ class _TimeLineStateState extends State<TimeLineState> {
               *//*onclick: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => ManageIdea()))*//*
               //this on click for navigate to anothe page when click on it
-              ),
+              ),*/
           TabData(
             iconData: Icons.add,
-            title: "Add job",
+            title: "My Invest",
 
-          ),*/
+          ),
           TabData(
             onclick: ()=> Navigator.of(context).pop(),
             iconData: Icons.person_pin,
@@ -180,15 +181,15 @@ class _TimeLineStateState extends State<TimeLineState> {
         return Home();
         break;
 
-/*
+
       case 1:
-        return  AddIdea();
+        return  Showsponsorinvest();
         break;
-      case 2:
+      /*case 2:
         return AddJobs();
         break;*/
 
-      case 1:
+      case 2:
         return SponsorProfile();
         break;
 

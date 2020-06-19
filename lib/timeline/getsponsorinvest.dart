@@ -1,68 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:successroad/api/databasehelper.dart';
 
-class Employeejob extends StatefulWidget {
+class Showsponsorinvest extends StatefulWidget {
   @override
-  _EmployeejobState createState() => _EmployeejobState();
+  _ShowsponsorinvestState createState() => _ShowsponsorinvestState();
 }
 
-class _EmployeejobState extends State<Employeejob> {
+class _ShowsponsorinvestState extends State<Showsponsorinvest> {
   DatabaseHelper databaseHelper = DatabaseHelper();
+
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff0f0f0),
-     /* body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 145),
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: new FutureBuilder<Map<String, dynamic>>(
-                  future: databaseHelper.getEmployeejob(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) print("snapshot.error");
-                    return snapshot.hasData
-                        ? new ItemList(list: snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
-                    );
-                  },
-                ),
-//                  child: ListView.builder(
-//                      itemCount: schoolLists.length,
-//                      itemBuilder: (BuildContext context, int index) {
-//                        return buildList(context, index);
-//                      }),
-              ),
-            ],
-          ),
-        ),
-      ),*/
-        body: new FutureBuilder <List<dynamic>> (
-          future: databaseHelper.getEmployeejob(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error);
-            return snapshot.hasData
-                ? new ItemList(list: snapshot.data)
-                : new Center(
-              child: new CircularProgressIndicator(),
-            );
-          },
-        ),
+      backgroundColor: Color(0xffF7F9F9),
+      body: new FutureBuilder<List<dynamic>>(
+        future: databaseHelper.getSponsorinvest(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? new ItemList(list: snapshot.data)
+              : new Center(
+                  child: new CircularProgressIndicator(),
+                );
+        },
+      ),
     );
   }
 }
+
 class ItemList extends StatelessWidget {
-
-
   List list;
+
   ItemList({this.list});
 
   @override
@@ -71,255 +40,150 @@ class ItemList extends StatelessWidget {
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
-          return new Container(
-            padding: const EdgeInsets.all(10.0),
-            child: new GestureDetector(
-              /*onTap: () {
-
-                print('khaled');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
-                );
-              },*/
-              child: new Container( alignment: Alignment.topLeft,
-                decoration: BoxDecoration(
-//                  borderRadius: BorderRadius.circular(5),
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 325,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              list[i]["job"]["title"],
-                              style: TextStyle(
-                                  //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["jtype"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["catagory"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["address"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["salary"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["gander"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["country"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["city"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["qualification"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["experience"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["description"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-
-
-                          ],
-
-                ),
-
-//                child: new ListTile(
-//                  title: new Text(list[i]['title'],
-//                      style: TextStyle(
-//                          fontSize: 18.0,
-//                          color: Color(0xFF0a2f52),
-//                          fontWeight: FontWeight.bold)),
-//                  leading: new Icon(
-//                    Icons.apps,
-//                    color: Color(0xFF0a2f52),
-//                    size: 35.5,
-//                  ),
-//                  subtitle: new Text(
-//                    'Idea Catagory : ${list[i]['ideacatagory']}',
-//                  ),
-//                ),
-              ),
-
-              /*
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 110,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          return new SingleChildScrollView(
+            padding: EdgeInsets.only(top: 30.0),
+            child: Column(
+              children: <Widget>[
+                Stack(
                   children: <Widget>[
                     Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(width: 3, color: secondary),
-                          image: DecorationImage(
-                              image: CachedNetworkImageProvider(schoolLists[index]['logoText']),
-                              fit: BoxFit.fill),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        height: 200,
+                        width: double.infinity,
+                        child: Image.asset(
+                          "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
+                          fit: BoxFit.cover,
+                        )),
+                    Positioned(
+                      top: 0.0,
+                      left: 20.0,
+                      right: 20.0,
+                      child: Row(
                         children: <Widget>[
-                          Text(list[i]['title'],
-                            style: TextStyle(
-                                color: primary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
+                          Icon(
+                            Icons.slideshow,
+                            color: Colors.black87,
                           ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.location_on,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['jtype'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.school,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['catagory'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
+                          SizedBox(width: 10.0),
+                          Text(
+                            "My Invest",
+                            style: TextStyle(color: Colors.black87),
+                          )
                         ],
                       ),
                     )
                   ],
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 16.0, right: 16.0, bottom: 16.0, top: 15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text("Oct 21, 2017",style:
+                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Text("Title :${list[i]["idea"]["title"]}",
+                        style: TextStyle(fontSize: 20.0,
+                          color: Color(0xFF0a2f52),
+                          fontWeight: FontWeight.bold,),
+                      ),
+                      Divider(color: Color(0xff2E86C1),),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.category,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text("Catagory: ${list[i]["idea"]["ideacatagory"]}",
+                            style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                          SizedBox(
+                            width: 50.0,
+                          ),
+                          Icon(
+                            Icons.supervisor_account,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text("Managment: ${list[i]["idea"]["Management"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                        ],
+                      ),
+                      Divider(color: Color(0xff2E86C1),),
+                      //Padding(padding: EdgeInsets.only(right: 50.0)),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.location_on,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text("Address: ${list[i]["idea"]["address"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                          SizedBox(
+                            width: 50.0,
+                          ),
+                          Icon(
+                            Icons.comment,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text("Funding: ${list[i]["idea"]["funding"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                        ],
+                      ),
+                      Divider(color: Color(0xff2E86C1),),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Container(
 
-               */
+                           alignment: Alignment.topLeft,
+                            child: Text("Description :",style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),),
+                          ),
+                          Text(
+                            "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
+                                "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
+                                "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
+                                "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
+                                " ${list[i]["idea"]["ideaDescription"]} .",
+                            style:
+                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.black87,
+                  thickness: 1.0,
+                  height: 50.0,
+                )
+              ],
             ),
           );
-
         });
   }
 }

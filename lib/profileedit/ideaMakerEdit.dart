@@ -388,9 +388,17 @@ class EditDataState extends State<IdeaMakerEditData> {
           backgroundColor: Color(0xff1B4F72),
           title: Text("Edit profile"),
           centerTitle: true,
+          leading: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Icon(
+              Icons.arrow_back,  // add custom icons also
+            ),
+          ),
           actions: <Widget>[
-            RaisedButton(
-              elevation: 20.0,
+
+            FlatButton(
+              //elevation: 20.0,
+
               onPressed: () {
                 databaseHelper.editIdeaMakerData(
                     _nameController.text.trim(),
@@ -416,7 +424,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                 'Save',
                 style: TextStyle(
 
-                  //color: Colors.white,
+                 color: Colors.white,
                   letterSpacing: 1.5,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -424,12 +432,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                 ),
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-                builder: (BuildContext context) => new IdeaMakerProfile(),
-              )),
-            ),
+
           ],
         ),
         body: new Container(
@@ -507,6 +510,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                             _interstingfield(),
                             Divider(),
                             _indestry(),
+
                           ],
                         ),
                       ),

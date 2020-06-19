@@ -20,6 +20,7 @@ void main() {
       MaterialApp(
     // title: "Login Page",
     home: Navigation(),
+        title: "Success Road",
 
   ));
 }
@@ -47,7 +48,7 @@ class Navigation extends StatelessWidget {
         "/Employeeprofile":(BuildContext context)=> new EmployeeProfile(),
 
         "/showidea":(BuildContext context)=> new ShowData(),
-        "/signup":(BuildContext context)=> new Signup(),
+        "/signup":(BuildContext context)=> new Signupfinal(),
         //adding test commit
 
       },

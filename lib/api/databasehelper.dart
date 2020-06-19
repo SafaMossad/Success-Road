@@ -312,7 +312,26 @@ class DatabaseHelper {
   }
 
 
+  Future<List<dynamic>> getSponsorinvest() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
 
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
+    String applyFunding = "https://successsroadv2.herokuapp.com/api/v1/funds?id =$idislogin";
+    http.Response response = await http.get(applyFunding, headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    print("body now in get emp job ${response.body}");
+    return json.decode(response.body.toString());
+  }
 
 
 

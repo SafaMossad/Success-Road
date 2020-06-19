@@ -23,12 +23,10 @@ final secondary = Color(0xfff29a94);
 class TimeLineJobsState extends State<TimeLineJobs> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      backgroundColor: Color(0xfff0f0f0),
+      backgroundColor: Color(0xffECF0F1),
       /*floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.add),
         onPressed: ()=>Navigator.of(context).push(
@@ -44,7 +42,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
           child: Stack(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 145),
+                padding: EdgeInsets.only(top: 120),
                 height: MediaQuery.of(context).size.height,
                 width: double.infinity,
                 child: new FutureBuilder<List>(
@@ -54,8 +52,8 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                     return snapshot.hasData
                         ? new ItemList(list: snapshot.data)
                         : new Center(
-                      child: new CircularProgressIndicator(),
-                    );
+                            child: new CircularProgressIndicator(),
+                          );
                   },
                 ),
               ),
@@ -68,12 +66,10 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30))),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-
 //                      IconButton(
 //                        onPressed: () {},
 //                        icon: Icon(
@@ -82,12 +78,10 @@ class TimeLineJobsState extends State<TimeLineJobs> {
 //                        ),
 //                      ),
 
-
                       Text(
                         "TimeLine",
                         style: TextStyle(color: Colors.white, fontSize: 24),
                       ),
-
 
                       IconButton(
                         onPressed: () {},
@@ -96,26 +90,21 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                           color: Colors.white,
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
             ],
-
           ),
-
         ),
       ),
-
     );
   }
 }
 
 class ItemList extends StatelessWidget {
-
-
   List list;
+
   ItemList({this.list});
 
   @override
@@ -125,42 +114,46 @@ class ItemList extends StatelessWidget {
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
           return new Container(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
+                  MaterialPageRoute(
+                      builder: (context) => ShowData(list: list, index: i)),
                 );
               },
               child: new Container(
                 decoration: BoxDecoration(
 //                  borderRadius: BorderRadius.circular(5),
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
                 ),
                 width: double.infinity,
-                height: 110,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                height: 180,
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        width: 50,
-                        height: 50,
-                        margin: EdgeInsets.only(top: 13),
+                        width: 100,
+                        height: 100,
+                        margin: EdgeInsets.only(top: 10),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(25),
                           border: Border.all(width: 3, color: Colors.white),
                           image: DecorationImage(
                               image: new ExactAssetImage('assets/Prlogo.png'),
                               fit: BoxFit.cover),
                         ),
                       ),
+                      SizedBox(
+                        width: 20.0,
+                      ),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
                               list[i]['title'],
@@ -179,7 +172,6 @@ class ItemList extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15),
                             ),
-
                             SizedBox(
                               height: 6,
                             ),
@@ -193,8 +185,7 @@ class ItemList extends StatelessWidget {
                           ],
                         ),
                       )
-                    ]
-                ),
+                    ]),
 //                child: new ListTile(
 //                  title: new Text(list[i]['title'],
 //                      style: TextStyle(
