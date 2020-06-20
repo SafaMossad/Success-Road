@@ -392,7 +392,7 @@ class AddIdeaState extends State<AddIdea> {
                               ListView(
                                 children: <Widget>[
                                   Container(
-                                    height: MediaQuery.of(context).size.height -180,
+                                    height: MediaQuery.of(context).size.height * 1.1,
                                     padding: EdgeInsets.only(top: 5.0),
                                     alignment: Alignment.topCenter,
                                     child: Column(

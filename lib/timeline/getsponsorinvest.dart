@@ -79,7 +79,9 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Expanded(
                             child: Text("Oct 21, 2017",style:
@@ -99,7 +101,9 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
                             Icons.category,
@@ -126,7 +130,9 @@ class ItemList extends StatelessWidget {
                       ),
                       Divider(color: Color(0xff2E86C1),),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
                             Icons.location_on,

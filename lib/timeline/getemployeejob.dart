@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 
@@ -143,7 +144,9 @@ class ItemList extends StatelessWidget {
                       ),
 
                       //Row for Category & Manage
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
                             Icons.category,
@@ -181,7 +184,9 @@ class ItemList extends StatelessWidget {
                         color: Color(0xff2E86C1),
                       ),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
                             Icons.location_on,
@@ -226,7 +231,9 @@ class ItemList extends StatelessWidget {
 
 
 
-                      Row(
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
                             Icons.supervised_user_circle,
@@ -263,7 +270,9 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 10.0,
                       ),
-                      Row(
+                      Wrap(
+                        runSpacing: 7.0, // gap between lines
+                        direction: Axis.horizontal,
                         textDirection: TextDirection.ltr,
                         children: <Widget>[
                           Icon(

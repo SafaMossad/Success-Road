@@ -379,6 +379,27 @@ class DatabaseHelper {
 
 
 
+//  Future<List<dynamic>> getCompanyApply() async {
+//    final SharedPreferences prefs = await SharedPreferences.getInstance();
+//    var token = prefs.getString('token');
+//    print('Token : $token');
+//
+//
+//
+//
+//    String getCompanyApply = "https://successsroadv2.herokuapp.com/api/v1/submittings/";
+//    http.Response response = await http.get(getCompanyApply, headers: {
+//      'Accept': '*/*',
+//      'Accept-Encoding': 'gzip, deflate, br',
+//      'Connection': 'keep-alive',
+//      'Content-Type': 'application/json',
+//      'Authorization': '$token'
+//    });
+//    print("body now in get Company emp job ${response.body}");
+//    return json.decode(response.body.toString());
+//  }
+
+
   Future<List<dynamic>> getEmployeejob() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');

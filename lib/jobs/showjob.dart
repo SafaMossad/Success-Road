@@ -98,10 +98,10 @@ class ShowDataState extends State<ShowData> {
                       "${widget.list[widget.index]['title']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      //style: Theme.of(context).textTheme.headline4,
-//                      TextStyle(
+                      style: Theme.of(context).textTheme.headline4,
+//                      style: TextStyle(
 //                        fontWeight: FontWeight.bold,
-//                        //fontSize: 20.0,
+//                        fontSize:26,
 //                      ),
                     ),
                     SizedBox(height: 10.0),
@@ -110,10 +110,10 @@ class ShowDataState extends State<ShowData> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
+                          fontSize: 15.0),
                     ),
                     SizedBox(height: 10.0),
-                    Divider(thickness: 2.0, ),
+                    Divider( color: Color(0xff2E86C1), ),
 
                     Wrap(
                       //runSpacing: 2.0, // gap between lines
@@ -129,7 +129,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['catagory']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                         SizedBox(
                           width: 80.0,
@@ -144,7 +144,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['salary']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                       ],
                     ),
@@ -152,7 +152,7 @@ class ShowDataState extends State<ShowData> {
                     SizedBox(
                       height: 10.0,
                     ),
-                    Divider(thickness: 2.0, ),
+                    Divider( color: Color(0xff2E86C1), ),
                     Wrap(
 //                          spacing: 3.0,
 //                          runSpacing: 2.0, // gap between lines
@@ -168,7 +168,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['address']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                         SizedBox(
                           width: 20.0,
@@ -183,7 +183,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['country']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                         SizedBox(
                           width: 20.0,
@@ -198,7 +198,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['city']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                       ],
                     ),
@@ -213,7 +213,7 @@ class ShowDataState extends State<ShowData> {
                     ),
 
 
-                    Divider(thickness: 2.0, ),
+                    Divider( color: Color(0xff2E86C1), ),
                     Wrap(
                       runSpacing: 2.0, // gap between lines
                       direction: Axis.horizontal,
@@ -228,7 +228,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['gander']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
 
                         SizedBox(
@@ -245,7 +245,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['qualification']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                       ],
                     ),
@@ -256,7 +256,7 @@ class ShowDataState extends State<ShowData> {
 
 
 
-                    Divider(thickness: 2.0, ),
+                    Divider( color: Color(0xff2E86C1), ),
 
                     Wrap(
                       runSpacing: 2.0, // gap between lines
@@ -272,7 +272,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['experience']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
 
                         SizedBox(
@@ -289,7 +289,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['description']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                       ],
                     ),

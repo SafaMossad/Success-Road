@@ -89,7 +89,7 @@ class ShowDataState extends State<ShowData> {
                       "${widget.list[widget.index]['title']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-
+                      style: Theme.of(context).textTheme.headline4,
 //                      TextStyle(
 //                        fontWeight: FontWeight.bold,
 //                        //fontSize: 20.0,
@@ -102,10 +102,10 @@ class ShowDataState extends State<ShowData> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
+                          fontSize: 15.0),
                     ),
                     SizedBox(height: 10.0),
-                    Divider(thickness: 2.0, color: Colors.black),
+                    Divider( color: Color(0xff2E86C1), ),
 
                     Wrap(
                       //spacing: 1.0, // gap between adjacent chips
@@ -122,7 +122,7 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['funding']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                         SizedBox(
                           width: 80.0,
@@ -137,11 +137,11 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['Management']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                       ],
                     ),
-
+                    Divider( color: Color(0xff2E86C1), ),
                     SizedBox(
                       height: 10.0,
                     ),
@@ -161,11 +161,12 @@ class ShowDataState extends State<ShowData> {
                         Text(
                           "${widget.list[widget.index]['address']}",
                           style: TextStyle(
-                              fontSize: 20.0, color: Color(0xFF0a2f52)),
+                              fontSize: 15.0, color: Color(0xFF0a2f52)),
                         ),
                         SizedBox(
                           width: 50.0,
                         ),
+                        Divider( color: Color(0xff2E86C1), ),
                       ],
                     ),
 
@@ -215,7 +216,7 @@ class ShowDataState extends State<ShowData> {
                           "${widget.list[widget.index]['ideaDescription']}",
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 15.0,
                           ),
                         ),
                       ],

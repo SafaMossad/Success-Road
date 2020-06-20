@@ -478,7 +478,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                             _Gander(),
                             Divider(),
                             _mobile(),
-                            Divider(),
+
                           ],
                         ),
                       ),
@@ -505,11 +505,11 @@ class EditDataState extends State<IdeaMakerEditData> {
                             ),
                             _jobtitle(),
                             Divider(),
-                            _qualifiction(),
-                            Divider(),
                             _interstingfield(),
                             Divider(),
                             _indestry(),
+                            Divider(),
+                            _qualifiction(),
 
                           ],
                         ),

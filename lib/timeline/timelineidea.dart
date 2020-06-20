@@ -433,12 +433,12 @@ class ItemList extends StatelessWidget {
 }
 */
 
-
 //import 'package:flutterapp/UI/profile.dart';
 //import 'package:flutterapp/ui/login_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/jobs/addjob.dart';
 
 import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -456,92 +456,323 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineIdeaState extends State<TimeLineIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
-
-
+  //final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffECF0F1 ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 120),
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: new FutureBuilder<List>(
-                  future: databaseHelper.getDataIdeaHome(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) print(snapshot.error);
-                    return snapshot.hasData
-                        ? new ItemList(list: snapshot.data)
-                        : new Center(
-                      child: new CircularProgressIndicator(),
-                    );
-                  },
+//      drawer: Drawer(
+//        child: ListView(
+//          children: <Widget>[
+//            UserAccountsDrawerHeader(
+//              decoration: BoxDecoration(
+//                color: Color(0xff1B4F72),
+//              ),
+//              accountName: Text("Safa"),
+//              accountEmail: Text("Eng:Safa El-Helely"),
+//              currentAccountPicture: CircleAvatar(
+//                backgroundColor: Colors.white,
+//                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
+//              ),
+//            ),
+//            ListTile(
+//              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+//              trailing: Icon(
+//                Icons.arrow_back_ios,
+//                color: Color(0xff1B4F72),
+//              ),
+////              onTap: () => Navigator.push(
+////                  context, MaterialPageRoute(builder: (context) => Profile())),
+//            ),
+//            Divider(),
+//            ListTile(
+//              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+//              trailing: Icon(
+//                Icons.favorite,
+//                color: Colors.red,
+//              ),
+//            ),
+//            Divider(),
+//            ListTile(
+//              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+//              trailing: Icon(
+//                Icons.settings,
+//                color: Color(0xff1B4F72),
+//              ),
+//            ),
+//            Divider(),
+//            ListTile(
+//              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+//              trailing: Icon(
+//                Icons.filter_frames,
+//                color: Color(0xff1B4F72),
+//              ),
+//            ),
+//            Divider(),
+//            ListTile(
+//              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+//              trailing: Icon(
+//                Icons.textsms,
+//                color: Color(0xff1B4F72),
+//              ),
+//            ),
+//            Divider(),
+//            ListTile(
+//                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+//                trailing: Icon(
+//                  Icons.close,
+//                  color: Color(0xff1B4F72),
+//                ),
+//                onTap: () => Navigator.of(context).pop()),
+//          ],
+//        ),
+//      ),
+
+//      appBar: AppBar(
+//        backgroundColor: Colors.transparent,
+////        flexibleSpace: Dwidget(),
+//      title: Dwidget(),
+//      ),
+      //key: _scaffoldKey,
+      drawer: new Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff1B4F72),
+              ),
+              accountName: Text("Safa"),
+              accountEmail: Text("Eng:Safa El-Helely"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
+              ),
+            ),
+            ListTile(
+              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddJobs())),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.filter_frames,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.textsms,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+                trailing: Icon(
+                  Icons.close,
+                  color: Color(0xff1B4F72),
                 ),
+                onTap: () => Navigator.of(context).pop()),
+          ],
+        ),
+      ),
+      body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: Text("Collapsing Toolbar",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        )),
+                    background: Image.network(
+                      "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+                      fit: BoxFit.cover,
+                    )),
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                    size: 25,
+                  ),
+                  tooltip: 'Add new entry',
+                  onPressed: () => Scaffold.of(context).openDrawer(),
+                ),
+                backgroundColor: Color(0xff1B4F72),
+//                  actions: < Widget > [
+//                    IconButton(
+//                      icon: const Icon(Icons.add_circle),
+//                      tooltip: 'Add new entry',
+//                      onPressed: () { /* ... */ },
+//                    ),
+//                  ]
+              ),
+
+            ];
+          },
+          //backgroundColor: Color(0xffECF0F1 ),
+          body: Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    //padding: EdgeInsets.only(top: 120),
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: new FutureBuilder<List>(
+                      future: databaseHelper.getDataIdeaHome(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) print(snapshot.error);
+                        return snapshot.hasData
+                            ? new ItemList(list: snapshot.data)
+                            : new Center(
+                                child: new CircularProgressIndicator(),
+                              );
+                      },
+                    ),
 //                  child: ListView.builder(
 //                      itemCount: schoolLists.length,
 //                      itemBuilder: (BuildContext context, int index) {
 //                        return buildList(context, index);
 //                      }),
-              ),
-              Container(
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  ),
 
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-
+//              Container(
+//                height: 140,
+//                width: double.infinity,
+//                decoration: BoxDecoration(
+//                    color: primary,
+//                    borderRadius: BorderRadius.only(
+//                        bottomLeft: Radius.circular(30),
+//                        bottomRight: Radius.circular(30))),
+//                child: Padding(
+//                  padding: const EdgeInsets.symmetric(horizontal: 25),
+//
+//                  child: Row(
+//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                    children: <Widget>[
+//
+////                      IconButton(
+////                        onPressed: () {},
+////                        icon: Icon(
+////                          Icons.menu,
+////                          color: Colors.white,
+////                        ),
+////                      ),
+//
+//                      Text(
+//                        "TimeLine",
+//                        style: TextStyle(color: Colors.white, fontSize: 24),
+//                      ),
+//
+//
+//
 //                      IconButton(
-//                        onPressed: () {},
+//                        onPressed: () {
+////                          Dwidget();
+//                        },
 //                        icon: Icon(
-//                          Icons.menu,
+//                          Icons.filter_list,
 //                          color: Colors.white,
 //                        ),
 //                      ),
-
-                      Text(
-                        "TimeLine",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-
-
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.filter_list,
-                          color: Colors.white,
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
+//
+//                    ],
+//                  ),
+//                ),
+//              ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          )),
     );
   }
 }
 
+//class Dwidget extends StatefulWidget {
+//  @override
+//  _DwidgetState createState() => _DwidgetState();
+//}
+
+//class _DwidgetState extends State<Dwidget> {
+//  @override
+//  Widget build(BuildContext context) {
+//    return  Container(
+//      height: 250,
+//      width: double.infinity,
+//      decoration: BoxDecoration(
+//          color: primary,
+//          borderRadius: BorderRadius.only(
+//              bottomLeft: Radius.circular(30),
+//              bottomRight: Radius.circular(30))),
+//      child: Padding(
+//        padding: const EdgeInsets.symmetric(horizontal: 25),
+//
+//        child: Row(
+//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//          children: <Widget>[
+//
+////                      IconButton(
+////                        onPressed: () {},
+////                        icon: Icon(
+////                          Icons.menu,
+////                          color: Colors.white,
+////                        ),
+////                      ),
+//
+//            Text(
+//              "TimeLine",
+//              style: TextStyle(color: Colors.white, fontSize: 24),
+//            ),
+//
+//            IconButton(
+//              onPressed: () {
+////                          Dwidget();
+//              },
+//              icon: Icon(
+//                Icons.filter_list,
+//                color: Colors.white,
+//              ),
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}
+
 class ItemList extends StatelessWidget {
-
-
   List list;
+
   ItemList({this.list});
 
   @override
@@ -551,25 +782,25 @@ class ItemList extends StatelessWidget {
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
           return new Container(
-            padding: const EdgeInsets.only(left: 10,right: 10,bottom: 4),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
               onTap: () {
-
                 //print('khaled');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
+                  MaterialPageRoute(
+                      builder: (context) => ShowData(list: list, index: i)),
                 );
               },
               child: new Container(
-
                 decoration: BoxDecoration(
 //                  borderRadius: BorderRadius.circular(5),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(25),
                   color: Colors.white,
                 ),
                 width: double.infinity,
-                height: 180,
+                //height of white container
+                height: 150,
                 margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Row(
@@ -587,7 +818,6 @@ class ItemList extends StatelessWidget {
                               fit: BoxFit.cover),
                         ),
                       ),
-
                       SizedBox(
                         width: 20.0,
                       ),
@@ -612,7 +842,6 @@ class ItemList extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15),
                             ),
-
                             SizedBox(
                               height: 6,
                             ),
@@ -623,12 +852,10 @@ class ItemList extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 13),
                             ),
-
                           ],
                         ),
                       ),
-                    ]
-                ),
+                    ]),
 
 //                child: new ListTile(
 //                  title: new Text(list[i]['title'],
@@ -731,7 +958,6 @@ class ItemList extends StatelessWidget {
                */
             ),
           );
-
         });
   }
 }

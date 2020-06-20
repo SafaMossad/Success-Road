@@ -382,7 +382,8 @@ class EditDataState extends State<SponsorEditData> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height-170,
+                  //height: MediaQuery.of(context).size.height - 170,
+                  height: MediaQuery.of(context).size.height,
                   margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
                   child: Column(
                     children: <Widget>[
@@ -421,7 +422,7 @@ class EditDataState extends State<SponsorEditData> {
                       SizedBox(height: 20.0),
 
                       Container(
-                        //height: 800,
+                        //height: MediaQuery.of(context).size.height,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
