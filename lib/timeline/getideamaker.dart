@@ -1,69 +1,45 @@
-import 'package:successroad/ui/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:successroad/jobs/addjob.dart';
-import 'package:successroad/jobs/showjob.dart';
 
-
-class IdeaMakerJobsDashboard extends StatefulWidget{
-
-  IdeaMakerJobsDashboard({Key key , this.title}) : super(key : key);
-  final String title;
-
+class ShowIdeaMaker extends StatefulWidget {
   @override
-  IdeaMakerJobsDashboardState  createState() => IdeaMakerJobsDashboardState();
+  _ShowIdeaMakerState createState() => _ShowIdeaMakerState();
 }
 
-class IdeaMakerJobsDashboardState extends State<IdeaMakerJobsDashboard> {
-
-  DatabaseHelper databaseHelper = new DatabaseHelper();
-
-
-
-  _save(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'token';
-    final value = token;
-    prefs.setString(key, value);
-  }
-
-
+class _ShowIdeaMakerState extends State<ShowIdeaMaker> {
+  DatabaseHelper databaseHelper = DatabaseHelper();
 
   @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      title: 'Dashboard',
-      home: Scaffold(
-
-
-          body: new FutureBuilder<List>(
-            future: databaseHelper.getCurrentUserJobs(),
-            builder: (context ,snapshot){
-              if(snapshot.hasError) print(snapshot.error);
-              return snapshot.hasData
-                  ? new ItemList(list: snapshot.data)
-                  : new Center(child: new CircularProgressIndicator(),);
-            },
-          )
+    return Scaffold(
+      backgroundColor: Color(0xffF7F9F9),
+      body: new FutureBuilder<List<dynamic>>(
+        future: databaseHelper.getSponsorinvest(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? new ItemList(list: snapshot.data)
+              : new Center(
+                  child: new CircularProgressIndicator(),
+                );
+        },
       ),
     );
   }
-
-
 }
 
 class ItemList extends StatelessWidget {
-
   List list;
+
   ItemList({this.list});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new ListView.builder(
-        itemCount: list==null?0:list.length,
-        itemBuilder: (context,i){
+        itemCount: list == null ? 0 : list.length,
+        itemBuilder: (context, i) {
           return new SingleChildScrollView(
             padding: EdgeInsets.only(top: 30.0),
             child: Column(
@@ -106,28 +82,20 @@ class ItemList extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Expanded(
-                            child: Text(
-                              "Oct 21, 2017",
-                              style: TextStyle(
-                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
-                            ),
+                            child: Text("Oct 21, 2017",style:
+                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                           ),
                         ],
                       ),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text(
-                        "Title :${list[i]['title']}",
-                        style: TextStyle(
-                          fontSize: 20.0,
+                      Text("Title :${list[i]["idea"]["title"]}",
+                        style: TextStyle(fontSize: 20.0,
                           color: Color(0xFF0a2f52),
-                          fontWeight: FontWeight.bold,
-                        ),
+                          fontWeight: FontWeight.bold,),
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
+                      Divider(color: Color(0xff2E86C1),),
                       SizedBox(
                         height: 5.0,
                       ),
@@ -142,11 +110,8 @@ class ItemList extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text(
-                            "Catagory: ${list[i]['title']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Text("Catagory: ${list[i]["idea"]["ideacatagory"]}",
+                            style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                           SizedBox(
                             width: 50.0,
                           ),
@@ -157,16 +122,11 @@ class ItemList extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text(
-                            "Managment:${list[i]['title']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Text("Managment: ${list[i]["idea"]["Management"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                         ],
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
+                      Divider(color: Color(0xff2E86C1),),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
                       Wrap(
                         runSpacing: 2.0, // gap between lines
@@ -179,11 +139,8 @@ class ItemList extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text(
-                            "Address: ${list[i]['title']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Text("Address: ${list[i]["idea"]["address"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                           SizedBox(
                             width: 50.0,
                           ),
@@ -194,67 +151,29 @@ class ItemList extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text(
-                            "Funding: ${list[i]['title']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Text("Funding: ${list[i]["idea"]["funding"]}",style:
+                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                         ],
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
+                      Divider(color: Color(0xff2E86C1),),
                       SizedBox(
                         height: 10.0,
                       ),
                       Column(
                         children: <Widget>[
                           Container(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Description :",
-                              style: TextStyle(
-                                  fontSize: 15.0, fontWeight: FontWeight.bold),
-                            ),
+
+                           alignment: Alignment.topLeft,
+                            child: Text("Description :",style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),),
                           ),
                           Text(
                             "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
                                 "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
                                 "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
                                 "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
-                                " ${list[i]['title']}.",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                        ],
-                      ),
-                      Divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("Edit"),
-                          ),
-                          SizedBox(
-                            width: 25.0,
-                          ),
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("delete"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 50.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          RaisedButton(
-                            onPressed: ()=> print("object"),
-                            child: Text("Show Request"),
-                            color: Colors.yellow,
+                                " ${list[i]["idea"]["ideaDescription"]} .",
+                            style:
+                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
                         ],
                       )
@@ -269,8 +188,6 @@ class ItemList extends StatelessWidget {
               ],
             ),
           );
-
-        }
-    );
+        });
   }
 }

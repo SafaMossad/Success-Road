@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 //import 'package:successroad/ideas/dashboard.dart';
-import 'package:successroad/timeline/timelineidea.dart';
+import 'package:successroad/timeline/timelineideamaker.dart';
 
 class Home extends StatefulWidget {
   @override

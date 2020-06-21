@@ -321,7 +321,7 @@ class DatabaseHelper {
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String applyFunding = "https://successsroadv2.herokuapp.com/api/v1/funds?id =$idislogin";
+    String applyFunding = "https://successsroadv2.herokuapp.com/api/v1/funds";
     http.Response response = await http.get(applyFunding, headers: {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
@@ -332,14 +332,6 @@ class DatabaseHelper {
     print("body now in get emp job ${response.body}");
     return json.decode(response.body.toString());
   }
-
-
-
-
-
-
-
-
 
 
   applyjop(int jobid )async{
@@ -379,25 +371,26 @@ class DatabaseHelper {
 
 
 
-//  Future<List<dynamic>> getCompanyApply() async {
-//    final SharedPreferences prefs = await SharedPreferences.getInstance();
-//    var token = prefs.getString('token');
-//    print('Token : $token');
-//
-//
-//
-//
-//    String getCompanyApply = "https://successsroadv2.herokuapp.com/api/v1/submittings/";
-//    http.Response response = await http.get(getCompanyApply, headers: {
-//      'Accept': '*/*',
-//      'Accept-Encoding': 'gzip, deflate, br',
-//      'Connection': 'keep-alive',
-//      'Content-Type': 'application/json',
-//      'Authorization': '$token'
-//    });
-//    print("body now in get Company emp job ${response.body}");
-//    return json.decode(response.body.toString());
-//  }
+
+
+
+  Future<List<dynamic>> getCompanyApply(id) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    print('Token : $token');
+
+    String getCompanyApply = "https://successsroadv2.herokuapp.com/api/v1/submittingsa?id=$id";
+    http.Response response = await http.get(
+        getCompanyApply, headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    print("body now in get Company emp job ${response.body}");
+    return json.decode(response.body.toString());
+  }
 
 
   Future<List<dynamic>> getEmployeejob() async {
@@ -455,9 +448,7 @@ class DatabaseHelper {
       String mobile,
       String interstingfield,
       String indestry) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
+//
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -468,8 +459,7 @@ class DatabaseHelper {
     var idislogin = prefsididlogin.getInt('loginid');
     print('loginid : $idislogin');
 
-    String myUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
+    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/profile";
     final Map<String, dynamic> orderData = {
       "profile_type": 3,
       "ideamaker": {
@@ -702,7 +692,7 @@ class DatabaseHelper {
     return json.decode(response.body);
   }
 
-  Future<List> getData() async {
+  Future<List> getCurrenUserIdeas() async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key) ?? 0;
@@ -831,7 +821,7 @@ class DatabaseHelper {
     });
   }
 
-  Future<List> getDataJobs() async {
+  Future<List> getCurrentUserJobs() async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
 //    final value = prefs.get(key) ?? 0;

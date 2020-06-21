@@ -5,7 +5,7 @@ import 'package:successroad/timeline/addidea.dart';
 import 'package:successroad/timeline/addjob.dart';
 import 'package:successroad/timeline/manageidea.dart';
 import 'package:successroad/timeline/managejob.dart';
-import './home.dart';
+import './ideahome.dart';
 
 class Timeline extends StatefulWidget {
   @override
@@ -97,7 +97,7 @@ import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/profiles/ideamakerprofile.dart';
 
-import 'package:successroad/timeline/home.dart';
+import 'package:successroad/timeline/ideahome.dart';
 
 
 class IdeaMakerTimeline extends StatelessWidget {
@@ -188,7 +188,9 @@ class _TimeLineStateState extends State<TimeLineState> {
       case 2:
         return AddJobs();
         break;
-
+      case 2:
+        return AddJobs();
+        break;
       case 3:
         return IdeaMakerProfile();
         break;

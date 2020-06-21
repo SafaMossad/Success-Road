@@ -79,9 +79,7 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Row(
                         children: <Widget>[
                           Expanded(
                             child: Text("Oct 21, 2017",style:

@@ -5,7 +5,7 @@ import 'package:successroad/timeline/addidea.dart';
 import 'package:successroad/timeline/addjob.dart';
 import 'package:successroad/timeline/manageidea.dart';
 import 'package:successroad/timeline/managejob.dart';
-import './home.dart';
+import './ideahome.dart';
 
 class Timeline extends StatefulWidget {
   @override
@@ -96,7 +96,7 @@ import 'package:flutter/material.dart';
 import 'package:successroad/profiles/sponsorprofile.dart';
 import 'package:successroad/timeline/getsponsorinvest.dart';
 
-import 'package:successroad/timeline/home.dart';
+import 'package:successroad/timeline/ideahome.dart';
 
 
 class SponsorTimeline extends StatelessWidget {

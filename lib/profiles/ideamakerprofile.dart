@@ -269,20 +269,9 @@ class ProfileFinal extends StatelessWidget {
                                                   )
                                               ),
                                               padding: EdgeInsets.all(10.0),
-                                              /* shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(30.0),
-                                              ),*/
+
                                               color: Color(0xFF0a2f52),
-                                              /*    child: Text(
-                                                'Edit',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  letterSpacing: 1.5,
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'OpenSans',
-                                                ),
-                                              ),*/
+
                                             ),
 
                                          /*   child: RaisedButton(

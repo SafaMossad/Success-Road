@@ -438,7 +438,9 @@ class ItemList extends StatelessWidget {
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
+import 'package:successroad/jobs/dashboard.dart';
 
 import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -460,79 +462,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      drawer: Drawer(
-//        child: ListView(
-//          children: <Widget>[
-//            UserAccountsDrawerHeader(
-//              decoration: BoxDecoration(
-//                color: Color(0xff1B4F72),
-//              ),
-//              accountName: Text("Safa"),
-//              accountEmail: Text("Eng:Safa El-Helely"),
-//              currentAccountPicture: CircleAvatar(
-//                backgroundColor: Colors.white,
-//                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
-//              ),
-//            ),
-//            ListTile(
-//              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
-//              trailing: Icon(
-//                Icons.arrow_back_ios,
-//                color: Color(0xff1B4F72),
-//              ),
-////              onTap: () => Navigator.push(
-////                  context, MaterialPageRoute(builder: (context) => Profile())),
-//            ),
-//            Divider(),
-//            ListTile(
-//              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
-//              trailing: Icon(
-//                Icons.favorite,
-//                color: Colors.red,
-//              ),
-//            ),
-//            Divider(),
-//            ListTile(
-//              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
-//              trailing: Icon(
-//                Icons.settings,
-//                color: Color(0xff1B4F72),
-//              ),
-//            ),
-//            Divider(),
-//            ListTile(
-//              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
-//              trailing: Icon(
-//                Icons.filter_frames,
-//                color: Color(0xff1B4F72),
-//              ),
-//            ),
-//            Divider(),
-//            ListTile(
-//              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
-//              trailing: Icon(
-//                Icons.textsms,
-//                color: Color(0xff1B4F72),
-//              ),
-//            ),
-//            Divider(),
-//            ListTile(
-//                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
-//                trailing: Icon(
-//                  Icons.close,
-//                  color: Color(0xff1B4F72),
-//                ),
-//                onTap: () => Navigator.of(context).pop()),
-//          ],
-//        ),
-//      ),
 
-//      appBar: AppBar(
-//        backgroundColor: Colors.transparent,
-////        flexibleSpace: Dwidget(),
-//      title: Dwidget(),
-//      ),
-      //key: _scaffoldKey,
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
@@ -563,7 +493,36 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 Icons.favorite,
                 color: Colors.red,
               ),
+            ),Divider(),
+
+
+
+
+
+            ListTile(
+              title: Text("Show ideas",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => CompanyDashboard())),
+            ),Divider(),
+            ListTile(
+              title: Text("show jobs",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => IdeaMakerJobsDashboard())),
             ),
+
+
+
+
+
+
             Divider(),
             ListTile(
               title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
@@ -659,57 +618,10 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                               );
                       },
                     ),
-//                  child: ListView.builder(
-//                      itemCount: schoolLists.length,
-//                      itemBuilder: (BuildContext context, int index) {
-//                        return buildList(context, index);
-//                      }),
+
                   ),
 
-//              Container(
-//                height: 140,
-//                width: double.infinity,
-//                decoration: BoxDecoration(
-//                    color: primary,
-//                    borderRadius: BorderRadius.only(
-//                        bottomLeft: Radius.circular(30),
-//                        bottomRight: Radius.circular(30))),
-//                child: Padding(
-//                  padding: const EdgeInsets.symmetric(horizontal: 25),
-//
-//                  child: Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                    children: <Widget>[
-//
-////                      IconButton(
-////                        onPressed: () {},
-////                        icon: Icon(
-////                          Icons.menu,
-////                          color: Colors.white,
-////                        ),
-////                      ),
-//
-//                      Text(
-//                        "TimeLine",
-//                        style: TextStyle(color: Colors.white, fontSize: 24),
-//                      ),
-//
-//
-//
-//                      IconButton(
-//                        onPressed: () {
-////                          Dwidget();
-//                        },
-//                        icon: Icon(
-//                          Icons.filter_list,
-//                          color: Colors.white,
-//                        ),
-//                      ),
-//
-//                    ],
-//                  ),
-//                ),
-//              ),
+
                 ],
               ),
             ),
@@ -718,57 +630,6 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   }
 }
 
-//class Dwidget extends StatefulWidget {
-//  @override
-//  _DwidgetState createState() => _DwidgetState();
-//}
-
-//class _DwidgetState extends State<Dwidget> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return  Container(
-//      height: 250,
-//      width: double.infinity,
-//      decoration: BoxDecoration(
-//          color: primary,
-//          borderRadius: BorderRadius.only(
-//              bottomLeft: Radius.circular(30),
-//              bottomRight: Radius.circular(30))),
-//      child: Padding(
-//        padding: const EdgeInsets.symmetric(horizontal: 25),
-//
-//        child: Row(
-//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//          children: <Widget>[
-//
-////                      IconButton(
-////                        onPressed: () {},
-////                        icon: Icon(
-////                          Icons.menu,
-////                          color: Colors.white,
-////                        ),
-////                      ),
-//
-//            Text(
-//              "TimeLine",
-//              style: TextStyle(color: Colors.white, fontSize: 24),
-//            ),
-//
-//            IconButton(
-//              onPressed: () {
-////                          Dwidget();
-//              },
-//              icon: Icon(
-//                Icons.filter_list,
-//                color: Colors.white,
-//              ),
-//            ),
-//          ],
-//        ),
-//      ),
-//    );
-//  }
-//}
 
 class ItemList extends StatelessWidget {
   List list;

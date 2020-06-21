@@ -6,7 +6,7 @@ import 'package:successroad/profiles/ideamakerprofile.dart';
 import 'package:successroad/profiles/sponsorprofile.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
 import 'package:successroad/timeline/choocenavigationsponsor.dart';
-import 'package:successroad/timeline/home.dart';
+import 'package:successroad/timeline/ideahome.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import "package:flutter/material.dart";
 import './UI/category.dart';

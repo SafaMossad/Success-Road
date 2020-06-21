@@ -2,6 +2,7 @@
 //import 'package:final_design/ui/manageidea.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/utilities/job_and_idea.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
@@ -244,7 +245,7 @@ class AddIdeaState extends State<AddIdea> {
 
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new Dashboard(),
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
               )
           );
           print("Save");
