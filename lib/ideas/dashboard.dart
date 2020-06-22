@@ -33,7 +33,7 @@ class CompanyDashboardState extends State<CompanyDashboard> {
             title: Text("My Jobs"),
             centerTitle: true,
           ),
-          body: new FutureBuilder<List>(
+          body: new FutureBuilder<List<dynamic>>(
             future: databaseHelper.getCurrenUserIdeas(),
             builder: (context, snapshot) {
               if (snapshot.hasError) print(snapshot.error);

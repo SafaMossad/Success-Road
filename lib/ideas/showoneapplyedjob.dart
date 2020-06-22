@@ -37,8 +37,8 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
                     //padding: EdgeInsets.only(top: 120),
                     height: MediaQuery.of(context).size.height,
                     width: double.infinity,
-                    child: new FutureBuilder<List<dynamic>>(
-                      future: databaseHelper.getCompanyApply(context),
+                    child: new FutureBuilder<List<String>>(
+                      future: databaseHelper.getCompanyApply(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) print(snapshot.error);
                         return snapshot.hasData

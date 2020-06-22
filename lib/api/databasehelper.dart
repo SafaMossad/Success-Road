@@ -370,16 +370,32 @@ class DatabaseHelper {
   }
 
 
+  Future<List> getCurrenUserIdeas() async {
+//    final prefs = await SharedPreferences.getInstance();
+//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
+//    final value = prefs.get(key) ?? 0;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString('token');
+    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/ideas";
+    http.Response response = await http.get(myUrl, headers: {
+      //'Accept':'*/*',
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+      'Authorization': '$token'
+    });
+    return json.decode(response.body);
+  }
 
 
 
-
-  Future<List<dynamic>> getCompanyApply(id) async {
+  Future<List<String>> getCompanyApply() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
 
-    String getCompanyApply = "https://successsroadv2.herokuapp.com/api/v1/submittingsa?id=$id";
+    String getCompanyApply = "https://successsroadv2.herokuapp.com/api/v1/submittingsa?id=";
     http.Response response = await http.get(
         getCompanyApply, headers: {
       'Accept': '*/*',
@@ -692,23 +708,7 @@ class DatabaseHelper {
     return json.decode(response.body);
   }
 
-  Future<List> getCurrenUserIdeas() async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key) ?? 0;
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
-    String myUrl = "https://successsroadv2.herokuapp.com/api/v1/ideas";
-    http.Response response = await http.get(myUrl, headers: {
-      //'Accept':'*/*',
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/json',
-      'Authorization': '$token'
-    });
-    return json.decode(response.body);
-  }
+
 
   void editDataIdea(
       int id,
