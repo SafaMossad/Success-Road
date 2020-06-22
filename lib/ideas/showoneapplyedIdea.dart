@@ -9,9 +9,10 @@ import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowOneApplyJob extends StatefulWidget {
-  List list;
+  List id;
   int index;
-  ShowOneApplyJob({this.list,this.index});
+
+  ShowOneApplyJob({this.index, this.id});
 
   @override
   ShowOneApplyJobState createState() => ShowOneApplyJobState();
@@ -26,8 +27,21 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        body: new FutureBuilder<List<int>> (
 
-          body: Center(
+          future: databaseHelper.getCompanyApply(widget.id[widget.index]['job_id']),
+          builder: (context, projectSnap) {
+            if (projectSnap.connectionState == ConnectionState.none &&
+                projectSnap.hasData == null) {
+              print('project snapshot data is: ${projectSnap.data}');
+              return Container();
+            }else
+              return projectSnap.hasData
+                  ? new ItemList(list: projectSnap.data)
+                  :Center(child: CircularProgressIndicator());
+          },
+        )
+         /* body: Center(
             child: Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -37,10 +51,10 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
                     //padding: EdgeInsets.only(top: 120),
                     height: MediaQuery.of(context).size.height,
                     width: double.infinity,
-                    child: new FutureBuilder<List<String>>(
-                      future: databaseHelper.getCompanyApply(),
+                    child: new FutureBuilder<List<int>> (
+                      future: databaseHelper.getCompanyApply(widget.id),
                       builder: (context, snapshot) {
-                        if (snapshot.hasError) print(snapshot.error);
+                        if (snapshot.hasError) print("snapshot.error");
                         return snapshot.hasData
                             ? new ItemList(list: snapshot.data)
                             : new Center(
@@ -56,7 +70,7 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
                 ],
               ),
             ),
-          )
+          )*/
     );
   }
 }
@@ -119,32 +133,13 @@ class ItemList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              list[i]['title'],
+                              list[i]['updated_at'],
                               style: TextStyle(
                                   color: primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18),
                             ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
-                            ),
+
                           ],
                         ),
                       ),
