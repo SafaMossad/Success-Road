@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
-import 'package:successroad/timeline/timelinejob.dart';
+import 'package:successroad/timeline/timelineEmployee.dart';
 //import 'package:successroad/utilities/constants.dart';
 import 'package:successroad/utilities/job_and_idea.dart';
 import 'package:successroad/api/databasehelper.dart';

@@ -9,12 +9,13 @@ import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowOneApplyJob extends StatefulWidget {
-  List id;
-  int index;
+  List list;
+  int index ;
 
-  ShowOneApplyJob({this.index, this.id});
+  ShowOneApplyJob({ this.list,this.index});
 
   @override
+
   ShowOneApplyJobState createState() => ShowOneApplyJobState();
 }
 
@@ -26,51 +27,64 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
 
   @override
   Widget build(BuildContext context) {
+   // var id=widget.id[widget.index]['Management'];
     return Scaffold(
-        body: new FutureBuilder<List<int>> (
+       /* body: new FutureBuilder<List<dynamic>> (
 
-          future: databaseHelper.getCompanyApply(widget.id[widget.index]['job_id']),
-          builder: (context, projectSnap) {
-            if (projectSnap.connectionState == ConnectionState.none &&
-                projectSnap.hasData == null) {
-              print('project snapshot data is: ${projectSnap.data}');
-              return Container();
-            }else
-              return projectSnap.hasData
-                  ? new ItemList(list: projectSnap.data)
-                  :Center(child: CircularProgressIndicator());
+          future: databaseHelper.getCompanyApply(widget.list[widget.index]['id']),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            print('project snapshot !!!!!!!!!!!!! data is: ${widget.list[widget.index]['id']}');
+            return snapshot.hasData
+                ? new ItemList(list: snapshot.data)
+                : new Center(
+              child: new CircularProgressIndicator(),
+            );
           },
-        )
-         /* body: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    //padding: EdgeInsets.only(top: 120),
-                    height: MediaQuery.of(context).size.height,
-                    width: double.infinity,
-                    child: new FutureBuilder<List<int>> (
-                      future: databaseHelper.getCompanyApply(widget.id),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) print("snapshot.error");
-                        return snapshot.hasData
-                            ? new ItemList(list: snapshot.data)
-                            : new Center(
-                          child: new CircularProgressIndicator(),
-                        );
-                      },
-                    ),
 
+        )*/
 
+        appBar: AppBar(
+          backgroundColor: primary,
+          title:Text( "All Requestes"),
+          centerTitle: true,
+          leading: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Icon(
+              Icons.arrow_back,  // add custom icons also
+            ),
+          ),
+        ),
+        body: Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  //padding: EdgeInsets.only(top: 120),
+                  height: MediaQuery.of(context).size.height,
+                  width: double.infinity,
+                  child: new FutureBuilder<List>(
+                    future: databaseHelper.getCompanyApplyedJobs(widget.list[widget.index]['id']),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) print("snapshot.error");
+                      return snapshot.hasData
+                          ? new ItemList(list: snapshot.data)
+                          : new Center(
+                        child: new CircularProgressIndicator(),
+                      );
+                    },
                   ),
 
+                ),
 
-                ],
-              ),
+
+              ],
             ),
-          )*/
+          ),
+        )
+
     );
   }
 }
@@ -133,7 +147,21 @@ class ItemList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              list[i]['updated_at'],
+                              list[i]['user']['email'],
+                              style: TextStyle(
+                                  color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            Text(
+                              list[i]['user']['employee']['name'],
+                              style: TextStyle(
+                                  color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            Text(
+                              list[i]['user']['employee']['jobtybe'],
                               style: TextStyle(
                                   color: primary,
                                   fontWeight: FontWeight.bold,

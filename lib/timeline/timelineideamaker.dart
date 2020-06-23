@@ -487,15 +487,6 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                   context, MaterialPageRoute(builder: (context) => AddJobs())),
             ),
             Divider(),
-            ListTile(
-              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
-              trailing: Icon(
-                Icons.favorite,
-                color: Colors.red,
-              ),
-            ),Divider(),
-
-
 
 
 
@@ -506,7 +497,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CompanyDashboard())),
+                  context, MaterialPageRoute(builder: (context) => CompanyDashboardIdeas())),
             ),Divider(),
             ListTile(
               title: Text("show jobs",style: TextStyle(color: Color(0xff1B4F72),),),
@@ -515,11 +506,21 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => IdeaMakerJobsDashboard())),
+                  context, MaterialPageRoute(builder: (context) => CompanyDashboardjobs())),
             ),
 
 
+    Divider(),
 
+
+
+            ListTile(
+              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
 
 
 
@@ -718,105 +719,10 @@ class ItemList extends StatelessWidget {
                       ),
                     ]),
 
-//                child: new ListTile(
-//                  title: new Text(list[i]['title'],
-//                      style: TextStyle(
-//                          fontSize: 18.0,
-//                          color: Color(0xFF0a2f52),
-//                          fontWeight: FontWeight.bold)),
-//                  leading: new Icon(
-//                    Icons.apps,
-//                    color: Color(0xFF0a2f52),
-//                    size: 35.5,
-//                  ),
-//                  subtitle: new Text(
-//                    'Idea Catagory : ${list[i]['ideacatagory']}',
-//                  ),
-//                ),
+
               ),
 
-              /*
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 110,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(width: 3, color: secondary),
-                          image: DecorationImage(
-                              image: CachedNetworkImageProvider(schoolLists[index]['logoText']),
-                              fit: BoxFit.fill),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(list[i]['title'],
-                            style: TextStyle(
-                                color: primary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.location_on,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['jtype'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.school,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['catagory'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-               */
+
             ),
           );
         });

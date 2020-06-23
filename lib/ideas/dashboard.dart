@@ -3,25 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/ideas/showoneapplyedjob.dart';
+import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/ideas/showoneapplyedIdea.dart';
+import 'package:successroad/jobs/showoneapplyedjob.dart';
 
-class CompanyDashboard extends StatefulWidget {
-  CompanyDashboard({Key key, this.title}) : super(key: key);
+class CompanyDashboardIdeas extends StatefulWidget {
+  CompanyDashboardIdeas({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  CompanyDashboardState createState() => CompanyDashboardState();
+  CompanyDashboardIdeasState createState() => CompanyDashboardIdeasState();
 }
 
-class CompanyDashboardState extends State<CompanyDashboard> {
+class CompanyDashboardIdeasState extends State<CompanyDashboardIdeas> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-  _save(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'auth_token';
-    final value = token;
-    prefs.setString(key, value);
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +27,18 @@ class CompanyDashboardState extends State<CompanyDashboard> {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xff1B4F72),
-            title: Text("My Jobs"),
+            title: Text("My Jobs main"),
             centerTitle: true,
           ),
-          body: new FutureBuilder<List<dynamic>>(
+          body: new FutureBuilder <List<dynamic>> (
             future: databaseHelper.getCurrenUserIdeas(),
             builder: (context, snapshot) {
               if (snapshot.hasError) print(snapshot.error);
               return snapshot.hasData
                   ? new ItemList(list: snapshot.data)
                   : new Center(
-                      child: new CircularProgressIndicator(),
-                    );
+                child: new CircularProgressIndicator(),
+              );
             },
           )),
     );
@@ -55,6 +52,7 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
@@ -102,7 +100,7 @@ class ItemList extends StatelessWidget {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              "Title :${list[i]['id']}",
+                              "id :${list[i]['id']}",
                               style: TextStyle(
                                 fontSize: 20.0,
                                 color: Color(0xFF0a2f52),
@@ -217,10 +215,10 @@ class ItemList extends StatelessWidget {
                           ),
                           Text(
                             "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
-                            "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
-                            "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
-                            "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
-                            " ${list[i]['title']}.",
+                                "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
+                                "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
+                                "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
+                                " ${list[i]['title']}.",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -250,14 +248,35 @@ class ItemList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           FlatButton(
-                            onPressed: () => Navigator.of(context)
-                                .push(new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new ShowOneApplyJob(list: list[i]["id"], index: i),
-                            )),
-                            padding: EdgeInsets.all(10.0),
-                            child: Text("Show All Req"),
-                            color: Colors.yellow,
+                           // elevation: 20.0,
+                            onPressed: ()
+
+                            {
+                              // var databaseHelper=list[i]['id'];
+
+                              Navigator.of(context).push(
+                                  new MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                    new ShowOneApplyIdea(list: list, index: i),
+                                  )
+                              );
+                              print("show ok now sharf");
+                            },
+                            padding: EdgeInsets.all(15.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                           // color: Color(0xFF0a2f52),
+                            child: Text(
+                              'Apply Request',
+                              style: TextStyle(
+                                color: Colors.black,
+                                letterSpacing: 1.5,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'OpenSans',
+                              ),
+                            ),
                           ),
                         ],
                       )

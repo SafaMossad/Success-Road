@@ -254,7 +254,7 @@ class EditDataState extends State<EditData> {
               _ideaDescriptionController.text.trim());
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new CompanyDashboard(),
+                builder: (BuildContext context) => new CompanyDashboardIdeas(),
               )
           );
           print("Edit");

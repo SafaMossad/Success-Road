@@ -97,7 +97,7 @@ import 'package:successroad/profiles/emmployeeprofile.dart';
 import 'package:successroad/timeline/getemployeejob.dart';
 
 import 'package:successroad/timeline/ideahome.dart';
-import 'package:successroad/timeline/timelinejob.dart';
+import 'package:successroad/timeline/timelineEmployee.dart';
 
 
 class EmployeeTimeline extends StatelessWidget {

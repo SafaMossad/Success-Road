@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
@@ -8,69 +9,71 @@ import 'package:successroad/jobs/dashboard.dart';
 import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
-class ShowOneApplyJob extends StatefulWidget {
-  List id;
-  int index;
+class ShowOneApplyIdea extends StatefulWidget {
+  List list;
+  int index ;
 
-  ShowOneApplyJob({this.index, this.id});
+  ShowOneApplyIdea({ this.list,this.index});
 
   @override
-  ShowOneApplyJobState createState() => ShowOneApplyJobState();
+
+  ShowOneApplyIdeaState createState() => ShowOneApplyIdeaState();
 }
 
 final primary = Color(0xff1B4F72);
 final secondary = Color(0xfff29a94);
 
-class ShowOneApplyJobState extends State<ShowOneApplyJob> {
+class ShowOneApplyIdeaState extends State<ShowOneApplyIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
   @override
   Widget build(BuildContext context) {
+    // var id=widget.id[widget.index]['Management'];
     return Scaffold(
-        body: new FutureBuilder<List<int>> (
+      appBar: AppBar(
+        backgroundColor: primary,
+        title:Text( "All Requestes"),
+        centerTitle: true,
+        leading: GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Icon(
+            Icons.arrow_back,  // add custom icons also
+          ),
+        ),
+      ),
 
-          future: databaseHelper.getCompanyApply(widget.id[widget.index]['job_id']),
-          builder: (context, projectSnap) {
-            if (projectSnap.connectionState == ConnectionState.none &&
-                projectSnap.hasData == null) {
-              print('project snapshot data is: ${projectSnap.data}');
-              return Container();
-            }else
-              return projectSnap.hasData
-                  ? new ItemList(list: projectSnap.data)
-                  :Center(child: CircularProgressIndicator());
-          },
-        )
-         /* body: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    //padding: EdgeInsets.only(top: 120),
-                    height: MediaQuery.of(context).size.height,
-                    width: double.infinity,
-                    child: new FutureBuilder<List<int>> (
-                      future: databaseHelper.getCompanyApply(widget.id),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) print("snapshot.error");
-                        return snapshot.hasData
-                            ? new ItemList(list: snapshot.data)
-                            : new Center(
-                          child: new CircularProgressIndicator(),
-                        );
-                      },
-                    ),
+        body: Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  //padding: EdgeInsets.only(top: 120),
+                  height: MediaQuery.of(context).size.height,
+                  width: double.infinity,
+                  child: new FutureBuilder<List>(
+                    future: databaseHelper.getCompanyApplyedIdeas(widget.list[widget.index]['id']),
 
-
+                    builder: (context, snapshot) {
+                      print("test test ${widget.list[widget.index]['id']}");
+                      if (snapshot.hasError) print("snapshot.error");
+                      return snapshot.hasData
+                          ? new ItemList(list: snapshot.data)
+                          : new Center(
+                        child: new CircularProgressIndicator(),
+                      );
+                    },
                   ),
 
+                ),
 
-                ],
-              ),
+
+              ],
             ),
-          )*/
+          ),
+        )
+
     );
   }
 }
@@ -91,7 +94,7 @@ class ItemList extends StatelessWidget {
           return new Container(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
-             /* onTap: () {
+              /* onTap: () {
                 //print('khaled');
                 Navigator.push(
                   context,
@@ -133,13 +136,34 @@ class ItemList extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              list[i]['updated_at'],
+                              list[i]['user']['email'],
                               style: TextStyle(
                                   color: primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18),
                             ),
 
+                            Text(
+                              list[i]['user']['sponser']['name'],
+                              style: TextStyle(
+                                  color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            Text(
+                              list[i]['user']['sponser']['Address'],
+                              style: TextStyle(
+                                  color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
+                            Text(
+                              list[i]['user']['sponser']['Typemanagment'],
+                              style: TextStyle(
+                                  color: primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
                           ],
                         ),
                       ),

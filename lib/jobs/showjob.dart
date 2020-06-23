@@ -3,9 +3,9 @@ import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/jobs/dashboard.dart';
 import 'package:successroad/jobs//editjob.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
-import 'package:successroad/timeline/timelinejob.dart';
+import 'package:successroad/timeline/timelineEmployee.dart';
 
-import '../timeline/timelinejob.dart';
+import '../timeline/timelineEmployee.dart';
 
 
 

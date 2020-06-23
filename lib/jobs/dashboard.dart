@@ -1,77 +1,70 @@
-import 'package:successroad/ui/login_page.dart';
+
+
 import 'package:flutter/material.dart';
-import 'package:successroad/api/databasehelper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:successroad/jobs/addjob.dart';
-import 'package:successroad/jobs/showjob.dart';
+import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/ideas/showoneapplyedIdea.dart';
+import 'package:successroad/jobs/showoneapplyedjob.dart';
 
-
-class IdeaMakerJobsDashboard extends StatefulWidget{
-
-  IdeaMakerJobsDashboard({Key key , this.title}) : super(key : key);
+class CompanyDashboardjobs extends StatefulWidget {
+  CompanyDashboardjobs({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  IdeaMakerJobsDashboardState  createState() => IdeaMakerJobsDashboardState();
+  CompanyDashboardjobsState createState() => CompanyDashboardjobsState();
 }
 
-class IdeaMakerJobsDashboardState extends State<IdeaMakerJobsDashboard> {
-
+class CompanyDashboardjobsState extends State<CompanyDashboardjobs> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
 
 
-  _save(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'token';
-    final value = token;
-    prefs.setString(key, value);
-  }
-
-
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Dashboard',
       home: Scaffold(
-
-
-          body: new FutureBuilder<List>(
+          appBar: AppBar(
+            backgroundColor: Color(0xff1B4F72),
+            title: Text("My Jobs main"),
+            centerTitle: true,
+          ),
+          body: new FutureBuilder <List<dynamic>> (
             future: databaseHelper.getCurrentUserJobs(),
-            builder: (context ,snapshot){
-              if(snapshot.hasError) print(snapshot.error);
+            builder: (context, snapshot) {
+              if (snapshot.hasError) print(snapshot.error);
               return snapshot.hasData
                   ? new ItemList(list: snapshot.data)
-                  : new Center(child: new CircularProgressIndicator(),);
+                  : new Center(
+                child: new CircularProgressIndicator(),
+              );
             },
-          )
-      ),
+          )),
     );
   }
-
-
 }
 
 class ItemList extends StatelessWidget {
-
   List list;
+
   ItemList({this.list});
+
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new ListView.builder(
-        itemCount: list==null?0:list.length,
-        itemBuilder: (context,i){
+        itemCount: list == null ? 0 : list.length,
+        itemBuilder: (context, i) {
           return new SingleChildScrollView(
-            padding: EdgeInsets.only(top: 30.0),
+            padding: EdgeInsets.only(top: 5.0),
             child: Column(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
                     Container(
-                        height: 200,
+                        height: 150,
                         width: double.infinity,
                         child: Image.asset(
                           "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
@@ -103,13 +96,16 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
+                       Row(
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              "Oct 21, 2017",
+                              "id :${list[i]['id']}",
                               style: TextStyle(
-                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                                fontSize: 20.0,
+                                color: Color(0xFF0a2f52),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
@@ -132,7 +128,7 @@ class ItemList extends StatelessWidget {
                         height: 5.0,
                       ),
                       Wrap(
-                        runSpacing: 2.0, // gap between lines
+                        //runSpacing: 2.0, // gap between lines
                         direction: Axis.horizontal,
                         children: <Widget>[
                           Icon(
@@ -251,10 +247,36 @@ class ItemList extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RaisedButton(
-                            onPressed: ()=> print("object"),
-                            child: Text("Show Request"),
-                            color: Colors.yellow,
+                        FlatButton(
+                            //elevation: 20.0,
+                            onPressed: ()
+
+                            {
+                             // var databaseHelper=list[i]['id'];
+
+                              Navigator.of(context).push(
+                                  new MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                    new ShowOneApplyJob(list: list, index: i),
+                                  )
+                              );
+                              print("show ok now sharf");
+                            },
+                            padding: EdgeInsets.all(15.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                           // color: Color(0xFF0a2f52),
+                            child: Text(
+                              'Apply Request',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                letterSpacing: 1.5,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'OpenSans',
+                              ),
+                            ),
                           ),
                         ],
                       )
@@ -269,8 +291,6 @@ class ItemList extends StatelessWidget {
               ],
             ),
           );
-
-        }
-    );
+        });
   }
 }
