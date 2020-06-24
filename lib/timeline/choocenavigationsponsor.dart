@@ -97,6 +97,7 @@ import 'package:successroad/profiles/sponsorprofile.dart';
 import 'package:successroad/timeline/getsponsorinvest.dart';
 
 import 'package:successroad/timeline/ideahome.dart';
+import 'package:successroad/timeline/timelineideasponsor.dart';
 
 
 class SponsorTimeline extends StatelessWidget {
@@ -178,7 +179,7 @@ class _TimeLineStateState extends State<TimeLineState> {
     switch (page) {
 
       case 0:
-        return Home();
+        return TimeLineSponsor();
         break;
 
 

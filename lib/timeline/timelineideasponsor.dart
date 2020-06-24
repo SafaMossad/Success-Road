@@ -495,7 +495,7 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
             ),
             Divider(),
             ListTile(
-              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text("Setting spon",style: TextStyle(color: Color(0xff1B4F72),),),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
@@ -729,7 +729,7 @@ class ItemList extends StatelessWidget {
                 ),
                 width: double.infinity,
                 //height of white container
-                height: 150,
+                height: 180,
                 margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Row(
