@@ -458,11 +458,11 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineIdeaState extends State<TimeLineIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
+
   //final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
@@ -478,7 +478,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
               ),
             ),
             ListTile(
-              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Account",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.arrow_back_ios,
                 color: Color(0xff1B4F72),
@@ -487,46 +492,60 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                   context, MaterialPageRoute(builder: (context) => AddJobs())),
             ),
             Divider(),
-
-
-
             ListTile(
-              title: Text("Show ideas",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Show ideas",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CompanyDashboardIdeas())),
-            ),Divider(),
-            ListTile(
-              title: Text("show jobs",style: TextStyle(color: Color(0xff1B4F72),),),
-              trailing: Icon(
-                Icons.settings,
-                color: Color(0xff1B4F72),
-              ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CompanyDashboardjobs())),
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CompanyDashboardIdeas())),
             ),
-
-
-    Divider(),
-
-
-
+            Divider(),
             ListTile(
-              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "show jobs",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CompanyDashboardjobs())),
+            ),
+            Divider(),
+            ListTile(
+              title: Text(
+                "Favorites",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.favorite,
                 color: Colors.red,
               ),
             ),
-
-
-
             Divider(),
             ListTile(
-              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Setting",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
@@ -534,7 +553,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "About Us",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.filter_frames,
                 color: Color(0xff1B4F72),
@@ -542,7 +566,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "help&feedback",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.textsms,
                 color: Color(0xff1B4F72),
@@ -550,7 +579,12 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+                title: Text(
+                  "Close",
+                  style: TextStyle(
+                    color: Color(0xff1B4F72),
+                  ),
+                ),
                 trailing: Icon(
                   Icons.close,
                   color: Color(0xff1B4F72),
@@ -563,6 +597,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+
                 expandedHeight: 200.0,
                 floating: false,
                 pinned: true,
@@ -594,7 +629,6 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
 //                    ),
 //                  ]
               ),
-
             ];
           },
           //backgroundColor: Color(0xffECF0F1 ),
@@ -619,10 +653,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                               );
                       },
                     ),
-
                   ),
-
-
                 ],
               ),
             ),
@@ -630,7 +661,6 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
     );
   }
 }
-
 
 class ItemList extends StatelessWidget {
   List list;
@@ -718,11 +748,7 @@ class ItemList extends StatelessWidget {
                         ),
                       ),
                     ]),
-
-
               ),
-
-
             ),
           );
         });
