@@ -99,22 +99,31 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Column(
                         children: <Widget>[
-                          Icon(
-                            Icons.category,
-                            color: Color(0xff2E86C1),
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.category,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text("Catagory: ${list[i]["idea"]["ideacatagory"]}",
+                                style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                            ],
                           ),
+
                           SizedBox(
-                            width: 5.0,
+                            height: 10.0,
                           ),
-                          Text("Catagory: ${list[i]["idea"]["ideacatagory"]}",
-                            style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
-                          SizedBox(
-                            width: 50.0,
-                          ),
+                          Divider(),
+
+
+                       Row(
+                        children: <Widget>[
                           Icon(
                             Icons.supervisor_account,
                             color: Color(0xff2E86C1),
@@ -125,66 +134,98 @@ class ItemList extends StatelessWidget {
                           Text("Managment: ${list[i]["idea"]["Management"]}",style:
                           TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
                         ],
-                      ),
-                      Divider(color: Color(0xff2E86C1),),
-                      //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text("Address: ${list[i]["idea"]["address"]}",style:
-                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
-                          SizedBox(
-                            width: 50.0,
-                          ),
-                          Icon(
-                            Icons.comment,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text("Funding: ${list[i]["idea"]["funding"]}",style:
-                          TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                       )
+
                         ],
                       ),
-                      Divider(color: Color(0xff2E86C1),),
                       SizedBox(
                         height: 10.0,
                       ),
+                      Divider(),
+                      //Padding(padding: EdgeInsets.only(right: 50.0)),
                       Column(
                         children: <Widget>[
-                          Container(
 
-                           alignment: Alignment.topLeft,
-                            child: Text("Description :",style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.bold),),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.location_on,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text("Address: ${list[i]["idea"]["address"]}",style:
+                              TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                            ],
                           ),
-                          Text(
-                            "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
-                                "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
-                                "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
-                                "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
-                                " ${list[i]["idea"]["ideaDescription"]} .",
-                            style:
-                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),
+
+                          SizedBox(
+                            height: 10.0,
                           ),
+                          Divider(),
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text("Funding: ${list[i]["idea"]["funding"]}",style:
+                              TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
+                            ],
+                          )
+
+
+
                         ],
-                      )
+                      ),
+
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Divider(),
+                      //Divider(color: Color(0xff2E86C1),),
+
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text('Description :'),
+                            ],
+                          ),
+
+                          Container(
+                            //alignment: Alignment.topLeft,
+                            child: Wrap(
+                              children: <Widget>[
+                                Text("${list[i]['ideaDescription']}",
+                                  style: TextStyle(
+                                      fontSize: 15.0, color: Color(0xFF0a2f52)),)
+                              ],
+                            ),
+                          ),
+                          /*     Text(
+                            "Description: ${list[i]['ideaDescription']}.",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),*/
+                        ],
+                      ),
                     ],
                   ),
                 ),
-                Divider(
-                  color: Colors.black87,
-                  thickness: 1.0,
-                  height: 50.0,
-                )
+                Divider(color: Color(0xff2E86C1),),
               ],
             ),
           );

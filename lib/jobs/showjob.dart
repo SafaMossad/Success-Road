@@ -114,91 +114,117 @@ class ShowDataState extends State<ShowData> {
                     SizedBox(height: 10.0),
                     Divider( color: Color(0xff2E86C1), ),
 
-                    Wrap(
-                      //runSpacing: 2.0, // gap between lines
-                      direction: Axis.horizontal,
+                    Column(
                       children: <Widget>[
-                        Icon(
-                          Icons.category,
-                          color: Color(0xff2E86C1),
+
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.category,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['catagory']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['catagory']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
-                        SizedBox(
-                          width: 80.0,
-                        ),
-                        Icon(
-                          Icons.monetization_on,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['salary']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
+                        SizedBox(height: 10.0),
+                        Divider(),
+
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.monetization_on,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['salary']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
+                        )
+
+
+
                       ],
                     ),
 
                     SizedBox(
                       height: 10.0,
                     ),
-                    Divider( color: Color(0xff2E86C1), ),
-                    Wrap(
-//                          spacing: 3.0,
-//                          runSpacing: 2.0, // gap between lines
-                      direction: Axis.horizontal,
+                    Divider(  ),
+                   Column(
+
                       children: <Widget>[
-                        Icon(
-                          Icons.location_on,
-                          color: Color(0xff2E86C1),
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.location_on,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['address']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: 5.0,
+
+
+                        SizedBox(height: 10.0),
+                        Divider(),
+                        Row(children: <Widget>[
+                          Icon(
+                            Icons.location_on,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "${widget.list[widget.index]['country']}",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
+                        ],
                         ),
-                        Text(
-                          "${widget.list[widget.index]['address']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        Icon(
-                          Icons.location_on,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['country']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        Icon(
-                          Icons.location_city,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['city']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
+
+                        SizedBox(height: 10.0),
+                        Divider(),
+
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.location_city,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['city']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
+                        )
+
+
+
+
+
                       ],
                     ),
 
@@ -212,40 +238,56 @@ class ShowDataState extends State<ShowData> {
                     ),
 
 
-                    Divider( color: Color(0xff2E86C1), ),
-                    Wrap(
-                      runSpacing: 2.0, // gap between lines
-                      direction: Axis.horizontal,
+                    Divider(),
+
+
+                    Column(
                       children: <Widget>[
-                        Icon(
-                          Icons.nature_people,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['gander']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
+
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.nature_people,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['gander']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
                         ),
 
+
                         SizedBox(
-                          width: 80.0,
+                          height: 10.0,
                         ),
 
-                        Icon(
-                          Icons.location_on,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['qualification']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
+
+                        Divider(),
+
+                        Row(
+                          children: <Widget>[
+
+                            Icon(
+                              Icons.location_on,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['qualification']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
+                        )
+
+
                       ],
                     ),
 
@@ -254,47 +296,56 @@ class ShowDataState extends State<ShowData> {
                     ),
 
 
+                    Divider(),
 
-                    Divider( color: Color(0xff2E86C1), ),
-
-                    Wrap(
-                      runSpacing: 2.0, // gap between lines
-                      direction: Axis.horizontal,
+                    Column(
                       children: <Widget>[
-                        Icon(
-                          Icons.explicit,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['experience']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
+                        Row(
+
+                          children: <Widget>[
+                            Icon(
+                              Icons.explicit,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['experience']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
                         ),
 
                         SizedBox(
-                          width: 80.0,
+                          height: 10.0,
                         ),
 
-                        Icon(
-                          Icons.description,
-                          color: Color(0xff2E86C1),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          "${widget.list[widget.index]['description']}",
-                          style: TextStyle(
-                              fontSize: 15.0, color: Color(0xFF0a2f52)),
-                        ),
+
+                        Divider(),
+Row(
+  children: <Widget>[
+    Icon(
+      Icons.description,
+      color: Color(0xff2E86C1),
+    ),
+    SizedBox(
+      width: 5.0,
+    ),
+    Text(
+      "${widget.list[widget.index]['description']}",
+      style: TextStyle(
+          fontSize: 15.0, color: Color(0xFF0a2f52)),
+    ),
+  ],
+)
+
                       ],
                     ),
 
 
-                    SizedBox(height: 200.0),
+                    SizedBox(height: 30.0),
 
                   ],
                 ),

@@ -144,173 +144,215 @@ class ItemList extends StatelessWidget {
                       ),
 
                       //Row for Category & Manage
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Column(
                         children: <Widget>[
-                          Icon(
-                            Icons.category,
-                            color: Color(0xff2E86C1),
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.category,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Catagory: ${list[i]["job"]["catagory"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
                           ),
+
+
                           SizedBox(
-                            width: 5.0,
+                            height: 10.0,
                           ),
-                          Text(
-                            "Catagory: ${list[i]["job"]["catagory"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                          SizedBox(
-                            width: 50.0,
-                          ),
+                          Divider(),
 
 
-
-
-                          Icon(
-                            Icons.open_with,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Job Tybe: ${list[i]["job"]["jtype"]}",
-                            style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.open_with,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Job Tybe: ${list[i]["job"]["jtype"]}",
+                                style: TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          )
                         ],
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
+
+                      SizedBox(
+                        height: 10.0,
                       ),
+                      Divider(),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Column(
                         children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Address: ${list[i]["job"]["address"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                          SizedBox(
-                            width: 50.0,
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.location_on,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Address: ${list[i]["job"]["address"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
                           ),
 
-
-
-                          Icon(
-                            Icons.monetization_on,
-                            color: Color(0xff2E86C1),
-                          ),
                           SizedBox(
-                            width: 5.0,
+                            height: 10.0,
                           ),
-                          Text(
-                            "Salary: ${list[i]["job"]["salary"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Divider(),
+
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.monetization_on,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Salary: ${list[i]["job"]["salary"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          )
                         ],
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
+
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Divider(),
+
+
+
+
+
+                      Column(
+                        children: <Widget>[
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.supervised_user_circle,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Gender: ${list[i]["job"]["gander"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          ),
+
+
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Divider(),
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.vpn_lock,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "country: ${list[i]["job"]["country"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          )
+
+
+
+                        ],
+                      ),
+
+
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Divider(),
+
+
+                      Column(
+                        children: <Widget>[
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.location_on,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Address: ${list[i]["job"]["city"]}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          ),
+
+
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Divider(),
+                        Row(
+                          children: <Widget>[
+
+                            Icon(
+                              Icons.comment,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "qualification: ${list[i]["job"]["qualification"]}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
+                        )
+
+
+                        ],
                       ),
                       SizedBox(
                         height: 10.0,
                       ),
+                      Divider(),
 
-
-
-
-
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
-                        children: <Widget>[
-                          Icon(
-                            Icons.supervised_user_circle,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Gender: ${list[i]["job"]["gander"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                          SizedBox(
-                            width: 50.0,
-                          ),
-                          Icon(
-                            Icons.vpn_lock,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "country: ${list[i]["job"]["country"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Wrap(
-                        runSpacing: 7.0, // gap between lines
-                        direction: Axis.horizontal,
-                        textDirection: TextDirection.ltr,
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Address: ${list[i]["job"]["city"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                          SizedBox(
-                            width: 50.0,
-                          ),
-
-                          Icon(
-                            Icons.comment,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "qualification: ${list[i]["job"]["qualification"]}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
                       Column(
                         children: <Widget>[
                         Row(children: <Widget>[
@@ -322,7 +364,7 @@ class ItemList extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "eُxperience: ",
+                            "Experience: ",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -337,43 +379,46 @@ class ItemList extends StatelessWidget {
                         ],
                       ),
 
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
                       SizedBox(
                         height: 10.0,
                       ),
+                      Divider(),
                       Column(
                         children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text('Description :'),
+                            ],
+                          ),
+
                           Container(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Description :",
-                              style: TextStyle(
-                                  fontSize: 15.0, fontWeight: FontWeight.bold),
+                            //alignment: Alignment.topLeft,
+                            child: Wrap(
+                              children: <Widget>[
+                                Text("${list[i]['description']}",
+                                  style: TextStyle(
+                                      fontSize: 15.0, color: Color(0xFF0a2f52)),)
+                              ],
                             ),
                           ),
-                          Container(
-                            child: Text(
-                              "sadhas hdhash hdhas hdhja shdbh asjhbdj jhdbas jhbdba sjhdb hjas bhbd"
-                              "asd as gsd aas basba dsbhja sbsnb ndsbnas bndbnb nasbns dbbna sbndb nasbn bndbnad sbnadsb"
-                              "savd cga sgh asvb nad sbna db n sdbna sd b nba s asbnasjkhgdg ashd hgadgga  sgjhd ghasj"
-                              "asnasv ashvad  svhvhdjb asnbbndbn  asbnvdv ansdgvash  dghasvhvdv asghgvdghasghv"
-                              " ${list[i]["job"]["description"]} .",
-                              style: TextStyle(
-                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
-                            ),
-                          )
+                          /*     Text(
+                            "Description: ${list[i]['ideaDescription']}.",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),*/
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
-                Divider(
-                  color: Colors.black87,
-                  thickness: 1.0,
-                  height: 50.0,
-                )
+                Divider(color: Color(0xff2E86C1),),
               ],
             ),
           );

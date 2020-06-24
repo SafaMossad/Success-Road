@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/showoneapplyedIdea.dart';
@@ -122,100 +123,150 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Column(
                         children: <Widget>[
-                          Icon(
-                            Icons.category,
-                            color: Color(0xff2E86C1),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.category,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Catagory: ${list[i]['ideacatagory']}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
                           ),
+
+
                           SizedBox(
-                            width: 5.0,
+                            height: 10.0,
                           ),
-                          Text(
-                            "Catagory: ${list[i]['ideacatagory']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          Divider(),
+
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.supervisor_account,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Managment:${list[i]['Management']}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            width: 50.0,
-                          ),
-                          Icon(
-                            Icons.supervisor_account,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Managment:${list[i]['Management']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+//                          SizedBox(
+//                            width: 50.0,
+//                          ),
+
                         ],
                       ),
+
+            SizedBox(
+              height: 10.0,
+            ),
                       Divider(
-                        color: Color(0xff2E86C1),
+
                       ),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Wrap(
-                        runSpacing: 2.0, // gap between lines
-                        direction: Axis.horizontal,
+                      Column(
                         children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff2E86C1),
+                          Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.location_on,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "Address: ${list[i]['address']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
                           ),
+
+
                           SizedBox(
-                            width: 5.0,
+                            height: 10.0,
                           ),
-                          Text(
-                            "Address: ${list[i]['address']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                          SizedBox(
-                            width: 50.0,
-                          ),
-                          Icon(
-                            Icons.comment,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "Funding: ${list[i]['funding']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          Divider(),
+
+
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Funding: ${list[i]['funding']}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),
+                            ],
+                          )
+
+
                         ],
                       ),
-                      Divider(
-                        color: Color(0xff2E86C1),
-                      ),
+
+
                       SizedBox(
                         height: 10.0,
                       ),
+                      Divider(),
+
+
+
                       Column(
                         children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.comment,
+                                color: Color(0xff2E86C1),
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text('Description :'),
+                            ],
+                          ),
+
                           Container(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Description :",
-                              style: TextStyle(
-                                  fontSize: 15.0, fontWeight: FontWeight.bold),
+                            //alignment: Alignment.topLeft,
+                            child: Wrap(
+                              children: <Widget>[
+                                Text("${list[i]['ideaDescription']}",
+                                    style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),)
+                              ],
                             ),
                           ),
-                          Text(
-                            " ${list[i]['ideaDescription']}.",
+                     /*     Text(
+                            "Description: ${list[i]['ideaDescription']}.",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
+                          ),*/
                         ],
                       ),
-                      Divider(),
+                      Divider(    color: Color(0xff2E86C1),),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
