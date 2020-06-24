@@ -1,15 +1,9 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/ideas/showoneapplyedIdea.dart';
-import 'package:successroad/jobs/showoneapplyedjob.dart';
+import 'package:successroad/ideas/editidea.dart';
 
 class CompanyDashboardIdeas extends StatefulWidget {
-  CompanyDashboardIdeas({Key key, this.title}) : super(key: key);
-  final String title;
 
   @override
   CompanyDashboardIdeasState createState() => CompanyDashboardIdeasState();
@@ -18,8 +12,6 @@ class CompanyDashboardIdeas extends StatefulWidget {
 class CompanyDashboardIdeasState extends State<CompanyDashboardIdeas> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,18 +19,18 @@ class CompanyDashboardIdeasState extends State<CompanyDashboardIdeas> {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Color(0xff1B4F72),
-            title: Text("My Jobs main"),
+            title: Text("My Ideas main"),
             centerTitle: true,
           ),
-          body: new FutureBuilder <List<dynamic>> (
+          body: new FutureBuilder<List<dynamic>>(
             future: databaseHelper.getCurrenUserIdeas(),
             builder: (context, snapshot) {
               if (snapshot.hasError) print(snapshot.error);
               return snapshot.hasData
                   ? new ItemList(list: snapshot.data)
                   : new Center(
-                child: new CircularProgressIndicator(),
-              );
+                      child: new CircularProgressIndicator(),
+                    );
             },
           )),
     );
@@ -46,14 +38,17 @@ class CompanyDashboardIdeasState extends State<CompanyDashboardIdeas> {
 }
 
 class ItemList extends StatelessWidget {
-  List list;
+  DatabaseHelper databaseHelper = new DatabaseHelper();
 
-  ItemList({this.list});
+  List list;
+  int index;
+  ItemList({this.index , this.list}) ;
+//  List list;
+//
+//  ItemList({this.list});
 
   @override
   Widget build(BuildContext context) {
-
-    // TODO: implement build
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
@@ -139,7 +134,7 @@ class ItemList extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "Catagory: ${list[i]['title']}",
+                            "Catagory: ${list[i]['ideacatagory']}",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -154,7 +149,7 @@ class ItemList extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "Managment:${list[i]['title']}",
+                            "Managment:${list[i]['Management']}",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -176,7 +171,7 @@ class ItemList extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "Address: ${list[i]['title']}",
+                            "Address: ${list[i]['address']}",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -191,7 +186,7 @@ class ItemList extends StatelessWidget {
                             width: 5.0,
                           ),
                           Text(
-                            "Funding: ${list[i]['title']}",
+                            "Funding: ${list[i]['funding']}",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -214,11 +209,7 @@ class ItemList extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
-                                "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
-                                "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
-                                "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
-                                " ${list[i]['title']}.",
+                            " ${list[i]['ideaDescription']}.",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
                           ),
@@ -228,17 +219,86 @@ class ItemList extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("Edit"),
+
+
+
+                          //Edit Button
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 25.0),
+                            //width: 150.0,
+                            child: RaisedButton(
+                              elevation: 20.0,
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  new MaterialPageRoute(
+                                    builder: (BuildContext context) => new EditData(list: list, index: i),
+                                  )
+                              );
+                                print("Edit");
+                              },
+                              padding: EdgeInsets.all(10.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              color: Color(0xFF0a2f52),
+                              child: Text(
+                                'Edit',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.5,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                ),
+                              ),
+                            ),
                           ),
+
+
                           SizedBox(
                             width: 25.0,
                           ),
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("delete"),
+
+
+                          //Delete Button
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 25.0),
+                            //width: 150.0,
+                            child: RaisedButton(
+                              elevation: 20.0,
+                              onPressed: () {
+                                databaseHelper.deleteData(list[i]['id']);
+                                print("Delete");
+                              },
+                              padding: EdgeInsets.all(10.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              color: Color(0xFF0a2f52),
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.5,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                ),
+                              ),
+                            ),
                           ),
+
+//                          RaisedButton(
+//                            onPressed: () {
+//                              databaseHelper.deleteData(list[i]['id']);
+////                              Navigator.of(context).push(
+////                                  new MaterialPageRoute(
+////                                    builder: (BuildContext context) => new Dashboard(),
+////                                  )
+////                              );
+//                            },
+//                            child: Text("delete"),
+//                          ),
                         ],
                       ),
                       SizedBox(
@@ -248,25 +308,21 @@ class ItemList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           FlatButton(
-                           // elevation: 20.0,
-                            onPressed: ()
-
-                            {
+                            // elevation: 20.0,
+                            onPressed: () {
                               // var databaseHelper=list[i]['id'];
 
-                              Navigator.of(context).push(
-                                  new MaterialPageRoute(
-                                    builder: (BuildContext context) =>
+                              Navigator.of(context).push(new MaterialPageRoute(
+                                builder: (BuildContext context) =>
                                     new ShowOneApplyIdea(list: list, index: i),
-                                  )
-                              );
+                              ));
                               print("show ok now sharf");
                             },
                             padding: EdgeInsets.all(15.0),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
-                           // color: Color(0xFF0a2f52),
+                            // color: Color(0xFF0a2f52),
                             child: Text(
                               'Apply Request',
                               style: TextStyle(

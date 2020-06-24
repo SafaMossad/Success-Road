@@ -43,7 +43,6 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
           },
 
         )*/
-
         appBar: AppBar(
           backgroundColor: primary,
           title:Text( "All Requestes"),

@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/jobs/addjob.dart';
+import 'package:successroad/jobs/dashboard.dart';
 import 'package:successroad/jobs/showjob.dart';
 
 /*import '../jobs/addjob.dart';
@@ -26,78 +29,172 @@ class TimeLineJobsState extends State<TimeLineJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffECF0F1),
-      /*floatingActionButton: new FloatingActionButton(
-        child: new Icon(Icons.add),
-        onPressed: ()=>Navigator.of(context).push(
-            new MaterialPageRoute(
-              builder: (BuildContext context) => new AddJobs(),
-            )
-        ),
-      ),*/
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 120),
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: new FutureBuilder<List>(
-                  future: databaseHelper.getAllJobData(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) print(snapshot.error);
-                    return snapshot.hasData
-                        ? new ItemList(list: snapshot.data)
-                        : new Center(
-                            child: new CircularProgressIndicator(),
-                          );
-                  },
-                ),
+      drawer: new Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xff1B4F72),
               ),
-              Container(
-                height: 140,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    color: primary,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-//                      IconButton(
-//                        onPressed: () {},
-//                        icon: Icon(
-//                          Icons.menu,
-//                          color: Colors.white,
-//                        ),
-//                      ),
-
-                      Text(
-                        "TimeLine",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.filter_list,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              accountName: Text("Safa"),
+              accountEmail: Text("Eng:Safa El-Helely"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
               ),
-            ],
-          ),
+            ),
+            ListTile(
+              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AddJobs())),
+            ),
+            Divider(),
+
+
+
+            ListTile(
+              title: Text("Show ideas",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => CompanyDashboardIdeas())),
+            ),Divider(),
+            ListTile(
+              title: Text("show jobs",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => CompanyDashboardjobs())),
+            ),
+
+
+            Divider(),
+
+
+
+            ListTile(
+              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+            ),
+
+
+
+            Divider(),
+            ListTile(
+              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.settings,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.filter_frames,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              trailing: Icon(
+                Icons.textsms,
+                color: Color(0xff1B4F72),
+              ),
+            ),
+            Divider(),
+            ListTile(
+                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
+                trailing: Icon(
+                  Icons.close,
+                  color: Color(0xff1B4F72),
+                ),
+                onTap: () => Navigator.of(context).pop()),
+          ],
         ),
       ),
+      body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: Text("Collapsing Toolbar",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        )),
+                    background: Image.network(
+                      "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+                      fit: BoxFit.cover,
+                    )),
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                    size: 25,
+                  ),
+                  tooltip: 'Add new entry',
+                  onPressed: () => Scaffold.of(context).openDrawer(),
+                ),
+                backgroundColor: Color(0xff1B4F72),
+//                  actions: < Widget > [
+//                    IconButton(
+//                      icon: const Icon(Icons.add_circle),
+//                      tooltip: 'Add new entry',
+//                      onPressed: () { /* ... */ },
+//                    ),
+//                  ]
+              ),
+
+            ];
+          },
+          //backgroundColor: Color(0xffECF0F1 ),
+          body: Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    //padding: EdgeInsets.only(top: 120),
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: new FutureBuilder<List>(
+                      future: databaseHelper.getDataIdeaHome(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) print(snapshot.error);
+                        return snapshot.hasData
+                            ? new ItemList(list: snapshot.data)
+                            : new Center(
+                          child: new CircularProgressIndicator(),
+                        );
+                      },
+                    ),
+
+                  ),
+
+
+                ],
+              ),
+            ),
+          )
+      ),
+
     );
   }
 }

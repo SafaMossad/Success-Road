@@ -461,7 +461,7 @@ class EditDataState extends State<EditData> {
         ),
         color: Color(0xFF0a2f52),
         child: Text(
-          'Edit Jobs',
+          'Save Jobs',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,

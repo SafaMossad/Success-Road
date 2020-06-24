@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/jobs/showoneapplyedjob.dart';
+import 'package:successroad/jobs/editjob.dart';
 
 class CompanyDashboardjobs extends StatefulWidget {
   CompanyDashboardjobs({Key key, this.title}) : super(key: key);
@@ -13,6 +14,8 @@ class CompanyDashboardjobs extends StatefulWidget {
 class CompanyDashboardjobsState extends State<CompanyDashboardjobs> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,15 +26,15 @@ class CompanyDashboardjobsState extends State<CompanyDashboardjobs> {
             title: Text("My Jobs main"),
             centerTitle: true,
           ),
-          body: new FutureBuilder<List<dynamic>>(
+          body: new FutureBuilder <List<dynamic>> (
             future: databaseHelper.getCurrentUserJobs(),
             builder: (context, snapshot) {
               if (snapshot.hasError) print(snapshot.error);
               return snapshot.hasData
                   ? new ItemList(list: snapshot.data)
                   : new Center(
-                      child: new CircularProgressIndicator(),
-                    );
+                child: new CircularProgressIndicator(),
+              );
             },
           )),
     );
@@ -42,28 +45,45 @@ class ItemList extends StatelessWidget {
   List list;
 
   ItemList({this.list});
-
+  DatabaseHelper databaseHelper = new DatabaseHelper();
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
           return new SingleChildScrollView(
-           // padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: 5.0),
             child: Column(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
                     Container(
-                        padding: EdgeInsets.only(top: 20.0),
-                        height: 200,
+                        height: 150,
                         width: double.infinity,
                         child: Image.asset(
                           "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
                           fit: BoxFit.cover,
                         )),
-
+                    Positioned(
+                      top: 0.0,
+                      left: 20.0,
+                      right: 20.0,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.slideshow,
+                            color: Colors.black87,
+                          ),
+                          SizedBox(width: 10.0),
+                          Text(
+                            "My Invest",
+                            style: TextStyle(color: Colors.black87),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
                 Padding(
@@ -72,56 +92,23 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                     Padding(
-                       padding: EdgeInsets.only(left: 150.0),
-                       child:  Container(
-
-                       alignment: Alignment.topRight,
-                       child: Row(
-                         children: <Widget>[
-                           // SizedBox(width: 10.0),
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.center,
-                             children: <Widget>[
-                               FlatButton(
-                                 //elevation: 20.0,
-                                 onPressed: () {
-                                   // var databaseHelper=list[i]['id'];
-
-                                   Navigator.of(context)
-                                       .push(new MaterialPageRoute(
-                                     builder: (BuildContext context) =>
-                                     new ShowOneApplyJob(
-                                         list: list, index: i),
-                                   ));
-                                   print("show ok now sharf");
-                                 },
-                                 padding: EdgeInsets.all(15.0),
-                                 shape: RoundedRectangleBorder(
-                                   borderRadius: BorderRadius.circular(30.0),
-                                 ),
-                                 // color: Color(0xFF0a2f52),
-                                 child: Text(
-                                   'Apply Request',
-                                   style: TextStyle(
-                                     color: Colors.red,
-                                     letterSpacing: 1.5,
-                                     fontSize: 18.0,
-                                     fontWeight: FontWeight.bold,
-                                     fontFamily: 'OpenSans',
-                                   ),
-                                 ),
-                               ),
-                             ],
-                           ),
-                           Icon(
-                             Icons.notifications_active,
-                             color: Colors.red,
-                           ),
-                         ],
-                       ),
-                     ),),
-
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              "id :${list[i]['id']}",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Color(0xFF0a2f52),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
                       Text(
                         "Title :${list[i]['title']}",
                         style: TextStyle(
@@ -136,73 +123,74 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-                      Column(
+                      Wrap(
                         //runSpacing: 2.0, // gap between lines
-                      //  direction: Axis.horizontal,
+                        direction: Axis.horizontal,
                         children: <Widget>[
-                         Row(children: <Widget>[ Icon(
-                           Icons.category,
-                           color: Color(0xff2E86C1),
-                         ),
-                           SizedBox(
-                             width: 5.0,
-                           ),
-                           Text(
-                             "Catagory: ${list[i]['title']}",
-                             style: TextStyle(
-                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
-                           ),],),
-
-                         Divider(),
-                         Row(children: <Widget>[
-                           Icon(
-                             Icons.supervisor_account,
-                             color: Color(0xff2E86C1),
-                           ),
-                           SizedBox(
-                             width: 5.0,
-                           ),
-                           Text(
-                             "Managment:${list[i]['title']}",
-                             style: TextStyle(
-                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
-                           ),
-                         ],)
+                          Icon(
+                            Icons.category,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "Catagory: ${list[i]['title']}",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
+                          SizedBox(
+                            width: 50.0,
+                          ),
+                          Icon(
+                            Icons.supervisor_account,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "Managment:${list[i]['title']}",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
                         ],
                       ),
                       Divider(
+                        color: Color(0xff2E86C1),
                       ),
                       //Padding(padding: EdgeInsets.only(right: 50.0)),
-                      Column(
-
+                      Wrap(
+                        runSpacing: 2.0, // gap between lines
+                        direction: Axis.horizontal,
                         children: <Widget>[
-                         Row(children: <Widget>[ Icon(
-                           Icons.location_on,
-                           color: Color(0xff2E86C1),
-                         ),
-                           SizedBox(
-                             width: 5.0,
-                           ),
-                           Text(
-                             "Address: ${list[i]['title']}",
-                             style: TextStyle(
-                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
-                           ),],),
-                        Divider(),
-                         Row(children: <Widget>[
-                           Icon(
-                             Icons.comment,
-                             color: Color(0xff2E86C1),
-                           ),
-                           SizedBox(
-                             width: 5.0,
-                           ),
-                           Text(
-                             "Funding: ${list[i]['title']}",
-                             style: TextStyle(
-                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
-                           ),
-                         ],)
+                          Icon(
+                            Icons.location_on,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "Address: ${list[i]['title']}",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
+                          SizedBox(
+                            width: 50.0,
+                          ),
+                          Icon(
+                            Icons.comment,
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "Funding: ${list[i]['title']}",
+                            style: TextStyle(
+                                fontSize: 15.0, color: Color(0xFF0a2f52)),
+                          ),
                         ],
                       ),
                       Divider(
@@ -222,10 +210,6 @@ class ItemList extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "sadhashdhashhdhashdhjashdbhasjhbdjjhdbasjhbdbasjhdbhjasbhbd"
-                            "asdasgsdaasbasbadsbhjasbsnbndsbnasbndbnbnasbnsdbbnasbndbnasbnbndbnadsbnadsb"
-                            "savdcgasghasvbnadsbnadbnsdbnasdbnbasasbnasjkhgdgashdhgadggasgjhdghasj"
-                            "asnasvashvadsvhvhdjb asnbbndbnasbnvdvansdgvashdghasvhvdvasghgvdghasghv"
                             " ${list[i]['title']}.",
                             style: TextStyle(
                                 fontSize: 15.0, color: Color(0xFF0a2f52)),
@@ -236,16 +220,70 @@ class ItemList extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("Edit"),
+                          //Edit Button
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 25.0),
+                            //width: 150.0,
+                            child: RaisedButton(
+                              elevation: 20.0,
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                    new MaterialPageRoute(
+                                      builder: (BuildContext context) => new EditData(list: list, index: i),
+                                    )
+                                );
+                                print("Edit");
+                              },
+                              padding: EdgeInsets.all(10.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              color: Color(0xFF0a2f52),
+                              child: Text(
+                                'Edit',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.5,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                ),
+                              ),
+                            ),
                           ),
+
+
                           SizedBox(
                             width: 25.0,
                           ),
-                          RaisedButton(
-                            onPressed: null,
-                            child: Text("delete"),
+
+
+                          //Delete Button
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 25.0),
+                            //width: 150.0,
+                            child: RaisedButton(
+                              elevation: 20.0,
+                              onPressed: () {
+                                databaseHelper.deleteDataJobs(list[i]['id']);
+                                print("Delete");
+                              },
+                              padding: EdgeInsets.all(10.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                              color: Color(0xFF0a2f52),
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1.5,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -257,13 +295,17 @@ class ItemList extends StatelessWidget {
                         children: <Widget>[
                           FlatButton(
                             //elevation: 20.0,
-                            onPressed: () {
+                            onPressed: ()
+
+                            {
                               // var databaseHelper=list[i]['id'];
 
-                              Navigator.of(context).push(new MaterialPageRoute(
-                                builder: (BuildContext context) =>
+                              Navigator.of(context).push(
+                                  new MaterialPageRoute(
+                                    builder: (BuildContext context) =>
                                     new ShowOneApplyJob(list: list, index: i),
-                              ));
+                                  )
+                              );
                               print("show ok now sharf");
                             },
                             padding: EdgeInsets.all(15.0),

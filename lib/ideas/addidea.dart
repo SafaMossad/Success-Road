@@ -1,14 +1,7 @@
-//import 'package:final_design/ui/addjob.dart';
-//import 'package:final_design/ui/manageidea.dart';
 import 'package:flutter/material.dart';
-import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/utilities/job_and_idea.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/ideas/dashboard.dart';
-
-//import 'login_page.dart';
-//import 'managejob.dart';
 
 class AddIdea extends StatefulWidget {
   @override

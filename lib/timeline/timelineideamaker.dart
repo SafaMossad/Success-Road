@@ -657,7 +657,8 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 ],
               ),
             ),
-          )),
+          )
+      ),
     );
   }
 }

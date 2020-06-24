@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
-import 'package:successroad/utilities/constants.dart';
+import 'package:successroad/utilities/job_and_idea.dart';
 
 
 class EditData extends StatefulWidget {
@@ -22,10 +22,6 @@ class EditDataState extends State<EditData> {
   TextEditingController _managementTypeController = new TextEditingController();
   TextEditingController _addressController = new TextEditingController();
   TextEditingController _ideaDescriptionController = new TextEditingController();
-
-//  TextEditingController _nameController  ;
-//  TextEditingController _priceController  ;
-
 
 
   Widget _ideaTitle() {
@@ -237,13 +233,6 @@ class EditDataState extends State<EditData> {
       child: RaisedButton(
         elevation: 20.0,
         onPressed: ()
-//        {
-////                    databaseHelper.editData(widget.list[widget.index]['id']
-////                        , _nameController.text.trim(), _priceController.text.trim());
-//                    Navigator.of(context).push(new MaterialPageRoute(
-//                      builder: (BuildContext context) => new Dashboard(),
-//                    ));
-//                  },
         {
           databaseHelper.editDataIdea(widget.list[widget.index]['id'],
               _ideaTitleController.text.trim(),
@@ -265,7 +254,7 @@ class EditDataState extends State<EditData> {
         ),
         color: Color(0xFF0a2f52),
         child: Text(
-          'Edit Idea',
+          'Save Idea',
           style: TextStyle(
             color: Colors.white,
             letterSpacing: 1.5,
@@ -296,55 +285,127 @@ class EditDataState extends State<EditData> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Update Idea',
-      home: Scaffold(
-
-
-
-
-
-
-body: ListView(
-  children: <Widget>[
-    Stack(
-      children: <Widget>[
-
-        Stack(
-          children: <Widget>[
-            SingleChildScrollView(
-              //padding: EdgeInsets.only(top: 0.0),
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  //Padding(padding: EdgeInsets.all(10.0)),
-                  Container(
-                    //Controlling the white place Shape
-                    height: 660.0,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Edit Idea',
+          style: TextStyle(
+            fontSize: 22.0,
+          ),
+        ),
+        centerTitle: true,
+        //backgroundColor: Color(0xffEC7063),
+        //backgroundColor: Color(0xFFdadada),
+        //backgroundColor: Color(0xff2E86C1),
+        //backgroundColor: Color(0xFF233f5c),
+        backgroundColor: Colors.transparent,
+      ),
+      // yellow backgroundColor: Color(0xffF7DC6F),
+      //backgroundColor: Color(0xffEC7063),
+      backgroundColor: Color(0xff2E86C1),
+      //backgroundColor: Color(0xFFdadada),
+      body: ListView(
+        //padding: EdgeInsets.only(top: 0),
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              /*  Container(
+                padding: EdgeInsets.only(top: 150.0),
+                child: ClipPath(
+                  clipper: WaveClipper2(),
+                  child: Container(
+                    padding: EdgeInsets.only(),
+                    width: double.infinity,
+                    height: 485,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(75.0),
-                        bottomRight: Radius.circular(75.0),
+                        gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+//                        Color(0xff5DADE2),
+//                        Color(0xffF2F3F4),
+                        Color(0xff2E86C1),
+                        Color(0xff85C1E9)
+                      ],
+                    )),
+                  ),
+                ),
+              ),
+              */
 
-                      ),
-                    ),
-                    padding: EdgeInsets.all(20.0),
-
-                    //Stack That Controlling Data In Container
-                    child: Stack(
-                      //primary: false,
-                      //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+              /*
+                Container(
+               padding: EdgeInsets.only(top: 450),
+               child:  ClipPath(
+                 clipper: WaveClipper3(),
+                 child: Container(
+                   width: double.infinity,
+                   height: 350,
+                   decoration: BoxDecoration(
+                       gradient: LinearGradient(colors: [
+//                           Color(0xffF1C40F),
+//                         Color(0xffF1C40F),
+//                         Color(0xffF1C40F),
+//                         Color(0xff85C1E9)
+                         Color(0xFF0a2f52),
+                         Color(0xff2E86C1),
+                         Color(0xFFdadada),
+                       ])),
+                 ),
+               ),
+             ),*/
+              ClipPath(
+                clipper: WaveClipper1(),
+                child: Container(
+                  width: double.infinity,
+                  height: 350,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFF0a2f52),
+                          Color(0xff2E86C1),
+                        ],
+                      )),
+                ),
+              ),
+              Stack(
+                children: <Widget>[
+                  SingleChildScrollView(
+                    //padding: EdgeInsets.only(top: 0.0),
+                    physics: AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        ListView(
-                          children: <Widget>[
-                            Container(
-                              height: MediaQuery.of(context).size.height-145,
-                              padding: EdgeInsets.only(top: 30.0),
-                              alignment: Alignment.topCenter,
-                              child: Column(
+                        //Padding(padding: EdgeInsets.all(10.0)),
+                        Container(
+                          //Controlling the white place Shape
+                          height: 670.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(75.0),
+                              bottomRight: Radius.circular(75.0),
+                              // bottomLeft: Radius.circular(75.0),
+                              //   topRight: Radius.circular(75.0)
+                            ),
+                          ),
+                          padding: EdgeInsets.all(20.0),
+
+                          //Stack That Controlling Data In Container
+                          child: Stack(
+                            //primary: false,
+                            //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+                            children: <Widget>[
+                              ListView(
                                 children: <Widget>[
-                                  // Padding(padding: EdgeInsets.only(top: 2.0)),
+                                  Container(
+                                    height: MediaQuery.of(context).size.height * 1.1,
+                                    padding: EdgeInsets.only(top: 5.0),
+                                    alignment: Alignment.topCenter,
+                                    child: Column(
+                                      children: <Widget>[
+                                        // Padding(padding: EdgeInsets.only(top: 2.0)),
 
 //                                        Row(
 //                                          children: <Widget>[
@@ -356,81 +417,68 @@ body: ListView(
 //                                          ],
 //                                        ),
 
-                                  _ideaTitle(),
+                                        _ideaTitle(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
 
-                                  _ideaCategory(),
+                                        _ideaCategory(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
 
-                                  _funding(),
+                                        _funding(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
 
-                                  _managementType(),
+                                        _managementType(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
 
-                                  _address(),
+                                        _address(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
-                                  _ideaDescription(),
+                                        SizedBox(
+                                          height: 15.0,
+                                        ),
+                                        _ideaDescription(),
 
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
+                                        SizedBox(
+                                          height: 12.0,
+                                        ),
 
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.center,
-                                    children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
 //                                              _buildLoginBtn(),
 //                                              SizedBox(
 //                                                width: 20,
 //                                              ),
-                                      _buildLoginBtns(),
-                                    ],
-                                  )
+                                            _buildLoginBtns(),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            ),
-                          ],
-                        )
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  ],
-),
-
-
-
-
-
-
-
-
-
-
-
-
+            ],
+          ),
+        ],
       ),
     );
   }
