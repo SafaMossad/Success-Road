@@ -60,6 +60,23 @@ class ShowDataState extends State<ShowData> {
                   ),
                 ),
               ),
+
+              Container(
+                height: 50,
+                child: new IconButton(
+
+                 /* onPressed: () {
+                    databaseHelper.applyFunding(widget.list[widget.index]['id']);
+                    Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => new TimeLineSponsor(),
+                    ));
+                  },*/
+                  padding: EdgeInsets.all(15.0),
+                  //color: Color(0xFF0a2f52),
+                  color: Colors.transparent,
+                  icon: Icon(Icons.favorite,color: Colors.red,size: 15.0,),
+                ),
+              ),
             ],
           )
         ],

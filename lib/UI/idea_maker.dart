@@ -41,14 +41,14 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   final TextEditingController _nameController  = new TextEditingController();
-  final TextEditingController _jobtitleController  = new TextEditingController();
+  final TextEditingController _websiteController  = new TextEditingController();
   final TextEditingController _addreeController  = new TextEditingController();
-  final TextEditingController _locationController  = new TextEditingController();
+  final TextEditingController _ideamakerBioController  = new TextEditingController();
  // final TextEditingController _GanderController  = new TextEditingController();
   final TextEditingController _qualifictionController  = new TextEditingController();
   final TextEditingController _mobileController  = new TextEditingController();
   final TextEditingController _interstingfieldController  = new TextEditingController();
-  final TextEditingController _indestryController  = new TextEditingController();
+  final TextEditingController _sizeController  = new TextEditingController();
 
 
 /*
@@ -147,32 +147,6 @@ class _IdeaMaker extends State<IdeaMaker> {
     );
   }
 
-  Widget _phone() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
-      child: TextField(
-        controller: _mobileController,
-
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.phone_forwarded,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -198,66 +172,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       ),
     );
   }
-  Widget _location() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
-      child: TextField(
-        controller: _locationController,
 
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.home,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-/*
-  Widget _gender() {
-    return Container(
-      padding: EdgeInsets.only(left: 11.0),
-      alignment: Alignment.centerLeft,
-
-      decoration: kBoxDecorationStyle,
-      height: 63.0,
-      child: DropdownButtonFormField(
-
-        hint: Text("hello",style: TextStyle(color: Colors.white),),
-        value: _selectedGender,
-        items: _dropdownMenuItem,
-        onChanged: onChanging1,
-        decoration: new InputDecoration(
-          icon: Icon(Icons.supervisor_account),
-          enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
-
-          contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
-
-          // hoverColor: Colors.orange,
-          // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
-          hintText: 'Gender',
-          focusColor: Colors.orange,
-          labelStyle: TextStyle(color: Colors.white,fontSize: 20),
-          labelText: "Gender",
-          // labelStyle: ,
-          //  hintStyle: kHintTextStyle,
-          //icon: new Icon(Icons.person)
-        ),
-      ),
-    );
-  }
-*/
   Widget _gender() {
     return   Container(
 
@@ -311,56 +226,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       ]),
     );
   }
-  Widget _interstingfield() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 63.0,
-      child: TextField(
-        controller: _interstingfieldController,
 
-        keyboardType: TextInputType.emailAddress,
-        style:kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.category,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "categoey",
-          //labelStyle: kLabelStyle,
-          hintText: "categoey",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-  Widget _jobtitle() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      child: TextField(
-        controller: _jobtitleController,
-
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.description,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText:  "Experince",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
   Widget _qualification() {
     return Container(
       alignment: Alignment.topCenter,
@@ -387,13 +253,129 @@ class _IdeaMaker extends State<IdeaMaker> {
       ),
     );
   }
-  Widget indestry() {
+
+  Widget _phone() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,      // width: 150.0,
+      child: TextField(
+        controller: _mobileController,
+
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Phone",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _interstingfield() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 63.0,
+      child: TextField(
+        controller: _interstingfieldController,
+
+        keyboardType: TextInputType.emailAddress,
+        style:kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.category,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "categoey",
+          //labelStyle: kLabelStyle,
+          hintText: "categoey",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+
+
+  Widget _ideamakerBio() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,      // width: 150.0,
+      child: TextField(
+        controller: _ideamakerBioController,
+
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.home,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Address",
+          //labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+/*
+  Widget _gender() {
+    return Container(
+      padding: EdgeInsets.only(left: 11.0),
+      alignment: Alignment.centerLeft,
+
+      decoration: kBoxDecorationStyle,
+      height: 63.0,
+      child: DropdownButtonFormField(
+
+        hint: Text("hello",style: TextStyle(color: Colors.white),),
+        value: _selectedGender,
+        items: _dropdownMenuItem,
+        onChanged: onChanging1,
+        decoration: new InputDecoration(
+          icon: Icon(Icons.supervisor_account),
+          enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
+
+          contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
+
+          // hoverColor: Colors.orange,
+          // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
+          hintText: 'Gender',
+          focusColor: Colors.orange,
+          labelStyle: TextStyle(color: Colors.white,fontSize: 20),
+          labelText: "Gender",
+          // labelStyle: ,
+          //  hintStyle: kHintTextStyle,
+          //icon: new Icon(Icons.person)
+        ),
+      ),
+    );
+  }
+*/
+
+  Widget _website() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
-        controller: _indestryController,
+        controller: _websiteController,
 
         keyboardType: TextInputType.emailAddress,
         style: kLabelStyle,
@@ -406,7 +388,33 @@ class _IdeaMaker extends State<IdeaMaker> {
           ),
           //labelText: "Experince",
           //labelStyle: kLabelStyle,
-          hintText:  "Experince",
+          hintText:  "Website",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _size() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _sizeController,
+
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.description,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText:  "Number of Employee ",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -422,14 +430,14 @@ class _IdeaMaker extends State<IdeaMaker> {
         onPressed: () {
           databaseHelper.ideaMakerRegister(
               _nameController.text.trim(),
-              _jobtitleController.text.trim(),
+              _websiteController.text.trim(),
               _addreeController.text.trim(),
-              _locationController.text.trim(),
+              _ideamakerBioController.text.trim(),
               genderDropdownValue.trim(),
               _qualifictionController.text.trim(),
               _mobileController.text.trim(),
               _interstingfieldController.text.trim(),
-              _indestryController.text.trim());
+              _sizeController.text.trim());
 
           Navigator.of(context).push(
               new MaterialPageRoute(
@@ -593,7 +601,7 @@ class _IdeaMaker extends State<IdeaMaker> {
                                         Divider(thickness: 1.0,color: Colors.black,),
 
 
-                                        _jobtitle(),
+                                        _website(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
@@ -607,7 +615,7 @@ class _IdeaMaker extends State<IdeaMaker> {
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
-                                        _location(),
+                                        _ideamakerBio(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
@@ -623,7 +631,7 @@ class _IdeaMaker extends State<IdeaMaker> {
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
-                                        indestry(),
+                                        _size(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),

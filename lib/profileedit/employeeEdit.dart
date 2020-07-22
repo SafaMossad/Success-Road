@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/profiles/emmployeeprofile.dart';
-import 'package:successroad/profiles/ideamakerprofile.dart';
 import 'package:successroad/utilities/constants.dart';
 
 class EmployeeEditData extends StatefulWidget {
@@ -41,14 +40,15 @@ class EditDataState extends State<EmployeeEditData> {
   TextEditingController _jobcategoryController = new TextEditingController();
   TextEditingController _addressController = new TextEditingController();
   TextEditingController _salaryController = new TextEditingController();
+  TextEditingController _genderController = new TextEditingController();
   TextEditingController _qualifcationController = new TextEditingController();
   TextEditingController _mobileController = new TextEditingController();
   TextEditingController _degreeController = new TextEditingController();
   TextEditingController _indestryController = new TextEditingController();
-  TextEditingController _exprenseController = new TextEditingController();
-  TextEditingController _genderController = new TextEditingController();
   TextEditingController _experinceController = new TextEditingController();
-
+  TextEditingController _employeeBioController = new TextEditingController();
+  TextEditingController _datefromController = new TextEditingController();
+  TextEditingController _datetoController = new TextEditingController();
   Widget _firstname() {
     return Container(
       /*alignment: Alignment.topCenter,
@@ -385,7 +385,7 @@ class EditDataState extends State<EmployeeEditData> {
           ),
           // labelText: "Phone",
           // labelStyle: kLabelStyle,
-          hintText: "inndestory",
+         // hintText: "inndestorrrrry",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -398,7 +398,7 @@ class EditDataState extends State<EmployeeEditData> {
       decoration: kBoxDecorationStyle,
       height: 50.0,
       child: TextField(
-        controller: _exprenseController,
+        controller: _experinceController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Colors.black,
@@ -419,8 +419,84 @@ class EditDataState extends State<EmployeeEditData> {
       ),
     );
   }
+  Widget _employeeBio() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _employeeBioController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
 
-  Widget _buildEditEmpBtnsSave() {
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _datefrom() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _datefromController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Colors.black87,
+
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Data from",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _dateto() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _datetoController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Colors.black87,
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Data to :",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  /*Widget _buildEditEmpBtnsSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
@@ -461,9 +537,9 @@ class EditDataState extends State<EmployeeEditData> {
         ),
       ),
     );
-  }
+  }*/
 
-  Widget _buildEditEmpBtnsBack() {
+  /*Widget _buildEditEmpBtnsBack() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
@@ -489,7 +565,7 @@ class EditDataState extends State<EmployeeEditData> {
         ),
       ),
     );
-  }
+  }*/
 
   @override
   void initState() {
@@ -497,10 +573,18 @@ class EditDataState extends State<EmployeeEditData> {
     _jobtybeController = new TextEditingController(text: widget.map['jobtybe']);
     _jobcategoryController = new TextEditingController(text: widget.map['jobcategory']);
     _addressController = new TextEditingController(text: widget.map['address']);
-    _salaryController = new TextEditingController(text: widget.map['salary']);_qualifcationController = new TextEditingController(text: widget.map['qualifcation']);
+    _salaryController = new TextEditingController(text: widget.map['salary']);
+    _qualifcationController = new TextEditingController(text: widget.map["Qualifcation"]);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
-    _degreeController = new TextEditingController(text: widget.map['degree']);
-    _indestryController = new TextEditingController(text: widget.map['indestry']);
+    _degreeController = new TextEditingController(text: widget.map["Degree"]);
+    _indestryController = new TextEditingController(text: widget.map['Indestry'].toString());
+    _experinceController = new TextEditingController(text: widget.map['Exprense'].toString());
+    //_genderController = new TextEditingController(text: widget.map['employeeBio']);
+
+    _employeeBioController = new TextEditingController(text: widget.map['employeeBio']);
+    _datefromController = new TextEditingController(text: widget.map['Datafrom']);
+    _datetoController = new TextEditingController(text: widget.map['Datato']);
+
   }
 
   @override
@@ -530,12 +614,17 @@ class EditDataState extends State<EmployeeEditData> {
                     _jobcategoryController.text.trim(),
                     _addressController.text.trim(),
                     _salaryController.text.trim(),
+                    _genderController.text.trim(),
                     _qualifcationController.text.trim(),
                     _mobileController.text.trim(),
                     _degreeController.text.trim(),
                     _indestryController.text.trim(),
-                    _genderController.text.trim(),
-                    _experinceController.text.trim());
+
+                    _experinceController.text.trim(),
+                  _employeeBioController.text.trim(),
+                  _datefromController.text.trim(),
+                  _datetoController.text.trim()
+                  ,);
                 Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => new EmployeeProfile(),
                 ));
@@ -750,7 +839,6 @@ class EditDataState extends State<EmployeeEditData> {
 
                             _gender(),
                             Divider(),
-
                             _phone(),
 
 
@@ -801,7 +889,15 @@ class EditDataState extends State<EmployeeEditData> {
 
                             _experince(),
 
+                            Divider(),
 
+                            _employeeBio(),
+                            Divider(),
+
+                            _datefrom(),
+                            Divider(),
+
+                            _dateto(),
                           ],
                         ),
                       ),

@@ -258,7 +258,7 @@ class ProfileFinal extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Idea Maker"),
                                           ),
-                                          Padding(padding: EdgeInsets.only(right: 5),
+                                          Padding(padding: EdgeInsets.only(left: 150),
                                             child: IconButton(
                                               icon: Icon(Icons.edit ,size: 25,),
                                               tooltip:'edit',
@@ -308,7 +308,14 @@ class ProfileFinal extends StatelessWidget {
                                 ),
                               ),
 
-
+                              Container(
+                                  padding: EdgeInsets.only(top: 40.0,left: 20.0),
+                                  height: 180,
+                                  width:100,
+                                  child: Image.asset(
+                                    "assets/Lawyer-amico.png",
+                                    fit: BoxFit.fill,
+                                  )),
 
 
                             ],
@@ -347,7 +354,7 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("addree"),
+                                  title: Text("Addree"),
                                   subtitle:Text("${map["addree"]}"),
                                   leading: Icon(Icons.add_location),
                                 ),
@@ -359,8 +366,8 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("location"),
-                                  subtitle:Text("${map["location"]}"),
+                                  title: Text("Gender"),
+                                  subtitle:Text("${map["Gander"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
 
@@ -371,8 +378,8 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("Gander"),
-                                  subtitle:Text("${map["Gander"]}"),
+                                  title: Text("Qualifiction"),
+                                  subtitle:Text("${map["qualifiction"]}"),
                                   leading: Icon(Icons.person_add),
                                 ),
 
@@ -408,9 +415,11 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("jobtitle"),
-                                  subtitle:Text("${map["jobtitle"]}"),
+
+                                  title: Text("Mobile"),
+                                  subtitle:Text("${map["mobile"]}"),
                                   leading: Icon(Icons.title),
+
                                 ),
 
                                 Divider(
@@ -421,9 +430,11 @@ class ProfileFinal extends StatelessWidget {
                                 
 
                                 ListTile(
-                                  title: Text("qualifiction"),
-                                  subtitle:Text("${map["qualifiction"]}"),
+
+                                  title: Text("Intersting Field"),
+                                  subtitle:Text("${map["interstingfield"]}"),
                                   leading: Icon(Icons.textsms),
+
                                 ),
 
                                 Divider(
@@ -433,7 +444,7 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("interstingfield"),
+                                  title: Text("Idea makerBio"),
                                   subtitle:Text("${map["interstingfield"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
@@ -445,12 +456,23 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-                                  title: Text("indestry"),
-
-                                  subtitle:Text("${map["indestry"]}"),
+                                  title: Text("Website"),
+                                  subtitle:Text("${map["Website"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
 
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+
+                                  title: Text("Size"),
+                                  subtitle:Text("${map["size"]}"),
+                                  leading: Icon(Icons.subject),
+
+                                ),
 
                               ],
                             ),

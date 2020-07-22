@@ -257,7 +257,7 @@ class ProfileFinall extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Sponsor"),
                                           ),
-                                          Padding(padding: EdgeInsets.only(right: 5),
+                                          Padding(padding: EdgeInsets.only(left: 150),
 
 
                                             child: IconButton(
@@ -322,6 +322,15 @@ class ProfileFinall extends StatelessWidget {
                                   ],
                                 ),
                               ),
+
+                              Container(
+                                  padding: EdgeInsets.only(top: 40.0,left: 20.0),
+                                  height: 180,
+                                  width:100,
+                                  child: Image.asset(
+                                    "assets/Lawyer-amico.png",
+                                    fit: BoxFit.fill,
+                                  )),
                             ],
                           ),
                           SizedBox(height: 20.0),
@@ -453,6 +462,27 @@ class ProfileFinall extends StatelessWidget {
                                   leading: Icon(Icons.textsms),
                                 ),
 
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+                                  title: Text("Typemanagment"),
+                                  subtitle:Text("${map["sexprience"]}"),
+                                  leading: Icon(Icons.textsms),
+                                ),
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+                                  title: Text("Typemanagment"),
+                                  subtitle:Text("${map["sponcerBio"]}"),
+                                  leading: Icon(Icons.textsms),
+                                ),
 
                               ],
                             ),

@@ -254,7 +254,7 @@ class ProfileFinal extends StatelessWidget {
                                             //age of user
                                             subtitle: Text("Emplpyee"),
                                           ),
-                                          Padding(padding: EdgeInsets.only(right: 5),
+                                          Padding(padding: EdgeInsets.only(left: 150),
 
 
 
@@ -296,6 +296,14 @@ class ProfileFinal extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              Container(
+                                  padding: EdgeInsets.only(top: 40.0,left: 20.0),
+                                  height: 180,
+                                  width:100,
+                                  child: Image.asset(
+                                    "assets/Lawyer-amico.png",
+                                    fit: BoxFit.fill,
+                                  )),
                             ],
                           ),
                           SizedBox(height: 20.0),
@@ -466,7 +474,34 @@ class ProfileFinal extends StatelessWidget {
                                   subtitle:Text("${map["Exprense"]}"),
                                   leading: Icon(Icons.subject),
                                 ),
+                                Divider(
 
+                                  thickness: 1.0,
+                                ),
+                                ListTile(
+                                  title: Text("Bio"),
+
+                                  subtitle:Text("${map["employeeBio"]}"),
+                                  leading: Icon(Icons.subject),
+                                ),   Divider(
+
+                                  thickness: 1.0,
+                                ),
+                                ListTile(
+                                  title: Text("Date from :"),
+
+                                  subtitle:Text("${map["Datafrom"]}"),
+                                  leading: Icon(Icons.subject),
+                                ),   Divider(
+
+                                  thickness: 1.0,
+                                ),
+                                ListTile(
+                                  title: Text("Date to :"),
+
+                                  subtitle:Text("${map["Datato"]}"),
+                                  leading: Icon(Icons.subject),
+                                ),
 
                               ],
                             ),

@@ -200,31 +200,7 @@ class EditDataState extends State<EditData> {
     );
   }
 
-//  Widget _buildLoginBtn() {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 25.0),
-//      width: 150.0,
-//      child: RaisedButton(
-//        elevation: 20.0,
-//        onPressed: () => print('Login Button Pressed'),
-//        padding: EdgeInsets.all(15.0),
-//        shape: RoundedRectangleBorder(
-//          borderRadius: BorderRadius.circular(30.0),
-//        ),
-//        color: Color(0xFF0a2f52),
-//        child: Text(
-//          'Upload Files',
-//          style: TextStyle(
-//            color: Colors.white,
-//            letterSpacing: 1.5,
-//            fontSize: 18.0,
-//            fontWeight: FontWeight.bold,
-//            fontFamily: 'OpenSans',
-//          ),
-//        ),
-//      ),
-//    );
-//  }
+
 
   Widget _buildLoginBtns() {
     return Container(

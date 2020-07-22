@@ -50,7 +50,6 @@ class Navigation extends StatelessWidget {
         "/showidea":(BuildContext context)=> new ShowData(),
         "/signup":(BuildContext context)=> new Signupfinal(),
         //adding test commit
-
       },
 
     );

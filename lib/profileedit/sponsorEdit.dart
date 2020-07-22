@@ -17,12 +17,15 @@ class SponsorEditData extends StatefulWidget {
 class EditDataState extends State<SponsorEditData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
   TextEditingController _nameController = new TextEditingController();
-  TextEditingController _AddressController = new TextEditingController();
-  TextEditingController _CatagoryController = new TextEditingController();
-  TextEditingController _GanderController = new TextEditingController();
-  TextEditingController _FundingController = new TextEditingController();
-  TextEditingController _TypemanagmentController = new TextEditingController();
+  TextEditingController _addressController = new TextEditingController();
+  TextEditingController _catagoryController = new TextEditingController();
+  TextEditingController _ganderController = new TextEditingController();
+  TextEditingController _fundingController = new TextEditingController();
+  TextEditingController _typemanagmentController = new TextEditingController();
   TextEditingController _phoneController = new TextEditingController();
+  TextEditingController _experinceController = new TextEditingController();
+  TextEditingController _bioController = new TextEditingController();
+
 
   Widget _name() {
     return Container(
@@ -61,7 +64,7 @@ class EditDataState extends State<SponsorEditData> {
       height: 50.0,
       //width: 165.0,
       child: TextField(
-        controller: _AddressController,
+        controller: _addressController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -90,7 +93,7 @@ class EditDataState extends State<SponsorEditData> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _CatagoryController,
+        controller: _catagoryController,
         keyboardType: TextInputType.number,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -120,7 +123,7 @@ class EditDataState extends State<SponsorEditData> {
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _GanderController,
+        controller: _ganderController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -150,7 +153,7 @@ class EditDataState extends State<SponsorEditData> {
       height: 150.0,
       //width: MediaQuery.of(context).size.width,
       child: TextField(
-        controller: _FundingController,
+        controller: _fundingController,
         keyboardType: TextInputType.number,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -172,14 +175,14 @@ class EditDataState extends State<SponsorEditData> {
       ),
     );
   }
-  Widget _Typemanagment() {
+  Widget _typemanagment() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 50.0,
       // width: 150.0,
       child: TextField(
-        controller: _TypemanagmentController,
+        controller: _typemanagmentController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(
           color: Color(0xFF0a2f52),
@@ -229,8 +232,57 @@ class EditDataState extends State<SponsorEditData> {
       ),
     );
   }
-
-  Widget _buildSponsorBtnsSave() {
+  Widget _experince() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller:  _experinceController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _bio() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _bioController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+ /* Widget _buildSponsorBtnsSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
@@ -241,12 +293,16 @@ class EditDataState extends State<SponsorEditData> {
 
           databaseHelper.editSponsorData(
               _nameController.text.trim(),
-              _AddressController.text.trim(),
-              _CatagoryController.text.trim(),
-              _GanderController.text.trim(),
-              _FundingController.text.trim(),
-              _TypemanagmentController.text.trim(),
-              _phoneController.text.trim());
+              _addressController.text.trim(),
+              _catagoryController.text.trim(),
+              _ganderController.text.trim(),
+              _fundingController.text.trim(),
+              _typemanagmentController.text.trim(),
+              _phoneController.text.trim(),
+              _bioController.text.trim(),
+              _experinceController.text.trim()
+          );
+
           Navigator.of(context).push(
               new MaterialPageRoute(
                 builder: (BuildContext context) => new SponsorProfile(),
@@ -271,7 +327,7 @@ class EditDataState extends State<SponsorEditData> {
         ),
       ),
     );
-  }
+  }*/
   Widget _buildSponsorBtnsBack() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -305,12 +361,14 @@ class EditDataState extends State<SponsorEditData> {
   @override
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
-    _AddressController = new TextEditingController(text: widget.map['Address']);
-    _CatagoryController = new TextEditingController(text: widget.map['Catagory']);
-    _GanderController = new TextEditingController(text: widget.map['Gander']);
-    _FundingController = new TextEditingController(text: widget.map['Funding']);
-    _TypemanagmentController = new TextEditingController(text: widget.map['Typemanagment']);
+    _addressController = new TextEditingController(text: widget.map['Address']);
+    _catagoryController = new TextEditingController(text: widget.map['Catagory']);
+    _ganderController = new TextEditingController(text: widget.map['Gander']);
+    _fundingController = new TextEditingController(text: widget.map['Funding']);
+    _typemanagmentController = new TextEditingController(text: widget.map['Typemanagment']);
     _phoneController = new TextEditingController(text: widget.map['phone']);
+    _experinceController = new TextEditingController(text: widget.map['sexprience']);
+    _bioController = new TextEditingController(text: widget.map['sponcerBio']);
   }
 
   @override
@@ -340,12 +398,15 @@ class EditDataState extends State<SponsorEditData> {
               {
                 databaseHelper.editSponsorData(
                     _nameController.text.trim(),
-                    _AddressController.text.trim(),
-                    _CatagoryController.text.trim(),
-                    _GanderController.text.trim(),
-                    _FundingController.text.trim(),
-                    _TypemanagmentController.text.trim(),
-                    _phoneController.text.trim());
+                    _addressController.text.trim(),
+                    _catagoryController.text.trim(),
+                    _ganderController.text.trim(),
+                    _fundingController.text.trim(),
+                    _typemanagmentController.text.trim(),
+                    _phoneController.text.trim(),
+                    _bioController.text.trim(),
+                    _experinceController.text.trim()
+                );
                 Navigator.of(context).push(
                     new MaterialPageRoute(
                       builder: (BuildContext context) => new SponsorProfile(),
@@ -442,10 +503,13 @@ class EditDataState extends State<SponsorEditData> {
                             ),
                             _funding(),
                             Divider(),
-                            _Typemanagment(),
+                            _typemanagment(),
                             Divider(),
                             _phone(),
-
+                            Divider(),
+                            _experince(),
+                            Divider(),
+                            _bio(),
                           ],
                         ),
                       ),

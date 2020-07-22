@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
 
@@ -69,7 +70,9 @@ class _Employee extends State<Employee> {
   final TextEditingController _degreeController = new TextEditingController();
   final TextEditingController _indestryController = new TextEditingController();
   final TextEditingController _exprenseController = new TextEditingController();
-
+  final TextEditingController _employeeBioController = new TextEditingController();
+  final TextEditingController _datefromController = new TextEditingController();
+  final TextEditingController _datetoController = new TextEditingController();
 /*
 
 
@@ -153,7 +156,7 @@ class _Employee extends State<Employee> {
           ),
           // labelText: "First Name",
           // labelStyle: kLabelStyle,
-          hintText: 'First Name',
+          hintText: ' Name',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -210,7 +213,7 @@ class _Employee extends State<Employee> {
           ),
           //labelText: "E-mail",
           //labelStyle: kLabelStyle,
-          hintText: "E-mail",
+          hintText: "jobtybe",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -237,7 +240,7 @@ class _Employee extends State<Employee> {
           ),
           //labelText: "Password",
           //labelStyle: kLabelStyle,
-          hintText: "Password",
+          hintText: "jobcategory",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -264,7 +267,7 @@ class _Employee extends State<Employee> {
           ),
           //labelText: "Address",
           //labelStyle: kLabelStyle,
-          hintText: "Address",
+          hintText: "address",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -291,7 +294,7 @@ class _Employee extends State<Employee> {
           ),
           // labelText: "Phone",
           // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          hintText: "Salary",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -426,7 +429,7 @@ class _Employee extends State<Employee> {
           ),
           // labelText: "Phone",
           // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          hintText: "Degree",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -453,7 +456,7 @@ class _Employee extends State<Employee> {
           ),
           // labelText: "Phone",
           // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          hintText: "Inndestory",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -485,6 +488,82 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+  Widget _employeeBio() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _employeeBioController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _datefrom() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _datefromController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Data from",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _dateto() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      child: TextField(
+        controller: _datetoController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.format_align_left,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Experince",
+          //labelStyle: kLabelStyle,
+          hintText: "Data to :",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
 
   /*Widget _Gender() {
     return Container(
@@ -537,10 +616,18 @@ class _Employee extends State<Employee> {
               _mobileController.text.trim(),
               _degreeController.text.trim(),
               _indestryController.text.trim(),
-              _exprenseController.text.trim());
+              _exprenseController.text.trim(),
+              _employeeBioController.text.trim(),
+              _datetoController.text.trim(),
+              _datefromController.text.trim(),
+
+
+
+
+          );
 
           Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new EmployeeTimeline(),
+            builder: (BuildContext context) => new MyLoginPage(),
           ));
           print("Save");
         },
@@ -778,8 +865,26 @@ class _Employee extends State<Employee> {
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
+                                       _employeeBio(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
 
+                                        _dateto(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+                                        _datefrom(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         _buildSave(),
 
 

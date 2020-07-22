@@ -437,10 +437,15 @@ class ItemList extends StatelessWidget {
 //import 'package:flutterapp/ui/login_page.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/dashboard.dart';
+/*
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
+*/
 
 import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -458,6 +463,13 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineIdeaState extends State<TimeLineIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
+
+  Log_out(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = token;
+    prefs.setString(key, value);
+  }
 
   //final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
@@ -579,17 +591,25 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
             ),
             Divider(),
             ListTile(
-                title: Text(
-                  "Close",
-                  style: TextStyle(
-                    color: Color(0xff1B4F72),
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.close,
+              title: Text(
+                "Close",
+                style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
-                onTap: () => Navigator.of(context).pop()),
+              ),
+              trailing: Icon(
+                Icons.close,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () {
+                Log_out('0');
+                Navigator.of(context).push(
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new MyLoginPage(),
+                    )
+                );
+              },
+            )
           ],
         ),
       ),
@@ -597,7 +617,6 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-
                 expandedHeight: 200.0,
                 floating: false,
                 pinned: true,
@@ -657,8 +676,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 ],
               ),
             ),
-          )
-      ),
+          )),
     );
   }
 }

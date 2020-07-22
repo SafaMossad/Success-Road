@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
@@ -104,6 +105,8 @@ class _Sponsor extends State<Sponsor> {
   final TextEditingController _fundingController = new TextEditingController();
  // final TextEditingController _typemanagmentController = new TextEditingController();
   final TextEditingController _phoneController = new TextEditingController();
+  final TextEditingController _experinceController = new TextEditingController();
+  final TextEditingController _bioController = new TextEditingController();
 
 /*
 
@@ -327,7 +330,7 @@ class _Sponsor extends State<Sponsor> {
           ),
           // labelText: "First Name",
           // labelStyle: kLabelStyle,
-          hintText: 'First Name',
+          hintText: ' Name',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -458,7 +461,7 @@ class _Sponsor extends State<Sponsor> {
           ),
           //labelText: "Experince",
           //labelStyle: kLabelStyle,
-          hintText: "Experince",
+          hintText: "Funding",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -545,7 +548,56 @@ class _Sponsor extends State<Sponsor> {
     );
   }
 
-
+  Widget _experince() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller:  _experinceController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+  Widget _bio() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _bioController,
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          // labelText: "Phone",
+          // labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
 
 
   Widget _build_Save() {
@@ -563,11 +615,13 @@ class _Sponsor extends State<Sponsor> {
             genderDropdownValue.trim(),
             mangmentdropdownValue.trim(),
             _phoneController.text.trim(),
+            _experinceController.text.trim(),
+            _bioController.text.trim(),
 
           );
 
           Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new SponsorTimeline(),
+            builder: (BuildContext context) => new MyLoginPage(),
           ));
         },
         padding: EdgeInsets.all(15.0),
@@ -774,7 +828,14 @@ class _Sponsor extends State<Sponsor> {
 
 
                                         _Phone(),
+                                        Divider(thickness: 1.0,color: Colors.black,),
 
+
+                                        _experince(),
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+                                        _bio(),
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,

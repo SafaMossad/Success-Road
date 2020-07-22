@@ -54,6 +54,7 @@ flutter:
     - assets/lolo.jpg
     - assets/team.jpg
     - assets/business.jpg
+    - assets/Lawyer-amico.png
     - assets/94393013-team-work-in-training-room-with-planning-board.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see

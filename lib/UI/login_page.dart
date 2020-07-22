@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
@@ -164,25 +164,26 @@ class _MyLoginPage extends State<MyLoginPage> {
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   String msgStatus = '';
+/*
 
   read() async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final value = prefs.get(key) ?? 0;
     if (value != '0') {
-     /* Navigator.of(context).push(
-          new MaterialPageRoute(
-            builder: (BuildContext context) => new Timeline(),
-         )
-      );*/
-
+      Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new IdeaMakerTimeline(),
+      ));
     }
   }
 
   @override
-  initState() {
+  initState(){
     read();
   }
+*/
+
+
 
   final TextEditingController _emailController = new TextEditingController();
   final TextEditingController _passwordController = new TextEditingController();
@@ -191,31 +192,26 @@ class _MyLoginPage extends State<MyLoginPage> {
     setState(() {
       if (_emailController.text.trim().toLowerCase().isNotEmpty &&
           _passwordController.text.trim().isNotEmpty) {
-        databaseHelper.loginData(_emailController.text.trim().toLowerCase(),
+        databaseHelper
+            .loginData(_emailController.text.trim().toLowerCase(),
                 _passwordController.text.trim())
             .whenComplete(() {
           if (databaseHelper.status) {
             _showDialog();
             msgStatus = 'Check email or password';
-          }
-          else {
+          } else {
             if (databaseHelper.ideamaker) {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => IdeaMakerTimeline()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => IdeaMakerTimeline()));
               print("U R ideamaker");
-
-            }
-         else if (databaseHelper.sponsor) {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => SponsorTimeline()));
-            print("U R Sponsor");
-
-          }
-          else  if (databaseHelper.employee) {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => EmployeeTimeline()));
+            } else if (databaseHelper.sponsor) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => SponsorTimeline()));
+              print("U R Sponsor");
+            } else if (databaseHelper.employee) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => EmployeeTimeline()));
               print("U R emp");
-
             }
             //Navigator.pushReplacementNamed(context, '/dashboard');
 
@@ -364,11 +360,9 @@ class _MyLoginPage extends State<MyLoginPage> {
               child: TextField(
                 controller: _passwordController,
                 keyboardType: TextInputType.number,
-
                 onChanged: (String value) {},
                 cursorColor: Color(0xff1B4F72),
                 decoration: InputDecoration(
-
                     hintText: "Password",
                     prefixIcon: Material(
                       elevation: 0,
@@ -395,7 +389,6 @@ class _MyLoginPage extends State<MyLoginPage> {
                   color: Color(0xff1B4F72),
                 ),
                 child: FlatButton(
-
                   child: Text(
                     "Login",
                     style: TextStyle(
