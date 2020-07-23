@@ -175,7 +175,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                     height: MediaQuery.of(context).size.height,
                     width: double.infinity,
                     child: new FutureBuilder<List>(
-                      future: databaseHelper.getDataIdeaHome(),
+                      future: databaseHelper.getAllJobData(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) print(snapshot.error);
                         return snapshot.hasData

@@ -13,9 +13,6 @@ class IdeaMakerEditData extends StatefulWidget {
 }
 
 class EditDataState extends State<IdeaMakerEditData> {
-
-
-
 //gender controlling
   String genderDropdownValue = 'male';
 
@@ -31,12 +28,14 @@ class EditDataState extends State<IdeaMakerEditData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
   TextEditingController _nameController = new TextEditingController();
-  TextEditingController _ideamakerBioController = new TextEditingController();
+
   TextEditingController _addreeController = new TextEditingController();
-  TextEditingController __websiteController = new TextEditingController();
-  TextEditingController _GanderController = new TextEditingController();
+  TextEditingController _websiteController = new TextEditingController();
+
+  //TextEditingController _GanderController = new TextEditingController();
   TextEditingController _qualifictionController = new TextEditingController();
   TextEditingController _mobileController = new TextEditingController();
+  TextEditingController _ideamakerBioController = new TextEditingController();
   TextEditingController _interstingfieldController =
       new TextEditingController();
   TextEditingController _sizeController = new TextEditingController();
@@ -45,137 +44,104 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       // alignment: Alignment.topCenter,
       // padding: EdgeInsets.only(bottom:10.0),
+      alignment: Alignment.centerLeft,
+
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 165.0,
+      height: 60.0,
+      width: 350.0,
       child: TextField(
         controller: _nameController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.title,
+            Icons.person,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'Name',
+          labelText: "Full Name",
+          labelStyle: kLabelStyle,
+          hintText: '    ie: x x x',
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _addree() {
+  Widget _address() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
-        keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          // contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.attach_money,
+            Icons.location_on,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-/*  Widget _Gander() {
+  Widget _gender() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _GanderController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
-          prefixIcon: Icon(
-            Icons.add_location,
-            color: Color(0xFF8b8b8b),
-          ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Gender",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }*/
-
-  Widget _gender() {
-    return   Container(
-
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
+      height: 48.0,
       padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
             Icon(
-              Icons.accessibility,
+              Icons.merge_type,
               color: Color(0xFF8b8b8b),
             ),
-            Text(
-              "Gender:",
-            ),
             SizedBox(
-              width: 100.0,
+              width: 15.0,
+            ),
+            Text("Gender:",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.w200)),
+            SizedBox(
+              width: 90.0,
             ),
             Container(
               width: 120.0,
               child: DropdownButton<String>(
-
                 value: genderDropdownValue,
                 icon: Icon(
                   Icons.arrow_drop_down_circle,
                 ),
                 iconSize: 18,
-
                 elevation: 16,
                 style: TextStyle(
-
                     color: Colors.black,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'co',
-                    fontSize: 20.0
-                ),
-
+                    fontSize: 20.0),
                 onChanged: (String data) {
                   setState(() {
                     genderDropdownValue = data;
                   });
                 },
                 items:
-                genderItems.map<DropdownMenuItem<String>>((String value) {
+                    genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -189,59 +155,54 @@ class EditDataState extends State<IdeaMakerEditData> {
     );
   }
 
-  Widget _qualifiction() {
+  Widget _qualification() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 100.0,
-      //width: MediaQuery.of(context).size.width,
+      height: 120.0,
       child: TextField(
+        // maxLines: 10,
         controller: _qualifictionController,
+        maxLines: 10,
+
         keyboardType: TextInputType.multiline,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        maxLines: 20,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          // contentPadding: EdgeInsets.only(top: 20.0),
           prefixIcon: Icon(
             Icons.description,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Qualifications",
+          labelText: "Qualification",
+          labelStyle: kLabelStyle,
+          hintText: "Qualification",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _mobile() {
+  Widget _phone() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          // contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.merge_type,
+            Icons.phone_forwarded,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Mobile",
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -250,27 +211,24 @@ class EditDataState extends State<IdeaMakerEditData> {
 
   Widget _interstingfield() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
+      height: 120.0,
       child: TextField(
         controller: _interstingfieldController,
+        maxLines: 10,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.add_location,
+            Icons.format_list_bulleted,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Industry",
+          labelText: "Intersting Fields",
+          labelStyle: kLabelStyle,
+          hintText: "Intersting Field",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -279,59 +237,85 @@ class EditDataState extends State<IdeaMakerEditData> {
 
   Widget _ideamakerBio() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 100.0,
-      //width: 165.0,
+      height: 120.0,
+      // width: 150.0,
       child: TextField(
-        maxLines: 10,
-
         controller: _ideamakerBioController,
+        maxLines: 10,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
-
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.category,
+            Icons.subject,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Bio',
+          labelText: "Your Bio",
+          labelStyle: kLabelStyle,
+          hintText: "Bio",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _Website() {
+/*
+  Widget _gender() {
     return Container(
+      padding: EdgeInsets.only(left: 11.0),
       alignment: Alignment.centerLeft,
+
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: __websiteController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
+      height: 63.0,
+      child: DropdownButtonFormField(
+
+        hint: Text("hello",style: TextStyle(color: Colors.white),),
+        value: _selectedGender,
+        items: _dropdownMenuItem,
+        onChanged: onChanging1,
+        decoration: new InputDecoration(
+          icon: Icon(Icons.supervisor_account),
+          enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
+
+          contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
+
+          // hoverColor: Colors.orange,
+          // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
+          hintText: 'Gender',
+          focusColor: Colors.orange,
+          labelStyle: TextStyle(color: Colors.white,fontSize: 20),
+          labelText: "Gender",
+          // labelStyle: ,
+          //  hintStyle: kHintTextStyle,
+          //icon: new Icon(Icons.person)
         ),
+      ),
+    );
+  }
+*/
+
+  Widget _website() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _websiteController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.merge_type,
+            Icons.mail_outline,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Web Site",
+          labelText: "Web Site",
+          labelStyle: kLabelStyle,
+          hintText: "ie : WWW.AYZ.com",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -340,35 +324,30 @@ class EditDataState extends State<IdeaMakerEditData> {
 
   Widget _size() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 75.0,
-      //width: MediaQuery.of(context).size.width,
+      height: 60.0,
       child: TextField(
         controller: _sizeController,
-        keyboardType: TextInputType.multiline,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        maxLines: 20,
+        keyboardType: TextInputType.number,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 8.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.description,
+            Icons.business,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Size Of Company",
+          labelText: "Company Size",
+          labelStyle: kLabelStyle,
+          hintText: "Number of Employee ",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
- /* Widget _buildIMBtns() {
+  /* Widget _buildIMBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
@@ -440,19 +419,17 @@ class EditDataState extends State<IdeaMakerEditData> {
   @override
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
-    _ideamakerBioController =
-        new TextEditingController(text: widget.map['jobtitle']);
     _addreeController = new TextEditingController(text: widget.map['addree']);
-    __websiteController =
-        new TextEditingController(text: widget.map['location']);
-    _GanderController = new TextEditingController(text: widget.map['Gander']);
-    _qualifictionController =
-        new TextEditingController(text: widget.map['qualifiction']);
+    _qualifictionController = new TextEditingController(text: widget.map['qualifiction']);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
-    _interstingfieldController =
-        new TextEditingController(text: widget.map['interstingfield']);
-    _sizeController =
-        new TextEditingController(text: widget.map['indestry']);
+    _interstingfieldController = new TextEditingController(text: widget.map["interstingfield"]);
+    _ideamakerBioController = new TextEditingController(text: widget.map["ideamakerBio"]);
+
+    _websiteController = new TextEditingController(text: widget.map["Website"]);
+    //  _GanderController = new TextEditingController(text: widget.map['Gander']);
+
+
+    _sizeController = new TextEditingController(text: widget.map["size"].toString());
   }
 
   @override
@@ -469,11 +446,10 @@ class EditDataState extends State<IdeaMakerEditData> {
           leading: GestureDetector(
             onTap: () => Navigator.of(context).pop(),
             child: Icon(
-              Icons.arrow_back,  // add custom icons also
+              Icons.arrow_back, // add custom icons also
             ),
           ),
           actions: <Widget>[
-
             FlatButton(
               //elevation: 20.0,
 
@@ -482,10 +458,9 @@ class EditDataState extends State<IdeaMakerEditData> {
                     _nameController.text.trim(),
                     _ideamakerBioController.text.trim(),
                     _addreeController.text.trim(),
-                    __websiteController.text.trim(),
-                   // _GanderController.text.trim(),
+                    _websiteController.text.trim(),
+                    // _GanderController.text.trim(),
                     genderDropdownValue.trim(),
-
                     _qualifictionController.text.trim(),
                     _mobileController.text.trim(),
                     _interstingfieldController.text.trim(),
@@ -503,8 +478,7 @@ class EditDataState extends State<IdeaMakerEditData> {
               child: Text(
                 'Save',
                 style: TextStyle(
-
-                 color: Colors.white,
+                  color: Colors.white,
                   letterSpacing: 1.5,
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -512,7 +486,6 @@ class EditDataState extends State<IdeaMakerEditData> {
                 ),
               ),
             ),
-
           ],
         ),
         body: new Container(
@@ -549,17 +522,16 @@ class EditDataState extends State<IdeaMakerEditData> {
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
                             ),
+                            Divider(),
                             _name(),
                             Divider(),
-                            _addree(),
+                            _address(),
+
                             Divider(),
-                            _Website(),
-                            Divider(),
-                           // _Gander(),
+                            // _Gander(),
                             _gender(),
                             Divider(),
-                            _mobile(),
-
+                            _phone(),
                           ],
                         ),
                       ),
@@ -576,6 +548,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                             SizedBox(
                               height: 15.0,
                             ),
+
                             Center(
                               child: Text(
                                 "Field Information",
@@ -584,20 +557,21 @@ class EditDataState extends State<IdeaMakerEditData> {
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
                             ),
+
+                            _website(),
+                            Divider(),
                             _size(),
                             Divider(),
-
                             _ideamakerBio(),
                             Divider(),
                             _interstingfield(),
                             Divider(),
-                            _qualifiction(),
-
+                            _qualification(),
                           ],
                         ),
                       ),
                       //SizedBox(height: 20.0),
-                  /*    Row(
+                      /*    Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           _buildIMBtns(),

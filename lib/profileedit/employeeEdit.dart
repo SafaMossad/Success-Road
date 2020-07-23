@@ -16,7 +16,7 @@ class EmployeeEditData extends StatefulWidget {
 }
 
 class EditDataState extends State<EmployeeEditData> {
-  String _genderDropdownValue = 'male';
+  String genderDropdownValue = 'male';
 
   // To show Selected Item in Text.
   String genderHolder = '';
@@ -29,7 +29,7 @@ class EditDataState extends State<EmployeeEditData> {
 
   void getDropDownItemGender() {
     setState(() {
-      genderHolder = _genderDropdownValue;
+      genderHolder = genderDropdownValue;
     });
   }
 
@@ -40,38 +40,38 @@ class EditDataState extends State<EmployeeEditData> {
   TextEditingController _jobcategoryController = new TextEditingController();
   TextEditingController _addressController = new TextEditingController();
   TextEditingController _salaryController = new TextEditingController();
-  TextEditingController _genderController = new TextEditingController();
+
+  // TextEditingController _genderController = new TextEditingController();
   TextEditingController _qualifcationController = new TextEditingController();
   TextEditingController _mobileController = new TextEditingController();
   TextEditingController _degreeController = new TextEditingController();
   TextEditingController _indestryController = new TextEditingController();
-  TextEditingController _experinceController = new TextEditingController();
+  TextEditingController _exprenseController = new TextEditingController();
   TextEditingController _employeeBioController = new TextEditingController();
   TextEditingController _datefromController = new TextEditingController();
   TextEditingController _datetoController = new TextEditingController();
+
   Widget _firstname() {
     return Container(
       /*alignment: Alignment.topCenter,
       padding: EdgeInsets.only(bottom:10.0),*/
       decoration: kBoxDecorationStyle,
       height: 50.0,
+      // width: 165.0,
       child: TextField(
         controller: _nameController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.person,
-            color: Color(0xff1B4F72),
+            color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'First Name',
+          labelText: "Full  Name",
+          labelStyle: kLabelStyle,
+          hintText: '    ie: x x x',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -110,27 +110,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _jobtybe() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _jobtybeController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.mail,
-            color: Color(0xff1B4F72),
+            Icons.merge_type,
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "E-mail",
+          labelText: "Job Tybe",
+          labelStyle: kLabelStyle,
+          hintText: "Job Tybe",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -139,27 +136,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _jobcategory() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _jobcategoryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.vpn_key,
-            color: Color(0xff1B4F72),
+            Icons.category,
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Password",
+          labelText: "Job Category",
+          labelStyle: kLabelStyle,
+          hintText: "Job Category",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -168,26 +162,23 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _address() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.home,
-            color: Color(0xff1B4F72),
+            Icons.location_on,
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
+          labelText: "Address",
+          labelStyle: kLabelStyle,
           hintText: "Address",
           hintStyle: kHintTextStyle,
         ),
@@ -197,27 +188,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _salary() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _salaryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.phone_android,
-            color: Color(0xff1B4F72),
+            Icons.monetization_on,
+            color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          labelText: "Salary",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 6,000",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -229,25 +217,33 @@ class EditDataState extends State<EmployeeEditData> {
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
-      //padding: EdgeInsets.only(left: 10.0),
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
-//            Text(
-//              "Gender:",
-//              style: kLabelStyle,
-//            ),
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
+            ),
             SizedBox(
-              width: 20.0,
+              width: 15.0,
+            ),
+            Text("Gender:",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.w200)),
+            SizedBox(
+              width: 90.0,
             ),
             Container(
               width: 120.0,
               child: DropdownButton<String>(
-                value: _genderDropdownValue,
+                value: genderDropdownValue,
                 icon: Icon(
                   Icons.arrow_drop_down_circle,
-                  color: Color(0xff1B4F72),
                 ),
                 iconSize: 18,
                 elevation: 16,
@@ -258,7 +254,7 @@ class EditDataState extends State<EmployeeEditData> {
                     fontSize: 20.0),
                 onChanged: (String data) {
                   setState(() {
-                    _genderDropdownValue = data;
+                    genderDropdownValue = data;
                   });
                 },
                 items:
@@ -280,24 +276,21 @@ class EditDataState extends State<EmployeeEditData> {
     return Container(
       alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 100.0,
+      height: 120.0,
       child: TextField(
         controller: _qualifcationController,
         maxLines: 10,
         keyboardType: TextInputType.multiline,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.description,
-            color: Color(0xff1B4F72),
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Qualification",
-          // labelStyle: kLabelStyle,
+          labelText: "Qualification",
+          labelStyle: kLabelStyle,
           hintText: "Qualification",
           hintStyle: kHintTextStyle,
         ),
@@ -307,27 +300,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _phone() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.phone_android,
-            color: Color(0xff1B4F72),
+            Icons.phone,
+            color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -336,27 +326,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _degree() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _degreeController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.control_point,
-            color: Color(0xff1B4F72),
+            Icons.layers,
+            color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "deg",
+          labelText: "Degree",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Very cood ,Good",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -365,27 +352,24 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _inndestory() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _indestryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.attach_money,
-            color: Color(0xff1B4F72),
+            Icons.business_center,
+            color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-         // hintText: "inndestorrrrry",
+          labelText: "Inndestory",
+          labelStyle: kLabelStyle,
+          hintText: "Inndestory",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -394,102 +378,100 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _experince() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       child: TextField(
-        controller: _experinceController,
+        controller: _exprenseController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-        ),
+        style: textColor,
+        maxLines: 10,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.format_align_left,
-            color: Color(0xff1B4F72),
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
+          labelText: "Experince",
+          labelStyle: kLabelStyle,
           hintText: "Experince",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _employeeBio() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       child: TextField(
         controller: _employeeBioController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-
+        maxLines: 10,
+        keyboardType: TextInputType.multiline,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.format_align_left,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
+          labelText: "Your Bio",
+          labelStyle: kLabelStyle,
           hintText: "Bio",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _datefrom() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       child: TextField(
         controller: _datefromController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-
+        keyboardType: TextInputType.datetime,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.format_align_left,
-            color: Colors.black87,
-
+            Icons.date_range,
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText: "Data from",
+          labelText: "Data from",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 2016 ",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _dateto() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       child: TextField(
         controller: _datetoController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-
+        keyboardType: TextInputType.datetime,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.format_align_left,
-            color: Colors.black87,
+            Icons.date_range,
+            color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText: "Data to :",
+          labelText: "Data to :",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 2018",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -571,20 +553,25 @@ class EditDataState extends State<EmployeeEditData> {
   void initState() {
     _nameController = new TextEditingController(text: widget.map['name']);
     _jobtybeController = new TextEditingController(text: widget.map['jobtybe']);
-    _jobcategoryController = new TextEditingController(text: widget.map['jobcategory']);
+    _jobcategoryController =
+        new TextEditingController(text: widget.map['jobcategory']);
     _addressController = new TextEditingController(text: widget.map['address']);
     _salaryController = new TextEditingController(text: widget.map['salary']);
-    _qualifcationController = new TextEditingController(text: widget.map["Qualifcation"]);
+    _qualifcationController =
+        new TextEditingController(text: widget.map["Qualifcation"]);
     _mobileController = new TextEditingController(text: widget.map['mobile']);
     _degreeController = new TextEditingController(text: widget.map["Degree"]);
-    _indestryController = new TextEditingController(text: widget.map['Indestry'].toString());
-    _experinceController = new TextEditingController(text: widget.map['Exprense'].toString());
+    _indestryController =
+        new TextEditingController(text: widget.map['Indestry']);
+    _exprenseController =
+        new TextEditingController(text: widget.map['Exprense'].toString());
     //_genderController = new TextEditingController(text: widget.map['employeeBio']);
 
-    _employeeBioController = new TextEditingController(text: widget.map['employeeBio']);
-    _datefromController = new TextEditingController(text: widget.map['Datafrom']);
+    _employeeBioController =
+        new TextEditingController(text: widget.map['employeeBio']);
+    _datefromController =
+        new TextEditingController(text: widget.map['Datafrom']);
     _datetoController = new TextEditingController(text: widget.map['Datato']);
-
   }
 
   @override
@@ -609,22 +596,21 @@ class EditDataState extends State<EmployeeEditData> {
               //elevation: 20.0,
               onPressed: () {
                 databaseHelper.editEmployeeData(
-                    _nameController.text.trim(),
-                    _jobtybeController.text.trim(),
-                    _jobcategoryController.text.trim(),
-                    _addressController.text.trim(),
-                    _salaryController.text.trim(),
-                    _genderController.text.trim(),
-                    _qualifcationController.text.trim(),
-                    _mobileController.text.trim(),
-                    _degreeController.text.trim(),
-                    _indestryController.text.trim(),
-
-                    _experinceController.text.trim(),
+                  _nameController.text.trim(),
+                  _jobtybeController.text.trim(),
+                  _jobcategoryController.text.trim(),
+                  _addressController.text.trim(),
+                  _salaryController.text.trim(),
+                  genderDropdownValue.trim(),
+                  _qualifcationController.text.trim(),
+                  _mobileController.text.trim(),
+                  _degreeController.text.trim(),
+                  _indestryController.text.trim(),
+                  _exprenseController.text.trim(),
                   _employeeBioController.text.trim(),
                   _datefromController.text.trim(),
-                  _datetoController.text.trim()
-                  ,);
+                  _datetoController.text.trim(),
+                );
                 Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => new EmployeeProfile(),
                 ));
@@ -826,32 +812,27 @@ class EditDataState extends State<EmployeeEditData> {
                               ),
                             ),
                             _firstname(),
+
                             Divider(),
 
-                            _jobtybe(),
-                            Divider(),
+                            _degree(),
 
-                            _jobcategory(),
                             Divider(),
 
                             _address(),
+
                             Divider(),
 
                             _gender(),
+
                             Divider(),
+
                             _phone(),
-
-
-
-
-
-
                           ],
                         ),
                       ),
 
                       SizedBox(height: 20.0),
-
 
 //user info from regestration
 
@@ -872,19 +853,27 @@ class EditDataState extends State<EmployeeEditData> {
                               ),
                             ),
 
+                            Divider(),
+
+                            _jobtybe(),
+
+                            Divider(),
 
 
+                            _jobcategory(),
+
+                            Divider(),
 
                             _salary(),
+
                             Divider(),
 
                             _qualification(),
-                            Divider(),
 
-                            _degree(),
                             Divider(),
 
                             _inndestory(),
+
                             Divider(),
 
                             _experince(),
@@ -892,9 +881,11 @@ class EditDataState extends State<EmployeeEditData> {
                             Divider(),
 
                             _employeeBio(),
+
                             Divider(),
 
                             _datefrom(),
+
                             Divider(),
 
                             _dateto(),
@@ -902,7 +893,6 @@ class EditDataState extends State<EmployeeEditData> {
                         ),
                       ),
                       SizedBox(height: 20.0),
-
 
                       /*  Row(
                         mainAxisAlignment: MainAxisAlignment.center,

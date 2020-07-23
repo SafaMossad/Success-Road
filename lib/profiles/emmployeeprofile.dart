@@ -336,29 +336,7 @@ class ProfileFinal extends StatelessWidget {
                                 ),
 
 
-                                Divider(
 
-                                  thickness: 1.0,
-                                ),
-
-
-                                ListTile(
-                                  title: Text("job tybe "),
-                                  subtitle:Text("${map["jobtybe"]}"),
-                                  leading: Icon(Icons.title),
-                                ),
-
-
-                                Divider(
-
-                                  thickness: 1.0,
-                                ),
-
-                                ListTile(
-                                  title: Text("job category "),
-                                  subtitle:Text("${map["jobcategory"]}"),
-                                  leading: Icon(Icons.add_location),
-                                ),
 
                                 Divider(
 
@@ -375,7 +353,7 @@ class ProfileFinal extends StatelessWidget {
                                   thickness: 1.0,
                                 ),
                                 ListTile(
-                                  title: Text("address "),
+                                  title: Text("Address "),
                                   subtitle:Text("${map["address"]}"),
                                   leading: Icon(Icons.location_on),
                                 ),
@@ -389,7 +367,15 @@ class ProfileFinal extends StatelessWidget {
                                   subtitle:Text("${map["mobile"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
+                                Divider(
 
+                                  thickness: 1.0,
+                                ),
+                                ListTile(
+                                  title: Text("Degree "),
+                                  subtitle:Text("${map["Degree"]}"),
+                                  leading: Icon(Icons.calendar_view_day),
+                                ),
                               ],
                             ),
                           ),
@@ -427,7 +413,29 @@ class ProfileFinal extends StatelessWidget {
 
 
 
+                                Divider(
 
+                                  thickness: 1.0,
+                                ),
+
+
+                                ListTile(
+                                  title: Text("job tybe "),
+                                  subtitle:Text("${map["jobtybe"]}"),
+                                  leading: Icon(Icons.title),
+                                ),
+
+
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+                                  title: Text("job category "),
+                                  subtitle:Text("${map["jobcategory"]}"),
+                                  leading: Icon(Icons.add_location),
+                                ),
 
                                 Divider(
 
@@ -439,23 +447,12 @@ class ProfileFinal extends StatelessWidget {
                                   leading: Icon(Icons.phone),
                                 ),
 
-
                                 Divider(
 
                                   thickness: 1.0,
                                 ),
-                                ListTile(
-                                  title: Text("Degree "),
-
-                                  subtitle:Text("${map["Degree"]}"),
-                                  leading: Icon(Icons.subject),
-                                ),
 
 
-                                Divider(
-
-                                  thickness: 1.0,
-                                ),
                                 ListTile(
                                   title: Text("Indestry "),
 

@@ -8,9 +8,16 @@ fontSize: 15.0,
   fontWeight: FontWeight.w200
 
 );
+final textColor = TextStyle(
+    color: Colors.black87,
+    fontSize: 15.0,
 
+    fontFamily: 'co',
+    fontWeight: FontWeight.w200
+
+);
 final kLabelStyle = TextStyle(
-  color: Colors.black87,
+  color: Colors.red,
   //fontWeight: FontWeight.bold,
   fontFamily: 'co',
   fontSize: 15.0

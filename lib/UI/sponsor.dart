@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
 import '../utilities/constants.dart';
 
@@ -60,7 +59,6 @@ class _Sponsor extends State<Sponsor> {
 
 */
 
-
 //gender controlling
   String genderDropdownValue = 'male';
 
@@ -89,7 +87,6 @@ class _Sponsor extends State<Sponsor> {
   List<String> mangmentItems = [
     'fully',
     'semi',
-
   ];
 
   void getDropDownItemanagemangment() {
@@ -103,9 +100,11 @@ class _Sponsor extends State<Sponsor> {
   final TextEditingController _addreeController = new TextEditingController();
   final TextEditingController _categoryController = new TextEditingController();
   final TextEditingController _fundingController = new TextEditingController();
- // final TextEditingController _typemanagmentController = new TextEditingController();
+
+  // final TextEditingController _typemanagmentController = new TextEditingController();
   final TextEditingController _phoneController = new TextEditingController();
-  final TextEditingController _experinceController = new TextEditingController();
+  final TextEditingController _experinceController =
+      new TextEditingController();
   final TextEditingController _bioController = new TextEditingController();
 
 /*
@@ -315,22 +314,22 @@ class _Sponsor extends State<Sponsor> {
       /* alignment: Alignment.topCenter,
       padding: EdgeInsets.only(bottom:10.0),*/
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      width: 165.0,
+      height: 60.0,
+      //width: 350.0,
       child: TextField(
         controller: _nameController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.person,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: ' Name',
+          labelText: "Full Name",
+          labelStyle: kLabelStyle,
+          hintText: ' ie: X X X',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -339,24 +338,24 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _address() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.location_city,
+            Icons.location_on,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -365,23 +364,23 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _categoey() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _categoryController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.category,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "categoey",
-          //labelStyle: kLabelStyle,
+          labelText: "categoey",
+          labelStyle: kLabelStyle,
           hintText: "categoey",
           hintStyle: kHintTextStyle,
         ),
@@ -390,26 +389,34 @@ class _Sponsor extends State<Sponsor> {
   }
 
   Widget _gender() {
-    return   Container(
-
+    return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
-      padding: EdgeInsets.only(left: 50.0),
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
-            Text(
-              "Gender:", style: kHintTextStyle,
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
             ),
             SizedBox(
-              width: 100.0,
+              width: 15.0,
+            ),
+            Text("Gender",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.w200)),
+            SizedBox(
+              width: 90.0,
             ),
             Container(
               width: 120.0,
               child: DropdownButton<String>(
-
                 value: genderDropdownValue,
                 icon: Icon(
                   Icons.arrow_drop_down_circle,
@@ -420,16 +427,14 @@ class _Sponsor extends State<Sponsor> {
                     color: Colors.black,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'co',
-                    fontSize: 20.0
-                ),
-
+                    fontSize: 20.0),
                 onChanged: (String data) {
                   setState(() {
                     genderDropdownValue = data;
                   });
                 },
                 items:
-                genderItems.map<DropdownMenuItem<String>>((String value) {
+                    genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -445,23 +450,23 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _funding() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
         controller: _fundingController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.description,
+            Icons.monetization_on,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText: "Funding",
+          labelText: "Funding",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 850,000",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -470,21 +475,27 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _typeofmanagment() {
     return Container(
-
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
-      padding: EdgeInsets.only(left: 50.0),
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
-            Text(
-              "Mangment" ,style: kHintTextStyle,
-
+            Icon(
+              Icons.supervisor_account,
+              color: Color(0xFF8b8b8b),
             ),
             SizedBox(
-              width: 100.0,
+              width: 15.0,
+            ),
+            Text(
+              "Mangment",
+              style: kHintTextStyle,
+            ),
+            SizedBox(
+              width: 70.0,
             ),
             Container(
               width: 80.0,
@@ -499,16 +510,14 @@ class _Sponsor extends State<Sponsor> {
                     color: Colors.black,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'co',
-                    fontSize: 20.0
-                ),
-
+                    fontSize: 20.0),
                 onChanged: (String data) {
                   setState(() {
                     mangmentdropdownValue = data;
                   });
                 },
                 items:
-                mangmentItems.map<DropdownMenuItem<String>>((String value) {
+                    mangmentItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -524,24 +533,24 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _Phone() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _phoneController,
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        keyboardType: TextInputType.number,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.phone_forwarded,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -550,55 +559,55 @@ class _Sponsor extends State<Sponsor> {
 
   Widget _experince() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       // width: 150.0,
       child: TextField(
-        controller:  _experinceController,
+        controller: _experinceController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.phone_forwarded,
+            Icons.format_list_bulleted,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
+          labelText: "Experince",
+          labelStyle: kLabelStyle,
           hintText: "Experince",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _bio() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       // width: 150.0,
       child: TextField(
         controller: _bioController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 2.0),
           prefixIcon: Icon(
-            Icons.phone_forwarded,
+            Icons.subject,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
+          labelText: "Your Bio",
+          labelStyle: kLabelStyle,
           hintText: "Bio",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
-
 
   Widget _build_Save() {
     return Container(
@@ -611,13 +620,12 @@ class _Sponsor extends State<Sponsor> {
             _nameController.text.trim(),
             _addreeController.text.trim(),
             _categoryController.text.trim(),
-            _fundingController.text.trim(),
             genderDropdownValue.trim(),
+            _fundingController.text.trim(),
             mangmentdropdownValue.trim(),
             _phoneController.text.trim(),
             _experinceController.text.trim(),
             _bioController.text.trim(),
-
           );
 
           Navigator.of(context).push(new MaterialPageRoute(
@@ -765,11 +773,7 @@ class _Sponsor extends State<Sponsor> {
                                       children: <Widget>[
                                         // Padding(padding: EdgeInsets.only(top: 2.0)),
 
-                                        Row(
-                                          children: <Widget>[
-                                            _firstname(),
-                                          ],
-                                        ),
+                                        _firstname(),
 
                                         Divider(
                                           thickness: 1.0,
@@ -806,6 +810,32 @@ class _Sponsor extends State<Sponsor> {
                                           color: Colors.black,
                                         ),
 
+                                        _Phone(),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+                                        _gender(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+                                        _funding(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+                                        _typeofmanagment(),
+
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         _categoey(),
 
                                         Divider(
@@ -813,27 +843,11 @@ class _Sponsor extends State<Sponsor> {
                                           color: Colors.black,
                                         ),
 
-                                       _gender(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-                                        _funding(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-                                        _typeofmanagment(),
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _Phone(),
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
                                         _experince(),
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
                                         _bio(),
                                         Divider(

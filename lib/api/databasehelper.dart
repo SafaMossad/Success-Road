@@ -48,14 +48,14 @@ class DatabaseHelper {
 
   ideaMakerRegister(
       String name,
-      String addree,
-      String Gander,
+      String address,
+      String gender,
       String qualifiction,
       String mobile,
       String interstingfield,
-      String ideamakerBio,
-      String Website,
-      String size) async {
+      String website,
+      String size,
+      String ideamakerBio) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -70,14 +70,14 @@ class DatabaseHelper {
       "profile_type": 3,
       "ideamaker": {
         "name": "$name",
-        "jobtitle": "$addree",
-        "addree": "$Gander",
-        "location": "$qualifiction",
-        "Gander": "$mobile",
-        "qualifiction": "$interstingfield",
-        "mobile": "$ideamakerBio",
-        "interstingfield": "$Website",
-        "indestry": "$size"
+        "addree": "$address",
+        "Gander": "$gender",
+        "qualifiction": "$qualifiction",
+        "mobile": "$mobile",
+        "interstingfield": "$interstingfield",
+        "ideamakerBio": "$ideamakerBio",
+        "Website": "$website",
+        "size": "$size",
       }
     };
     // make POST request
@@ -85,7 +85,7 @@ class DatabaseHelper {
       url,
       body: json.encode(b),
       headers: {
-        'Accept': '*/*',
+        'Accept': '/',
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ class DatabaseHelper {
         "Funding": "$funding",
         "Typemanagment": "$typemanagment",
         "phone": "$phone",
-        "sexprience": "$experince",
+        "exprience": "$experince",
         "sponcerBio": "$bio"
       }
     };
@@ -450,7 +450,6 @@ class DatabaseHelper {
     print("body getCompanyApply job${response.body}");
     return json.decode(response.body.toString());
   }
-
 
   Future<List<dynamic>> getEmployeejob() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

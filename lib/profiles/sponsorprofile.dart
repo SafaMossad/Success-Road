@@ -468,8 +468,8 @@ class ProfileFinall extends StatelessWidget {
                                 ),
 
                                 ListTile(
-                                  title: Text("Typemanagment"),
-                                  subtitle:Text("${map["sexprience"]}"),
+                                  title: Text("Experince"),
+                                  subtitle:Text("${map["exprience"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),
 
@@ -479,7 +479,7 @@ class ProfileFinall extends StatelessWidget {
                                 ),
 
                                 ListTile(
-                                  title: Text("Typemanagment"),
+                                  title: Text("Bio"),
                                   subtitle:Text("${map["sponcerBio"]}"),
                                   leading: Icon(Icons.textsms),
                                 ),

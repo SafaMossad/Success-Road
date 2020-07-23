@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import '../utilities/constants.dart';
@@ -41,13 +42,13 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   final TextEditingController _nameController  = new TextEditingController();
-  final TextEditingController _websiteController  = new TextEditingController();
   final TextEditingController _addreeController  = new TextEditingController();
-  final TextEditingController _ideamakerBioController  = new TextEditingController();
- // final TextEditingController _GanderController  = new TextEditingController();
+  // final TextEditingController _GanderController  = new TextEditingController();
   final TextEditingController _qualifictionController  = new TextEditingController();
   final TextEditingController _mobileController  = new TextEditingController();
   final TextEditingController _interstingfieldController  = new TextEditingController();
+  final TextEditingController _ideamakerBioController  = new TextEditingController();
+  final TextEditingController _websiteController  = new TextEditingController();
   final TextEditingController _sizeController  = new TextEditingController();
 
 
@@ -125,22 +126,22 @@ class _IdeaMaker extends State<IdeaMaker> {
 
       decoration: kBoxDecorationStyle,
       height: 60.0,
-      width: 165.0,
+      width: 350.0,
       child: TextField(
         controller: _nameController,
 
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.email,
+            Icons.person,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'First Name',
+          labelText: "Full Name",
+           labelStyle: kLabelStyle,
+          hintText: '    ie: x x x',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -149,24 +150,25 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   Widget _address() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topLeft,
       decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
+      height: 60.0,
+      // width: 150.0,
       child: TextField(
         controller: _addreeController,
 
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+         // contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.home,
+            Icons.location_on,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Address",
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -178,17 +180,25 @@ class _IdeaMaker extends State<IdeaMaker> {
 
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 60.0,
-      padding: EdgeInsets.only(left: 50.0),
+      height: 48.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
+           Icon(Icons.merge_type,color: Color(0xFF8b8b8b),),
+            SizedBox(
+              width: 15.0,
+            ),
             Text(
-              "Gender:", style: kLabelStyle,
+              "Gender:", style: TextStyle( color: Colors.red,
+                fontSize: 15.0,
+
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
             ),
             SizedBox(
-              width: 100.0,
+              width: 90.0,
             ),
             Container(
               width: 120.0,
@@ -231,22 +241,23 @@ class _IdeaMaker extends State<IdeaMaker> {
     return Container(
       alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 60.0,
+      height: 120.0,
       child: TextField(
-        maxLines: 10,
+       // maxLines: 10,
         controller: _qualifictionController,
+        maxLines: 10,
 
         keyboardType: TextInputType.multiline,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+         // contentPadding: EdgeInsets.only(top: 20.0),
           prefixIcon: Icon(
-            Icons.favorite_border,
+            Icons.description,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Qualification",
-          // labelStyle: kLabelStyle,
+         labelText: "Qualification",
+          labelStyle: kLabelStyle,
           hintText:  "Qualification",
           hintStyle: kHintTextStyle,
         ),
@@ -256,24 +267,25 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   Widget _phone() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
+      height: 60.0,
+      // width: 150.0,
       child: TextField(
         controller: _mobileController,
 
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+         // contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
             Icons.phone_forwarded,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Phone",
+          labelText: "Phone",
+         labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -282,51 +294,52 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   Widget _interstingfield() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 63.0,
+      height: 120.0,
       child: TextField(
         controller: _interstingfieldController,
+        maxLines: 10,
 
         keyboardType: TextInputType.emailAddress,
-        style:kLabelStyle,
+        style:textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.category,
+            Icons.format_list_bulleted,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "categoey",
-          //labelStyle: kLabelStyle,
-          hintText: "categoey",
+          labelText: "Intersting Fields",
+          labelStyle: kLabelStyle,
+          hintText: "Intersting Field",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-
-
   Widget _ideamakerBio() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 60.0,      // width: 150.0,
+      height: 120.0,
+      // width: 150.0,
       child: TextField(
         controller: _ideamakerBioController,
+        maxLines: 10,
 
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.home,
+            Icons.subject,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
+       labelText: "Your Bio",
+     labelStyle: kLabelStyle,
           hintText: "Bio",
           hintStyle: kHintTextStyle,
         ),
@@ -371,24 +384,24 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   Widget _website() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
         controller: _websiteController,
 
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.description,
+            Icons.mail_outline,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
-          hintText:  "Website",
+          labelText: "Web Site",
+          labelStyle: kLabelStyle,
+          hintText:  "ie : WWW.AYZ.com",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -397,23 +410,23 @@ class _IdeaMaker extends State<IdeaMaker> {
 
   Widget _size() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
       height: 60.0,
       child: TextField(
         controller: _sizeController,
 
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        keyboardType: TextInputType.number,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          //contentPadding: EdgeInsets.only(top: 14.0),
           prefixIcon: Icon(
-            Icons.description,
+            Icons.business,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Experince",
-          //labelStyle: kLabelStyle,
+          labelText: "Company Size",
+          labelStyle: kLabelStyle,
           hintText:  "Number of Employee ",
           hintStyle: kHintTextStyle,
         ),
@@ -430,18 +443,18 @@ class _IdeaMaker extends State<IdeaMaker> {
         onPressed: () {
           databaseHelper.ideaMakerRegister(
               _nameController.text.trim(),
-              _websiteController.text.trim(),
               _addreeController.text.trim(),
-              _ideamakerBioController.text.trim(),
               genderDropdownValue.trim(),
               _qualifictionController.text.trim(),
               _mobileController.text.trim(),
               _interstingfieldController.text.trim(),
+              _ideamakerBioController.text.trim(),
+              _websiteController.text.trim(),
               _sizeController.text.trim());
 
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new IdeaMakerTimeline(),
+                builder: (BuildContext context) => new MyLoginPage(),
               )
           );
           print("Save");
@@ -591,17 +604,10 @@ class _IdeaMaker extends State<IdeaMaker> {
                                       children: <Widget>[
                                         // Padding(padding: EdgeInsets.only(top: 2.0)),
 
-                                        Row(
-                                          children: <Widget>[
+
                                             _name(),
 
-                                          ],
-                                        ),
 
-                                        Divider(thickness: 1.0,color: Colors.black,),
-
-
-                                        _website(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
@@ -612,6 +618,16 @@ class _IdeaMaker extends State<IdeaMaker> {
 
 
                                         _address(),
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+
+
+
+                                        _gender(),
+                                        Divider(thickness: 1.0,color: Colors.black,),
+
+                                        _website(),
+
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
@@ -623,19 +639,16 @@ class _IdeaMaker extends State<IdeaMaker> {
                                         _interstingfield(),
 
 
+
                                         Divider(thickness: 1.0,color: Colors.black,),
+                                        _qualification(),
 
 
-                                        _gender(),
 
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 
                                         _size(),
-
-
-                                        Divider(thickness: 1.0,color: Colors.black,),
-                                        _qualification(),
 
                                         Divider(thickness: 1.0,color: Colors.black,),
 

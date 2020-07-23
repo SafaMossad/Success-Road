@@ -376,12 +376,14 @@ class ProfileFinal extends StatelessWidget {
                                   thickness: 1.0,
                                 ),
 
-
                                 ListTile(
-                                  title: Text("Qualifiction"),
-                                  subtitle:Text("${map["qualifiction"]}"),
-                                  leading: Icon(Icons.person_add),
+
+                                  title: Text("Mobile"),
+                                  subtitle:Text("${map["mobile"]}"),
+                                  leading: Icon(Icons.title),
+
                                 ),
+
 
 
 
@@ -415,11 +417,9 @@ class ProfileFinal extends StatelessWidget {
 
 
                                 ListTile(
-
-                                  title: Text("Mobile"),
-                                  subtitle:Text("${map["mobile"]}"),
-                                  leading: Icon(Icons.title),
-
+                                  title: Text("Qualifiction"),
+                                  subtitle:Text("${map["qualifiction"]}"),
+                                  leading: Icon(Icons.person_add),
                                 ),
 
                                 Divider(
@@ -445,7 +445,7 @@ class ProfileFinal extends StatelessWidget {
 
                                 ListTile(
                                   title: Text("Idea makerBio"),
-                                  subtitle:Text("${map["interstingfield"]}"),
+                                  subtitle:Text("${map["ideamakerBio"]}"),
                                   leading: Icon(Icons.calendar_view_day),
                                 ),
 

@@ -15,42 +15,77 @@ class SponsorEditData extends StatefulWidget {
 }
 
 class EditDataState extends State<SponsorEditData> {
+
+
+  //gender controlling
+  String genderDropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String genderHolder = '';
+
+  List<String> genderItems = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItemGender() {
+    setState(() {
+      genderHolder = genderDropdownValue;
+    });
+  }
+
+  //mangment controlling
+
+  String mangmentdropdownValue = 'fully';
+
+  // To show Selected Item in Text.
+  String mangmentholder = '';
+
+  List<String> mangmentItems = [
+    'fully',
+    'semi',
+  ];
+
+  void getDropDownItemanagemangment() {
+    setState(() {
+      mangmentholder = mangmentdropdownValue;
+    });
+  }
+
   DatabaseHelper databaseHelper = new DatabaseHelper();
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _addressController = new TextEditingController();
   TextEditingController _catagoryController = new TextEditingController();
-  TextEditingController _ganderController = new TextEditingController();
+ // TextEditingController _ganderController = new TextEditingController();
   TextEditingController _fundingController = new TextEditingController();
-  TextEditingController _typemanagmentController = new TextEditingController();
+ // TextEditingController _typemanagmentController = new TextEditingController();
   TextEditingController _phoneController = new TextEditingController();
   TextEditingController _experinceController = new TextEditingController();
   TextEditingController _bioController = new TextEditingController();
 
 
-  Widget _name() {
+  Widget _firstname() {
     return Container(
-      // alignment: Alignment.topCenter,
-      // padding: EdgeInsets.only(bottom:10.0),
+      /* alignment: Alignment.topCenter,
+      padding: EdgeInsets.only(bottom:10.0),*/
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 165.0,
+      height: 60.0,
+      //width: 350.0,
       child: TextField(
         controller: _nameController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.title,
+            Icons.person,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'Name',
+          labelText: "Full Name",
+          labelStyle: kLabelStyle,
+          hintText: ' ie: X X X',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -59,229 +94,280 @@ class EditDataState extends State<SponsorEditData> {
 
   Widget _address() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 165.0,
+      height: 60.0,
+      // width: 150.0,
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.location_on,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _categoey() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _catagoryController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
             Icons.category,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Address',
+          labelText: "categoey",
+          labelStyle: kLabelStyle,
+          hintText: "categoey",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
-
-  Widget _catagory() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _catagoryController,
-        keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.attach_money,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "Category",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
 
   Widget _gender() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _ganderController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text("Gender",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.w200)),
+            SizedBox(
+              width: 90.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+                value: genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    genderDropdownValue = data;
+                  });
+                },
+                items:
+                genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Gander",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
+      ]),
     );
   }
-
 
   Widget _funding() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 150.0,
-      //width: MediaQuery.of(context).size.width,
+      height: 60.0,
       child: TextField(
         controller: _fundingController,
-        keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        maxLines: 20,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.description,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Funding",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-  Widget _typemanagment() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _typemanagmentController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.merge_type,
+            Icons.monetization_on,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Management Type",
+          labelText: "Funding",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 850,000",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _phone() {
+  Widget _typeofmanagment() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.supervisor_account,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+              "Mangment",
+              style: kHintTextStyle,
+            ),
+            SizedBox(
+              width: 70.0,
+            ),
+            Container(
+              width: 80.0,
+              child: DropdownButton<String>(
+                value: mangmentdropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    mangmentdropdownValue = data;
+                  });
+                },
+                items:
+                mangmentItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _Phone() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
       // width: 150.0,
       child: TextField(
         controller: _phoneController,
         keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.add_location,
+            Icons.phone_forwarded,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "phone",
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
   Widget _experince() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       // width: 150.0,
       child: TextField(
-        controller:  _experinceController,
+        controller: _experinceController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 7.0),
           prefixIcon: Icon(
-            Icons.phone_forwarded,
+            Icons.format_list_bulleted,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
+          labelText: "Experince",
+          labelStyle: kLabelStyle,
           hintText: "Experince",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
+
   Widget _bio() {
     return Container(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.topCenter,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 120.0,
       // width: 150.0,
       child: TextField(
         controller: _bioController,
         keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
+        style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
+          contentPadding: EdgeInsets.only(top: 2.0),
           prefixIcon: Icon(
-            Icons.phone_forwarded,
+            Icons.subject,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
+          labelText: "Your Bio",
+          labelStyle: kLabelStyle,
           hintText: "Bio",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
+
+
+
  /* Widget _buildSponsorBtnsSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -328,7 +414,10 @@ class EditDataState extends State<SponsorEditData> {
       ),
     );
   }*/
-  Widget _buildSponsorBtnsBack() {
+
+
+
+/*  Widget _buildSponsorBtnsBack() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       //width: 150.0,
@@ -355,7 +444,7 @@ class EditDataState extends State<SponsorEditData> {
         ),
       ),
     );
-  }
+  }*/
 
 
   @override
@@ -363,11 +452,11 @@ class EditDataState extends State<SponsorEditData> {
     _nameController = new TextEditingController(text: widget.map['name']);
     _addressController = new TextEditingController(text: widget.map['Address']);
     _catagoryController = new TextEditingController(text: widget.map['Catagory']);
-    _ganderController = new TextEditingController(text: widget.map['Gander']);
+    //_ganderController = new TextEditingController(text: widget.map['Gander']);
     _fundingController = new TextEditingController(text: widget.map['Funding']);
-    _typemanagmentController = new TextEditingController(text: widget.map['Typemanagment']);
+   // _typemanagmentController = new TextEditingController(text: widget.map['Typemanagment']);
     _phoneController = new TextEditingController(text: widget.map['phone']);
-    _experinceController = new TextEditingController(text: widget.map['sexprience']);
+    _experinceController = new TextEditingController(text: widget.map['exprience']);
     _bioController = new TextEditingController(text: widget.map['sponcerBio']);
   }
 
@@ -400,9 +489,9 @@ class EditDataState extends State<SponsorEditData> {
                     _nameController.text.trim(),
                     _addressController.text.trim(),
                     _catagoryController.text.trim(),
-                    _ganderController.text.trim(),
+                    genderDropdownValue.trim(),
                     _fundingController.text.trim(),
-                    _typemanagmentController.text.trim(),
+                    mangmentdropdownValue.trim(),
                     _phoneController.text.trim(),
                     _bioController.text.trim(),
                     _experinceController.text.trim()
@@ -444,7 +533,7 @@ class EditDataState extends State<SponsorEditData> {
               children: <Widget>[
                 Container(
                   //height: MediaQuery.of(context).size.height - 170,
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height+100,
                   margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
                   child: Column(
                     children: <Widget>[
@@ -468,13 +557,14 @@ class EditDataState extends State<SponsorEditData> {
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
                             ),
-                            _name(),
+                            _firstname(),
                             Divider(),
                             _address(),
                             Divider(),
-                            _catagory(),
-                            Divider(),
                             _gender(),
+                            Divider(),
+                            _Phone(),
+
 
 
                           ],
@@ -503,9 +593,9 @@ class EditDataState extends State<SponsorEditData> {
                             ),
                             _funding(),
                             Divider(),
-                            _typemanagment(),
+                            _typeofmanagment(),
                             Divider(),
-                            _phone(),
+                            _categoey(),
                             Divider(),
                             _experince(),
                             Divider(),
