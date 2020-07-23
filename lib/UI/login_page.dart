@@ -331,7 +331,7 @@ class _MyLoginPage extends State<MyLoginPage> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: TextField(
                 controller: _emailController,
-                onChanged: (String value) {},
+                keyboardType: TextInputType.emailAddress,                //onChanged: (String value) {},
                 cursorColor: Color(0xff1B4F72),
                 decoration: InputDecoration(
                     hintText: "Email",
@@ -359,8 +359,10 @@ class _MyLoginPage extends State<MyLoginPage> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: TextField(
                 controller: _passwordController,
-                keyboardType: TextInputType.number,
-                onChanged: (String value) {},
+                keyboardType: TextInputType.visiblePassword,
+
+                obscureText: true,
+                //onChanged: (String value) {},
                 cursorColor: Color(0xff1B4F72),
                 decoration: InputDecoration(
                     hintText: "Password",

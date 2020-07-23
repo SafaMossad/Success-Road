@@ -85,7 +85,7 @@ class DatabaseHelper {
       url,
       body: json.encode(b),
       headers: {
-        'Accept': '/',
+        'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Content-Type': 'application/json',
@@ -494,14 +494,14 @@ class DatabaseHelper {
 
   void editIdeaMakerData(
       String name,
-      String jobtitle,
-      String address,
-      String location,
+      String addree,
       String gender,
       String qualifiction,
       String mobile,
       String interstingfield,
-      String indestry) async {
+      String ideamakerBio,
+      String website,
+      String size) async {
 //
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -519,14 +519,14 @@ class DatabaseHelper {
       "profile_type": 3,
       "ideamaker": {
         "name": "$name",
-        "jobtitle": "$jobtitle",
-        "addree": "$address",
-        "location": "$location",
+        "addree": "$addree",
         "Gander": "$gender",
         "qualifiction": "$qualifiction",
         "mobile": "$mobile",
         "interstingfield": "$interstingfield",
-        "indestry": "$indestry"
+        "ideamakerBio": "$ideamakerBio",
+        "Website": "$website",
+        "size": "$size"
       }
     };
     final response = await http.put(
@@ -822,7 +822,7 @@ class DatabaseHelper {
       String city,
       String qualification,
       String experience,
-      String description) async {
+      String description ) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'token';
 //    final value = prefs.get(key ) ?? 0;
