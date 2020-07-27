@@ -68,9 +68,6 @@ class AddJobsState extends State<AddJobs> {
 
   @override
   //ده الي هيتحطلي من البدايه
-
-
-
   Widget _jobTitle() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -265,7 +262,6 @@ class AddJobsState extends State<AddJobs> {
       ]),
     );
   }
-
   Widget _country() {
     return Container(
       alignment: Alignment.centerLeft,

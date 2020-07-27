@@ -24,7 +24,6 @@ class ShowDataState extends State<ShowData> {
 
   bool _isFavorited = true;
 
-
   void _toggleFavorite() {
     setState(() {
       if (_isFavorited) {
@@ -34,7 +33,6 @@ class ShowDataState extends State<ShowData> {
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +76,15 @@ class ShowDataState extends State<ShowData> {
               Container(
                 padding: EdgeInsets.all(0),
                 child: IconButton(
-                  icon: (_isFavorited ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+                  icon: (_isFavorited
+                      ? Icon(Icons.favorite)
+                      : Icon(Icons.favorite_border)),
                   color: Colors.red[500],
                   iconSize: 29.0,
-                  onPressed: _toggleFavorite,
+                  onPressed: () {
+                    databaseHelper.favoriteJop(widget.list[widget.index]['id']);
+                    _toggleFavorite();
+                  },
                 ),
               ),
             ],
