@@ -47,15 +47,14 @@ class DatabaseHelper {
   }
 
   ideaMakerRegister(
-      String name,
+  String name, String Website, String mobile,
       String address,
-      String gender,
-      String qualifiction,
-      String mobile,
+  String gender,
+  String qualifiction,
       String interstingfield,
-      String website,
       String size,
-      String ideamakerBio) async {
+      String ideamakerBio
+     ) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -70,14 +69,14 @@ class DatabaseHelper {
       "profile_type": 3,
       "ideamaker": {
         "name": "$name",
+        "Website": "$Website",
         "addree": "$address",
         "Gander": "$gender",
         "qualifiction": "$qualifiction",
         "mobile": "$mobile",
         "interstingfield": "$interstingfield",
-        "ideamakerBio": "$ideamakerBio",
-        "Website": "$website",
-        "size": "$size",
+        "size":"$size",
+        "ideamakerBio":"$ideamakerBio"
       }
     };
     // make POST request
@@ -130,7 +129,7 @@ class DatabaseHelper {
         "Funding": "$funding",
         "Typemanagment": "$typemanagment",
         "phone": "$phone",
-        "exprience": "$experince",
+        "sexprience": "$experince",
         "sponcerBio": "$bio"
       }
     };
@@ -451,6 +450,7 @@ class DatabaseHelper {
     return json.decode(response.body.toString());
   }
 
+
   Future<List<dynamic>> getEmployeejob() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -494,14 +494,14 @@ class DatabaseHelper {
 
   void editIdeaMakerData(
       String name,
-      String addree,
+      String jobtitle,
+      String address,
+      String location,
       String gender,
       String qualifiction,
       String mobile,
       String interstingfield,
-      String ideamakerBio,
-      String website,
-      String size) async {
+      String indestry) async {
 //
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -519,14 +519,14 @@ class DatabaseHelper {
       "profile_type": 3,
       "ideamaker": {
         "name": "$name",
-        "addree": "$addree",
+        "jobtitle": "$jobtitle",
+        "addree": "$address",
+        "location": "$location",
         "Gander": "$gender",
         "qualifiction": "$qualifiction",
         "mobile": "$mobile",
         "interstingfield": "$interstingfield",
-        "ideamakerBio": "$ideamakerBio",
-        "Website": "$website",
-        "size": "$size"
+        "indestry": "$indestry"
       }
     };
     final response = await http.put(
@@ -822,7 +822,7 @@ class DatabaseHelper {
       String city,
       String qualification,
       String experience,
-      String description ) async {
+      String description) async {
 //    final prefs = await SharedPreferences.getInstance();
 //    final key = 'token';
 //    final value = prefs.get(key ) ?? 0;

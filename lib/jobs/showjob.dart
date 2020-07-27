@@ -7,29 +7,37 @@ import 'package:successroad/timeline/timelineEmployee.dart';
 
 import '../timeline/timelineEmployee.dart';
 
-
-
-
-class ShowData extends StatefulWidget{
-
+class ShowData extends StatefulWidget {
   List list;
   int index;
-  ShowData({this.index , this.list}) ;
 
+  ShowData({this.index, this.list});
 
   @override
-  ShowDataState  createState() => ShowDataState();
+  ShowDataState createState() => ShowDataState();
 }
 
 class ShowDataState extends State<ShowData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
   var userid;
   var jobid;
+
+  bool _isFavorited = true;
+
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _isFavorited = false;
+      } else {
+        _isFavorited = true;
+      }
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Show Job'),
@@ -56,7 +64,7 @@ class ShowDataState extends State<ShowData> {
                   //color: Color(0xFF0a2f52),
                   color: Colors.transparent,
                   child: new Text(
-                    'Apply  ',
+                    'Apply',
                     style: TextStyle(
                       color: Colors.white,
                       letterSpacing: 1.5,
@@ -65,6 +73,15 @@ class ShowDataState extends State<ShowData> {
                       fontFamily: 'OpenSans',
                     ),
                   ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(0),
+                child: IconButton(
+                  icon: (_isFavorited ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+                  color: Colors.red[500],
+                  iconSize: 29.0,
+                  onPressed: _toggleFavorite,
                 ),
               ),
             ],
@@ -105,18 +122,19 @@ class ShowDataState extends State<ShowData> {
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      "${widget.list[widget.index]['jtype']}",textAlign: TextAlign.center,
+                      "${widget.list[widget.index]['jtype']}",
+                      textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        //fontWeight: FontWeight.bold,
+                          //fontWeight: FontWeight.bold,
                           fontSize: 15.0),
                     ),
                     SizedBox(height: 10.0),
-                    Divider( color: Color(0xff2E86C1), ),
-
+                    Divider(
+                      color: Color(0xff2E86C1),
+                    ),
                     Column(
                       children: <Widget>[
-
                         Row(
                           children: <Widget>[
                             Icon(
@@ -135,7 +153,6 @@ class ShowDataState extends State<ShowData> {
                         ),
                         SizedBox(height: 10.0),
                         Divider(),
-
                         Row(
                           children: <Widget>[
                             Icon(
@@ -152,18 +169,13 @@ class ShowDataState extends State<ShowData> {
                             ),
                           ],
                         )
-
-
-
                       ],
                     ),
-
                     SizedBox(
                       height: 10.0,
                     ),
-                    Divider(  ),
-                   Column(
-
+                    Divider(),
+                    Column(
                       children: <Widget>[
                         Row(
                           children: <Widget>[
@@ -181,69 +193,50 @@ class ShowDataState extends State<ShowData> {
                             ),
                           ],
                         ),
-
-
                         SizedBox(height: 10.0),
                         Divider(),
-                        Row(children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff2E86C1),
-                          ),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            "${widget.list[widget.index]['country']}",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),
-                        ],
-                        ),
-
-                        SizedBox(height: 10.0),
-                        Divider(),
-
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.location_city,
+                              Icons.location_on,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['city']}",
+                              "${widget.list[widget.index]['country']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
                           ],
-                        )
-
-
-
-
-
+                        ),
+                        SizedBox(height: 10.0),
+                        //Divider(),
+//                        Row(
+//                          children: <Widget>[
+//                            Icon(
+//                              Icons.location_city,
+//                              color: Color(0xff2E86C1),
+//                            ),
+//                            SizedBox(
+//                              width: 5.0,
+//                            ),
+//                            Text(
+//                              "${widget.list[widget.index]['city']}",
+//                              style: TextStyle(
+//                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+//                            ),
+//                          ],
+//                        )
                       ],
                     ),
-
-
-
-
-
-
                     SizedBox(
                       height: 10.0,
                     ),
-
-
                     Divider(),
-
-
                     Column(
                       children: <Widget>[
-
                         Row(
                           children: <Widget>[
                             Icon(
@@ -260,18 +253,12 @@ class ShowDataState extends State<ShowData> {
                             ),
                           ],
                         ),
-
-
                         SizedBox(
                           height: 10.0,
                         ),
-
-
                         Divider(),
-
                         Row(
                           children: <Widget>[
-
                             Icon(
                               Icons.location_on,
                               color: Color(0xff2E86C1),
@@ -286,22 +273,15 @@ class ShowDataState extends State<ShowData> {
                             ),
                           ],
                         )
-
-
                       ],
                     ),
-
                     SizedBox(
                       height: 10.0,
                     ),
-
-
                     Divider(),
-
                     Column(
                       children: <Widget>[
                         Row(
-
                           children: <Widget>[
                             Icon(
                               Icons.explicit,
@@ -317,36 +297,29 @@ class ShowDataState extends State<ShowData> {
                             ),
                           ],
                         ),
-
                         SizedBox(
                           height: 10.0,
                         ),
-
-
                         Divider(),
-Row(
-  children: <Widget>[
-    Icon(
-      Icons.description,
-      color: Color(0xff2E86C1),
-    ),
-    SizedBox(
-      width: 5.0,
-    ),
-    Text(
-      "${widget.list[widget.index]['description']}",
-      style: TextStyle(
-          fontSize: 15.0, color: Color(0xFF0a2f52)),
-    ),
-  ],
-)
-
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.description,
+                              color: Color(0xff2E86C1),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              "${widget.list[widget.index]['description']}",
+                              style: TextStyle(
+                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
+                            ),
+                          ],
+                        )
                       ],
                     ),
-
-
                     SizedBox(height: 30.0),
-
                   ],
                 ),
               ),
@@ -355,23 +328,5 @@ Row(
         ),
       ),
     );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
-
-
 }

@@ -78,7 +78,7 @@ class _ForgetPassword extends State<ForgetPassword> {
                         ),
                       ),
                       Padding(
-                          padding: EdgeInsets.only(left: 8.0),
+                          padding: EdgeInsets.only(left: 30.0),
                           child: Center(
                             child: Row(
                               children: <Widget>[
