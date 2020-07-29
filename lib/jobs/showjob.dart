@@ -83,7 +83,7 @@ class ShowDataState extends State<ShowData> {
                   iconSize: 29.0,
                   onPressed: () {
                     databaseHelper.favoriteJop(widget.list[widget.index]['id']);
-                    _toggleFavorite();
+
                   },
                 ),
               ),
@@ -117,7 +117,7 @@ class ShowDataState extends State<ShowData> {
                       "${widget.list[widget.index]['title']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      //style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.display1,
 //                      style: TextStyle(
 //                        fontWeight: FontWeight.bold,
 //                        fontSize:26,
@@ -130,7 +130,7 @@ class ShowDataState extends State<ShowData> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           //fontWeight: FontWeight.bold,
-                          fontSize: 15.0),
+                          fontSize: 17.0),
                     ),
                     SizedBox(height: 10.0),
                     Divider(
@@ -171,15 +171,9 @@ class ShowDataState extends State<ShowData> {
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
                           ],
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Divider(),
-                    Column(
-                      children: <Widget>[
+                        ),
+                        SizedBox(height: 10.0,),
+                        Divider(),
                         Row(
                           children: <Widget>[
                             Icon(
@@ -195,43 +189,7 @@ class ShowDataState extends State<ShowData> {
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
                           ],
-                        ),
-                        SizedBox(height: 10.0),
-                        Divider(),
-                        Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.location_on,
-                              color: Color(0xff2E86C1),
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              "${widget.list[widget.index]['country']}",
-                              style: TextStyle(
-                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10.0),
-                        //Divider(),
-//                        Row(
-//                          children: <Widget>[
-//                            Icon(
-//                              Icons.location_city,
-//                              color: Color(0xff2E86C1),
-//                            ),
-//                            SizedBox(
-//                              width: 5.0,
-//                            ),
-//                            Text(
-//                              "${widget.list[widget.index]['city']}",
-//                              style: TextStyle(
-//                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
-//                            ),
-//                          ],
-//                        )
+                        )
                       ],
                     ),
                     SizedBox(
@@ -243,27 +201,25 @@ class ShowDataState extends State<ShowData> {
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.nature_people,
+                              Icons.merge_type,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['gander']}",
+                              "${widget.list[widget.index]["gander"]}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
+                        SizedBox(height: 10.0),
                         Divider(),
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.location_on,
+                              Icons.list,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
@@ -275,13 +231,17 @@ class ShowDataState extends State<ShowData> {
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
                           ],
-                        )
+                        ),
+
                       ],
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
                     Divider(),
+
+
+
                     Column(
                       children: <Widget>[
                         Row(
@@ -331,5 +291,25 @@ class ShowDataState extends State<ShowData> {
         ),
       ),
     );
+  }
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Failed'),
+            content: new Text('Allredy add'),
+            actions: <Widget>[
+              new RaisedButton(
+                child: new Text(
+                  'Close',
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }

@@ -537,19 +537,19 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                   MaterialPageRoute(
                       builder: (context) => CompanyDashboardjobs())),
             ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "Favorites",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.favorite,
-                color: Colors.red,
-              ),
-            ),
+//            Divider(),
+//            ListTile(
+//              title: Text(
+//                "Favorites",
+//                style: TextStyle(
+//                  color: Color(0xff1B4F72),
+//                ),
+//              ),
+//              trailing: Icon(
+//                Icons.favorite,
+//                color: Colors.red,
+//              ),
+//            ),
             Divider(),
             ListTile(
               title: Text(

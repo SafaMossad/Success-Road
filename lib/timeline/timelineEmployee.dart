@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/favorite/showfavoritejobs.dart';
 import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/dashboard.dart';
@@ -86,6 +87,8 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                 Icons.favorite,
                 color: Colors.red,
               ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ShowFavoriteJobs())),
             ),
 
 
@@ -263,7 +266,7 @@ class ItemList extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                              list[i]['title'],
+                              list[i]["address"],
                               style: TextStyle(
                                   color: primary,
                                   fontWeight: FontWeight.bold,
@@ -273,7 +276,7 @@ class ItemList extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                              list[i]['title'],
+                              list[i]["salary"],
                               style: TextStyle(
                                   color: primary,
                                   fontWeight: FontWeight.bold,

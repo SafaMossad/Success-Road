@@ -30,7 +30,7 @@ class ShowFavoriteJobsState extends State<ShowFavoriteJobs> {
             centerTitle: true,
           ),
           body: new FutureBuilder<List<dynamic>>(
-            future: databaseHelper.getFavoriteJobs(widget.list[widget.index]['id']),
+            future: databaseHelper.getFavoriteJobs(),
             builder: (context, snapshot) {
               if (snapshot.hasError) print(snapshot.error);
               return snapshot.hasData
@@ -60,39 +60,11 @@ class ItemList extends StatelessWidget {
           return new SingleChildScrollView(
             padding: EdgeInsets.only(top: 5.0),
             child: Card(
-              margin: EdgeInsets.only(right: 10.0, left: 10.0, bottom: 10.0),
+              margin: EdgeInsets.only(right: 15.0, left: 15.0, bottom: 10.0),
               color: Color(0xffd8e2dc),
               child: Column(
                 children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                          height: 150,
-                          width: double.infinity,
-                          child: Image.asset(
-                            "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
-                            fit: BoxFit.cover,
-                          )),
-                      Positioned(
-                        top: 0.0,
-                        left: 20.0,
-                        right: 20.0,
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.slideshow,
-                              color: Colors.black87,
-                            ),
-                            SizedBox(width: 10.0),
-                            Text(
-                              "Show Favorite Jobs",
-                              style: TextStyle(color: Colors.black87),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 16.0, right: 16.0, bottom: 16.0, top: 15.0),
@@ -103,7 +75,7 @@ class ItemList extends StatelessWidget {
                           children: <Widget>[
                             Expanded(
                               child: Text(
-                                "id :${list[i]['id']}",
+                                "Title :${list[i]["job"]['title']}",
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   color: Color(0xFF0a2f52),
@@ -116,21 +88,21 @@ class ItemList extends StatelessWidget {
                         SizedBox(
                           height: 5.0,
                         ),
-                        Text(
+                      /*  Text(
                           "Title :${list[i]['title']}",
                           style: TextStyle(
                             fontSize: 20.0,
                             color: Color(0xFF0a2f52),
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        ),*/
                         Divider(
                           color: Color(0xff2E86C1),
                         ),
                         SizedBox(
                           height: 5.0,
                         ),
-                        Column(
+                    /*    Column(
                           children: <Widget>[
                             Row(
                               children: <Widget>[
@@ -169,12 +141,12 @@ class ItemList extends StatelessWidget {
                               ],
                             )
                           ],
-                        ),
+                        ),*/
 
                         SizedBox(
                           height: 10.0,
                         ),
-                        Divider(),
+                     /*   Divider(),*/
 
                         //Padding(padding: EdgeInsets.only(right: 50.0)),
                         Column(
@@ -189,7 +161,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Address: ${list[i]['address']}",
+                                  "Job Type: ${list[i]['job']['jtype']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -209,7 +181,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Salary: ${list[i]['salary']}",
+                                  "Catagory: ${list[i]['job']['catagory']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -235,7 +207,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Address: ${list[i]['address']}",
+                                  "Salary: ${list[i]['job']['salary']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -255,7 +227,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Gender: ${list[i]['gander']}",
+                                  "Address: ${list[i]['job']['address']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -280,7 +252,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Country: ${list[i]['country']}",
+                                  "gender: ${list[i]['job']['gander']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -300,7 +272,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "City: ${list[i]['city']}",
+                                  "Qualification: ${list[i]['job']['qualification']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -325,7 +297,7 @@ class ItemList extends StatelessWidget {
                                   width: 5.0,
                                 ),
                                 Text(
-                                  "Qualification: ${list[i]['qualification']}",
+                                  "experience:  ${list[i]['job']['experience']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),
                                 ),
@@ -344,100 +316,16 @@ class ItemList extends StatelessWidget {
                                 SizedBox(
                                   width: 5.0,
                                 ),
-                                Text(
-                                  "Experience: ${list[i]['experience']}",
-                                  style: TextStyle(
-                                      fontSize: 15.0, color: Color(0xFF0a2f52)),
-                                ),
+                              Expanded(child:   Text(
+                                "Description: ${list[i]['job']['description']}",
+                                style: TextStyle(
+                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
+                              ),)
                               ],
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Divider(),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Wrap(
-                            children: <Widget>[
-                              Icon(
-                                Icons.comment,
-                                color: Color(0xff2E86C1),
-                              ),
-                              SizedBox(width: 5.0,),
-                              Text("Description :${list[i]['description']}",
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Color(0xFF0a2f52)),
-                              )
-                            ],
-                          ),
-                        ),
 
-
-                        Divider(
-                          color: Color(0xff1B4F72),
-                          thickness: 1.0,
-                          endIndent: 25.0,
-                          indent: 25,
-                          //  height: 20.0,
-                        ),
-
-                        Container(
-                          padding: EdgeInsets.only(top: 10.0),
-                          height: 35.0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-//                              FlatButton.icon(
-//                                  onPressed: () {
-//                                    databaseHelper
-//                                        .deleteFavoriteJobs(list[i]['id']);
-//                                    print("Delete");
-//                                  },
-//                                  icon: Icon(
-//                                    Icons.delete,
-//                                    color: Color(0xff1B4F72),
-//                                    size: 20.0,
-//                                  ),
-//                                  label: Text("Delete")),
-
-                            ],
-                          ),
-                        ),
-                        /* Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FlatButton(
-                              //elevation: 20.0,
-                              onPressed: () {
-                                // var databaseHelper=list[i]['id'];
-
-                                Navigator.of(context).push(new MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                  new ShowOneApplyJob(list: list, index: i),
-                                ));
-                                print("show ok now sharf");
-                              },
-                              padding: EdgeInsets.all(15.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                              // color: Color(0xFF0a2f52),
-                              child: Text(
-                                'Apply Request',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  letterSpacing: 1.5,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'OpenSans',
-                                ),
-                              ),
-                            ),
-                          ],
-                        )*/
                       ],
                     ),
                   ),

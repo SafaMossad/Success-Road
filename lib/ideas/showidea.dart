@@ -20,7 +20,17 @@ class ShowData extends StatefulWidget {
 
 class ShowDataState extends State<ShowData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
+  bool _isFavorited = true;
 
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _isFavorited = false;
+      } else {
+        _isFavorited = true;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +68,39 @@ class ShowDataState extends State<ShowData> {
                       fontFamily: 'OpenSans',
                     ),
                   ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(0),
+                child: IconButton(
+                  icon: (_isFavorited
+                      ? Icon(Icons.favorite)
+                      : Icon(Icons.favorite_border)),
+                  color: Colors.red[500],
+                  iconSize: 29.0,
+                  onPressed: () {
+                    /*databaseHelper.favoriteIdea(widget.list[widget.index]['id']);
+                    _toggleFavorite();*/
+                    setState(() {
+
+                      databaseHelper.favoriteIdea(widget.list[widget.index]['id']).whenComplete(() {
+                        if (databaseHelper.status==400) {
+                          _showDialog();
+                          //msgStatus = 'Check email or password';
+                        } else {
+                          /*if (databaseHelper.ideamaker) {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) =>
+                                    IdeaMakerTimeline()));
+                            print("U R ideamaker");
+                          }*/
+                          //Navigator.pushReplacementNamed(context, '/dashboard');
+print("Done ha7 ha7 ha7");
+                        }
+                      });
+
+                    });
+                  },
                 ),
               ),
 
@@ -195,38 +238,9 @@ class ShowDataState extends State<ShowData> {
                           ],
                         ),
 
-
-
-
                       ],
                     ),
 
-                    /*
-                    Text(
-                      "${widget.list[widget.index]['funding']}",
-                      style: TextStyle(
-                          //fontWeight: FontWeight.bold,
-                          fontSize: 20.0
-                      ),
-                    ),
-
-                    SizedBox(height: 10.0),
-                    Text(
-                      "${widget.list[widget.index]['Management']}",
-                      style: TextStyle(
-                          //fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-
-                    SizedBox(height: 10.0),
-                    Text(
-                      "${widget.list[widget.index]['address']}",
-                      style: TextStyle(
-                          //fontWeight: FontWeight.bold,
-                          fontSize: 20.0
-                      ),
-                    ),
-                     */
 
                     SizedBox(height: 10.0),
                     Divider(),
@@ -236,7 +250,7 @@ class ShowDataState extends State<ShowData> {
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.comment,
+                              Icons.description,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
@@ -292,6 +306,25 @@ class ShowDataState extends State<ShowData> {
 
 
   }
-
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Failed'),
+            content: new Text('Check your email or password'),
+            actions: <Widget>[
+              new RaisedButton(
+                child: new Text(
+                  'Close',
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
 
 }

@@ -392,6 +392,7 @@ class DatabaseHelper {
     print('Response body : ${response.body}');
   }
 
+
   //post favorite jobs
   favoriteJop(int jobid) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -408,7 +409,7 @@ class DatabaseHelper {
 
 
     String favoriteJopUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/user/$idislogin/jobfovurit";
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/Jobfavoutit";
 
     final Map<String, dynamic> orderData = {
       //"user_id": "$idislogin",
@@ -420,6 +421,8 @@ class DatabaseHelper {
       body: json.encode(orderData),
       headers: {
         'Accept': '*/*',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
         'Content-Type': 'application/json',
         'Authorization': '$token'
       },
@@ -430,14 +433,18 @@ class DatabaseHelper {
 
 
   //Get Favorite Jobs
-  Future<List<dynamic>> getFavoriteJobs(int id) async {
-    print(id.toString() + '!!!!first!!!');
+  Future<List<dynamic>> getFavoriteJobs() async {
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
 
-    String getFavoriteJobs =
-        "https://successsroadv2.herokuapp.com/api/v1/user/$id/jobfovurit";
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
+
+    String getFavoriteJobs = "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/Jobfavoutit";
     http.Response response = await http.get(getFavoriteJobs, headers: {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
@@ -445,17 +452,11 @@ class DatabaseHelper {
       'Content-Type': 'application/json',
       'Authorization': '$token'
     });
-    print(id.toString() + ' hhhhhhh final');
+    //print(id.toString() + ' hhhhhhh final');
     // print(response.body);
     print("body getFavoriteJobs job ${response.body}");
     return json.decode(response.body.toString());
   }
-
-
-
-
-
-
 
 
 //post favorite ideas
@@ -474,7 +475,7 @@ class DatabaseHelper {
 
 
     String favoriteJopUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/user/$idislogin/jobfovurit";
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/Ideafavoutit";
 
     final Map<String, dynamic> orderData = {
       //"user_id": "$idislogin",
@@ -490,20 +491,27 @@ class DatabaseHelper {
         'Authorization': '$token'
       },
     );
+  /*  if (response.statusCode == 400){
+      print("miss ideae you can ideao it again");
+    }else*/
     print('Response status : ${response.statusCode}');
     print('Response body : ${response.body}');
   }
 
 
   //Get Favorite Idea
-  Future<List<dynamic>> getFavoriteIdea(int id) async {
-    print(id.toString() + '!!!!first!!!');
+  Future<List<dynamic>> getFavoriteIdea() async {
+//    print(id.toString() + '!!!!first!!!');
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
 
+    final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
+    var idislogin = prefsididlogin.getInt('loginid');
+    print('loginid : $idislogin');
+
     String getFavoriteIdeaUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/user/$id/jobfovurit";
+        "https://successsroadv2.herokuapp.com/api/v1/users/$idislogin/Ideafavoutit";
     http.Response response = await http.get(getFavoriteIdeaUrl, headers: {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
@@ -511,7 +519,7 @@ class DatabaseHelper {
       'Content-Type': 'application/json',
       'Authorization': '$token'
     });
-    print(id.toString() + ' hhhhhhh final');
+    //print(id.toString() + ' hhhhhhh final');
     // print(response.body);
     print("body getFavoriteJobs job ${response.body}");
     return json.decode(response.body.toString());

@@ -188,9 +188,7 @@ class _TimeLineStateState extends State<TimeLineState> {
       case 2:
         return AddJobs();
         break;
-      case 2:
-        return AddJobs();
-        break;
+
       case 3:
         return IdeaMakerProfile();
         break;

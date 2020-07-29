@@ -192,8 +192,7 @@ class _MyLoginPage extends State<MyLoginPage> {
     setState(() {
       if (_emailController.text.trim().toLowerCase().isNotEmpty &&
           _passwordController.text.trim().isNotEmpty) {
-        databaseHelper
-            .loginData(_emailController.text.trim().toLowerCase(),
+        databaseHelper.loginData(_emailController.text.trim().toLowerCase(),
                 _passwordController.text.trim())
             .whenComplete(() {
           if (databaseHelper.status) {

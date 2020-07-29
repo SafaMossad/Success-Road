@@ -438,6 +438,7 @@ class ItemList extends StatelessWidget {
 
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/favorite/showfavoriteideas.dart';
 import 'package:successroad/jobs/addjob.dart';
 
 import '../ideas/showidea.dart';
@@ -492,6 +493,8 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                 Icons.favorite,
                 color: Colors.red,
               ),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
             ),
             Divider(),
             ListTile(
