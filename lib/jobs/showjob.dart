@@ -21,15 +21,20 @@ class ShowDataState extends State<ShowData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
   var userid;
   var jobid;
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Added Successfully !')));
+  }
 
   bool _isFavorited = true;
-
   void _toggleFavorite() {
     setState(() {
       if (_isFavorited) {
-        _isFavorited = false;
-      } else {
         _isFavorited = true;
+      } else {
+        _isFavorited = false;
+
       }
     });
   }
@@ -82,8 +87,23 @@ class ShowDataState extends State<ShowData> {
                   color: Colors.red[500],
                   iconSize: 29.0,
                   onPressed: () {
-                    databaseHelper.favoriteJop(widget.list[widget.index]['id']);
+                    //databaseHelper.favoriteJop(widget.list[widget.index]['id']);
+                    setState(() {
 
+                      databaseHelper.favoriteJop(widget.list[widget.index]['id']).whenComplete(() {
+                        if (databaseHelper.status) {
+                          _showDialog();
+                          _toggleFavorite();
+                          //msgStatus = 'Check email or password';
+                        } else {
+                          showSnackBar();
+
+                          print("Done ha7 ha7 ha7");
+
+                        }
+                      });
+
+                    });
                   },
                 ),
               ),

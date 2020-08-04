@@ -10,7 +10,7 @@ class Signupfinal extends StatefulWidget {
 }
 
 class _ConfirmPass extends State<Signupfinal> {
-  bool enable = false;
+  //bool enable = false;
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   String msgStatus = '';
@@ -61,30 +61,6 @@ class _ConfirmPass extends State<Signupfinal> {
         child: ListView(children: <Widget>[
           Stack(
             children: <Widget>[
-/*
-
-                Container(
-
-                  child:Container(
-                    margin: EdgeInsets.only(left: 105.0,top: 20),
-                    height: 150.0,
-                    width: 150.0,
-                    decoration: BoxDecoration(
-
-                      border: Border.all(color: Colors.white),
-                      //color: Colors.grey,
-                      image: DecorationImage(
-                          image: AssetImage("Logo/Prlogo.png"),
-                          fit: BoxFit.cover
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(80.0)),
-                      //boxShadow: [BoxShadow(blurRadius: 2.0,color: Colors.grey)]
-                    ),
-
-                  ),
-                ),
-*/
-
               Padding(
                   padding: EdgeInsets.only(left: 15, top: 50, right: 15.0),
                   child: ClipPath(
@@ -103,6 +79,8 @@ class _ConfirmPass extends State<Signupfinal> {
                           SizedBox(
                             height: 90,
                           ),
+
+                          //Email
                           Container(
                               padding: EdgeInsets.only(left: 20),
                               child: TextField(
@@ -128,12 +106,15 @@ class _ConfirmPass extends State<Signupfinal> {
                             padding: EdgeInsets.only(
                                 left: 20.0, right: 20.0, bottom: 10.0),
                           ),
+
+                          //Password
                           Container(
                               padding: EdgeInsets.only(left: 20),
                               child: Column(
                                 children: <Widget>[
                                   TextField(
                                     controller: _passwordController,
+                                    keyboardType: TextInputType.visiblePassword,
                                     style: TextStyle(color: Colors.black),
                                     decoration: InputDecoration(
                                       hintText: "Password",
@@ -156,11 +137,13 @@ class _ConfirmPass extends State<Signupfinal> {
                               color: Color(0xff1B4F72),
                             ),
                           ),
+
+                          //Confirmaation Password
                           Container(
                             padding: EdgeInsets.only(left: 20),
                             child: TextField(
                               controller: _confirmpassword,
-                              style: TextStyle(
+                              keyboardType: TextInputType.visiblePassword,                              style: TextStyle(
                                 color: Colors.black,
                               ),
                               decoration: InputDecoration(

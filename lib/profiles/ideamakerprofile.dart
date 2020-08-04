@@ -62,162 +62,7 @@ class ProfileFinal extends StatelessWidget {
     return Scaffold(
 
       backgroundColor: Colors.grey.shade300,
-//      body: Container(
-//        child: Column(
-//          children: <Widget>[
-//            ListView.builder(
-//                itemCount: list == null ? 0 : list.length,
-//                itemBuilder: (context, i) {
-//                  return Container(
-//                      child: ListView(
-//                    padding: const EdgeInsets.only(
-//                        top: 62, left: 12.0, right: 12.0, bottom: 12.0),
-//                    children: <Widget>[
-//
-//
-//                      Container(
-//                        decoration: BoxDecoration(
-//                          borderRadius: BorderRadius.all(Radius.circular(100)),
-//                        ),
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Title : ${list[i]['name']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(
-//                              fontWeight: FontWeight.bold, fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['jobtybe']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['jobcategory']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['address']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['salary']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['Gander']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['Qualifcation']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['mobile']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['Degree']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['Indestry']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//                      new Padding(padding: new EdgeInsets.only(top: 30.0),),
-//                      Container(
-//                        height: 50,
-//                        child: new Text(
-//                          "Idea Catagory : ${list[i]['Exprense']}",
-//                          textAlign: TextAlign.left,
-//                          overflow: TextOverflow.ellipsis,
-//                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),
-//                        ),
-//                      ),
-//
-//
-//
-//
-//
-//                    ],
-//                  ));
-//                }
+
 
       body: new ListView.builder(
           itemCount: map==null?0:1,
@@ -271,34 +116,7 @@ class ProfileFinal extends StatelessWidget {
                                               padding: EdgeInsets.all(10.0),
 
                                               color: Color(0xFF0a2f52),
-
                                             ),
-
-                                         /*   child: RaisedButton(
-                                              elevation: 20.0,
-                                              onPressed: ()=> Navigator.of(context).push(
-                                                  new MaterialPageRoute(
-                                                    builder: (BuildContext context) => new IdeaMakerEditData(map),
-                                                  )
-                                              ),
-                                              padding: EdgeInsets.all(10.0),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(30.0),
-                                              ),
-                                              color: Color(0xFF0a2f52),
-                                              child: Text(
-                                                'Edit',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  letterSpacing: 1.5,
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'OpenSans',
-                                                ),
-                                              ),
-                                            ),*/
-
-
                                           )
                                         ],
                                       ),
@@ -384,13 +202,9 @@ class ProfileFinal extends StatelessWidget {
 
                                 ),
 
-
-
-
                               ],
                             ),
                           ),
-
 
                           SizedBox(height: 20.0),
 
@@ -471,6 +285,41 @@ class ProfileFinal extends StatelessWidget {
                                   title: Text("Size"),
                                   subtitle:Text("${map["size"]}"),
                                   leading: Icon(Icons.subject),
+
+                                ),
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+
+                                  title: Text("Owner Name"),
+                                  subtitle:Text("${map["ownernaem"]}"),
+                                  leading: Icon(Icons.person),
+
+                                ),
+                                Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+
+                                  title: Text("Owner Phono"),
+                                  subtitle:Text("${map["ownerphono"]}"),
+                                  leading: Icon(Icons.phone),
+
+                                ),        Divider(
+
+                                  thickness: 1.0,
+                                ),
+
+                                ListTile(
+
+                                  title: Text("Owner Address"),
+                                  subtitle:Text("${map["owneraddress"]}"),
+                                  leading: Icon(Icons.location_on),
 
                                 ),
 

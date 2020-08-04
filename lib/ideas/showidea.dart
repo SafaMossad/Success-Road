@@ -20,20 +20,31 @@ class ShowData extends StatefulWidget {
 
 class ShowDataState extends State<ShowData> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
-  bool _isFavorited = true;
+  bool _isFavorited = false;
 
   void _toggleFavorite() {
     setState(() {
       if (_isFavorited) {
-        _isFavorited = false;
-      } else {
         _isFavorited = true;
+      } else {
+        _isFavorited = false;
+
       }
     });
   }
+
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Added Successfully !')));
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
       appBar: AppBar(
         title: Text('Show Idea'),
         centerTitle: true,
@@ -79,23 +90,24 @@ class ShowDataState extends State<ShowData> {
                   color: Colors.red[500],
                   iconSize: 29.0,
                   onPressed: () {
-                    /*databaseHelper.favoriteIdea(widget.list[widget.index]['id']);
-                    _toggleFavorite();*/
+
+
                     setState(() {
 
                       databaseHelper.favoriteIdea(widget.list[widget.index]['id']).whenComplete(() {
-                        if (databaseHelper.status==400) {
+                        if (databaseHelper.status) {
+
+
                           _showDialog();
-                          //msgStatus = 'Check email or password';
+                          _isFavorited = false;
+
                         } else {
-                          /*if (databaseHelper.ideamaker) {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) =>
-                                    IdeaMakerTimeline()));
-                            print("U R ideamaker");
-                          }*/
-                          //Navigator.pushReplacementNamed(context, '/dashboard');
-print("Done ha7 ha7 ha7");
+                          showSnackBar();
+                          _isFavorited = true;
+
+                          _toggleFavorite();
+                          print("Done ha7 ha7 ha7");
+
                         }
                       });
 
@@ -104,27 +116,12 @@ print("Done ha7 ha7 ha7");
                 ),
               ),
 
-         /*     Container(
-                height: 50,
-                child: new IconButton(
 
-                 *//* onPressed: () {
-                    databaseHelper.applyFunding(widget.list[widget.index]['id']);
-                    Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new TimeLineSponsor(),
-                    ));
-                  },*//*
-                  padding: EdgeInsets.all(15.0),
-                  //color: Color(0xFF0a2f52),
-                  color: Colors.transparent,
-                  icon: Icon(Icons.favorite,color: Colors.red,size: 15.0,),
-                ),
-              ),*/
             ],
           )
         ],
       ),
-      //backgroundColor: Color(0xFFe7e7e7),
+
       body: SingleChildScrollView(
         child: Container(
           child: Stack(
@@ -135,12 +132,12 @@ print("Done ha7 ha7 ha7");
                   child: Image.asset(
                     'assets/94393013-team-work-in-training-room-with-planning-board.jpg',
                     fit: BoxFit.fill,
-                  )),
+                  )
+              ),
               Container(
                 margin: EdgeInsets.fromLTRB(16.0, 250.0, 16.0, 16.0),
                 decoration: BoxDecoration(
                     color: Color(0xFFe7e7e7),
-                    //color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0)),
                 padding: const EdgeInsets.all(16.0),
 
@@ -152,11 +149,6 @@ print("Done ha7 ha7 ha7");
                       "Title: ${widget.list[widget.index]['title']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
-                      //style: Theme.of(context).textTheme.headline4,
-//                      TextStyle(
-//                        fontWeight: FontWeight.bold,
-//                        //fontSize: 20.0,
-//                      ),
                     ),
                     SizedBox(height: 10.0),
                     Text(
@@ -209,8 +201,6 @@ print("Done ha7 ha7 ha7");
                             ),
                           ],
                         )
-
-
                       ],
                     ),
 
@@ -273,25 +263,6 @@ print("Done ha7 ha7 ha7");
                       ],
                     ),
 
-//                    Column(
-//                      crossAxisAlignment: CrossAxisAlignment.start,
-//                      children: <Widget>[
-//                        Icon(
-//                          Icons.description,
-//                          color: Color(0xff2E86C1),
-//                        ),
-//                        SizedBox(
-//                          width: 5.0,
-//                        ),
-//                        Text(
-//                          "${widget.list[widget.index]['ideaDescription']}",
-//                          textAlign: TextAlign.left,
-//                          style: TextStyle(
-//                            fontSize: 15.0,
-//                          ),
-//                        ),
-//                      ],
-//                    ),
 
                     SizedBox(height: 30.0),
 
@@ -312,7 +283,7 @@ print("Done ha7 ha7 ha7");
         builder: (BuildContext context) {
           return AlertDialog(
             title: new Text('Failed'),
-            content: new Text('Check your email or password'),
+            content: new Text('you Cannot Add it to Favorite Again"'),
             actions: <Widget>[
               new RaisedButton(
                 child: new Text(
@@ -326,5 +297,6 @@ print("Done ha7 ha7 ha7");
           );
         });
   }
+
 
 }

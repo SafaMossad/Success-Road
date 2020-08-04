@@ -437,6 +437,8 @@ class ItemList extends StatelessWidget {
 //import 'package:flutterapp/ui/login_page.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/favorite/showfavoriteideas.dart';
 import 'package:successroad/jobs/addjob.dart';
@@ -457,11 +459,17 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineSponsorState extends State<TimeLineSponsor> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
-  //final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  Log_out(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
@@ -477,7 +485,12 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
               ),
             ),
             ListTile(
-              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Account",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.arrow_back_ios,
                 color: Color(0xff1B4F72),
@@ -485,20 +498,29 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
               onTap: () => Navigator.push(
                   context, MaterialPageRoute(builder: (context) => AddJobs())),
             ),
-
             Divider(),
             ListTile(
-              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Favorites",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.favorite,
                 color: Colors.red,
               ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
             ),
             Divider(),
             ListTile(
-              title: Text("Setting spon",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Setting spon",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
@@ -506,7 +528,12 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
             ),
             Divider(),
             ListTile(
-              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "About Us",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.filter_frames,
                 color: Color(0xff1B4F72),
@@ -514,7 +541,12 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
             ),
             Divider(),
             ListTile(
-              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "help&feedback",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.textsms,
                 color: Color(0xff1B4F72),
@@ -522,12 +554,23 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
             ),
             Divider(),
             ListTile(
-                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
-                trailing: Icon(
-                  Icons.close,
+              title: Text(
+                "Close",
+                style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
-                onTap: () => Navigator.of(context).pop()),
+              ),
+              trailing: Icon(
+                Icons.close,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () {
+                Log_out('0');
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new MyLoginPage(),
+                ));
+              },
+            )
           ],
         ),
       ),
@@ -558,15 +601,8 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
                 backgroundColor: Color(0xff1B4F72),
-//                  actions: < Widget > [
-//                    IconButton(
-//                      icon: const Icon(Icons.add_circle),
-//                      tooltip: 'Add new entry',
-//                      onPressed: () { /* ... */ },
-//                    ),
-//                  ]
-              ),
 
+              ),
             ];
           },
           //backgroundColor: Color(0xffECF0F1 ),
@@ -591,57 +627,7 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                               );
                       },
                     ),
-//                  child: ListView.builder(
-//                      itemCount: schoolLists.length,
-//                      itemBuilder: (BuildContext context, int index) {
-//                        return buildList(context, index);
-//                      }),
                   ),
-
-//              Container(
-//                height: 140,
-//                width: double.infinity,
-//                decoration: BoxDecoration(
-//                    color: primary,
-//                    borderRadius: BorderRadius.only(
-//                        bottomLeft: Radius.circular(30),
-//                        bottomRight: Radius.circular(30))),
-//                child: Padding(
-//                  padding: const EdgeInsets.symmetric(horizontal: 25),
-//
-//                  child: Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                    children: <Widget>[
-//
-////                      IconButton(
-////                        onPressed: () {},
-////                        icon: Icon(
-////                          Icons.menu,
-////                          color: Colors.white,
-////                        ),
-////                      ),
-//
-//                      Text(
-//                        "TimeLine",
-//                        style: TextStyle(color: Colors.white, fontSize: 24),
-//                      ),
-//
-//
-//
-//                      IconButton(
-//                        onPressed: () {
-////                          Dwidget();
-//                        },
-//                        icon: Icon(
-//                          Icons.filter_list,
-//                          color: Colors.white,
-//                        ),
-//                      ),
-//
-//                    ],
-//                  ),
-//                ),
-//              ),
                 ],
               ),
             ),
@@ -650,57 +636,6 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
   }
 }
 
-//class Dwidget extends StatefulWidget {
-//  @override
-//  _DwidgetState createState() => _DwidgetState();
-//}
-
-//class _DwidgetState extends State<Dwidget> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return  Container(
-//      height: 250,
-//      width: double.infinity,
-//      decoration: BoxDecoration(
-//          color: primary,
-//          borderRadius: BorderRadius.only(
-//              bottomLeft: Radius.circular(30),
-//              bottomRight: Radius.circular(30))),
-//      child: Padding(
-//        padding: const EdgeInsets.symmetric(horizontal: 25),
-//
-//        child: Row(
-//          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//          children: <Widget>[
-//
-////                      IconButton(
-////                        onPressed: () {},
-////                        icon: Icon(
-////                          Icons.menu,
-////                          color: Colors.white,
-////                        ),
-////                      ),
-//
-//            Text(
-//              "TimeLine",
-//              style: TextStyle(color: Colors.white, fontSize: 24),
-//            ),
-//
-//            IconButton(
-//              onPressed: () {
-////                          Dwidget();
-//              },
-//              icon: Icon(
-//                Icons.filter_list,
-//                color: Colors.white,
-//              ),
-//            ),
-//          ],
-//        ),
-//      ),
-//    );
-//  }
-//}
 
 class ItemList extends StatelessWidget {
   List list;
@@ -717,7 +652,7 @@ class ItemList extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
               onTap: () {
-                //print('khaled');
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -789,105 +724,10 @@ class ItemList extends StatelessWidget {
                       ),
                     ]),
 
-//                child: new ListTile(
-//                  title: new Text(list[i]['title'],
-//                      style: TextStyle(
-//                          fontSize: 18.0,
-//                          color: Color(0xFF0a2f52),
-//                          fontWeight: FontWeight.bold)),
-//                  leading: new Icon(
-//                    Icons.apps,
-//                    color: Color(0xFF0a2f52),
-//                    size: 35.5,
-//                  ),
-//                  subtitle: new Text(
-//                    'Idea Catagory : ${list[i]['ideacatagory']}',
-//                  ),
-//                ),
+
               ),
 
-              /*
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 110,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(width: 3, color: secondary),
-                          image: DecorationImage(
-                              image: CachedNetworkImageProvider(schoolLists[index]['logoText']),
-                              fit: BoxFit.fill),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(list[i]['title'],
-                            style: TextStyle(
-                                color: primary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.location_on,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['jtype'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.school,
-                                color: secondary,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(list[i]['catagory'],
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 13,
-                                      letterSpacing: .3)),
-                            ],
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-               */
+
             ),
           );
         });

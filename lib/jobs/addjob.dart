@@ -1,18 +1,10 @@
 //import 'package:final_design/ui/addidea.dart';
 //import 'package:jobfinalapi/login_page.dart';
 
-
 import 'package:flutter/material.dart';
-import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
-import 'package:successroad/timeline/timelineEmployee.dart';
-//import 'package:successroad/utilities/constants.dart';
-import 'package:successroad/utilities/job_and_idea.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/jobs/dashboard.dart';
-
-
-
-
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
+import 'package:successroad/utilities/job_and_idea.dart';
 
 class AddJobs extends StatefulWidget {
   @override
@@ -21,9 +13,6 @@ class AddJobs extends StatefulWidget {
     return AddJobsState();
   }
 }
-
-
-
 
 class AddJobsState extends State<AddJobs> {
   @override
@@ -47,26 +36,24 @@ class AddJobsState extends State<AddJobs> {
     });
   }
 
-
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-  final TextEditingController _jobTitleController =
-  new TextEditingController();
-  final TextEditingController _jobTypeController =
-  new TextEditingController();
-  final TextEditingController _jobCategoryController = new TextEditingController();
-  final TextEditingController _addressController =
-  new TextEditingController();
+  final TextEditingController _jobTitleController = new TextEditingController();
+  final TextEditingController _jobTypeController = new TextEditingController();
+  final TextEditingController _jobCategoryController =
+      new TextEditingController();
+  final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _salaryController = new TextEditingController();
   final TextEditingController _genderController = new TextEditingController();
   final TextEditingController _countryController = new TextEditingController();
   final TextEditingController _cityController = new TextEditingController();
-  final TextEditingController _qualificationController = new TextEditingController();
-  final TextEditingController _experienceController = new TextEditingController();
-  final TextEditingController _jobDescriptionController = new TextEditingController();
+  final TextEditingController _qualificationController =
+      new TextEditingController();
+  final TextEditingController _experienceController =
+      new TextEditingController();
+  final TextEditingController _jobDescriptionController =
+      new TextEditingController();
 
-
-  @override
   //ده الي هيتحطلي من البدايه
   Widget _jobTitle() {
     return Container(
@@ -96,6 +83,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   Widget _jobType() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -124,6 +112,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   Widget _jobCategory() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -152,6 +141,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   Widget _address() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -180,6 +170,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   Widget _salary() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -208,10 +199,10 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   //gender not have controller
   Widget _gender() {
-    return   Container(
-
+    return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
@@ -221,7 +212,8 @@ class AddJobsState extends State<AddJobs> {
         Row(
           children: <Widget>[
             Text(
-              "Gender:", style: kLabelStyle,
+              "Gender:",
+              style: kLabelStyle,
             ),
             SizedBox(
               width: 100.0,
@@ -229,7 +221,6 @@ class AddJobsState extends State<AddJobs> {
             Container(
               width: 120.0,
               child: DropdownButton<String>(
-
                 value: genderDropdownValue,
                 icon: Icon(
                   Icons.arrow_drop_down_circle,
@@ -240,16 +231,14 @@ class AddJobsState extends State<AddJobs> {
                     color: Colors.black,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'co',
-                    fontSize: 20.0
-                ),
-
+                    fontSize: 20.0),
                 onChanged: (String data) {
                   setState(() {
                     genderDropdownValue = data;
                   });
                 },
                 items:
-                genderItems.map<DropdownMenuItem<String>>((String value) {
+                    genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -262,6 +251,7 @@ class AddJobsState extends State<AddJobs> {
       ]),
     );
   }
+
   Widget _country() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -290,7 +280,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
 
   Widget _city() {
     return Container(
@@ -321,7 +310,6 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-
   Widget _qualification() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -351,8 +339,6 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-
-
   Widget _experience() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -381,6 +367,7 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
+
   Widget _jobDescription() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -411,33 +398,6 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-
-//  Widget _buildLoginBtn() {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 25.0),
-//      width: 150.0,
-//      child: RaisedButton(
-//        elevation: 20.0,
-//        onPressed: () => print('Login Button Pressed'),
-//        padding: EdgeInsets.all(15.0),
-//        shape: RoundedRectangleBorder(
-//          borderRadius: BorderRadius.circular(30.0),
-//        ),
-//        color: Color(0xFF0a2f52),
-//        child: Text(
-//          'Upload Files',
-//          style: TextStyle(
-//            color: Colors.white,
-//            letterSpacing: 1.5,
-//            fontSize: 18.0,
-//            fontWeight: FontWeight.bold,
-//            fontFamily: 'OpenSans',
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-
   Widget _buildLoginBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -457,11 +417,9 @@ class AddJobsState extends State<AddJobs> {
               _qualificationController.text.trim(),
               _experienceController.text.trim(),
               _jobDescriptionController.text.trim());
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context) => new IdeaMakerTimeline(),
-              )
-          );
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new IdeaMakerTimeline(),
+          ));
           print("Save");
         },
         padding: EdgeInsets.all(15.0),
@@ -482,8 +440,6 @@ class AddJobsState extends State<AddJobs> {
       ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -555,13 +511,13 @@ class AddJobsState extends State<AddJobs> {
                   height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFF0a2f52),
-                          Color(0xff2E86C1),
-                        ],
-                      )),
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF0a2f52),
+                      Color(0xff2E86C1),
+                    ],
+                  )),
                 ),
               ),
               Stack(
@@ -614,7 +570,8 @@ class AddJobsState extends State<AddJobs> {
                               ListView(
                                 children: <Widget>[
                                   Container(
-                                    height:MediaQuery.of(context).size.height * 1.8,//height: 1200,
+                                    height: MediaQuery.of(context).size.height *
+                                        1.8, //height: 1200,
                                     padding: EdgeInsets.only(top: 30.0),
                                     alignment: Alignment.topCenter,
                                     child: Column(
@@ -633,14 +590,11 @@ class AddJobsState extends State<AddJobs> {
 
                                         _jobTitle(),
 
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
 
-
                                         _jobType(),
-
 
                                         SizedBox(
                                           height: 20.0,
@@ -648,30 +602,23 @@ class AddJobsState extends State<AddJobs> {
 
                                         _jobCategory(),
 
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
 
                                         _address(),
 
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
 
                                         _salary(),
 
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
 
-
                                         _gender(),
-
 
                                         SizedBox(
                                           height: 20.0,
@@ -702,7 +649,7 @@ class AddJobsState extends State<AddJobs> {
 
                                         Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           children: <Widget>[
 //                                              _buildLoginBtn(),
 //                                              SizedBox(
@@ -793,5 +740,3 @@ class WaveClipper2 extends CustomClipper<Path> {
     return false;
   }
 }
-
-

@@ -359,7 +359,6 @@ class _MyLoginPage extends State<MyLoginPage> {
               child: TextField(
                 controller: _passwordController,
                 keyboardType: TextInputType.visiblePassword,
-
                 obscureText: true,
                 //onChanged: (String value) {},
                 cursorColor: Color(0xff1B4F72),
@@ -446,25 +445,6 @@ class _MyLoginPage extends State<MyLoginPage> {
     );
   }
 
-/*
-  void _snackbar() {
-    SnackBar(
-      elevation: 6.0,
-        behavior: SnackBarBehavior.floating,
-        duration: Duration(milliseconds: 500),
-        content: Row(
-          children: <Widget>[
-            Icon(Icons.error),
-            SizedBox(
-              width: 20.0,
-            ),
-            Expanded(
-              child: Text("invalid Email or Password"),
-            )
-          ],
-        ));
-  }
-*/
 
   void _showDialog() {
     showDialog(
@@ -486,145 +466,16 @@ class _MyLoginPage extends State<MyLoginPage> {
           );
         });
   }
-/*  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      backgroundColor: Color(0xff2C90A5),
 
-      //ده علشان اخلي الشريط بتاع الاشعارات منور ولا مطفي
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: Container(
-*/
-/*
-          decoration: BoxDecoration(
-
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF337db1),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-              ],
-              stops: [
-                0.1,
-                0.3,
-                0.5,
-                0.7
-              ],
-            ),
-          ),*/
-/*
-          child: ListView(
-            children: <Widget>[
-              Padding(padding: EdgeInsets.all(10.0)),
-
-              //Container which Contains Logo
-              Container(
-                decoration: BoxDecoration(
-                  //color: Color(0xFF337db1),
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.orange)),
-                child: Image.asset(
-                  "assets/Prlogo.png",
-                  height: 150.0,
-                  width: 150.0,
-                ),
-              ),
-              SizedBox(height: 9.0),
-              //Row which Contains App Name
-              Padding(
-                  padding: EdgeInsets.only(left: 30.0),
-                  child: Center(
-                    child: Row(
-                      children: <Widget>[
-                        Text('Success',
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                color: Color(0xFF0a2f52),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25.0)),
-                        SizedBox(width: 10.0),
-                        Text('Road',
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                color: Color(0xFF0a2f52),
-                                fontSize: 25.0))
-                      ],
-                    ),
-                  )),
-              SizedBox(height: 15.0),
-
-              //Container which Controls data in page
-              Container(
-                //Controlling the white place Shape
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height - 258.0,
-                decoration: BoxDecoration(
-                  color: Color(0xffE5E8E8),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(75.0),
-                    // bottomRight: Radius.circular(120.0),
-                    // bottomLeft: Radius.circular(100.0),
-                    //topRight: Radius.circular(100.0)
-                  ),
-                ),
-                padding: EdgeInsets.all(30.0),
-
-                //Stack That Controlling Data In Container
-                child: Stack(
-                  //primary: false,
-                  //padding: EdgeInsets.only(left: 25.0, right: 20.0),
-                  children: <Widget>[
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          // Padding(padding: EdgeInsets.only(top: 2.0)),
-                          _buildEmailTF(),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          _buildPassowrd(),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          _buildLoginBtn(),
-                          SizedBox(
-                            height: 5.0,
-                          ),
-                          _buildForgetPass(),
-                          _buildSignUp(),
-
-
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }*/
 }
 
 class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
-    //ده كدا خط مستقيم علي الشمال
-    path.lineTo(0.0, size.height - 50);
-//دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
-    // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
 
+    path.lineTo(0.0, size.height - 50);
+//
     var firstEndPoint = Offset(size.width * 0.6, size.height - 29 - 50);
     var firstControlPoint = Offset(size.width * .25, size.height - 60 - 50);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,

@@ -383,7 +383,7 @@ class EditDataState extends State<EmployeeEditData> {
       height: 120.0,
       child: TextField(
         controller: _exprenseController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
         style: textColor,
         maxLines: 10,
         decoration: InputDecoration(
@@ -395,7 +395,7 @@ class EditDataState extends State<EmployeeEditData> {
           ),
           labelText: "Experince",
           labelStyle: kLabelStyle,
-          hintText: "Experince",
+          hintText: "EX: 2",
           hintStyle: kHintTextStyle,
         ),
       ),

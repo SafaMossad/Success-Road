@@ -36,9 +36,12 @@ class EditDataState extends State<IdeaMakerEditData> {
   TextEditingController _qualifictionController = new TextEditingController();
   TextEditingController _mobileController = new TextEditingController();
   TextEditingController _ideamakerBioController = new TextEditingController();
-  TextEditingController _interstingfieldController =
-      new TextEditingController();
+  TextEditingController _interstingfieldController = new TextEditingController();
   TextEditingController _sizeController = new TextEditingController();
+  TextEditingController _ownernaemController = new TextEditingController();
+  TextEditingController _ownerphonoController = new TextEditingController();
+  TextEditingController _owneraddressController = new TextEditingController();
+
 
   Widget _name() {
     return Container(
@@ -347,6 +350,84 @@ class EditDataState extends State<IdeaMakerEditData> {
     );
   }
 
+  Widget _ownernaem() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _ownernaemController,
+        keyboardType: TextInputType.text,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          //contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.business,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Owner Name",
+          labelStyle: kLabelStyle,
+          hintText: "X X X X",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _ownerphono() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _ownerphonoController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          // contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _owneraddress() {
+    return Container(
+      alignment: Alignment.topLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _owneraddressController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          // contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.location_on,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Owner Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+
   /* Widget _buildIMBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -430,6 +511,9 @@ class EditDataState extends State<IdeaMakerEditData> {
 
 
     _sizeController = new TextEditingController(text: widget.map["size"].toString());
+    _ownernaemController = new TextEditingController(text: widget.map["size"].toString());
+    _sizeController = new TextEditingController(text: widget.map["size"].toString());
+    _sizeController = new TextEditingController(text: widget.map["size"].toString());
   }
 
   @override
@@ -464,7 +548,11 @@ class EditDataState extends State<IdeaMakerEditData> {
                     _qualifictionController.text.trim(),
                     _mobileController.text.trim(),
                     _interstingfieldController.text.trim(),
-                    _sizeController.text.trim());
+                    _sizeController.text.trim(),
+                    _ownernaemController.text.trim(),
+                _ownerphonoController.text.trim(),
+                _owneraddressController.text.trim()
+                );
                 Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => new IdeaMakerProfile(),
                 ));
@@ -565,6 +653,12 @@ class EditDataState extends State<IdeaMakerEditData> {
                             _ideamakerBio(),
                             Divider(),
                             _interstingfield(),
+                            Divider(),
+                            _qualification(),
+                            Divider(),
+                            _ownernaem(),
+                            Divider(),
+                            _ownernaem(),
                             Divider(),
                             _qualification(),
                           ],

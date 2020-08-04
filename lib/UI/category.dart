@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 //import 'package:login_page/utilities/constants.dart';
-import '../UI/employee_reg.dart';
-import '../UI/idea_maker.dart';
-import '../UI/sponsor.dart';
+import '../Registration/employee_reg.dart';
+import '../Registration/idea_maker.dart';
+import '../Registration/sponsor.dart';
 
 class Tabs extends StatefulWidget {
   @override
@@ -54,6 +54,7 @@ class _Tabs extends State<Tabs> {
 
         ],
       ),
-    ),);
+    ),
+    );
   }
 }

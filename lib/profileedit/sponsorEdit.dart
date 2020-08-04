@@ -368,52 +368,6 @@ class EditDataState extends State<SponsorEditData> {
 
 
 
- /* Widget _buildSponsorBtnsSave() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      //width: 150.0,
-      child: RaisedButton(
-        elevation: 20.0,
-        onPressed: ()
-        {
-
-          databaseHelper.editSponsorData(
-              _nameController.text.trim(),
-              _addressController.text.trim(),
-              _catagoryController.text.trim(),
-              _ganderController.text.trim(),
-              _fundingController.text.trim(),
-              _typemanagmentController.text.trim(),
-              _phoneController.text.trim(),
-              _bioController.text.trim(),
-              _experinceController.text.trim()
-          );
-
-          Navigator.of(context).push(
-              new MaterialPageRoute(
-                builder: (BuildContext context) => new SponsorProfile(),
-              )
-          );
-          print("Edit");
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF0a2f52),
-        child: Text(
-          'Save',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }*/
 
 
 

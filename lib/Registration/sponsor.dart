@@ -1,34 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/timeline/choocenavigationEmployee.dart';
 
 import '../utilities/constants.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Employee(),
+    home: Sponsor(),
   ));
 }
 
-class Employee extends StatefulWidget {
+class Sponsor extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _Employee();
+    return _Sponsor();
   }
 }
-
+/*
 class Gender {
   String gender;
 
   Gender(this.gender);
 
   static List<Gender> getGender() {
-    return <Gender>[Gender("MAle"), Gender("Female"), Gender("Not prefer")];
+    return <Gender>[Gender("Male"), Gender("Female"), Gender("Not prefer")];
   }
 }
-
 class Manage {
   String man;
 
@@ -38,8 +36,29 @@ class Manage {
     return <Manage>[Manage("fully"), Manage("semi"), Manage("Non")];
   }
 }
+*/
 
-class _Employee extends State<Employee> {
+class _Sponsor extends State<Sponsor> {
+/*
+  String dropdownValue = 'male';
+
+  // To show Selected Item in Text.
+  String holder = '';
+
+  List<String> actorsName = [
+    'male',
+    'female',
+    'not prefer',
+  ];
+
+  void getDropDownItem() {
+    setState(() {
+      holder = dropdownValue;
+    });
+  }
+
+*/
+
 //gender controlling
   String genderDropdownValue = 'male';
 
@@ -58,23 +77,36 @@ class _Employee extends State<Employee> {
     });
   }
 
+  //mangment controlling
+
+  String mangmentdropdownValue = 'fully';
+
+  // To show Selected Item in Text.
+  String mangmentholder = '';
+
+  List<String> mangmentItems = [
+    'fully',
+    'semi',
+  ];
+
+  void getDropDownItemanagemangment() {
+    setState(() {
+      mangmentholder = mangmentdropdownValue;
+    });
+  }
+
   DatabaseHelper databaseHelper = new DatabaseHelper();
   final TextEditingController _nameController = new TextEditingController();
-  final TextEditingController _jobtybeController = new TextEditingController();
-  final TextEditingController _jobcategoryController = new TextEditingController();
-  final TextEditingController _addressController = new TextEditingController();
-  final TextEditingController _salaryController = new TextEditingController();
-//  final TextEditingController _ganderController = new TextEditingController();
-  final TextEditingController _qualifcationController = new TextEditingController();
-  final TextEditingController _mobileController = new TextEditingController();
-  final TextEditingController _degreeController = new TextEditingController();
-  final TextEditingController _indestryController = new TextEditingController();
-  final TextEditingController _exprenseController = new TextEditingController();
-  final TextEditingController _employeeBioController = new TextEditingController();
-  final TextEditingController _datefromController = new TextEditingController();
-  final TextEditingController _datetoController = new TextEditingController();
-/*
+  final TextEditingController _addreeController = new TextEditingController();
+  final TextEditingController _categoryController = new TextEditingController();
+  final TextEditingController _fundingController = new TextEditingController();
 
+  // final TextEditingController _typemanagmentController = new TextEditingController();
+  final TextEditingController _phoneController = new TextEditingController();
+  final TextEditingController _experinceController = new TextEditingController();
+  final TextEditingController _bioController = new TextEditingController();
+
+/*
 
   List<Gender> _get_Gender = Gender.getGender();
   List<DropdownMenuItem<Gender>> _DropdownMenuItem;
@@ -134,37 +166,7 @@ class _Employee extends State<Employee> {
     });
   }
 */
-
-  Widget _firstname() {
-    return Container(
-      /*alignment: Alignment.topCenter,
-      padding: EdgeInsets.only(bottom:10.0),*/
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-     // width: 165.0,
-      child: TextField(
-        controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
-         style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Full  Name",
-         labelStyle: kLabelStyle,
-          hintText: '    ie: x x x',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-/*
-  Widget _lastname() {
+  /* Widget _lastname() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
@@ -172,10 +174,7 @@ class _Employee extends State<Employee> {
       width: 165.0,
       child: TextField(
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: kLabelStyle,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -191,394 +190,92 @@ class _Employee extends State<Employee> {
       ),
     );
   }
+
+  Widget _Email() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.email,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "E-mail",
+          //labelStyle: kLabelStyle,
+          hintText: "E-mail",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _Pass() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 50.0,
+      // width: 150.0,
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        style: kLabelStyle,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.lock,
+            color: Color(0xFF8b8b8b),
+          ),
+          //labelText: "Password",
+          //labelStyle: kLabelStyle,
+          hintText: "Password",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
 */
-
-  Widget _jobtybe() {
+/*
+  Widget _Manage() {
     return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _jobtybeController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
+       padding: EdgeInsets.only(left: 11.0),
+        alignment: Alignment.topCenter,
 
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
+        decoration: kBoxDecorationStyle,
+        height: 63.0,
+        child: DropdownButtonFormField(
+
+          hint: Text("hello"),
+          value: _Selected_Manage,
+          items: _DropdownMenuItem_Manage,
+          onChanged: onChanging2,
+          decoration: new InputDecoration(
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
+            icon: Icon(Icons.beenhere,),
+            contentPadding: EdgeInsets.only(left:20.0,top: 15.0,right: 10.0),
+
+            // hoverColor: Colors.orange,
+            // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
+            hintText: 'Chose Tybe Of Managment',
+            //focusColor: Colors.orange,
+
+            labelText: "Magment",
+            // labelStyle: ,
+            hintStyle: kHintTextStyle,
+            //icon: new Icon(Icons.person)
           ),
-         labelText: "Job Tybe",
-          labelStyle: kLabelStyle,
-          hintText: "Job Tybe",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _jobcategory() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _jobcategoryController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.category,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Job Category",
-          labelStyle: kLabelStyle,
-          hintText: "Job Category",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _address() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _addressController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.location_on,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Address",
-          labelStyle: kLabelStyle,
-          hintText: "Address",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _salary() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _salaryController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.monetization_on,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Salary",
-          labelStyle: kLabelStyle,
-          hintText: "ie: 6,000",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _gender() {
-    return   Container(
-
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      padding: EdgeInsets.only(left: 10.0),
-      // width: 150.0,
-      child: Column(children: <Widget>[
-        Row(
-          children: <Widget>[
-            Icon(Icons.merge_type,color: Color(0xFF8b8b8b),),
-            SizedBox(
-              width: 15.0,
-            ),
-            Text(
-                "Gender:", style: TextStyle( color: Colors.red,
-                fontSize: 15.0,
-
-                fontFamily: 'co',
-                fontWeight: FontWeight.w200)
-            ),
-            SizedBox(
-              width: 90.0,
-            ),
-            Container(
-              width: 120.0,
-              child: DropdownButton<String>(
-
-                value: genderDropdownValue,
-                icon: Icon(
-                  Icons.arrow_drop_down_circle,
-                ),
-                iconSize: 18,
-                elevation: 16,
-                style: TextStyle(
-                    color: Colors.black,
-                    //fontWeight: FontWeight.bold,
-                    fontFamily: 'co',
-                    fontSize: 20.0
-                ),
-
-                onChanged: (String data) {
-                  setState(() {
-                    genderDropdownValue = data;
-                  });
-                },
-                items:
-                genderItems.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-            ),
-          ],
-        ),
-      ]),
-    );
-  }
-
-  Widget _qualification() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 120.0,
-      child: TextField(
-        controller: _qualifcationController,
-        maxLines: 10,
-        keyboardType: TextInputType.multiline,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.description,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Qualification",
-          labelStyle: kLabelStyle,
-          hintText: "Qualification",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _phone() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _mobileController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.phone,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Phone",
-          labelStyle: kLabelStyle,
-          hintText: "ie : 01X XXX XXX XX",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _degree() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _degreeController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.layers,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Degree",
-          labelStyle: kLabelStyle,
-          hintText: "ie: Very cood ,Good",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _inndestory() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      // width: 150.0,
-      child: TextField(
-        controller: _indestryController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.business_center,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Inndestory",
-          labelStyle: kLabelStyle,
-          hintText: "Inndestory",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _experince() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 120.0,
-      child: TextField(
-        controller: _exprenseController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-        maxLines: 10,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.format_align_left,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Experince",
-          labelStyle: kLabelStyle,
-          hintText: "Year of Experience",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _employeeBio() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 120.0,
-      child: TextField(
-        controller: _employeeBioController,
-        maxLines: 10,
-
-        keyboardType: TextInputType.multiline,
-        style: textColor,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.format_align_left,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Your Bio",
-          labelStyle: kLabelStyle,
-          hintText: "Bio",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _datefrom() {
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      child: TextField(
-        controller: _datefromController,
-        keyboardType: TextInputType.datetime,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.date_range,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Data from",
-          labelStyle: kLabelStyle,
-          hintText: "ie: 2016 ",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _dateto() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 60.0,
-      child: TextField(
-        controller: _datetoController,
-        keyboardType: TextInputType.datetime,
-        style: textColor,
-
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.date_range,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Data to :",
-         labelStyle: kLabelStyle,
-          hintText: "ie: 2018",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
+        )
     );
   }
 
 
-  /*Widget _Gender() {
+  Widget _Gender() {
     return Container(
       padding: EdgeInsets.only(left: 11.0),
       alignment: Alignment.centerLeft,
@@ -611,38 +308,328 @@ class _Employee extends State<Employee> {
     );
   }*/
 
-  Widget _buildSave() {
+  Widget _firstname() {
+    return Container(
+      /* alignment: Alignment.topCenter,
+      padding: EdgeInsets.only(bottom:10.0),*/
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      //width: 350.0,
+      child: TextField(
+        controller: _nameController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.person,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Full Name",
+          labelStyle: kLabelStyle,
+          hintText: ' ie: X X X',
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _address() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _addreeController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.location_on,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: "ie: Cairo ,nasr city ",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _categoey() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _categoryController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.category,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "categoey",
+          labelStyle: kLabelStyle,
+          hintText: "categoey",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _gender() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text("Gender",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.w200)),
+            SizedBox(
+              width: 90.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+                value: genderDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    genderDropdownValue = data;
+                  });
+                },
+                items:
+                    genderItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _funding() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _fundingController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.monetization_on,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Funding",
+          labelStyle: kLabelStyle,
+          hintText: "ie: 850,000",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _typeofmanagment() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.supervisor_account,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+              "Mangment",
+              style: kHintTextStyle,
+            ),
+            SizedBox(
+              width: 70.0,
+            ),
+            Container(
+              width: 80.0,
+              child: DropdownButton<String>(
+                value: mangmentdropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    mangmentdropdownValue = data;
+                  });
+                },
+                items:
+                    mangmentItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _Phone() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _phoneController,
+        keyboardType: TextInputType.number,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.phone_forwarded,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Phone",
+          labelStyle: kLabelStyle,
+          hintText: "ie : 01X XXX XXX XX",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _experince() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 120.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _experinceController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 7.0),
+          prefixIcon: Icon(
+            Icons.format_list_bulleted,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Experince",
+          labelStyle: kLabelStyle,
+          hintText: "Experince",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _bio() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 120.0,
+      // width: 150.0,
+      child: TextField(
+        controller: _bioController,
+        keyboardType: TextInputType.emailAddress,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(top: 2.0),
+          prefixIcon: Icon(
+            Icons.subject,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Your Bio",
+          labelStyle: kLabelStyle,
+          hintText: "Bio",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
+
+  Widget _build_Save() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 200.0,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          databaseHelper.employeeRegister(
-              _nameController.text.trim(),
-              _jobtybeController.text.trim(),
-              _jobcategoryController.text.trim(),
-              _addressController.text.trim(),
-              _salaryController.text.trim(),
-              genderDropdownValue.trim(),
-              _qualifcationController.text.trim(),
-              _mobileController.text.trim(),
-              _degreeController.text.trim(),
-              _indestryController.text.trim(),
-              _exprenseController.text.trim(),
-              _employeeBioController.text.trim(),
-              _datetoController.text.trim(),
-              _datefromController.text.trim(),
-
-
-
-
+          databaseHelper.sponsorRegister(
+            _nameController.text.trim(),
+            _addreeController.text.trim(),
+            _categoryController.text.trim(),
+            genderDropdownValue.trim(),
+            _fundingController.text.trim(),
+            mangmentdropdownValue.trim(),
+            _phoneController.text.trim(),
+            _experinceController.text.trim(),
+            _bioController.text.trim(),
           );
 
           Navigator.of(context).push(new MaterialPageRoute(
             builder: (BuildContext context) => new MyLoginPage(),
           ));
-          print("Save");
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -785,14 +772,35 @@ class _Employee extends State<Employee> {
                                       children: <Widget>[
                                         // Padding(padding: EdgeInsets.only(top: 2.0)),
 
-
-                                            _firstname(),
-
+                                        _firstname(),
 
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
+
+                                        /*  DropdownButton<String>(
+                                          value: dropdownValue,
+                                          icon: Icon(Icons.arrow_drop_down),
+                                          iconSize: 24,
+                                          elevation: 16,
+                                          style: TextStyle(color: Colors.red, fontSize: 18),
+                                          underline: Container(
+                                            height: 2,
+                                            color: Colors.deepPurpleAccent,
+                                          ),
+                                          onChanged: (String data) {
+                                            setState(() {
+                                              dropdownValue = data;
+                                            });
+                                          },
+                                          items: actorsName.map<DropdownMenuItem<String>>((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                        ),*/
 
                                         _address(),
 
@@ -801,110 +809,52 @@ class _Employee extends State<Employee> {
                                           color: Colors.black,
                                         ),
 
+                                        _Phone(),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
 
                                         _gender(),
 
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
+
+                                        _funding(),
 
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
 
-
-                                        _phone(),
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-
-
-
-                                        _salary(),
+                                        _typeofmanagment(),
 
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
-
-
-                                        _degree(),
+                                        _categoey(),
 
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
-                                        _inndestory(),
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-                                        _jobtybe(),
-
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-
-                                        _jobcategory(),
-
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-
-
-                                        _qualification(),
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-
-
-
 
                                         _experince(),
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-                                       _employeeBio(),
-
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
 
-
-                                        _dateto(),
-
+                                        _bio(),
                                         Divider(
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
 
-                                        _datefrom(),
-
-                                        Divider(
-                                          thickness: 1.0,
-                                          color: Colors.black,
-                                        ),
-
-
-
-                                        _buildSave(),
-
-
+                                        _build_Save(),
                                         SizedBox(
                                           height: 20.0,
                                         ),

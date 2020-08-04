@@ -2,16 +2,14 @@
 //import 'package:flutterapp/ui/login_page.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/favorite/showfavoritejobs.dart';
 import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/dashboard.dart';
 import 'package:successroad/jobs/showjob.dart';
-
-/*import '../jobs/addjob.dart';
-import '../profiles/emmployeeprofile.dart';*/
-//import 'package:shared_preferences/shared_preferences.dart';
 
 class TimeLineJobs extends StatefulWidget {
   TimeLineJobs({Key key, this.title}) : super(key: key);
@@ -26,7 +24,12 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineJobsState extends State<TimeLineJobs> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
-
+  Log_out(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = token;
+    prefs.setString(key, value);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,8 +127,15 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                   Icons.close,
                   color: Color(0xff1B4F72),
                 ),
-                onTap: () => Navigator.of(context).pop()),
-          ],
+    onTap: () {
+    Log_out('0');
+    Navigator.of(context).push(
+    new MaterialPageRoute(
+    builder: (BuildContext context) => new MyLoginPage(),
+    )
+    );
+    },
+            )],
         ),
       ),
       body: NestedScrollView(

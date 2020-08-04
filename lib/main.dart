@@ -11,9 +11,9 @@ import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import "package:flutter/material.dart";
 import './UI/category.dart';
 import './UI/login_page.dart';
-import './UI/idea_maker.dart';
-import './UI/employee_reg.dart';
-import './UI/sponsor.dart';
+import 'Registration/idea_maker.dart';
+import 'Registration/employee_reg.dart';
+import 'Registration/sponsor.dart';
 
 void main() {
   runApp(
