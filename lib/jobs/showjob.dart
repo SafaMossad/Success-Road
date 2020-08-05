@@ -239,7 +239,7 @@ class ShowDataState extends State<ShowData> {
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.list,
+                              Icons.info,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
@@ -267,7 +267,7 @@ class ShowDataState extends State<ShowData> {
                         Row(
                           children: <Widget>[
                             Icon(
-                              Icons.explicit,
+                              Icons.list,
                               color: Color(0xff2E86C1),
                             ),
                             SizedBox(
@@ -284,15 +284,21 @@ class ShowDataState extends State<ShowData> {
                           height: 10.0,
                         ),
                         Divider(),
-                        Row(
+                        Column(
+
                           children: <Widget>[
-                            Icon(
-                              Icons.description,
-                              color: Color(0xff2E86C1),
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
+                           Row(children: <Widget>[ Icon(
+                             Icons.description,
+                             color: Color(0xff2E86C1),
+                           ),
+                             SizedBox(
+                               width: 5.0,
+                             ),
+                             Text(
+                               "description",
+                               style: TextStyle(
+                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
+                             ),],),
                             Text(
                               "${widget.list[widget.index]['description']}",
                               style: TextStyle(

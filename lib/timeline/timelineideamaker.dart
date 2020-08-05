@@ -441,6 +441,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/ideas/showcompany.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/dashboard.dart';
 /*
@@ -678,7 +679,7 @@ class ItemList extends StatelessWidget {
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
-          return new Container(
+          return new Card(child:  Container(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
               onTap: () {
@@ -686,7 +687,7 @@ class ItemList extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ShowData(list: list, index: i)),
+                      builder: (context) => ShowIdeaDataforCompany(list: list, index: i)),
                 );
               },
               child: new Container(
@@ -697,7 +698,7 @@ class ItemList extends StatelessWidget {
                 ),
                 width: double.infinity,
                 //height of white container
-                height: 150,
+                height: 180,
                 margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Row(
@@ -722,32 +723,46 @@ class ItemList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
+                            Row(children: <Widget>[
+                              Text('Title: ',
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ), Text(
+                                list[i]['title'],
+                                style: TextStyle(
+                                    color: primary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                            ],),
+                            Divider(),
+                            Row(children: <Widget>[
+                              Text('Idea Catagory: ',
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),Text(
+                                list[i]['ideacatagory'],
+                                style: TextStyle(
+                                    color: primary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                            ],),
+                            Divider(),
+                            Expanded(
+                              child: Text(list[i]['ideaDescription'],
+                                style: TextStyle(
+                                    color: primary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13),
+                              ),
+
+                            ), SizedBox(
                               height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
                             ),
                           ],
                         ),
@@ -755,7 +770,7 @@ class ItemList extends StatelessWidget {
                     ]),
               ),
             ),
-          );
+          ),);
         });
   }
 }

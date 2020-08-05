@@ -648,7 +648,7 @@ class ItemList extends StatelessWidget {
     return new ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
-          return new Container(
+          return new Card(child: Container(
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
             child: new GestureDetector(
               onTap: () {
@@ -674,7 +674,7 @@ class ItemList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        width: 100,
+                        width: 70,
                         height: 100,
                         margin: EdgeInsets.only(top: 10),
                         decoration: BoxDecoration(
@@ -692,32 +692,46 @@ class ItemList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
+                           Row(children: <Widget>[
+                             Text('Title: ',
+                               style: TextStyle(
+                                   color: Colors.black87,
+                                   fontWeight: FontWeight.bold,
+                                   fontSize: 18),
+                             ), Text(
+                               list[i]['title'],
+                               style: TextStyle(
+                                   color: primary,
+                                   fontWeight: FontWeight.bold,
+                                   fontSize: 15),
+                             ),
+                           ],),
+                            Divider(),
+                            Row(children: <Widget>[
+                              Text('Idea Catagory: ',
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),Text(
+                                list[i]['ideacatagory'],
+                                style: TextStyle(
+                                    color: primary,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              ),
+                            ],),
+                            Divider(),
+                            Expanded(
+                              child: Text(list[i]['ideaDescription'],
+                                  style: TextStyle(
+                                      color: primary,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13),
+                                ),
+
+                            ), SizedBox(
                               height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]['title'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13),
                             ),
                           ],
                         ),
@@ -729,7 +743,7 @@ class ItemList extends StatelessWidget {
 
 
             ),
-          );
+          ),);
         });
   }
 }
