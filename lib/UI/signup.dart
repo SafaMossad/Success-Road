@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
+import 'package:successroad/utilities/constants.dart';
 
 class Signupfinal extends StatefulWidget {
   @override
@@ -10,7 +11,6 @@ class Signupfinal extends StatefulWidget {
 }
 
 class _ConfirmPass extends State<Signupfinal> {
-  //bool enable = false;
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
   String msgStatus = '';
@@ -66,11 +66,10 @@ class _ConfirmPass extends State<Signupfinal> {
                   child: ClipPath(
                     clipper: Clipper(),
                     child: Container(
-                      //margin: EdgeInsets.only(left:20,top: 50),
+
                       width: MediaQuery.of(context).size.width * 1,
                       height: 500,
                       decoration: BoxDecoration(
-
                         color: Color(0xfffbf7f5),
                       ),
                       child: Column(
@@ -86,17 +85,26 @@ class _ConfirmPass extends State<Signupfinal> {
                               child: TextField(
                                 controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                ),
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Email address",
-                                    hintStyle: TextStyle(
-                                      color: Color(0xff1B4F72),
+                                    labelText: "E-mail",
+                                    labelStyle: TextStyle(
+                                        color: Color(0xff1B4F72),
+                                        //fontWeight: FontWeight.bold,
+                                        fontFamily: 'co',
+                                        fontSize: 15.0
                                     ),
+                                    hintText: "Person@Gmail.com",
+                                    hintStyle: TextStyle(
+                                        color: Color(0xff1B4F72),
+                                        fontSize: 15.0),
                                     icon: Icon(
                                       Icons.email,
                                       color: Color(0xff1B4F72),
-
                                     )),
                               )),
                           Container(
@@ -114,18 +122,27 @@ class _ConfirmPass extends State<Signupfinal> {
                                 children: <Widget>[
                                   TextField(
                                     controller: _passwordController,
-                                    keyboardType: TextInputType.visiblePassword,
-                                    style: TextStyle(color: Colors.black),
+                                    keyboardType: TextInputType.number,
+                                    obscureText: true,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                    ),
                                     decoration: InputDecoration(
-                                      hintText: "Password",
-                                      hintStyle: TextStyle(
-                                        color: Color(0xff1B4F72),
-
+                                      labelText: "Confirm Password",
+                                      labelStyle: TextStyle(
+                                          color: Color(0xff1B4F72),
+                                          //fontWeight: FontWeight.bold,
+                                          fontFamily: 'co',
+                                          fontSize: 15.0
                                       ),
+                                      hintText: "*******",
+                                      hintStyle: TextStyle(
+                                          color: Color(0xff1B4F72),
+                                          fontSize: 15.0),
                                       icon: Icon(
                                         Icons.lock,
                                         color: Color(0xff1B4F72),
-
                                       ),
                                       border: InputBorder.none,
                                     ),
@@ -143,14 +160,23 @@ class _ConfirmPass extends State<Signupfinal> {
                             padding: EdgeInsets.only(left: 20),
                             child: TextField(
                               controller: _confirmpassword,
-                              keyboardType: TextInputType.visiblePassword,                              style: TextStyle(
-                                color: Colors.black,
-                              ),
+                              obscureText: true,
+
+                              keyboardType: TextInputType.number,
+                              style: TextStyle(color: Colors.black,fontSize: 20.0,),
+
                               decoration: InputDecoration(
-                                hintText: "Confirm Password",
+                                labelText: "Confirm Password",
+                                labelStyle: TextStyle(
+                                    color: Color(0xff1B4F72),
+                                    //fontWeight: FontWeight.bold,
+                                    fontFamily: 'co',
+                                    fontSize: 15.0
+                                ),
+                                hintText: "*******",
                                 hintStyle: TextStyle(
                                   color: Color(0xff1B4F72),
-
+                                  fontSize: 15.0
                                 ),
                                 border: InputBorder.none,
                                 icon: Icon(
@@ -186,23 +212,25 @@ class _ConfirmPass extends State<Signupfinal> {
                 ),
               ),
               Container(
-                  height: 540,
-
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: RaisedButton(onPressed:  _onPressed,
-                      color: Color(0xff1B4F72),
-                      child:Text('  Sign Up  ',
-                        style: TextStyle(
+                height: 540,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: RaisedButton(
+                    onPressed: _onPressed,
+                    color: Color(0xff1B4F72),
+                    child: Text(
+                      '  Sign Up  ',
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                      ),) ,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
                       ),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
                 ),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 50, left: 10),
                 child: Row(
@@ -216,7 +244,6 @@ class _ConfirmPass extends State<Signupfinal> {
                       child: Icon(
                         Icons.arrow_back,
                         color: Color(0xff1B4F72),
-
                         size: 30,
                       ),
                     )
@@ -227,15 +254,15 @@ class _ConfirmPass extends State<Signupfinal> {
           ),
         ]),
       ),
-    /*  floatingActionButton: FloatingActionButton.extended(
+      /* floatingActionButton: FloatingActionButton.extended(
         onPressed: _onPressed,
         label: Text(
           'Continue....',
           style: TextStyle(
-            color: Color(0xff1B4F72),
+            color: Colors.grey.shade300,
           ),
         ),
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Color(0xff1B4F72),
       ),*/
     );
   }

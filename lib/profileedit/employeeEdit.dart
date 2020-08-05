@@ -231,7 +231,7 @@ class EditDataState extends State<EmployeeEditData> {
             ),
             Text("Gender:",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xFF8b8b8b),
                     fontSize: 15.0,
                     fontFamily: 'co',
                     fontWeight: FontWeight.w200)),
@@ -478,76 +478,6 @@ class EditDataState extends State<EmployeeEditData> {
     );
   }
 
-  /*Widget _buildEditEmpBtnsSave() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      //width: 150.0,
-      child: RaisedButton(
-        elevation: 20.0,
-        onPressed: () {
-          databaseHelper.editEmployeeData(
-              _nameController.text.trim(),
-              _jobtybeController.text.trim(),
-              _jobcategoryController.text.trim(),
-              _addressController.text.trim(),
-              _salaryController.text.trim(),
-              _genderDropdownValue.trim(),
-              _qualifcationController.text.trim(),
-              _mobileController.text.trim(),
-              _degreeController.text.trim(),
-              _indestryController.text.trim(),
-              _exprenseController.text.trim());
-          Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new EmployeeProfile(),
-          ));
-          print("Edit");
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF0a2f52),
-        child: Text(
-          'Save',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }*/
-
-  /*Widget _buildEditEmpBtnsBack() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      //width: 150.0,
-      child: RaisedButton(
-        elevation: 20.0,
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF0a2f52),
-        child: Text(
-          'Back',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }*/
 
   @override
   void initState() {

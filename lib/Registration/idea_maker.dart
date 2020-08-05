@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
@@ -62,7 +64,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       width: 350.0,
       child: TextField(
         controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -88,7 +90,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -123,9 +125,9 @@ class _IdeaMaker extends State<IdeaMaker> {
             SizedBox(
               width: 15.0,
             ),
-            Text("Gender:",
+            Text("Gender",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xFF8b8b8b),
                     fontSize: 15.0,
                     fontFamily: 'co',
                     fontWeight: FontWeight.w200)),
@@ -175,7 +177,6 @@ class _IdeaMaker extends State<IdeaMaker> {
         // maxLines: 10,
         controller: _qualifictionController,
         maxLines: 10,
-
         keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
@@ -202,7 +203,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -228,7 +229,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       child: TextField(
         controller: _interstingfieldController,
         maxLines: 10,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -255,7 +256,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       child: TextField(
         controller: _ideamakerBioController,
         maxLines: 10,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -356,7 +357,7 @@ class _IdeaMaker extends State<IdeaMaker> {
       // width: 150.0,
       child: TextField(
         controller: _ownerphonoController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -378,11 +379,12 @@ class _IdeaMaker extends State<IdeaMaker> {
     return Container(
       alignment: Alignment.topLeft,
       decoration: kBoxDecorationStyle,
-      height: 60.0,
+      height: 65.0,
       // width: 150.0,
       child: TextField(
         controller: _owneraddressController,
-        keyboardType: TextInputType.emailAddress,
+        //maxLines: 10,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -400,7 +402,7 @@ class _IdeaMaker extends State<IdeaMaker> {
     );
   }
 
-  Widget _buildSave() {
+ /* Widget _buildSave() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 200.0,
@@ -446,12 +448,12 @@ class _IdeaMaker extends State<IdeaMaker> {
         ),
       ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // yellow backgroundColor: Color(0xffF7DC6F),
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff5DADE2),
       body: ListView(
         padding: EdgeInsets.only(top: 0),
@@ -478,24 +480,7 @@ class _IdeaMaker extends State<IdeaMaker> {
                   ),
                 ),
               ),
-              /*  Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
 
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xff85C1E9)
-                       ])),
-                 ),
-               ),
-             ),*/
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
@@ -513,26 +498,7 @@ class _IdeaMaker extends State<IdeaMaker> {
                 ),
               ),
               Stack(
-/*
-          decoration: BoxDecoration(
 
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF337db1),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-              ],
-              stops: [
-                0.1,
-                0.3,
-                0.5,
-                0.7
-              ],
-            ),
-          ),*/
                 children: <Widget>[
                   SingleChildScrollView(
                     padding: EdgeInsets.only(top: 0.0, bottom: 0.0),
@@ -549,16 +515,14 @@ class _IdeaMaker extends State<IdeaMaker> {
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(75.0),
                               bottomRight: Radius.circular(75.0),
-                              // bottomLeft: Radius.circular(75.0),
-                              //   topRight: Radius.circular(75.0)
+
                             ),
                           ),
                           padding: EdgeInsets.all(20.0),
 
                           //Stack That Controlling Data In Container
                           child: Stack(
-                            //primary: false,
-                            //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+
                             children: <Widget>[
                               ListView(
                                 children: <Widget>[
@@ -568,7 +532,15 @@ class _IdeaMaker extends State<IdeaMaker> {
                                     child: Column(
                                       children: <Widget>[
                                         // Padding(padding: EdgeInsets.only(top: 2.0)),
-
+                                        SizedBox(height: 15,),
+                                        Container(
+                                          child: Center(
+                                            child: Text("Company Information",style: TextStyle(
+                                                color: Colors.white,fontSize: 30.0,fontWeight: FontWeight.bold
+                                            ),),
+                                          ),
+                                        ),
+                                        SizedBox(height: 15,),
                                         _name(),
 
                                         Divider(
@@ -627,7 +599,20 @@ class _IdeaMaker extends State<IdeaMaker> {
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
+                                        SizedBox(height: 15,),
+                                        Container(
+                                          child: Center(
+                                            child: Text("User Information",style: TextStyle(
+                                              color: Colors.white,fontSize: 30.0,fontWeight: FontWeight.bold
+                                            ),),
+                                          ),
+                                        ),
+                                        SizedBox(height: 15,),
 
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         _ownernaem(),
                                         Divider(
                                           thickness: 1.0,
@@ -643,7 +628,11 @@ class _IdeaMaker extends State<IdeaMaker> {
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
-                                        _buildSave(),
+                                        /*_buildSave(),*/
+
+                                        SizedBox(
+                                          height: 180.0,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -660,6 +649,64 @@ class _IdeaMaker extends State<IdeaMaker> {
             ],
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+
+        onPressed: () {
+        setState(() {
+          if(
+          _nameController.text.trim().isNotEmpty&&
+          _addreeController.text.trim().isNotEmpty&&
+          genderDropdownValue.trim().isNotEmpty&&
+          _qualifictionController.text.trim().isNotEmpty&&
+          _mobileController.text.trim().isNotEmpty&&
+          _interstingfieldController.text.trim().isNotEmpty&&
+          _ideamakerBioController.text.trim().isNotEmpty&&
+
+          _sizeController.text.trim().isNotEmpty&&
+          _ownernaemController.text.trim().isNotEmpty&&
+          _ownerphonoController.text.trim().isNotEmpty&&
+          _owneraddressController.text.trim().isNotEmpty)
+          {
+            databaseHelper.companyRegister(
+                _nameController.text.trim(),
+                _addreeController.text.trim(),
+                genderDropdownValue.trim(),
+                _qualifictionController.text.trim(),
+                _mobileController.text.trim(),
+                _interstingfieldController.text.trim(),
+                _ideamakerBioController.text.trim(),
+
+                _websiteController.text.trim(),
+
+
+                _sizeController.text.trim(),
+
+
+                _ownernaemController.text.trim(),
+                _ownerphonoController.text.trim(),
+                _owneraddressController.text.trim()
+
+
+            );
+            Navigator.of(context).push(new MaterialPageRoute(
+              builder: (BuildContext context) => new MyLoginPage(),
+            ));
+            print("Save");
+
+          }
+
+          else{
+            print("Please Enter All Data");}
+        });
+        },
+        label: Text(
+          'Continue....',
+          style: TextStyle(
+            color: Colors.grey.shade300,
+          ),
+        ),
+        backgroundColor: Color(0xff1B4F72),
       ),
     );
   }

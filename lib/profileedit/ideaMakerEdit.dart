@@ -54,7 +54,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       width: 350.0,
       child: TextField(
         controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -80,7 +80,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -115,9 +115,9 @@ class EditDataState extends State<IdeaMakerEditData> {
             SizedBox(
               width: 15.0,
             ),
-            Text("Gender:",
+            Text("Gender",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xFF8b8b8b),
                     fontSize: 15.0,
                     fontFamily: 'co',
                     fontWeight: FontWeight.w200)),
@@ -144,7 +144,7 @@ class EditDataState extends State<IdeaMakerEditData> {
                   });
                 },
                 items:
-                    genderItems.map<DropdownMenuItem<String>>((String value) {
+                genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -167,7 +167,6 @@ class EditDataState extends State<IdeaMakerEditData> {
         // maxLines: 10,
         controller: _qualifictionController,
         maxLines: 10,
-
         keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
@@ -194,7 +193,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -220,7 +219,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       child: TextField(
         controller: _interstingfieldController,
         maxLines: 10,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -247,7 +246,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       child: TextField(
         controller: _ideamakerBioController,
         maxLines: 10,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -264,41 +263,6 @@ class EditDataState extends State<IdeaMakerEditData> {
       ),
     );
   }
-
-/*
-  Widget _gender() {
-    return Container(
-      padding: EdgeInsets.only(left: 11.0),
-      alignment: Alignment.centerLeft,
-
-      decoration: kBoxDecorationStyle,
-      height: 63.0,
-      child: DropdownButtonFormField(
-
-        hint: Text("hello",style: TextStyle(color: Colors.white),),
-        value: _selectedGender,
-        items: _dropdownMenuItem,
-        onChanged: onChanging1,
-        decoration: new InputDecoration(
-          icon: Icon(Icons.supervisor_account),
-          enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
-
-          contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
-
-          // hoverColor: Colors.orange,
-          // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
-          hintText: 'Gender',
-          focusColor: Colors.orange,
-          labelStyle: TextStyle(color: Colors.white,fontSize: 20),
-          labelText: "Gender",
-          // labelStyle: ,
-          //  hintStyle: kHintTextStyle,
-          //icon: new Icon(Icons.person)
-        ),
-      ),
-    );
-  }
-*/
 
   Widget _website() {
     return Container(
@@ -383,7 +347,7 @@ class EditDataState extends State<IdeaMakerEditData> {
       // width: 150.0,
       child: TextField(
         controller: _ownerphonoController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -405,11 +369,12 @@ class EditDataState extends State<IdeaMakerEditData> {
     return Container(
       alignment: Alignment.topLeft,
       decoration: kBoxDecorationStyle,
-      height: 60.0,
+      height: 65.0,
       // width: 150.0,
       child: TextField(
         controller: _owneraddressController,
-        keyboardType: TextInputType.emailAddress,
+        //maxLines: 10,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -428,74 +393,6 @@ class EditDataState extends State<IdeaMakerEditData> {
   }
 
 
-  /* Widget _buildIMBtns() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      //width: 150.0,
-      child: RaisedButton(
-        elevation: 20.0,
-        onPressed: () {
-          databaseHelper.editIdeaMakerData(
-              _nameController.text.trim(),
-              _jobtitleController.text.trim(),
-              _addreeController.text.trim(),
-              _locationController.text.trim(),
-              _GanderController.text.trim(),
-              _qualifictionController.text.trim(),
-              _mobileController.text.trim(),
-              _interstingfieldController.text.trim(),
-              _indestryController.text.trim());
-          Navigator.of(context).push(new MaterialPageRoute(
-            builder: (BuildContext context) => new IdeaMakerProfile(),
-          ));
-          print("Edit");
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF0a2f52),
-        child: Text(
-          'Save',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildIMBtnsBack() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
-      //width: 150.0,
-      child: RaisedButton(
-        elevation: 20.0,
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Color(0xFF0a2f52),
-        child: Text(
-          'Back',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }*/
 
   @override
   void initState() {
@@ -511,9 +408,9 @@ class EditDataState extends State<IdeaMakerEditData> {
 
 
     _sizeController = new TextEditingController(text: widget.map["size"].toString());
-    _ownernaemController = new TextEditingController(text: widget.map["size"].toString());
-    _sizeController = new TextEditingController(text: widget.map["size"].toString());
-    _sizeController = new TextEditingController(text: widget.map["size"].toString());
+    _ownernaemController = new TextEditingController(text: widget.map["ownernaem"]);
+    _ownerphonoController = new TextEditingController(text: widget.map["ownerphono"]);
+    _owneraddressController = new TextEditingController(text: widget.map["owneraddress"]);
   }
 
   @override
@@ -540,14 +437,17 @@ class EditDataState extends State<IdeaMakerEditData> {
               onPressed: () {
                 databaseHelper.editIdeaMakerData(
                     _nameController.text.trim(),
-                    _ideamakerBioController.text.trim(),
                     _addreeController.text.trim(),
-                    _websiteController.text.trim(),
-                    // _GanderController.text.trim(),
                     genderDropdownValue.trim(),
                     _qualifictionController.text.trim(),
                     _mobileController.text.trim(),
                     _interstingfieldController.text.trim(),
+                    _ideamakerBioController.text.trim(),
+
+                    _websiteController.text.trim(),
+                    // _GanderController.text.trim(),
+
+
                     _sizeController.text.trim(),
                     _ownernaemController.text.trim(),
                 _ownerphonoController.text.trim(),
@@ -586,7 +486,7 @@ class EditDataState extends State<IdeaMakerEditData> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: 1100,
+                  height: 1260,
                   margin: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 16.0),
                   child: Column(
                     children: <Widget>[
@@ -658,21 +558,14 @@ class EditDataState extends State<IdeaMakerEditData> {
                             Divider(),
                             _ownernaem(),
                             Divider(),
-                            _ownernaem(),
+                            _ownerphono(),
                             Divider(),
-                            _qualification(),
+                            _owneraddress(),
                           ],
                         ),
                       ),
                       //SizedBox(height: 20.0),
-                      /*    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          _buildIMBtns(),
-                          SizedBox(width: 20.0),
-                          _buildIMBtnsBack(),
-                        ],
-                      )*/
+
                     ],
                   ),
                 ),
@@ -682,137 +575,7 @@ class EditDataState extends State<IdeaMakerEditData> {
           ),
         ),
 
-        /*
-        ListView(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
 
-                Stack(
-                  children: <Widget>[
-                    SingleChildScrollView(
-                      //padding: EdgeInsets.only(top: 0.0),
-                      physics: AlwaysScrollableScrollPhysics(),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          //Padding(padding: EdgeInsets.all(10.0)),
-                          Container(
-                            //Controlling the white place Shape
-                            height: 800.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(75.0),
-                                bottomRight: Radius.circular(75.0),
-
-                              ),
-                            ),
-                            padding: EdgeInsets.all(20.0),
-
-                            //Stack That Controlling Data In Container
-                            child: Stack(
-                              //primary: false,
-                              //padding: EdgeInsets.only(left: 25.0, right: 20.0),
-                              children: <Widget>[
-                                ListView(
-                                  children: <Widget>[
-                                    Container(
-                                      height: MediaQuery.of(context).size.height*1.3,
-                                      padding: EdgeInsets.only(top: 30.0),
-                                      alignment: Alignment.topCenter,
-                                      child: Column(
-                                        children: <Widget>[
-                                          // Padding(padding: EdgeInsets.only(top: 2.0)),
-
-//                                        Row(
-//                                          children: <Widget>[
-//                                            _ideaTitle(),
-//                                            SizedBox(
-//                                              width: 10.0,
-//                                            ),
-//                                            _ideaCategory(),
-//                                          ],
-//                                        ),
-
-                                          _name(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-
-                                          _jobtitle(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-
-                                          _addree(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-
-                                          _location(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-
-                                          _Gander(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-                                          _qualifiction(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-                                          _mobile(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),_interstingfield(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),_indestry(),
-
-                                          SizedBox(
-                                            height: 20.0,
-                                          ),
-
-                                          Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-//                                              _buildLoginBtn(),
-//                                              SizedBox(
-//                                                width: 20,
-//                                              ),
-                                              _buildLoginBtns(),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-
-
-*/
       ),
     );
   }

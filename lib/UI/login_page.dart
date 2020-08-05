@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
@@ -451,8 +452,8 @@ class _MyLoginPage extends State<MyLoginPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: new Text('Failed'),
-            content: new Text('Check your email or password'),
+            title: new Text('Failed !!!'),
+            content: new Text('Invalid  email or password'),
             actions: <Widget>[
               new RaisedButton(
                 child: new Text(
@@ -466,7 +467,28 @@ class _MyLoginPage extends State<MyLoginPage> {
           );
         });
   }
+/*void _cupertinoAlertDialog(){
+  showDialog(
+    context: context,
+    builder: (_) => CupertinoAlertDialog(
+      title: Text("Invalid  email or password"),
 
+      content: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text("Please Check Your Email or Password"),
+      ),
+      actions: <Widget>[
+
+        CupertinoDialogAction(
+          child: Text("Yes"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    ),
+  );
+  }*/
 }
 
 class WaveClipper1 extends CustomClipper<Path> {

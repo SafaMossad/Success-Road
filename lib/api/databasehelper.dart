@@ -9,7 +9,6 @@ class DatabaseHelper {
   var status;
   var auth_token;
   var ideamaker;
-
   var sponsor;
   var employee;
 
@@ -37,18 +36,15 @@ class DatabaseHelper {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
       print('id : ${data['id']}');
-      // int z=  data ["id"];
-      //_saveId(z);
+
       final SharedPreferences prefsidid = await SharedPreferences.getInstance();
       prefsidid.setInt('id now is', data['id']);
     }
-//    print('Response status : $statusCode');
-//    print('Response body : $body');
+
   }
 
-
   //registration fo Comoany
-  companyRegister(String name, String website, String mobile, String address, String gender, String qualifiction, String interstingfield, String size, String ideamakerBio,String ownernaem,String ownerphono,String owneraddress,) async {
+  companyRegister(String name,  String address, String gender, String qualifiction,String mobile, String interstingfield, String ideamakerBio, String website, String size, String ownernaem, String ownerphono, String owneraddress,) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -189,8 +185,7 @@ class DatabaseHelper {
     print('Response body : ${response.body}');
     print('id final : $idis');
 
-//    print('Response status : $statusCode');
-//    print('Response body : $body');
+
   }
 
   loginData(String email, String password) async {
@@ -201,20 +196,20 @@ class DatabaseHelper {
     // make POST request
     Response response = await post(url, headers: headers, body: b);
     // check the status code for the result
-    //int statusCode = response.statusCode;
+
     //the additional code
     status = response.body.contains('error');
-
     ideamaker = response.body.contains('ideamaker');
     sponsor = response.body.contains('sponser');
     employee = response.body.contains('employee');
     var data = json.decode(response.body);
+
     print('login Body : $data');
     if (status) {
       print('data : ${data['error']}');
     }
     else {
-      //print('Token in login condition : ${data['auth_token']}');
+
 
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['auth_token']);
@@ -223,14 +218,11 @@ class DatabaseHelper {
       final SharedPreferences prefsididlogin =
           await SharedPreferences.getInstance();
       prefsididlogin.setInt('loginid', data['id']);
-      print('login id is : ${data['id']}');
+      print('login User ID is : ${data['id']}');
     }
   }
 
   void addDataJobs(String jobTitle, String jobType, String jobCategory, String address, String salary, String gander,String country, String city, String qualification, String experience, String description) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -488,9 +480,7 @@ class DatabaseHelper {
   }
 
   Future<List> getCurrenUserIdeas() async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key) ?? 0;
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     String myUrl = "https://successsroadv2.herokuapp.com/api/v1/ideas";
@@ -590,7 +580,7 @@ class DatabaseHelper {
     return json.decode(response.body.toString());
   }
 
-  void editIdeaMakerData(String name, String jobtitle, String address, String location, String gender, String qualifiction, String mobile, String interstingfield, String indestry,String ownernaem, String ownerphono , String owneraddress) async {
+  void editIdeaMakerData(String name, String address, String gender, String qualifiction, String mobile, String interstingfield, String ideamakerBio, String website,String size, String ownernaem, String ownerphono , String owneraddress) async {
 //
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -608,14 +598,14 @@ class DatabaseHelper {
       "profile_type": 3,
       "ideamaker": {
         "name": "$name",
-        "jobtitle": "$jobtitle",
         "addree": "$address",
-        "location": "$location",
         "Gander": "$gender",
         "qualifiction": "$qualifiction",
         "mobile": "$mobile",
         "interstingfield": "$interstingfield",
-        "indestry": "$indestry",
+        "ideamakerBio": "$ideamakerBio",
+        "Website": "$website",
+        "size": "$size",
         "ownernaem": "$ownernaem",
         "ownerphono": "$ownerphono",
         "owneraddress": "$owneraddress"
@@ -665,7 +655,7 @@ class DatabaseHelper {
         "Funding": "$funding",
         "Typemanagment": "$typemanagment",
         "phone": "$phone",
-        "sexprience": "$experince",
+        "exprience": "$experince",
         "sponcerBio": "$bio",
       }
     };
@@ -688,9 +678,7 @@ class DatabaseHelper {
   }
 
   void editEmployeeData(String name, String jobtybe, String jobcategory, String address, String salary, String gander, String qualifcation, String mobile, String degree, String indestry, String exprense, String employeeBio, String datefrom, String dateto,) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
+
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -741,9 +729,6 @@ class DatabaseHelper {
   }
 
   void addDataIdea(String ideaTitle, String managementType, String ideaCategory, String address, String funding, String ideaDescription) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -792,9 +777,6 @@ class DatabaseHelper {
   }
 
   Future<List> getAllJobData() async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key) ?? 0;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -812,9 +794,6 @@ class DatabaseHelper {
   }
 
   void editDataIdea(int id, String ideaTitle, String managementType, String ideaCategory, String address, String funding, String ideaDescription) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'Authorization';//'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key ) ?? 0;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
@@ -848,9 +827,7 @@ class DatabaseHelper {
   }
 
   void deleteData(int id) async {
-//    final prefs = await SharedPreferences.getInstance();
-//    final key = 'auth_token'; //'4E6pQe5VJv9anK1un9s7';
-//    final value = prefs.get(key) ?? 0;
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     String myUrl = "https://successsroadv2.herokuapp.com/api/v1/ideas/$id";

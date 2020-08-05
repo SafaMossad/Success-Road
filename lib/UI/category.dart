@@ -23,13 +23,14 @@ class _Tabs extends State<Tabs> {
     return DefaultTabController( length: 3, child:Scaffold(
 
       appBar: AppBar(
+
         backgroundColor: Color(0xff5DADE2),
         title: Text("Welcome to Sign Up"),
         centerTitle: true,
         bottom: TabBar(tabs: [
           Tab(
             icon: Icon(Icons.wb_incandescent,color: Color(0xff1B4F72),size: 35.0,),
-            text: "Idea Maker",
+            text: "Company",
           ),
           Tab(
             icon: Icon(Icons.directions_walk,color: Color(0xff1B4F72),size: 35.0,),

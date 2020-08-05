@@ -39,25 +39,7 @@ class Manage {
 */
 
 class _Sponsor extends State<Sponsor> {
-/*
-  String dropdownValue = 'male';
 
-  // To show Selected Item in Text.
-  String holder = '';
-
-  List<String> actorsName = [
-    'male',
-    'female',
-    'not prefer',
-  ];
-
-  void getDropDownItem() {
-    setState(() {
-      holder = dropdownValue;
-    });
-  }
-
-*/
 
 //gender controlling
   String genderDropdownValue = 'male';
@@ -106,208 +88,6 @@ class _Sponsor extends State<Sponsor> {
   final TextEditingController _experinceController = new TextEditingController();
   final TextEditingController _bioController = new TextEditingController();
 
-/*
-
-  List<Gender> _get_Gender = Gender.getGender();
-  List<DropdownMenuItem<Gender>> _DropdownMenuItem;
-  Gender _Selected_Gender;
-
-  List<Manage> _get_Manage = Manage.getManage();
-  List<DropdownMenuItem<Manage>> _DropdownMenuItem_Manage;
-  Manage _Selected_Manage;
-
-  @override
-  //ده الي هيتحطلي من البدايه
-  void initState() {
-    _DropdownMenuItem =
-        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
-
-    _Selected_Gender = _DropdownMenuItem[0].value;
-
-    _DropdownMenuItem_Manage =
-        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
-    _Selected_Manage = _DropdownMenuItem_Manage[0].value;
-  }
-
-  //
-  List<DropdownMenuItem<Gender>> buildDropdownMenuIte(List _Clicked_Gender) {
-    List<DropdownMenuItem<Gender>> item = List();
-
-    for (Gender x in _Clicked_Gender) {
-      item.add(DropdownMenuItem(
-        value: x,
-        child: Text(x.gender),
-      ));
-    }
-    return item;
-  }
-
-  List<DropdownMenuItem<Manage>> buildDropdownMenuItem(List _Clicked_Manage) {
-    List<DropdownMenuItem<Manage>> manage = List();
-
-    for (Manage m in _Clicked_Manage) {
-      manage.add(DropdownMenuItem(
-        value: m,
-        child: Text(m.man),
-      ));
-    }
-    return manage;
-  }
-
-  onChanging1(Gender selected) {
-    setState(() {
-      _Selected_Gender = selected;
-    });
-  }
-
-  onChanging2(Manage select) {
-    setState(() {
-      _Selected_Manage = select;
-    });
-  }
-*/
-  /* Widget _lastname() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      width: 165.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Last Name',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Email() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.email,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "E-mail",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _Pass() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      // width: 150.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: kLabelStyle,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.lock,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Password",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-*/
-/*
-  Widget _Manage() {
-    return Container(
-       padding: EdgeInsets.only(left: 11.0),
-        alignment: Alignment.topCenter,
-
-        decoration: kBoxDecorationStyle,
-        height: 63.0,
-        child: DropdownButtonFormField(
-
-          hint: Text("hello"),
-          value: _Selected_Manage,
-          items: _DropdownMenuItem_Manage,
-          onChanged: onChanging2,
-          decoration: new InputDecoration(
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
-            icon: Icon(Icons.beenhere,),
-            contentPadding: EdgeInsets.only(left:20.0,top: 15.0,right: 10.0),
-
-            // hoverColor: Colors.orange,
-            // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
-            hintText: 'Chose Tybe Of Managment',
-            //focusColor: Colors.orange,
-
-            labelText: "Magment",
-            // labelStyle: ,
-            hintStyle: kHintTextStyle,
-            //icon: new Icon(Icons.person)
-          ),
-        )
-    );
-  }
-
-
-  Widget _Gender() {
-    return Container(
-      padding: EdgeInsets.only(left: 11.0),
-      alignment: Alignment.centerLeft,
-
-      decoration: kBoxDecorationStyle,
-      height: 63.0,
-      child: DropdownButtonFormField(
-
-        hint: Text("hello",style: TextStyle(color: Colors.white),),
-        value: _Selected_Gender,
-        items: _DropdownMenuItem,
-        onChanged: onChanging1,
-        decoration: new InputDecoration(
-          icon: Icon(Icons.supervisor_account),
-          enabledBorder: OutlineInputBorder(borderSide: BorderSide(style: BorderStyle.none),),
-
-          contentPadding: EdgeInsets.only(left:7.0,top: 15.0,right: 10.0),
-
-          // hoverColor: Colors.orange,
-          // enabledBorder: OutlineInputBorder(gapPadding: 21.0),
-          hintText: 'Gender',
-          focusColor: Colors.orange,
-          labelStyle: TextStyle(color: Colors.white,fontSize: 20),
-          labelText: "Gender",
-          // labelStyle: ,
-          //  hintStyle: kHintTextStyle,
-          //icon: new Icon(Icons.person)
-        ),
-      ),
-    );
-  }*/
-
   Widget _firstname() {
     return Container(
       /* alignment: Alignment.topCenter,
@@ -317,7 +97,7 @@ class _Sponsor extends State<Sponsor> {
       //width: 350.0,
       child: TextField(
         controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -343,7 +123,7 @@ class _Sponsor extends State<Sponsor> {
       // width: 150.0,
       child: TextField(
         controller: _addreeController,
-        keyboardType: TextInputType.emailAddress,
+        //keyboardType: TextInputType.,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -406,7 +186,7 @@ class _Sponsor extends State<Sponsor> {
             ),
             Text("Gender",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xFF8b8b8b),
                     fontSize: 15.0,
                     fontFamily: 'co',
                     fontWeight: FontWeight.w200)),
@@ -454,7 +234,7 @@ class _Sponsor extends State<Sponsor> {
       height: 60.0,
       child: TextField(
         controller: _fundingController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -491,7 +271,7 @@ class _Sponsor extends State<Sponsor> {
             ),
             Text(
               "Mangment",
-              style: kHintTextStyle,
+              style: TextStyle(color: Color(0xFF8b8b8b),),
             ),
             SizedBox(
               width: 70.0,
@@ -538,7 +318,7 @@ class _Sponsor extends State<Sponsor> {
       // width: 150.0,
       child: TextField(
         controller: _phoneController,
-        keyboardType: TextInputType.number,
+        keyboardType: TextInputType.phone,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -563,8 +343,9 @@ class _Sponsor extends State<Sponsor> {
       height: 120.0,
       // width: 150.0,
       child: TextField(
+        maxLines: 10,
+        keyboardType: TextInputType.multiline,
         controller: _experinceController,
-        keyboardType: TextInputType.emailAddress,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -589,8 +370,9 @@ class _Sponsor extends State<Sponsor> {
       height: 120.0,
       // width: 150.0,
       child: TextField(
+        maxLines: 10,
+        keyboardType: TextInputType.multiline,
         controller: _bioController,
-        keyboardType: TextInputType.emailAddress,
         style: textColor,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -608,7 +390,7 @@ class _Sponsor extends State<Sponsor> {
     );
   }
 
-  Widget _build_Save() {
+ /* Widget _build_Save() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: 200.0,
@@ -648,12 +430,12 @@ class _Sponsor extends State<Sponsor> {
         ),
       ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // yellow backgroundColor: Color(0xffF7DC6F),
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff5DADE2),
       body: ListView(
         padding: EdgeInsets.only(top: 0),
@@ -680,24 +462,7 @@ class _Sponsor extends State<Sponsor> {
                   ),
                 ),
               ),
-              /*  Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
 
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xff85C1E9)
-                       ])),
-                 ),
-               ),
-             ),*/
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
@@ -715,26 +480,7 @@ class _Sponsor extends State<Sponsor> {
                 ),
               ),
               Stack(
-/*
-          decoration: BoxDecoration(
 
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF337db1),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-              ],
-              stops: [
-                0.1,
-                0.3,
-                0.5,
-                0.7
-              ],
-            ),
-          ),*/
                 children: <Widget>[
                   SingleChildScrollView(
                     //padding: EdgeInsets.only(top: 0.0),
@@ -779,28 +525,7 @@ class _Sponsor extends State<Sponsor> {
                                           color: Colors.black,
                                         ),
 
-                                        /*  DropdownButton<String>(
-                                          value: dropdownValue,
-                                          icon: Icon(Icons.arrow_drop_down),
-                                          iconSize: 24,
-                                          elevation: 16,
-                                          style: TextStyle(color: Colors.red, fontSize: 18),
-                                          underline: Container(
-                                            height: 2,
-                                            color: Colors.deepPurpleAccent,
-                                          ),
-                                          onChanged: (String data) {
-                                            setState(() {
-                                              dropdownValue = data;
-                                            });
-                                          },
-                                          items: actorsName.map<DropdownMenuItem<String>>((String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(value),
-                                            );
-                                          }).toList(),
-                                        ),*/
+
 
                                         _address(),
 
@@ -854,9 +579,9 @@ class _Sponsor extends State<Sponsor> {
                                           color: Colors.black,
                                         ),
 
-                                        _build_Save(),
+                                       /* _build_Save(),*/
                                         SizedBox(
-                                          height: 20.0,
+                                          height: 180.0,
                                         ),
                                       ],
                                     ),
@@ -874,6 +599,50 @@ class _Sponsor extends State<Sponsor> {
             ],
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          setState(() {
+            if(
+              _nameController.text.trim().toLowerCase().isNotEmpty&&
+              _addreeController.text.trim().toLowerCase().isNotEmpty&&
+              _categoryController.text.trim().toLowerCase().isNotEmpty&&
+              genderDropdownValue.trim().toLowerCase().isNotEmpty&&
+              _fundingController.text.trim().toLowerCase().isNotEmpty&&
+              mangmentdropdownValue.trim().toLowerCase().isNotEmpty&&
+              _phoneController.text.trim().toLowerCase().isNotEmpty&&
+              _experinceController.text.trim().toLowerCase().isNotEmpty&&
+              _bioController.text.trim().toLowerCase().isNotEmpty
+            )
+            {
+              databaseHelper.sponsorRegister(
+                _nameController.text.trim(),
+                _addreeController.text.trim(),
+                _categoryController.text.trim(),
+                genderDropdownValue.trim(),
+                _fundingController.text.trim(),
+                mangmentdropdownValue.trim(),
+                _phoneController.text.trim(),
+                _experinceController.text.trim(),
+                _bioController.text.trim(),
+              );
+              Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new MyLoginPage(),
+              ));
+              print("Save");
+            }
+            else{
+              print("Please Enter All Data");}
+
+          });
+        },
+        label: Text(
+          'Continue....',
+          style: TextStyle(
+            color: Colors.grey.shade300,
+          ),
+        ),
+        backgroundColor: Color(0xff1B4F72),
       ),
     );
   }

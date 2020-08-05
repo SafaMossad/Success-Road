@@ -458,7 +458,7 @@ class ProfileFinall extends StatelessWidget {
 
                                 ListTile(
                                   title: Text("Typemanagment"),
-                                  subtitle:Text("${map["Typemanagment"]}"),
+                                  subtitle:Text("${map["Typemanagment"]}",),
                                   leading: Icon(Icons.textsms),
                                 ),
 
