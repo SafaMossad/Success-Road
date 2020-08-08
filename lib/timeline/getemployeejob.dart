@@ -129,7 +129,7 @@ class ItemList extends StatelessWidget {
 
                       //title
                       Text(
-                        "Title :${list[i]["job"]["title"]}",
+                        "Title :${list[i]["Responce"]}",
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Color(0xFF0a2f52),
@@ -242,9 +242,6 @@ class ItemList extends StatelessWidget {
                         height: 10.0,
                       ),
                       Divider(),
-
-
-
 
 
                       Column(
@@ -422,171 +419,7 @@ class ItemList extends StatelessWidget {
               ],
             ),
           );
-/*          return new Container(
-            padding: const EdgeInsets.all(10.0),
-            child: new GestureDetector(
-              */ /*onTap: () {
 
-                print('khaled');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ShowData(list:list , index:i)),
-                );
-              },*/ /*
-              child: new Container( alignment: Alignment.topLeft,
-                decoration: BoxDecoration(
-//                  borderRadius: BorderRadius.circular(5),
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                height: 325,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              list[i]["job"]["title"],
-                              style: TextStyle(
-                                  //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["jtype"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["catagory"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["address"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["salary"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["gander"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["country"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["city"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["qualification"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-                            Text(
-                              list[i]["job"]["experience"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              list[i]["job"]["description"],
-                              style: TextStyle(
-                                //color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-
-
-
-                          ],
-
-                ),
-
-//                child: new ListTile(
-//                  title: new Text(list[i]['title'],
-//                      style: TextStyle(
-//                          fontSize: 18.0,
-//                          color: Color(0xFF0a2f52),
-//                          fontWeight: FontWeight.bold)),
-//                  leading: new Icon(
-//                    Icons.apps,
-//                    color: Color(0xFF0a2f52),
-//                    size: 35.5,
-//                  ),
-//                  subtitle: new Text(
-//                    'Idea Catagory : ${list[i]['ideacatagory']}',
-//                  ),
-//                ),
-              ),
-
-            ),
-          );*/
         });
   }
 }

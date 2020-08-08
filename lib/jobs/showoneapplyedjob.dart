@@ -1,21 +1,17 @@
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:successroad/api/databasehelper.dart';
-import 'package:successroad/ideas/dashboard.dart';
-import 'package:successroad/jobs/addjob.dart';
-import 'package:successroad/jobs/dashboard.dart';
-
-import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 
 class ShowOneApplyJob extends StatefulWidget {
   List list;
-  int index ;
+  int index;
 
-  ShowOneApplyJob({ this.list,this.index});
+  ShowOneApplyJob({this.list, this.index});
 
   @override
-
   ShowOneApplyJobState createState() => ShowOneApplyJobState();
 }
 
@@ -27,10 +23,9 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
 
   @override
   Widget build(BuildContext context) {
-   // var id=widget.id[widget.index]['Management'];
+    // var id=widget.id[widget.index]['Management'];
     return Scaffold(
-       /* body: new FutureBuilder<List<dynamic>> (
-
+        /* body: new FutureBuilder<List<dynamic>> (
           future: databaseHelper.getCompanyApply(widget.list[widget.index]['id']),
           builder: (context, snapshot) {
             if (snapshot.hasError) print(snapshot.error);
@@ -41,16 +36,15 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
               child: new CircularProgressIndicator(),
             );
           },
-
         )*/
         appBar: AppBar(
           backgroundColor: primary,
-          title:Text( "All Requestes"),
+          title: Text("All Requestes"),
           centerTitle: true,
           leading: GestureDetector(
             onTap: () => Navigator.of(context).pop(),
             child: Icon(
-              Icons.arrow_back,  // add custom icons also
+              Icons.arrow_back, // add custom icons also
             ),
           ),
         ),
@@ -65,35 +59,31 @@ class ShowOneApplyJobState extends State<ShowOneApplyJob> {
                   height: MediaQuery.of(context).size.height,
                   width: double.infinity,
                   child: new FutureBuilder<List>(
-                    future: databaseHelper.getCompanyApplyedJobs(widget.list[widget.index]['id']),
+                    future: databaseHelper
+                        .getCompanyApplyedJobs(widget.list[widget.index]['id']),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) print("snapshot.error");
                       return snapshot.hasData
                           ? new ItemList(list: snapshot.data)
                           : new Center(
-                        child: new CircularProgressIndicator(),
-                      );
+                              child: new CircularProgressIndicator(),
+                            );
                     },
                   ),
-
                 ),
-
-
               ],
             ),
           ),
-        )
-
-    );
+        ));
   }
 }
-
-
 
 class ItemList extends StatelessWidget {
   List list;
 
   ItemList({this.list});
+
+  DatabaseHelper databaseHelper = new DatabaseHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -102,82 +92,307 @@ class ItemList extends StatelessWidget {
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
           return new Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 4),
-            child: new GestureDetector(
-             /* onTap: () {
-                //print('khaled');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ShowData(list: list, index: i)),
-                );
-              },*/
-              child: new Container(
-                decoration: BoxDecoration(
-//                  borderRadius: BorderRadius.circular(5),
-                  borderRadius: BorderRadius.circular(25),
-                  color: Colors.white,
+              // height: 220,
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Card(
+                margin: EdgeInsets.only(right: 5.0, left: 5.0, bottom: 10.0),
+                //  borderOnForeground: true,
+                color: Colors.white,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 16.0, right: 16.0, bottom: 16.0, top: 15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Container(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                "${list[i]['Responce']}",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          Text(
+                            "Email :${list[i]['user']['email']}",
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Color(0xFF0a2f52),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(
+                            color: Color(0xff2E86C1),
+                          ),
+                          SizedBox(
+                            height: 5.0,
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.category,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Name: ${list[i]['user']['employee']['name']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Divider(),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.supervisor_account,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "job category:${list[i]['user']['employee']['jobcategory']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Divider(),
+
+                          //Padding(padding: EdgeInsets.only(right: 50.0)),
+                          Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.location_on,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Address: ${list[i]['user']['employee']['address']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Divider(),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.comment,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Salary: ${list[i]['user']['employee']['salary']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+
+                          SizedBox(
+                            height: 10.0,
+                          ),
+
+                          Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Divider(),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.comment,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Gender: ${list[i]['user']['employee']['Gander']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Divider(),
+
+                          Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.queue,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Qualification: ${list[i]['user']['employee']['Qualifcation']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Divider(),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.comment,
+                                    color: Color(0xff2E86C1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.0,
+                                  ),
+                                  Text(
+                                    "Experience: ${list[i]['user']['employee']['mobile']}",
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Color(0xFF0a2f52)),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Divider(),
+                          Container(
+                            alignment: Alignment.topLeft,
+                            child: Wrap(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.comment,
+                                  color: Color(0xff2E86C1),
+                                ),
+                                SizedBox(
+                                  width: 5.0,
+                                ),
+                                Text(
+                                  "Description :${list[i]['user']['employee']['Degree']}",
+                                  style: TextStyle(
+                                      fontSize: 15.0, color: Color(0xFF0a2f52)),
+                                )
+                              ],
+                            ),
+                          ),
+
+                          Divider(
+                            color: Color(0xff1B4F72),
+                            thickness: 1.0,
+                            endIndent: 25.0,
+                            indent: 25,
+                            //  height: 20.0,
+                          ),
+
+                          Container(
+                            padding: EdgeInsets.only(top: 10.0),
+                            height: 35.0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                FlatButton.icon(
+                                    onPressed: () {
+                                      // var databaseHelper=list[i]['id'];
+                                      databaseHelper
+                                          .acceptJobRequest(list[i]['job_id']);
+
+                                      print("Accept Request");
+                                    },
+                                    icon: Icon(
+                                      Icons.playlist_add,
+                                      color: Color(0xff1B4F72),
+                                      size: 20.0,
+                                    ),
+                                    label: Text("Confirm")),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                FlatButton.icon(
+                                    onPressed: () {
+
+                                      /*databaseHelper.applyFunding(list[i]['id']);*/
+                                      /*Navigator.of(context)
+                                        .push(new MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          new acceptedreg(),
+                                    ));*/
+                                      print("Accept Request");
+                                    },
+                                    icon: Icon(
+                                      Icons.playlist_add,
+                                      color: Color(0xff1B4F72),
+                                      size: 20.0,
+                                    ),
+                                    label: Text("Cancel"))
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                      //  height: 20.0,
+                    )
+                  ],
                 ),
-                width: double.infinity,
-                //height of white container
-                height: 150,
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: 100,
-                        height: 100,
-                        margin: EdgeInsets.only(top: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(width: 3, color: Colors.white),
-                          image: DecorationImage(
-                              image: new ExactAssetImage('assets/Prlogo.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              list[i]['user']['email'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            Text(
-                              list[i]['user']['employee']['name'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-                            Text(
-                              list[i]['user']['employee']['jobtybe'],
-                              style: TextStyle(
-                                  color: primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18),
-                            ),
-
-                          ],
-                        ),
-                      ),
-                    ]),
-
-
-              ),
-
-
-            ),
-          );
+              ));
         });
   }
 }

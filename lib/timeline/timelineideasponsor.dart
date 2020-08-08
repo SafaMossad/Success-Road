@@ -442,6 +442,7 @@ import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/favorite/showfavoriteideas.dart';
 import 'package:successroad/jobs/addjob.dart';
+import 'package:successroad/timeline/choocenavigationsponsor.dart';
 
 import '../ideas/showidea.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -496,36 +497,9 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddJobs())),
+                  context, MaterialPageRoute(builder: (context) => SponsorTimeline())),
             ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "Favorites",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.favorite,
-                color: Colors.red,
-              ),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
-            ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "Setting spon",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.settings,
-                color: Color(0xff1B4F72),
-              ),
-            ),
+
             Divider(),
             ListTile(
               title: Text(

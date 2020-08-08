@@ -429,13 +429,6 @@ class EditDataState extends State<EditData> {
       child: RaisedButton(
         elevation: 20.0,
         onPressed: ()
-//        {
-//////                    databaseHelper.editData(widget.list[widget.index]['id']
-//////                        , _nameController.text.trim(), _priceController.text.trim());
-////                    Navigator.of(context).push(new MaterialPageRoute(
-////                      builder: (BuildContext context) => new Dashboard(),
-////                    ));
-////                  },
         {
           databaseHelper.editDataJobs(
               widget.list[widget.index]['id'],
@@ -445,8 +438,6 @@ class EditDataState extends State<EditData> {
               _addressController.text.trim(),
               _salaryController.text.trim(),
               _genderController.text.trim(),
-              _countryController.text.trim(),
-              _cityController.text.trim(),
               _qualificationController.text.trim(),
               _experienceController.text.trim(),
               _jobDescriptionController.text.trim());
@@ -478,33 +469,21 @@ class EditDataState extends State<EditData> {
   void initState() {
     _jobTitleController =
     new TextEditingController(text: widget.list[widget.index]['title']);
-    _jobTypeController = new TextEditingController(
-        text: widget.list[widget.index]['ideacatagory']);
-    _jobCategoryController =
-    new TextEditingController(text: widget.list[widget.index]['funding']);
-    _addressController = new TextEditingController(
-        text: widget.list[widget.index]['Management']);
-    _salaryController =
-    new TextEditingController(text: widget.list[widget.index]['address']);
-    _genderController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _countryController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _cityController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _qualificationController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _experienceController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _jobDescriptionController = new TextEditingController(
-        text: widget.list[widget.index]['ideaDescription']);
-    _DropdownMenuItem =
-        buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
+    _jobTypeController = new TextEditingController(text: widget.list[widget.index]['ideacatagory']);
+    _jobCategoryController = new TextEditingController(text: widget.list[widget.index]['funding']);
+    _addressController = new TextEditingController(text: widget.list[widget.index]['Management']);
+    _salaryController = new TextEditingController(text: widget.list[widget.index]['address']);
+    _genderController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _countryController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _cityController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _qualificationController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _experienceController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _jobDescriptionController = new TextEditingController(text: widget.list[widget.index]['ideaDescription']);
+    _DropdownMenuItem = buildDropdownMenuIte(_get_Gender).cast<DropdownMenuItem<Gender>>();
 
     _Selected_Gender = _DropdownMenuItem[0].value;
 
-    _DropdownMenuItem_Manage =
-        buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
+    _DropdownMenuItem_Manage = buildDropdownMenuItem(_get_Manage).cast<DropdownMenuItem<Manage>>();
     _Selected_Manage = _DropdownMenuItem_Manage[0].value;
   }
 

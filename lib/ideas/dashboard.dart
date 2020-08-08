@@ -344,7 +344,7 @@ class ItemList extends StatelessWidget {
                                   builder: (BuildContext context) =>
                                   new ShowOneApplyIdea(list: list, index: i),
                                 ));
-                                print("show ok now sharf");
+                                print("Apply Req");
                               },
                                   icon: Icon(Icons.playlist_add,color: Color(0xff1B4F72),size: 20.0,),
                                   label: Text("Apply Req"))
@@ -352,38 +352,7 @@ class ItemList extends StatelessWidget {
 
                           ),
                         )
-                        /*       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          FlatButton(
-                            // elevation: 20.0,
-                            onPressed: () {
-                              // var databaseHelper=list[i]['id'];
 
-                              Navigator.of(context).push(new MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    new ShowOneApplyIdea(list: list, index: i),
-                              ));
-                              print("show ok now sharf");
-                            },
-                            padding: EdgeInsets.all(15.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            // color: Color(0xFF0a2f52),
-                            child: Text(
-                              'Apply Request',
-                              style: TextStyle(
-                                color: Colors.black,
-                                letterSpacing: 1.5,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'OpenSans',
-                              ),
-                            ),
-                          ),
-                        ],
-                      )*/
                       ],
                     ),
                   ),

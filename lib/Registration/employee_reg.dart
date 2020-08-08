@@ -5,11 +5,7 @@ import 'package:successroad/timeline/choocenavigationEmployee.dart';
 
 import '../utilities/constants.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Employee(),
-  ));
-}
+
 
 class Employee extends StatefulWidget {
   @override
@@ -29,15 +25,6 @@ class Gender {
   }
 }
 
-class Manage {
-  String man;
-
-  Manage(this.man);
-
-  static List<Manage> getManage() {
-    return <Manage>[Manage("fully"), Manage("semi"), Manage("Non")];
-  }
-}
 
 class _Employee extends State<Employee> {
 //gender controlling
@@ -55,6 +42,42 @@ class _Employee extends State<Employee> {
   void getDropDownItemGender() {
     setState(() {
       genderHolder = genderDropdownValue;
+    });
+  }
+
+
+
+  String jobtybeDropdownValue = 'Full-Time';
+
+  // To show Selected Item in Text.
+  String jobtybeHolder = '';
+
+  List<String> jobtybeItems = [
+    'Full-Time',
+    'Part-Time',
+  ];
+
+  void getDropDownItemjobtybe() {
+    setState(() {
+      jobtybeHolder = genderDropdownValue;
+    });
+  }
+
+  String degreeDropdownValue = 'very good';
+
+  // To show Selected Item in Text.
+  String degreeHolder = '';
+
+  List<String> degreeItems = [
+    'Excellence',
+    'very good',
+    "good",
+    "acceptable "
+  ];
+
+  void getDropDownItemdegree() {
+    setState(() {
+      degreeHolder = degreeDropdownValue;
     });
   }
 
@@ -105,28 +128,63 @@ class _Employee extends State<Employee> {
 
   Widget _jobtybe() {
     return Container(
-      alignment: Alignment.topCenter,
+
+      alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _jobtybeController,
-        keyboardType: TextInputType.text,
-        style: textColor,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(Icons.merge_type,color: Color(0xFF8b8b8b),),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+                "Job-Tybe", style: TextStyle( color: Color(0xFF8b8b8b),
+                fontSize: 15.0,
 
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
-          ),
-         labelText: "Job Tybe",
-          labelStyle: kLabelStyle,
-          hintText: "Job Tybe",
-          hintStyle: kHintTextStyle,
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
+            ),
+            SizedBox(
+              width: 90.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+
+                value: jobtybeDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    jobtybeDropdownValue = data;
+                  });
+                },
+                items:
+                jobtybeItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-      ),
+      ]),
     );
   }
 
@@ -212,7 +270,7 @@ class _Employee extends State<Employee> {
   }
 
   Widget _gender() {
-    return   Container(
+    return Container(
 
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
@@ -329,29 +387,65 @@ class _Employee extends State<Employee> {
 
   Widget _degree() {
     return Container(
-      alignment: Alignment.topCenter,
+
+      alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _degreeController,
-        keyboardType: TextInputType.text,
-        style: textColor,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(Icons.check_circle,color: Color(0xFF8b8b8b),),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+                "Degree", style: TextStyle( color: Color(0xFF8b8b8b),
+                fontSize: 15.0,
 
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.layers,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Degree",
-          labelStyle: kLabelStyle,
-          hintText: "ie: Very cood ,Good",
-          hintStyle: kHintTextStyle,
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
+            ),
+            SizedBox(
+              width: 80.0,
+            ),
+            Container(
+              width: 150.0,
+              child: DropdownButton<String>(
+
+                value: degreeDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    degreeDropdownValue = data;
+                  });
+                },
+                items:
+                degreeItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-      ),
+      ]),
     );
+
   }
 
   Widget _inndestory() {
@@ -538,10 +632,18 @@ class _Employee extends State<Employee> {
       ),
     );
   }*/
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Please Write All Data!')));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
+
       // yellow backgroundColor: Color(0xffF7DC6F),
  resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff5DADE2),
@@ -769,14 +871,14 @@ class _Employee extends State<Employee> {
         onPressed: () {
      setState(() {
        if( _nameController.text.trim().toLowerCase().isNotEmpty&&
-       _jobtybeController.text.trim().toLowerCase().isNotEmpty&&
+       jobtybeDropdownValue.trim().toLowerCase().isNotEmpty&&
        _jobcategoryController.text.trim().toLowerCase().isNotEmpty&&
        _addressController.text.trim().toLowerCase().isNotEmpty&&
        _salaryController.text.trim().toLowerCase().isNotEmpty&&
        genderDropdownValue.trim().toLowerCase().isNotEmpty&&
        _qualifcationController.text.trim().toLowerCase().isNotEmpty&&
        _mobileController.text.trim().toLowerCase().isNotEmpty&&
-       _degreeController.text.trim().toLowerCase().isNotEmpty&&
+       degreeDropdownValue.trim().toLowerCase().isNotEmpty&&
        _indestryController.text.trim().toLowerCase().isNotEmpty&&
        _exprenseController.text.trim().toLowerCase().isNotEmpty&&
        _employeeBioController.text.trim().toLowerCase().isNotEmpty&&
@@ -785,14 +887,14 @@ class _Employee extends State<Employee> {
        {
          databaseHelper.employeeRegister(
            _nameController.text.trim(),
-           _jobtybeController.text.trim(),
+           jobtybeDropdownValue.trim(),
            _jobcategoryController.text.trim(),
            _addressController.text.trim(),
            _salaryController.text.trim(),
            genderDropdownValue.trim(),
            _qualifcationController.text.trim(),
            _mobileController.text.trim(),
-           _degreeController.text.trim(),
+           degreeDropdownValue.trim(),
            _indestryController.text.trim(),
            _exprenseController.text.trim(),
            _employeeBioController.text.trim(),
@@ -807,6 +909,7 @@ class _Employee extends State<Employee> {
 
        }
     else{
+         showSnackBar();
     print("Please Enter All Data");}
 
      });

@@ -21,6 +21,8 @@ class IdeaMaker extends StatefulWidget {
 }
 
 class _IdeaMaker extends State<IdeaMaker> {
+
+
 //gender controlling
   String genderDropdownValue = 'male';
 
@@ -449,10 +451,16 @@ class _IdeaMaker extends State<IdeaMaker> {
       ),
     );
   }*/
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Please Write All Data!')));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
       resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff5DADE2),
       body: ListView(
@@ -697,6 +705,8 @@ class _IdeaMaker extends State<IdeaMaker> {
           }
 
           else{
+            showSnackBar();
+
             print("Please Enter All Data");}
         });
         },

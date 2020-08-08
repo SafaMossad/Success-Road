@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/ideas/dashboard.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 import 'package:successroad/utilities/job_and_idea.dart';
 
 
@@ -210,7 +211,8 @@ class EditDataState extends State<EditData> {
         elevation: 20.0,
         onPressed: ()
         {
-          databaseHelper.editDataIdea(widget.list[widget.index]['id'],
+          databaseHelper.editDataIdea(
+              widget.list[widget.index]['id'],
               _ideaTitleController.text.trim(),
               _managementTypeController.text.trim(),
               _ideaCategoryController.text.trim(),
@@ -219,7 +221,7 @@ class EditDataState extends State<EditData> {
               _ideaDescriptionController.text.trim());
           Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context) => new CompanyDashboardIdeas(),
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
               )
           );
           print("Edit");
@@ -270,66 +272,16 @@ class EditDataState extends State<EditData> {
           ),
         ),
         centerTitle: true,
-        //backgroundColor: Color(0xffEC7063),
-        //backgroundColor: Color(0xFFdadada),
-        //backgroundColor: Color(0xff2E86C1),
-        //backgroundColor: Color(0xFF233f5c),
+
         backgroundColor: Colors.transparent,
       ),
-      // yellow backgroundColor: Color(0xffF7DC6F),
-      //backgroundColor: Color(0xffEC7063),
       backgroundColor: Color(0xff2E86C1),
-      //backgroundColor: Color(0xFFdadada),
       body: ListView(
         //padding: EdgeInsets.only(top: 0),
         children: <Widget>[
           Stack(
             children: <Widget>[
-              /*  Container(
-                padding: EdgeInsets.only(top: 150.0),
-                child: ClipPath(
-                  clipper: WaveClipper2(),
-                  child: Container(
-                    padding: EdgeInsets.only(),
-                    width: double.infinity,
-                    height: 485,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-//                        Color(0xff5DADE2),
-//                        Color(0xffF2F3F4),
-                        Color(0xff2E86C1),
-                        Color(0xff85C1E9)
-                      ],
-                    )),
-                  ),
-                ),
-              ),
-              */
 
-              /*
-                Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-//                           Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xff85C1E9)
-                         Color(0xFF0a2f52),
-                         Color(0xff2E86C1),
-                         Color(0xFFdadada),
-                       ])),
-                 ),
-               ),
-             ),*/
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(

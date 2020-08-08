@@ -444,6 +444,7 @@ import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/ideas/showcompany.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/dashboard.dart';
+import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 /*
 import 'package:successroad/timeline/choocenavigationIdeaMaker.dart';
 */
@@ -501,7 +502,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddJobs())),
+                  context, MaterialPageRoute(builder: (context) => IdeaMakerTimeline())),
             ),
             Divider(),
             ListTile(

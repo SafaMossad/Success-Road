@@ -6,9 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/UI/login_page.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/favorite/showfavoritejobs.dart';
-import 'package:successroad/ideas/dashboard.dart';
 import 'package:successroad/jobs/addjob.dart';
-import 'package:successroad/jobs/dashboard.dart';
 import 'package:successroad/jobs/showjob.dart';
 
 class TimeLineJobs extends StatefulWidget {
@@ -24,12 +22,14 @@ final secondary = Color(0xfff29a94);
 
 class TimeLineJobsState extends State<TimeLineJobs> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
+
   Log_out(String token) async {
     final prefs = await SharedPreferences.getInstance();
     final key = 'token';
     final value = token;
     prefs.setString(key, value);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +48,12 @@ class TimeLineJobsState extends State<TimeLineJobs> {
               ),
             ),
             ListTile(
-              title: Text("Account",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Account",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.arrow_back_ios,
                 color: Color(0xff1B4F72),
@@ -57,48 +62,28 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                   context, MaterialPageRoute(builder: (context) => AddJobs())),
             ),
             Divider(),
-
-
-
             ListTile(
-              title: Text("Show ideas",style: TextStyle(color: Color(0xff1B4F72),),),
-              trailing: Icon(
-                Icons.settings,
-                color: Color(0xff1B4F72),
+              title: Text(
+                "Favorites",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
               ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CompanyDashboardIdeas())),
-            ),Divider(),
-            ListTile(
-              title: Text("show jobs",style: TextStyle(color: Color(0xff1B4F72),),),
-              trailing: Icon(
-                Icons.settings,
-                color: Color(0xff1B4F72),
-              ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CompanyDashboardjobs())),
-            ),
-
-
-            Divider(),
-
-
-
-            ListTile(
-              title: Text("Favorites",style: TextStyle(color: Color(0xff1B4F72),),),
               trailing: Icon(
                 Icons.favorite,
                 color: Colors.red,
               ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ShowFavoriteJobs())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShowFavoriteJobs())),
             ),
-
-
-
             Divider(),
             ListTile(
-              title: Text("Setting",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "Setting",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.settings,
                 color: Color(0xff1B4F72),
@@ -106,7 +91,12 @@ class TimeLineJobsState extends State<TimeLineJobs> {
             ),
             Divider(),
             ListTile(
-              title: Text("About Us",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "About Us",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.filter_frames,
                 color: Color(0xff1B4F72),
@@ -114,7 +104,12 @@ class TimeLineJobsState extends State<TimeLineJobs> {
             ),
             Divider(),
             ListTile(
-              title: Text("help&feedback",style: TextStyle(color: Color(0xff1B4F72),),),
+              title: Text(
+                "help&feedback",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
               trailing: Icon(
                 Icons.textsms,
                 color: Color(0xff1B4F72),
@@ -122,20 +117,24 @@ class TimeLineJobsState extends State<TimeLineJobs> {
             ),
             Divider(),
             ListTile(
-                title: Text("Close",style: TextStyle(color: Color(0xff1B4F72),),),
-                trailing: Icon(
-                  Icons.close,
+              title: Text(
+                "Close",
+                style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
-    onTap: () {
-    Log_out('0');
-    Navigator.of(context).push(
-    new MaterialPageRoute(
-    builder: (BuildContext context) => new MyLoginPage(),
-    )
-    );
-    },
-            )],
+              ),
+              trailing: Icon(
+                Icons.close,
+                color: Color(0xff1B4F72),
+              ),
+              onTap: () {
+                Log_out('0');
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new MyLoginPage(),
+                ));
+              },
+            )
+          ],
         ),
       ),
       body: NestedScrollView(
@@ -173,7 +172,6 @@ class TimeLineJobsState extends State<TimeLineJobs> {
 //                    ),
 //                  ]
               ),
-
             ];
           },
           //backgroundColor: Color(0xffECF0F1 ),
@@ -194,20 +192,15 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                         return snapshot.hasData
                             ? new ItemList(list: snapshot.data)
                             : new Center(
-                          child: new CircularProgressIndicator(),
-                        );
+                                child: new CircularProgressIndicator(),
+                              );
                       },
                     ),
-
                   ),
-
-
                 ],
               ),
             ),
-          )
-      ),
-
+          )),
     );
   }
 }
@@ -248,7 +241,6 @@ class ItemList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
-
                           width: 100,
                           height: 100,
                           margin: EdgeInsets.only(top: 10),
@@ -267,50 +259,58 @@ class ItemList extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                             Wrap(children: <Widget>[
-
-                               Text("Title: ",
-                                 style: TextStyle(
-                                     color: Colors.black87,
-                                     fontWeight: FontWeight.bold,
-                                     fontSize: 18),
-                               ), Text(list[i]['title'],
-                                 style: TextStyle(
-                                     color: primary,
-                                     fontWeight: FontWeight.bold,
-                                     fontSize: 18),
-                               ),
-                             ],),
+                              Wrap(
+                                children: <Widget>[
+                                  Text(
+                                    "Title: ",
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                  Text(
+                                    list[i]['title'],
+                                    style: TextStyle(
+                                        color: primary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ],
+                              ),
                               Divider(),
-                              Row(children: <Widget>[
-                                Text("catagory: ",
-                                  style: TextStyle(
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),Text(
-                                  list[i]["catagory"],
+                              Row(
+                                children: <Widget>[
+                                  Text(
+                                    "catagory: ",
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                  Text(
+                                    list[i]["catagory"],
+                                    style: TextStyle(
+                                        color: primary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                              Divider(),
+                              Expanded(
+                                child: Text(
+                                  list[i]["description"],
                                   style: TextStyle(
                                       color: primary,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 13),
                                 ),
-                              ],),
-                              Divider(),
-                              Expanded(child: Text(list[i]["description"],
-                                style: TextStyle(
-                                    color: primary,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13),
-                              ),),
-
+                              ),
                             ],
                           ),
                         )
                       ]),
-
                 ),
-
               ),
             ),
           );

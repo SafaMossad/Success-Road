@@ -252,63 +252,6 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-  Widget _country() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 140.0,
-      child: TextField(
-        controller: _countryController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.location_city,
-            color: Color(0xFF8b8b8b),
-          ),
-//          labelText: "Country",
-//          labelStyle: kLabelStyle,
-          hintText: 'Country',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-
-  Widget _city() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 140.0,
-      child: TextField(
-        controller: _cityController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.location_city,
-            color: Color(0xFF8b8b8b),
-          ),
-//          labelText: "City",
-//          labelStyle: kLabelStyle,
-          hintText: 'City',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
 
   Widget _qualification() {
     return Container(
@@ -412,8 +355,6 @@ class AddJobsState extends State<AddJobs> {
               _addressController.text.trim(),
               _salaryController.text.trim(),
               genderDropdownValue.trim(),
-              _countryController.text.trim(),
-              _cityController.text.trim(),
               _qualificationController.text.trim(),
               _experienceController.text.trim(),
               _jobDescriptionController.text.trim());
@@ -463,47 +404,7 @@ class AddJobsState extends State<AddJobs> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              /*  Container(
-                  padding: EdgeInsets.only(top: 150.0),
-                  child: ClipPath(
-                    clipper: WaveClipper2(),
-                    child: Container(
-                      padding: EdgeInsets.only(),
-                      width: double.infinity,
-                      height: 485,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xff5DADE2),
-                              Color(0xffF2F3F4),
-                            ],
-                          )),
-                    ),
-                  ),
-                ),
 
-               */
-
-              /*  Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
-
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xffF1C40F),
-                         Color(0xff85C1E9)
-                       ])),
-                 ),
-               ),
-             ),*/
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
@@ -521,26 +422,6 @@ class AddJobsState extends State<AddJobs> {
                 ),
               ),
               Stack(
-/*
-          decoration: BoxDecoration(
-
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF337db1),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-                Color(0xFF0a2f52),
-              ],
-              stops: [
-                0.1,
-                0.3,
-                0.5,
-                0.7
-              ],
-            ),
-          ),*/
                 children: <Widget>[
                   SingleChildScrollView(
                     //padding: EdgeInsets.only(top: 0.0),
@@ -576,17 +457,6 @@ class AddJobsState extends State<AddJobs> {
                                     alignment: Alignment.topCenter,
                                     child: Column(
                                       children: <Widget>[
-                                        // Padding(padding: EdgeInsets.only(top: 2.0)),
-
-//                                        Row(
-//                                          children: <Widget>[
-//                                            _ideaTitle(),
-//                                            SizedBox(
-//                                              width: 10.0,
-//                                            ),
-//                                            _ideaCategory(),
-//                                          ],
-//                                        ),
 
                                         _jobTitle(),
 
@@ -623,26 +493,30 @@ class AddJobsState extends State<AddJobs> {
                                         SizedBox(
                                           height: 20.0,
                                         ),
-                                        _country(),
 
-                                        SizedBox(
-                                          height: 20.0,
-                                        ),
-                                        _city(),
 
-                                        SizedBox(
-                                          height: 20.0,
-                                        ),
                                         _qualification(),
+
+
                                         SizedBox(
                                           height: 20.0,
                                         ),
+
+
                                         _experience(),
 
+
+
                                         SizedBox(
                                           height: 20.0,
                                         ),
+
+
+
                                         _jobDescription(),
+
+
+
                                         SizedBox(
                                           height: 20.0,
                                         ),

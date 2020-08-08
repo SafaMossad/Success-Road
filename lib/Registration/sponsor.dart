@@ -4,11 +4,7 @@ import 'package:successroad/api/databasehelper.dart';
 
 import '../utilities/constants.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Sponsor(),
-  ));
-}
+
 
 class Sponsor extends StatefulWidget {
   @override
@@ -431,10 +427,15 @@ class _Sponsor extends State<Sponsor> {
       ),
     );
   }*/
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
 
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Please Write All Data!')));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
       resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xff5DADE2),
       body: ListView(
@@ -632,6 +633,7 @@ class _Sponsor extends State<Sponsor> {
               print("Save");
             }
             else{
+              showSnackBar();
               print("Please Enter All Data");}
 
           });
@@ -645,7 +647,30 @@ class _Sponsor extends State<Sponsor> {
         backgroundColor: Color(0xff1B4F72),
       ),
     );
+
+
   }
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text('Failed'),
+            content: new Text('you Cannot Add it to Favorite Again"'),
+            actions: <Widget>[
+              new RaisedButton(
+                child: new Text(
+                  'Close',
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
 }
 
 class WaveClipper1 extends CustomClipper<Path> {

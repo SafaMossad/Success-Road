@@ -12,7 +12,6 @@ class AddIdea extends StatefulWidget {
 }
 
 class AddIdeaState extends State<AddIdea> {
-  @override
   //ده الي هيتحطلي من البدايه
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
@@ -195,32 +194,6 @@ class AddIdeaState extends State<AddIdea> {
     );
   }
 
-//  Widget _buildLoginBtn() {
-//    return Container(
-//      padding: EdgeInsets.symmetric(vertical: 25.0),
-//      width: 150.0,
-//      child: RaisedButton(
-//        elevation: 20.0,
-//        onPressed: () => print('Login Button Pressed'),
-//        padding: EdgeInsets.all(15.0),
-//        shape: RoundedRectangleBorder(
-//          borderRadius: BorderRadius.circular(30.0),
-//        ),
-//        color: Color(0xFF0a2f52),
-//        child: Text(
-//          'Upload Files',
-//          style: TextStyle(
-//            color: Colors.white,
-//            letterSpacing: 1.5,
-//            fontSize: 18.0,
-//            fontWeight: FontWeight.bold,
-//            fontFamily: 'OpenSans',
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-
   Widget _buildLoginBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -280,14 +253,10 @@ class AddIdeaState extends State<AddIdea> {
           ),
         ),
         centerTitle: true,
-        //backgroundColor: Color(0xffEC7063),
-        //backgroundColor: Color(0xFFdadada),
-        //backgroundColor: Color(0xff2E86C1),
-        //backgroundColor: Color(0xFF233f5c),
+
         backgroundColor: Colors.transparent,
       ),
-      // yellow backgroundColor: Color(0xffF7DC6F),
-      //backgroundColor: Color(0xffEC7063),
+
       backgroundColor: Color(0xff2E86C1),
       //backgroundColor: Color(0xFFdadada),
       body: ListView(
@@ -295,51 +264,7 @@ class AddIdeaState extends State<AddIdea> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              /*  Container(
-                padding: EdgeInsets.only(top: 150.0),
-                child: ClipPath(
-                  clipper: WaveClipper2(),
-                  child: Container(
-                    padding: EdgeInsets.only(),
-                    width: double.infinity,
-                    height: 485,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-//                        Color(0xff5DADE2),
-//                        Color(0xffF2F3F4),
-                        Color(0xff2E86C1),
-                        Color(0xff85C1E9)
-                      ],
-                    )),
-                  ),
-                ),
-              ),
-              */
 
-              /*
-                Container(
-               padding: EdgeInsets.only(top: 450),
-               child:  ClipPath(
-                 clipper: WaveClipper3(),
-                 child: Container(
-                   width: double.infinity,
-                   height: 350,
-                   decoration: BoxDecoration(
-                       gradient: LinearGradient(colors: [
-//                           Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xffF1C40F),
-//                         Color(0xff85C1E9)
-                         Color(0xFF0a2f52),
-                         Color(0xff2E86C1),
-                         Color(0xFFdadada),
-                       ])),
-                 ),
-               ),
-             ),*/
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
@@ -372,16 +297,14 @@ class AddIdeaState extends State<AddIdea> {
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(75.0),
                               bottomRight: Radius.circular(75.0),
-                              // bottomLeft: Radius.circular(75.0),
-                              //   topRight: Radius.circular(75.0)
+
                             ),
                           ),
                           padding: EdgeInsets.all(20.0),
 
                           //Stack That Controlling Data In Container
                           child: Stack(
-                            //primary: false,
-                            //padding: EdgeInsets.only(left: 25.0, right: 20.0),
+
                             children: <Widget>[
                               ListView(
                                 children: <Widget>[
@@ -391,17 +314,6 @@ class AddIdeaState extends State<AddIdea> {
                                     alignment: Alignment.topCenter,
                                     child: Column(
                                       children: <Widget>[
-                                        // Padding(padding: EdgeInsets.only(top: 2.0)),
-
-//                                        Row(
-//                                          children: <Widget>[
-//                                            _ideaTitle(),
-//                                            SizedBox(
-//                                              width: 10.0,
-//                                            ),
-//                                            _ideaCategory(),
-//                                          ],
-//                                        ),
 
                                         _ideaTitle(),
 
@@ -442,10 +354,6 @@ class AddIdeaState extends State<AddIdea> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.center,
                                           children: <Widget>[
-//                                              _buildLoginBtn(),
-//                                              SizedBox(
-//                                                width: 20,
-//                                              ),
                                             _buildLoginBtns(),
                                           ],
                                         )
@@ -469,32 +377,7 @@ class AddIdeaState extends State<AddIdea> {
     );
   }
 
-//
-//
-//  void _showDialog(){
-//    showDialog(
-//        context:context ,
-//        builder:(BuildContext context){
-//          return AlertDialog(
-//            title: new Text('Failed'),
-//            content:  new Text('Check your email or password'),
-//            actions: <Widget>[
-//              new RaisedButton(
-//
-//                child: new Text(
-//                  'Close',
-//                ),
-//
-//                onPressed: (){
-//                  Navigator.of(context).pop();
-//                },
-//
-//              ),
-//            ],
-//          );
-//        }
-//    );
-//  }
+
 }
 
 class WaveClipper1 extends CustomClipper<Path> {

@@ -488,7 +488,7 @@ class ProfileFinal extends StatelessWidget {
                                   title: Text("Date from :"),
 
                                   subtitle:Text("${map["Datafrom"]}"),
-                                  leading: Icon(Icons.subject),
+                                  leading: Icon(Icons.date_range),
                                 ),   Divider(
 
                                   thickness: 1.0,
@@ -497,7 +497,7 @@ class ProfileFinal extends StatelessWidget {
                                   title: Text("Date to :"),
 
                                   subtitle:Text("${map["Datato"]}"),
-                                  leading: Icon(Icons.subject),
+                                  leading: Icon(Icons.date_range),
                                 ),
 
                               ],
