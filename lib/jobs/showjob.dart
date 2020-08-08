@@ -114,14 +114,16 @@ class ShowDataState extends State<ShowData> {
       //backgroundColor: Color(0xFFe7e7e7),
       body: SingleChildScrollView(
         child: Container(
+          alignment: Alignment.topCenter,
+
           child: Stack(
             children: <Widget>[
               Container(
                   height: 300,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/94393013-team-work-in-training-room-with-planning-board.jpg',
-                    fit: BoxFit.fill,
+                    "assets/At the office-pana.png",
+                    fit: BoxFit.cover,
                   )),
               Container(
                 margin: EdgeInsets.fromLTRB(16.0, 250.0, 16.0, 16.0),

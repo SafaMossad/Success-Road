@@ -41,7 +41,7 @@ class ShowIdeaDataforCompanyState extends State<ShowIdeaDataforCompany> {
                   height: 300,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/94393013-team-work-in-training-room-with-planning-board.jpg',
+                    'assets/At the office-pana.png',
                     fit: BoxFit.fill,
                   )
               ),
