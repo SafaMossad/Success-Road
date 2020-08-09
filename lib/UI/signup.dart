@@ -125,7 +125,7 @@ class _ConfirmPass extends State<Signupfinal> {
                                 children: <Widget>[
                                   TextField(
                                     controller: _passwordController,
-                                    keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.visiblePassword,
                                     obscureText: true,
                                     style: TextStyle(
                                       color: Colors.black,
@@ -165,7 +165,7 @@ class _ConfirmPass extends State<Signupfinal> {
                               controller: _confirmpassword,
                               obscureText: true,
 
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.visiblePassword,
                               style: TextStyle(color: Colors.black,fontSize: 20.0,),
 
                               decoration: InputDecoration(

@@ -5,7 +5,6 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DatabaseHelper {
-  String serverUrl = "http://flutterapitutorial.codeforiraq.org/api";
   var status;
   var nauth_toke;
   var ideamaker;

@@ -284,7 +284,7 @@ class ShowDataState extends State<ShowData> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: new Text('Failed'),
-            content: new Text('you Cannot Add it to Favorite Again"'),
+            content: new Text('you Cannot Add it to Favorite Again'),
             actions: <Widget>[
               new RaisedButton(
                 child: new Text(

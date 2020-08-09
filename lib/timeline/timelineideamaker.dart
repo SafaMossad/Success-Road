@@ -472,23 +472,11 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: new Drawer(
-
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xff1B4F72),
-              ),
-              accountName: Text("Safa"),
-              accountEmail: Text("Eng:Safa El-Helely"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
-              ),
-            ),
             ListTile(
               title: Text(
-                "Account",
+                "TimeLine",
                 style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
@@ -626,6 +614,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
                 backgroundColor: Colors.white,
+
 //                  actions: < Widget > [
 //                    IconButton(
 //                      icon: const Icon(Icons.add_circle),

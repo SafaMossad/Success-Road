@@ -81,7 +81,7 @@ class ItemList extends StatelessWidget {
                         height: 200,
                         width: double.infinity,
                         child: Image.asset(
-                          "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
+                          "assets/SponsorTimlline.png",
                           fit: BoxFit.cover,
                         )),
                     Positioned(
@@ -112,17 +112,6 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              "Oct 21, 2017",
-                              style: TextStyle(
-                                  fontSize: 15.0, color: Color(0xFF0a2f52)),
-                            ),
-                          ),
-                        ],
-                      ),
                       SizedBox(
                         height: 5.0,
                       ),

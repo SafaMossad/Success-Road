@@ -21,7 +21,6 @@ void main() {
     // title: "Login Page",
     home: Navigation(),
         title: "Success Road",
-
   ));
 }
 
@@ -42,11 +41,9 @@ class Navigation extends StatelessWidget {
         "/IdeaMakertimeline": (BuildContext context) => new IdeaMakerTimeline(),
         "/Sponsortimeline": (BuildContext context) => new SponsorTimeline(),
         "/Employeetimeline": (BuildContext context) => new EmployeeTimeline(),
-
         "/IdeaMakerprofile":(BuildContext context)=> new IdeaMakerProfile(),
         "/Sponsorprofile":(BuildContext context)=> new SponsorProfile(),
         "/Employeeprofile":(BuildContext context)=> new EmployeeProfile(),
-
         "/showidea":(BuildContext context)=> new ShowData(),
         "/signup":(BuildContext context)=> new Signupfinal(),
         //adding test commit
