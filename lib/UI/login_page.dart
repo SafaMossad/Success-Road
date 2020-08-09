@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:successroad/UI/signup.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/timeline/choocenavigationEmployee.dart';
@@ -403,7 +404,7 @@ class _MyLoginPage extends State<MyLoginPage> {
           SizedBox(
             height: 20,
           ),
-          Center(
+        /*  Center(
             child: FlatButton(
                 onPressed: () =>
                     Navigator.of(context).pushNamed("/ForgetPassword"),
@@ -417,7 +418,7 @@ class _MyLoginPage extends State<MyLoginPage> {
           ),
           SizedBox(
             height: 40,
-          ),
+          ),*/
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -430,7 +431,9 @@ class _MyLoginPage extends State<MyLoginPage> {
               ),
               FlatButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/signup");
+                  Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new Signupfinal(),
+                  ));
                 },
                 child: Text("Sign UP",
                     style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:successroad/UI/category.dart';
 import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/utilities/constants.dart';
 
@@ -35,7 +36,9 @@ class _ConfirmPass extends State<Signupfinal> {
             _showDialog();
             msgStatus = 'Check email or password';
           } else {
-            Navigator.pushReplacementNamed(context, '/category');
+            Navigator.of(context).push(new MaterialPageRoute(
+              builder: (BuildContext context) => new Tabs(),
+            ));
           }
         });
       }

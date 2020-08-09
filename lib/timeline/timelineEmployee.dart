@@ -36,18 +36,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xff1B4F72),
-              ),
-              accountName: Text("Safa"),
-              accountEmail: Text("Eng:Safa El-Helely"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
-              ),
-            ),
-           /* ListTile(
+            /* ListTile(
               title: Text(
                 "Account",
                 style: TextStyle(
@@ -126,11 +115,14 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                 Icons.close,
                 color: Color(0xff1B4F72),
               ),
-              onTap: () {
-                Log_out('0');
-                Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new MyLoginPage(),
-                ));
+              onTap: () async{
+                SharedPreferences preferences = await SharedPreferences.getInstance();
+                await preferences.clear();
+                Navigator.of(context).push(
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new MyLoginPage(),
+                    )
+                );
               },
             )
           ],
@@ -150,10 +142,10 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                           color: Colors.white,
                           fontSize: 16.0,
                         )),
-                   /* background: Image.network(
-                      "At the office-pana.png",
+                    background: Image.asset(
+                      "assets/SponsorTimlline.png",
                       fit: BoxFit.cover,
-                    )*/),
+                    )),
                 leading: IconButton(
                   icon: const Icon(
                     Icons.menu,

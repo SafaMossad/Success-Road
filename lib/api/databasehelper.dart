@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class DatabaseHelper {
   String serverUrl = "http://flutterapitutorial.codeforiraq.org/api";
   var status;
-  var auth_token;
+  var nauth_toke;
   var ideamaker;
   var sponsor;
   var employee;
@@ -215,8 +215,7 @@ class DatabaseHelper {
       prefs.setString('token', data['auth_token']);
       print('login token is : ${data['auth_token']}');
 
-      final SharedPreferences prefsididlogin =
-      await SharedPreferences.getInstance();
+      final SharedPreferences prefsididlogin = await SharedPreferences.getInstance();
       prefsididlogin.setInt('loginid', data['id']);
       print('login User ID is : ${data['id']}');
     }
@@ -991,4 +990,9 @@ class DatabaseHelper {
     final value = prefs.get(key) ?? 0;
     print('read : $value');
   }
+}
+
+logout() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  await preferences.remove('auth_token');
 }

@@ -474,20 +474,9 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xff1B4F72),
-              ),
-              accountName: Text("Safa"),
-              accountEmail: Text("Eng:Safa El-Helely"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
-              ),
-            ),
             ListTile(
               title: Text(
-                "Account",
+                "TimeLine",
                 style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
@@ -501,6 +490,24 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
             ),
 
             Divider(),
+
+            ListTile(
+              title: Text(
+                "Favorites",
+                style: TextStyle(
+                  color: Color(0xff1B4F72),
+                ),
+              ),
+              trailing: Icon(
+                Icons.favorite,
+                color: Colors.red,
+              ),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
+            ),
+
+            Divider(),
+
             ListTile(
               title: Text(
                 "About Us",
@@ -538,11 +545,14 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                 Icons.close,
                 color: Color(0xff1B4F72),
               ),
-              onTap: () {
-                Log_out('0');
-                Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new MyLoginPage(),
-                ));
+              onTap: () async{
+                SharedPreferences preferences = await SharedPreferences.getInstance();
+                await preferences.remove("auth_token");
+                Navigator.of(context).push(
+                    new MaterialPageRoute(
+                      builder: (BuildContext context) => new MyLoginPage(),
+                    )
+                );
               },
             )
           ],
@@ -562,10 +572,10 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                           color: Colors.white,
                           fontSize: 16.0,
                         )),
-                  /*  background: Image.network(
-                      "At the office-pana.png",
+                    background: Image.asset(
+                      "assets/SponsorTimlline.png",
                       fit: BoxFit.cover,
-                    )*/),
+                    )),
                 leading: IconButton(
                   icon: const Icon(
                     Icons.menu,

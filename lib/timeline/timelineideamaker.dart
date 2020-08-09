@@ -466,12 +466,7 @@ final secondary = Color(0xfff29a94);
 class TimeLineIdeaState extends State<TimeLineIdea> {
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
-  Log_out(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'token';
-    final value = token;
-    prefs.setString(key, value);
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -590,8 +585,9 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 Icons.close,
                 color: Color(0xff1B4F72),
               ),
-              onTap: () {
-                Log_out('0');
+              onTap: () async{
+                SharedPreferences preferences = await SharedPreferences.getInstance();
+                await preferences.clear();
                 Navigator.of(context).push(
                     new MaterialPageRoute(
                       builder: (BuildContext context) => new MyLoginPage(),
