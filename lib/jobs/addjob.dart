@@ -54,20 +54,33 @@ class AddJobsState extends State<AddJobs> {
   final TextEditingController _jobDescriptionController =
       new TextEditingController();
 
+  String jobtybeDropdownValue = 'Full-Time';
+
+  // To show Selected Item in Text.
+  String jobtybeHolder = '';
+
+  List<String> jobtybeItems = [
+    'Full-Time',
+    'Part-Time',
+  ];
+
+  void getDropDownItemjobtybe() {
+    setState(() {
+      jobtybeHolder = genderDropdownValue;
+    });
+  }
+
   //ده الي هيتحطلي من البدايه
   Widget _jobTitle() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _jobTitleController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -75,41 +88,72 @@ class AddJobsState extends State<AddJobs> {
             Icons.title,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Job Title",
-//          labelStyle: kLabelStyle,
-          hintText: 'Job Title',
+          labelText: "Job Title",
+          labelStyle: kLabelStyle,
+          hintText: 'Mobile App Developer',
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _jobType() {
+  Widget _jobtybe() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
-      //width: 140.0,
-      child: TextField(
-        controller: _jobTypeController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
+      height: 65.0,
+      padding: EdgeInsets.only(left: 10.0),
+      // width: 150.0,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text("Job Tybe",
+                style: TextStyle(
+                    color: Color(0xFF0a2f52),
+                    fontSize: 15.0,
+                    fontFamily: 'co',
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              width: 90.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+                value: jobtybeDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    jobtybeDropdownValue = data;
+                  });
+                },
+                items:
+                    jobtybeItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
-          ),
-//          labelText: "Job Type",
-//          labelStyle: kLabelStyle,
-          hintText: 'Job Type',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
+      ]),
     );
   }
 
@@ -117,15 +161,12 @@ class AddJobsState extends State<AddJobs> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _jobCategoryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -133,9 +174,9 @@ class AddJobsState extends State<AddJobs> {
             Icons.category,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Job Category",
-//          labelStyle: kLabelStyle,
-          hintText: 'Job Category',
+          labelText: "Job Category",
+          labelStyle: kLabelStyle,
+          hintText: 'Software Engineering',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -146,15 +187,12 @@ class AddJobsState extends State<AddJobs> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -162,9 +200,9 @@ class AddJobsState extends State<AddJobs> {
             Icons.add_location,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Address",
-//          labelStyle: kLabelStyle,
-          hintText: 'Address',
+          labelText: "Address",
+          labelStyle: kLabelStyle,
+          hintText: 'Cairo,NasrCity',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -175,15 +213,12 @@ class AddJobsState extends State<AddJobs> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _salaryController,
         keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -191,32 +226,42 @@ class AddJobsState extends State<AddJobs> {
             Icons.attach_money,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Salary",
-//          labelStyle: kLabelStyle,
-          hintText: 'Salary',
+          labelText: "Salary",
+          labelStyle: kLabelStyle,
+          hintText: '01X XXX XXXX',
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  //gender not have controller
   Widget _gender() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
-      padding: EdgeInsets.only(left: 50.0),
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
-            Text(
-              "Gender:",
-              style: kLabelStyle,
+            Icon(
+              Icons.merge_type,
+              color: Color(0xFF8b8b8b),
             ),
             SizedBox(
-              width: 100.0,
+              width: 15.0,
+            ),
+            Text(
+              "Gender",
+              style: TextStyle(
+                  color: Color(0xFF0a2f52),
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0),
+            ),
+            SizedBox(
+              width: 90.0,
             ),
             Container(
               width: 120.0,
@@ -252,20 +297,16 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
-
   Widget _qualification() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _qualificationController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -273,8 +314,8 @@ class AddJobsState extends State<AddJobs> {
             Icons.question_answer,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Qualification",
-//          labelStyle: kLabelStyle,
+          labelText: "Qualification",
+          labelStyle: kLabelStyle,
           hintText: 'Qualification',
           hintStyle: kHintTextStyle,
         ),
@@ -286,15 +327,12 @@ class AddJobsState extends State<AddJobs> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 140.0,
       child: TextField(
         controller: _experienceController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        keyboardType: TextInputType.number,
+        style: txdont,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -302,9 +340,9 @@ class AddJobsState extends State<AddJobs> {
             Icons.explicit,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Experience",
-//          labelStyle: kLabelStyle,
-          hintText: 'Experience',
+          labelText: "Experience",
+          labelStyle: kLabelStyle,
+          hintText: 'Year Of Experience',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -320,10 +358,7 @@ class AddJobsState extends State<AddJobs> {
       child: TextField(
         controller: _jobDescriptionController,
         keyboardType: TextInputType.multiline,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
         maxLines: 10,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -332,9 +367,9 @@ class AddJobsState extends State<AddJobs> {
             Icons.description,
             color: Color(0xFF8b8b8b),
           ),
-//          labelText: "Idea Description",
-//          labelStyle: kLabelStyle,
-          hintText: 'Job Description',
+          labelText: "Job Description",
+          labelStyle: kLabelStyle,
+          hintText: 'Description',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -350,7 +385,7 @@ class AddJobsState extends State<AddJobs> {
         onPressed: () {
           databaseHelper.addDataJobs(
               _jobTitleController.text.trim(),
-              _jobTypeController.text.trim(),
+              jobtybeDropdownValue.trim(),
               _jobCategoryController.text.trim(),
               _addressController.text.trim(),
               _salaryController.text.trim(),
@@ -404,7 +439,6 @@ class AddJobsState extends State<AddJobs> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-
               ClipPath(
                 clipper: WaveClipper1(),
                 child: Container(
@@ -457,70 +491,42 @@ class AddJobsState extends State<AddJobs> {
                                     alignment: Alignment.topCenter,
                                     child: Column(
                                       children: <Widget>[
-
                                         _jobTitle(),
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
-                                        _jobType(),
-
+                                        _jobtybe(),
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                         _jobCategory(),
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                         _address(),
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                         _salary(),
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                         _gender(),
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
-
                                         _qualification(),
-
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
-
                                         _experience(),
-
-
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
-
-
                                         _jobDescription(),
-
-
-
                                         SizedBox(
                                           height: 20.0,
                                         ),
-
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,

@@ -79,26 +79,45 @@ class ItemList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
+                      Column(
                         children: <Widget>[
-                          Expanded(
-                            child: Text("Oct 21, 2017",style:
-                            TextStyle(fontSize: 15.0, color: Color(0xFF0a2f52)),),
-                          ),
+
+                          Row(
+                            children: <Widget>[
+
+                              Text("Status: ${list[i]["Responce"]}", style: TextStyle(fontSize: 20.0,
+                                color: Color(0xFF0a2f52),
+                                fontWeight: FontWeight.bold,),),
+                            ],
+                          )
                         ],
-                      ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text("Title :${list[i]["idea"]["title"]}",
-                        style: TextStyle(fontSize: 20.0,
-                          color: Color(0xFF0a2f52),
-                          fontWeight: FontWeight.bold,),
                       ),
                       Divider(color: Color(0xff2E86C1),),
                       SizedBox(
                         height: 5.0,
                       ),
+
+                     Row(children: <Widget>[
+
+                       Icon(
+                         Icons.supervisor_account,
+                         color: Color(0xff2E86C1),
+                       ),
+                       SizedBox(
+                         width: 5.0,
+                       ),
+
+                       Text("Title :${list[i]["idea"]["title"]}",
+                         style: TextStyle(fontSize: 15.0,
+                           color: Color(0xFF0a2f52),
+                           fontWeight: FontWeight.bold,),
+                       ),
+                     ],),
+                      Divider(color: Color(0xff2E86C1),),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+
                       Column(
                         children: <Widget>[
                           Row(

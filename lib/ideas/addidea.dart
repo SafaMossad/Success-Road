@@ -16,6 +16,23 @@ class AddIdeaState extends State<AddIdea> {
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
+  //mangment controlling
+
+  String mangmentdropdownValue = 'fully';
+
+  // To show Selected Item in Text.
+  String mangmentholder = '';
+
+  List<String> mangmentItems = [
+    'fully',
+    'semi',
+  ];
+
+  void getDropDownItemanagemangment() {
+    setState(() {
+      mangmentholder = mangmentdropdownValue;
+    });
+  }
 
 
   Widget _ideaTitle() {
@@ -23,15 +40,13 @@ class AddIdeaState extends State<AddIdea> {
       // alignment: Alignment.topCenter,
       // padding: EdgeInsets.only(bottom:10.0),
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 165.0,
       child: TextField(
         controller: _ideaTitleController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -39,9 +54,9 @@ class AddIdeaState extends State<AddIdea> {
             Icons.title,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "First Name",
-          // labelStyle: kLabelStyle,
-          hintText: 'Idea Title',
+         labelText: "Idea Title",
+         labelStyle: kLabelStyle,
+          hintText: 'Investment in Sport',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -52,15 +67,13 @@ class AddIdeaState extends State<AddIdea> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       //width: 165.0,
       child: TextField(
         controller: _ideaCategoryController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -68,9 +81,9 @@ class AddIdeaState extends State<AddIdea> {
             Icons.category,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Idea Category',
+          labelText: "Idea Category",
+          labelStyle: kLabelStyle,
+          hintText: 'Investment',
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -81,15 +94,13 @@ class AddIdeaState extends State<AddIdea> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       // width: 150.0,
       child: TextField(
         controller: _fundingController,
         keyboardType: TextInputType.number,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -97,41 +108,75 @@ class AddIdeaState extends State<AddIdea> {
             Icons.attach_money,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "E-mail",
-          //labelStyle: kLabelStyle,
-          hintText: "Funding",
+         labelText: "Funding",
+          labelStyle: kLabelStyle,
+          hintText: "20,000",
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
 
-  Widget _managementType() {
+  Widget _typeofmanagment() {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _managementTypeController,
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.supervisor_account,
+              color: Color(0xFF8b8b8b),
+            ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+              "Mangment",
+              style: TextStyle(
+                color: Color(0xFF0a2f52),
+                fontFamily: 'OpenSans',
+                fontSize: 17,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            SizedBox(
+              width: 70.0,
+            ),
+            Container(
+              width: 80.0,
+              child: DropdownButton<String>(
+                value: mangmentdropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0),
+                onChanged: (String data) {
+                  setState(() {
+                    mangmentdropdownValue = data;
+                  });
+                },
+                items:
+                mangmentItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Password",
-          //labelStyle: kLabelStyle,
-          hintText: "Management Type",
-          hintStyle: kHintTextStyle,
-        ),
-      ),
+      ]),
     );
   }
 
@@ -139,15 +184,13 @@ class AddIdeaState extends State<AddIdea> {
     return Container(
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
-      height: 50.0,
+      height: 65.0,
       // width: 150.0,
       child: TextField(
         controller: _addressController,
         keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 14.0),
@@ -155,9 +198,9 @@ class AddIdeaState extends State<AddIdea> {
             Icons.add_location,
             color: Color(0xFF8b8b8b),
           ),
-          // labelText: "Phone",
-          // labelStyle: kLabelStyle,
-          hintText: "Address",
+           labelText: "Address",
+           labelStyle: kLabelStyle,
+          hintText: "Cairo,Nasr City",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -173,10 +216,8 @@ class AddIdeaState extends State<AddIdea> {
       child: TextField(
         controller: _ideaDescriptionController,
         keyboardType: TextInputType.multiline,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
+        style: txdont,
+
         maxLines: 20,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -185,9 +226,9 @@ class AddIdeaState extends State<AddIdea> {
             Icons.description,
             color: Color(0xFF8b8b8b),
           ),
-          //labelText: "Address",
-          //labelStyle: kLabelStyle,
-          hintText: "Idea Description",
+          labelText: "Idea Description",
+          labelStyle: kLabelStyle,
+          hintText: "Description",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -203,7 +244,7 @@ class AddIdeaState extends State<AddIdea> {
         onPressed: () {
           databaseHelper.addDataIdea(
               _ideaTitleController.text.trim(),
-              _managementTypeController.text.trim(),
+              mangmentdropdownValue.trim(),
               _ideaCategoryController.text.trim(),
               _addressController.text.trim(),
               _fundingController.text.trim(),
@@ -333,7 +374,7 @@ class AddIdeaState extends State<AddIdea> {
                                           height: 15.0,
                                         ),
 
-                                        _managementType(),
+                                        _typeofmanagment(),
 
                                         SizedBox(
                                           height: 15.0,

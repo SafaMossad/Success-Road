@@ -147,7 +147,7 @@ class ShowDataState extends State<ShowData> {
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      "${widget.list[widget.index]['jtype']}",
+                      "Catagory: ${widget.list[widget.index]['catagory']}",
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -170,7 +170,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['catagory']}",
+                              "Job Tybe: ${widget.list[widget.index]['jtype']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -188,7 +188,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['salary']}",
+                              "Salary: ${widget.list[widget.index]['salary']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -206,7 +206,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['address']}",
+                              "Adress: ${widget.list[widget.index]['address']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -230,7 +230,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]["gander"]}",
+                              "Gender: ${widget.list[widget.index]["gander"]}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -248,7 +248,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['qualification']}",
+                              "Qualification: ${widget.list[widget.index]['qualification']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -276,7 +276,7 @@ class ShowDataState extends State<ShowData> {
                               width: 5.0,
                             ),
                             Text(
-                              "${widget.list[widget.index]['experience']}",
+                              "Experince: ${widget.list[widget.index]['experience']}",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -297,7 +297,7 @@ class ShowDataState extends State<ShowData> {
                                width: 5.0,
                              ),
                              Text(
-                               "description",
+                               "Description: ",
                                style: TextStyle(
                                    fontSize: 15.0, color: Color(0xFF0a2f52)),
                              ),],),

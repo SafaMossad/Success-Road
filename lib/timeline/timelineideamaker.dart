@@ -477,6 +477,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: new Drawer(
+
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
@@ -610,24 +611,25 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Collapsing Toolbar",
+                    title: Text("TimeLine",
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
+                          color: Colors.black87,
+                          fontSize: 25.0,
                         )),
-                 /*   background: Image.network(
-                      "At the office-pana.png",
+                    background: Image.asset(
+                      "assets/Office.png",
                       fit: BoxFit.cover,
-                    )*/),
+                    )),
                 leading: IconButton(
                   icon: const Icon(
                     Icons.menu,
                     size: 25,
+                    color: Colors.black87,
                   ),
                   tooltip: 'Add new entry',
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
-                backgroundColor: Color(0xff1B4F72),
+                backgroundColor: Colors.white,
 //                  actions: < Widget > [
 //                    IconButton(
 //                      icon: const Icon(Icons.add_circle),
@@ -724,7 +726,7 @@ class ItemList extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Row(children: <Widget>[
+                            Wrap(children: <Widget>[
                               Text('Title: ',
                                 style: TextStyle(
                                     color: Colors.black87,
@@ -739,7 +741,7 @@ class ItemList extends StatelessWidget {
                               ),
                             ],),
                             Divider(),
-                            Row(children: <Widget>[
+                            Wrap(children: <Widget>[
                               Text('Idea Catagory: ',
                                 style: TextStyle(
                                     color: Colors.black87,

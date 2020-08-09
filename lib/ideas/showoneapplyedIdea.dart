@@ -55,7 +55,7 @@ class ShowOneApplyIdeaState extends State<ShowOneApplyIdea> {
                     future: databaseHelper.getCompanyApplyedIdeas(widget.list[widget.index]['id']),
 
                     builder: (context, snapshot) {
-                      print("test test ${widget.list[widget.index]['id']}");
+                      print("test hahs hshs test ${widget.list[widget.index]['id']}");
                       if (snapshot.hasError) print("snapshot.error");
                       return snapshot.hasData
                           ? new ItemList(list: snapshot.data)
@@ -138,7 +138,7 @@ DatabaseHelper databaseHelper = new DatabaseHelper();
                           SizedBox(
                             height: 5.0,
                           ),
-                          Column(
+                       /*   Column(
                             children: <Widget>[
                               Row(
                                 children: <Widget>[
@@ -329,7 +329,7 @@ DatabaseHelper databaseHelper = new DatabaseHelper();
                               ],
                             ),
                           ),
-
+*/
                           Divider(
                             color: Color(0xff1B4F72),
                             thickness: 1.0,

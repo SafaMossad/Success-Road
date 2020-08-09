@@ -318,17 +318,13 @@ class DatabaseHelper {
     var token = prefs.getString('token');
     print('Token : $token');
 
-    final SharedPreferences prefsididlogin =
-    await SharedPreferences.getInstance();
-    var idislogin = prefsididlogin.getInt('loginid');
-    print('loginid : $idislogin');
 
     String myUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/submittingsa?id=$id";
+        "https://successsroadv2.herokuapp.com/api/v1/Responce/$id";
     print(id);
     final Map<String, dynamic> orderData = {
 
-        "name": "accept",
+        "Responce": "Accept",
     };
     final response = await http.put(
       myUrl,
@@ -341,6 +337,7 @@ class DatabaseHelper {
         'Authorization': '$token'
       },
     );
+    print(id);
     print('Response body response supmitting : ${response.body}');
 
   }
@@ -352,17 +349,13 @@ class DatabaseHelper {
     var token = prefs.getString('token');
     print('Token : $token');
 
-    final SharedPreferences prefsididlogin =
-    await SharedPreferences.getInstance();
-    var idislogin = prefsididlogin.getInt('loginid');
-    print('loginid : $idislogin');
 
     String myUrl =
-        "https://successsroadv2.herokuapp.com/api/v1/submittingsa?id=$id";
+        "https://successsroadv2.herokuapp.com/api/v1/ResponceFund/$id";
     print(id);
     final Map<String, dynamic> orderData = {
 
-      "name": "accept",
+      "Responce": "Accept",
     };
     final response = await http.put(
       myUrl,
@@ -375,6 +368,7 @@ class DatabaseHelper {
         'Authorization': '$token'
       },
     );
+    print(status);
     print('Response body response supmitting : ${response.body}');
 
   }
@@ -585,7 +579,7 @@ class DatabaseHelper {
   }
 
   Future<List<dynamic>> getCompanyApplyedIdeas(int id) async {
-    print(id.toString() + '!!!!first!!!');
+    //print(id.toString() + '!!!!first!!!');
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');

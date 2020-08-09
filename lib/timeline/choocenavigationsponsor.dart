@@ -94,7 +94,7 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:successroad/profiles/sponsorprofile.dart';
-import 'package:successroad/timeline/getsponsorinvest.dart';
+import 'package:successroad/getrequestforjobandidea/getsponsorinvest.dart';
 
 import 'package:successroad/timeline/ideahome.dart';
 import 'package:successroad/timeline/timelineideasponsor.dart';

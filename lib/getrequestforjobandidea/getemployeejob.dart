@@ -142,7 +142,7 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-
+/*
                       //Row for Category & Manage
                       Column(
                         children: <Widget>[
@@ -405,13 +405,8 @@ class ItemList extends StatelessWidget {
                               ],
                             ),
                           ),
-                          /*     Text(
-                            "Description: ${list[i]['ideaDescription']}.",
-                            style: TextStyle(
-                                fontSize: 15.0, color: Color(0xFF0a2f52)),
-                          ),*/
                         ],
-                      ),
+                      ),*/
                     ],
                   ),
                 ),

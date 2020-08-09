@@ -74,24 +74,6 @@ class ItemList extends StatelessWidget {
                             "assets/Business Plan-pana.png",
                             fit: BoxFit.cover,
                           )),
-                      Positioned(
-                        top: 0.0,
-                        left: 20.0,
-                        right: 20.0,
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.slideshow,
-                              color: Colors.black87,
-                            ),
-                            SizedBox(width: 10.0),
-                            Text(
-                              "My Invest",
-                              style: TextStyle(color: Colors.black87),
-                            )
-                          ],
-                        ),
-                      )
                     ],
                   ),
                   Padding(

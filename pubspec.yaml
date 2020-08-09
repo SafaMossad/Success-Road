@@ -59,6 +59,8 @@ flutter:
     - assets/Live collaboration-rafiki.png
     - assets/At the office-pana.png
     - assets/Business Plan-pana.png
+    - assets/Company-amico.png
+    - assets/Office.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

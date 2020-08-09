@@ -16,6 +16,7 @@ class EmployeeEditData extends StatefulWidget {
 }
 
 class EditDataState extends State<EmployeeEditData> {
+  //gender controlling
   String genderDropdownValue = 'male';
 
   // To show Selected Item in Text.
@@ -30,6 +31,42 @@ class EditDataState extends State<EmployeeEditData> {
   void getDropDownItemGender() {
     setState(() {
       genderHolder = genderDropdownValue;
+    });
+  }
+
+
+
+  String jobtybeDropdownValue = 'Full-Time';
+
+  // To show Selected Item in Text.
+  String jobtybeHolder = '';
+
+  List<String> jobtybeItems = [
+    'Full-Time',
+    'Part-Time',
+  ];
+
+  void getDropDownItemjobtybe() {
+    setState(() {
+      jobtybeHolder = genderDropdownValue;
+    });
+  }
+
+  String degreeDropdownValue = 'very good';
+
+  // To show Selected Item in Text.
+  String degreeHolder = '';
+
+  List<String> degreeItems = [
+    'Excellence',
+    'very good',
+    "good",
+    "acceptable "
+  ];
+
+  void getDropDownItemdegree() {
+    setState(() {
+      degreeHolder = degreeDropdownValue;
     });
   }
 
@@ -60,8 +97,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 165.0,
       child: TextField(
         controller: _nameController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -71,66 +109,72 @@ class EditDataState extends State<EmployeeEditData> {
           ),
           labelText: "Full  Name",
           labelStyle: kLabelStyle,
-          hintText: '    ie: x x x',
+          hintText: ' John Adam Albert ',
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
-
-/*
-  Widget _lastname() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      decoration: kBoxDecorationStyle,
-      height: 50.0,
-      width: 165.0,
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(
-          color: Color(0xFF0a2f52),
-          fontFamily: 'OpenSans',
-        ),
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xFF8b8b8b),
-          ),
-          //labelText: "Last Name",
-          //labelStyle: kLabelStyle,
-          hintText: 'Last Name',
-          hintStyle: kHintTextStyle,
-        ),
-      ),
-    );
-  }
-*/
 
   Widget _jobtybe() {
     return Container(
-      alignment: Alignment.topCenter,
+
+      alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _jobtybeController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.merge_type,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Job Tybe",
-          labelStyle: kLabelStyle,
-          hintText: "Job Tybe",
-          hintStyle: kHintTextStyle,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(Icons.merge_type,color: Color(0xFF8b8b8b),),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+                "Job-Tybe", style: TextStyle( color: Color(0xFF8b8b8b),
+                fontSize: 15.0,
+
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
+            ),
+            SizedBox(
+              width: 90.0,
+            ),
+            Container(
+              width: 120.0,
+              child: DropdownButton<String>(
+
+                value: jobtybeDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    jobtybeDropdownValue = data;
+                  });
+                },
+                items:
+                jobtybeItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-      ),
+      ]),
     );
   }
 
@@ -142,8 +186,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 150.0,
       child: TextField(
         controller: _jobcategoryController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -168,8 +213,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 150.0,
       child: TextField(
         controller: _addressController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -179,7 +225,7 @@ class EditDataState extends State<EmployeeEditData> {
           ),
           labelText: "Address",
           labelStyle: kLabelStyle,
-          hintText: "Address",
+          hintText: "Cairo,NasrCity",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -194,8 +240,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 150.0,
       child: TextField(
         controller: _salaryController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.number,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -214,6 +261,7 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _gender() {
     return Container(
+
       alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
@@ -222,25 +270,24 @@ class EditDataState extends State<EmployeeEditData> {
       child: Column(children: <Widget>[
         Row(
           children: <Widget>[
-            Icon(
-              Icons.merge_type,
-              color: Color(0xFF8b8b8b),
-            ),
+            Icon(Icons.merge_type,color: Color(0xFF8b8b8b),),
             SizedBox(
               width: 15.0,
             ),
-            Text("Gender:",
-                style: TextStyle(
-                    color: Color(0xFF8b8b8b),
-                    fontSize: 15.0,
-                    fontFamily: 'co',
-                    fontWeight: FontWeight.w200)),
+            Text(
+                "Gender", style: TextStyle( color: Color(0xFF8b8b8b),
+                fontSize: 15.0,
+
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
+            ),
             SizedBox(
               width: 90.0,
             ),
             Container(
               width: 120.0,
               child: DropdownButton<String>(
+
                 value: genderDropdownValue,
                 icon: Icon(
                   Icons.arrow_drop_down_circle,
@@ -251,14 +298,16 @@ class EditDataState extends State<EmployeeEditData> {
                     color: Colors.black,
                     //fontWeight: FontWeight.bold,
                     fontFamily: 'co',
-                    fontSize: 20.0),
+                    fontSize: 20.0
+                ),
+
                 onChanged: (String data) {
                   setState(() {
                     genderDropdownValue = data;
                   });
                 },
                 items:
-                    genderItems.map<DropdownMenuItem<String>>((String value) {
+                genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -282,6 +331,7 @@ class EditDataState extends State<EmployeeEditData> {
         maxLines: 10,
         keyboardType: TextInputType.multiline,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -306,8 +356,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 150.0,
       child: TextField(
         controller: _mobileController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -326,28 +377,65 @@ class EditDataState extends State<EmployeeEditData> {
 
   Widget _degree() {
     return Container(
-      alignment: Alignment.topCenter,
+
+      alignment: Alignment.centerLeft,
       decoration: kBoxDecorationStyle,
       height: 60.0,
+      padding: EdgeInsets.only(left: 10.0),
       // width: 150.0,
-      child: TextField(
-        controller: _degreeController,
-        keyboardType: TextInputType.emailAddress,
-        style: textColor,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 7.0),
-          prefixIcon: Icon(
-            Icons.layers,
-            color: Color(0xFF8b8b8b),
-          ),
-          labelText: "Degree",
-          labelStyle: kLabelStyle,
-          hintText: "ie: Very cood ,Good",
-          hintStyle: kHintTextStyle,
+      child: Column(children: <Widget>[
+        Row(
+          children: <Widget>[
+            Icon(Icons.check_circle,color: Color(0xFF8b8b8b),),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+                "Degree", style: TextStyle( color: Color(0xFF8b8b8b),
+                fontSize: 15.0,
+
+                fontFamily: 'co',
+                fontWeight: FontWeight.w200)
+            ),
+            SizedBox(
+              width: 80.0,
+            ),
+            Container(
+              width: 150.0,
+              child: DropdownButton<String>(
+
+                value: degreeDropdownValue,
+                icon: Icon(
+                  Icons.arrow_drop_down_circle,
+                ),
+                iconSize: 18,
+                elevation: 16,
+                style: TextStyle(
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold,
+                    fontFamily: 'co',
+                    fontSize: 20.0
+                ),
+
+                onChanged: (String data) {
+                  setState(() {
+                    degreeDropdownValue = data;
+                  });
+                },
+                items:
+                degreeItems.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
         ),
-      ),
+      ]),
     );
+
   }
 
   Widget _inndestory() {
@@ -358,8 +446,9 @@ class EditDataState extends State<EmployeeEditData> {
       // width: 150.0,
       child: TextField(
         controller: _indestryController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.text,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -367,7 +456,7 @@ class EditDataState extends State<EmployeeEditData> {
             Icons.business_center,
             color: Color(0xFF8b8b8b),
           ),
-          labelText: "Inndestory",
+          labelText: "Industry",
           labelStyle: kLabelStyle,
           hintText: "Inndestory",
           hintStyle: kHintTextStyle,
@@ -386,6 +475,7 @@ class EditDataState extends State<EmployeeEditData> {
         keyboardType: TextInputType.number,
         style: textColor,
         maxLines: 10,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -395,7 +485,7 @@ class EditDataState extends State<EmployeeEditData> {
           ),
           labelText: "Experince",
           labelStyle: kLabelStyle,
-          hintText: "EX: 2",
+          hintText: "Year of Experience",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -410,6 +500,7 @@ class EditDataState extends State<EmployeeEditData> {
       child: TextField(
         controller: _employeeBioController,
         maxLines: 10,
+
         keyboardType: TextInputType.multiline,
         style: textColor,
         decoration: InputDecoration(
@@ -437,6 +528,7 @@ class EditDataState extends State<EmployeeEditData> {
         controller: _datefromController,
         keyboardType: TextInputType.datetime,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -462,6 +554,7 @@ class EditDataState extends State<EmployeeEditData> {
         controller: _datetoController,
         keyboardType: TextInputType.datetime,
         style: textColor,
+
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(top: 7.0),
@@ -469,7 +562,7 @@ class EditDataState extends State<EmployeeEditData> {
             Icons.date_range,
             color: Color(0xFF8b8b8b),
           ),
-          labelText: "Data to :",
+          labelText: "Data to ",
           labelStyle: kLabelStyle,
           hintText: "ie: 2018",
           hintStyle: kHintTextStyle,
@@ -477,7 +570,6 @@ class EditDataState extends State<EmployeeEditData> {
       ),
     );
   }
-
 
   @override
   void initState() {
@@ -527,14 +619,14 @@ class EditDataState extends State<EmployeeEditData> {
               onPressed: () {
                 databaseHelper.editEmployeeData(
                   _nameController.text.trim(),
-                  _jobtybeController.text.trim(),
+                  jobtybeDropdownValue.trim(),
                   _jobcategoryController.text.trim(),
                   _addressController.text.trim(),
                   _salaryController.text.trim(),
                   genderDropdownValue.trim(),
                   _qualifcationController.text.trim(),
                   _mobileController.text.trim(),
-                  _degreeController.text.trim(),
+                  degreeDropdownValue.trim(),
                   _indestryController.text.trim(),
                   _exprenseController.text.trim(),
                   _employeeBioController.text.trim(),

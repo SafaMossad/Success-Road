@@ -47,7 +47,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                 backgroundImage: AssetImage('assets/IMG_20190815_184001.jpg'),
               ),
             ),
-            ListTile(
+           /* ListTile(
               title: Text(
                 "Account",
                 style: TextStyle(
@@ -60,8 +60,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
               ),
               onTap: () => Navigator.push(
                   context, MaterialPageRoute(builder: (context) => AddJobs())),
-            ),
-            Divider(),
+            ),*/
             ListTile(
               title: Text(
                 "Favorites",
@@ -146,7 +145,7 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Collapsing Toolbar",
+                    title: Text("TimeLine",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
@@ -164,13 +163,6 @@ class TimeLineJobsState extends State<TimeLineJobs> {
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
                 backgroundColor: Color(0xff1B4F72),
-//                  actions: < Widget > [
-//                    IconButton(
-//                      icon: const Icon(Icons.add_circle),
-//                      tooltip: 'Add new entry',
-//                      onPressed: () { /* ... */ },
-//                    ),
-//                  ]
               ),
             ];
           },
@@ -278,7 +270,7 @@ class ItemList extends StatelessWidget {
                                 ],
                               ),
                               Divider(),
-                              Row(
+                             /* Row(
                                 children: <Widget>[
                                   Text(
                                     "catagory: ",
@@ -295,9 +287,9 @@ class ItemList extends StatelessWidget {
                                         fontSize: 15),
                                   ),
                                 ],
-                              ),
+                              ),*/
                               Divider(),
-                              Expanded(
+                             /* Expanded(
                                 child: Text(
                                   list[i]["description"],
                                   style: TextStyle(
@@ -305,7 +297,7 @@ class ItemList extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13),
                                 ),
-                              ),
+                              ),*/
                             ],
                           ),
                         )

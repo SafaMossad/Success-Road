@@ -118,13 +118,12 @@ class _Employee extends State<Employee> {
           ),
           labelText: "Full  Name",
          labelStyle: kLabelStyle,
-          hintText: '    ie: x x x',
+          hintText: ' John Adam Albert ',
           hintStyle: kHintTextStyle,
         ),
       ),
     );
   }
-
 
   Widget _jobtybe() {
     return Container(
@@ -235,7 +234,7 @@ class _Employee extends State<Employee> {
           ),
           labelText: "Address",
           labelStyle: kLabelStyle,
-          hintText: "Address",
+          hintText: "Cairo,NasrCity",
           hintStyle: kHintTextStyle,
         ),
       ),
@@ -466,7 +465,7 @@ class _Employee extends State<Employee> {
             Icons.business_center,
             color: Color(0xFF8b8b8b),
           ),
-          labelText: "Inndestory",
+          labelText: "Industry",
           labelStyle: kLabelStyle,
           hintText: "Inndestory",
           hintStyle: kHintTextStyle,

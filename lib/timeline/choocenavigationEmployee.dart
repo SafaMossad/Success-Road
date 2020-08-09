@@ -94,7 +94,7 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:successroad/profiles/emmployeeprofile.dart';
-import 'package:successroad/timeline/getemployeejob.dart';
+import 'package:successroad/getrequestforjobandidea/getemployeejob.dart';
 
 import 'package:successroad/timeline/ideahome.dart';
 import 'package:successroad/timeline/timelineEmployee.dart';

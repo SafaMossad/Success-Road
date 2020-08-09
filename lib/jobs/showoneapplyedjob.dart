@@ -349,7 +349,7 @@ class ItemList extends StatelessWidget {
                                     onPressed: () {
                                       // var databaseHelper=list[i]['id'];
                                       databaseHelper
-                                          .acceptJobRequest(list[i]['job_id']);
+                                          .acceptJobRequest(list[i]['id']);
 
                                       print("Accept Request");
                                     },

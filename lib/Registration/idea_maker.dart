@@ -684,13 +684,8 @@ class _IdeaMaker extends State<IdeaMaker> {
                 _mobileController.text.trim(),
                 _interstingfieldController.text.trim(),
                 _ideamakerBioController.text.trim(),
-
                 _websiteController.text.trim(),
-
-
                 _sizeController.text.trim(),
-
-
                 _ownernaemController.text.trim(),
                 _ownerphonoController.text.trim(),
                 _owneraddressController.text.trim()

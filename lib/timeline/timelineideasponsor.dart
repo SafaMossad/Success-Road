@@ -557,7 +557,7 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Collapsing Toolbar",
+                    title: Text("TimeLine",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
