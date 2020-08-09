@@ -54,7 +54,7 @@ class _IdeaMaker extends State<IdeaMaker> {
   final TextEditingController _ownernaemController = new TextEditingController();
   final TextEditingController _ownerphonoController = new TextEditingController();
   final TextEditingController _owneraddressController = new TextEditingController();
-
+  final TextEditingController _companyemailController =new TextEditingController();
   Widget _name() {
     return Container(
       // alignment: Alignment.topCenter,
@@ -325,6 +325,30 @@ class _IdeaMaker extends State<IdeaMaker> {
       ),
     );
   }
+  Widget _companyEmail() {
+    return Container(
+      alignment: Alignment.topCenter,
+      decoration: kBoxDecorationStyle,
+      height: 60.0,
+      child: TextField(
+        controller: _companyemailController,
+        keyboardType: TextInputType.text,
+        style: textColor,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          //contentPadding: EdgeInsets.only(top: 14.0),
+          prefixIcon: Icon(
+            Icons.business,
+            color: Color(0xFF8b8b8b),
+          ),
+          labelText: "Company E-Mail",
+          labelStyle: kLabelStyle,
+          hintText: "www.person.com",
+          hintStyle: kHintTextStyle,
+        ),
+      ),
+    );
+  }
 
   Widget _ownernaem() {
     return Container(
@@ -548,6 +572,10 @@ class _IdeaMaker extends State<IdeaMaker> {
                                             ),),
                                           ),
                                         ),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         SizedBox(height: 15,),
                                         _name(),
 
@@ -621,6 +649,11 @@ class _IdeaMaker extends State<IdeaMaker> {
                                           thickness: 1.0,
                                           color: Colors.black,
                                         ),
+                                        _companyEmail(),
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: Colors.black,
+                                        ),
                                         _ownernaem(),
                                         Divider(
                                           thickness: 1.0,
@@ -670,7 +703,6 @@ class _IdeaMaker extends State<IdeaMaker> {
           _mobileController.text.trim().isNotEmpty&&
           _interstingfieldController.text.trim().isNotEmpty&&
           _ideamakerBioController.text.trim().isNotEmpty&&
-
           _sizeController.text.trim().isNotEmpty&&
           _ownernaemController.text.trim().isNotEmpty&&
           _ownerphonoController.text.trim().isNotEmpty&&
@@ -688,7 +720,8 @@ class _IdeaMaker extends State<IdeaMaker> {
                 _sizeController.text.trim(),
                 _ownernaemController.text.trim(),
                 _ownerphonoController.text.trim(),
-                _owneraddressController.text.trim()
+                _owneraddressController.text.trim(),
+              _companyemailController.text.trim()
 
 
             );

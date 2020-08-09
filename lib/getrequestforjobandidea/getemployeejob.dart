@@ -84,24 +84,7 @@ class ItemList extends StatelessWidget {
                           "assets/SponsorTimlline.png",
                           fit: BoxFit.cover,
                         )),
-                    Positioned(
-                      top: 0.0,
-                      left: 20.0,
-                      right: 20.0,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.slideshow,
-                            color: Colors.black87,
-                          ),
-                          SizedBox(width: 10.0),
-                          Text(
-                            "My Jobs",
-                            style: TextStyle(color: Colors.black87),
-                          )
-                        ],
-                      ),
-                    )
+
                   ],
                 ),
 
@@ -121,7 +104,7 @@ class ItemList extends StatelessWidget {
                         "Title :${list[i]["Responce"]}",
                         style: TextStyle(
                           fontSize: 20.0,
-                          color: Color(0xFF0a2f52),
+                          color: Colors.red,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -131,7 +114,6 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-/*
                       //Row for Category & Manage
                       Column(
                         children: <Widget>[
@@ -357,7 +339,7 @@ class ItemList extends StatelessWidget {
                         ],),
                           Container(
                             child: Text(
-                              " اي كلا علشان يبان شكل الديسكريبشن لاكن ك كلام لا مفيش انا عاوز انتحر يا جماعه او عاوز اتخرج شايف العظمه ياض يا خالد تسلم ايد عمك صفا + ديه كلمه الداتا بيز ==>${list[i]["job"]["experience"]} .",
+                              "  ${list[i]["job"]["experience"]} .",
                               style: TextStyle(
                                   fontSize: 15.0, color: Color(0xFF0a2f52)),
                             ),
@@ -385,17 +367,18 @@ class ItemList extends StatelessWidget {
                           ),
 
                           Container(
-                            //alignment: Alignment.topLeft,
+                            alignment: Alignment.topLeft,
                             child: Wrap(
+
                               children: <Widget>[
-                                Text("${list[i]['description']}",
+                                Text("${list[i]["job"]['description']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),)
                               ],
                             ),
                           ),
                         ],
-                      ),*/
+                      ),
                     ],
                   ),
                 ),

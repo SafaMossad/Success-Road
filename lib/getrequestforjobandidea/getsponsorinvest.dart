@@ -50,27 +50,10 @@ class ItemList extends StatelessWidget {
                         height: 200,
                         width: double.infinity,
                         child: Image.asset(
-                          "assets/94393013-team-work-in-training-room-with-planning-board.jpg",
+                          "assets/SponsorTimlline.png",
                           fit: BoxFit.cover,
                         )),
-                    Positioned(
-                      top: 0.0,
-                      left: 20.0,
-                      right: 20.0,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.slideshow,
-                            color: Colors.black87,
-                          ),
-                          SizedBox(width: 10.0),
-                          Text(
-                            "My Invest",
-                            style: TextStyle(color: Colors.black87),
-                          )
-                        ],
-                      ),
-                    )
+
                   ],
                 ),
                 Padding(
@@ -226,10 +209,10 @@ class ItemList extends StatelessWidget {
                           ),
 
                           Container(
-                            //alignment: Alignment.topLeft,
+                            alignment: Alignment.topLeft,
                             child: Wrap(
                               children: <Widget>[
-                                Text("${list[i]['ideaDescription']}",
+                                Text("${list[i]["idea"]['ideaDescription']}",
                                   style: TextStyle(
                                       fontSize: 15.0, color: Color(0xFF0a2f52)),)
                               ],

@@ -473,7 +473,13 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
     return Scaffold(
       drawer: new Drawer(
         child: ListView(
+
           children: <Widget>[
+            Container(
+
+              height: 280.0,
+              child: Image.asset(  "assets/SponsorTimlline.png"),
+            ),
             ListTile(
               title: Text(
                 "TimeLine",
@@ -506,33 +512,8 @@ class TimeLineSponsorState extends State<TimeLineSponsor> {
                   MaterialPageRoute(builder: (context) => ShowFavoriteIdeas())),
             ),
 
-            Divider(),
 
-            ListTile(
-              title: Text(
-                "About Us",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.filter_frames,
-                color: Color(0xff1B4F72),
-              ),
-            ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "help&feedback",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.textsms,
-                color: Color(0xff1B4F72),
-              ),
-            ),
+
             Divider(),
             ListTile(
               title: Text(

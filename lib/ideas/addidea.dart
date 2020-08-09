@@ -12,7 +12,7 @@ class AddIdea extends StatefulWidget {
 }
 
 class AddIdeaState extends State<AddIdea> {
-  //ده الي هيتحطلي من البدايه
+  //Ïå Çáí åíÊÍØáí ãä ÇáÈÏÇíå
 
   DatabaseHelper databaseHelper = new DatabaseHelper();
 
@@ -54,8 +54,8 @@ class AddIdeaState extends State<AddIdea> {
             Icons.title,
             color: Color(0xFF8b8b8b),
           ),
-         labelText: "Idea Title",
-         labelStyle: kLabelStyle,
+          labelText: "Idea Title",
+          labelStyle: kLabelStyle,
           hintText: 'Investment in Sport',
           hintStyle: kHintTextStyle,
         ),
@@ -108,7 +108,7 @@ class AddIdeaState extends State<AddIdea> {
             Icons.attach_money,
             color: Color(0xFF8b8b8b),
           ),
-         labelText: "Funding",
+          labelText: "Funding",
           labelStyle: kLabelStyle,
           hintText: "20,000",
           hintStyle: kHintTextStyle,
@@ -137,10 +137,10 @@ class AddIdeaState extends State<AddIdea> {
             Text(
               "Mangment",
               style: TextStyle(
-                color: Color(0xFF0a2f52),
-                fontFamily: 'OpenSans',
-                fontSize: 17,
-                fontWeight: FontWeight.bold
+                  color: Color(0xFF0a2f52),
+                  fontFamily: 'OpenSans',
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold
               ),
             ),
             SizedBox(
@@ -198,8 +198,8 @@ class AddIdeaState extends State<AddIdea> {
             Icons.add_location,
             color: Color(0xFF8b8b8b),
           ),
-           labelText: "Address",
-           labelStyle: kLabelStyle,
+          labelText: "Address",
+          labelStyle: kLabelStyle,
           hintText: "Cairo,Nasr City",
           hintStyle: kHintTextStyle,
         ),
@@ -235,6 +235,7 @@ class AddIdeaState extends State<AddIdea> {
     );
   }
 
+
   Widget _buildLoginBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -242,20 +243,33 @@ class AddIdeaState extends State<AddIdea> {
       child: RaisedButton(
         elevation: 20.0,
         onPressed: () {
-          databaseHelper.addDataIdea(
-              _ideaTitleController.text.trim(),
-              mangmentdropdownValue.trim(),
-              _ideaCategoryController.text.trim(),
-              _addressController.text.trim(),
-              _fundingController.text.trim(),
-              _ideaDescriptionController.text.trim());
-
-          Navigator.of(context).push(
-              new MaterialPageRoute(
+          setState(() {
+            if( _ideaTitleController.text.trim().toLowerCase().isNotEmpty&&
+                mangmentdropdownValue.trim().toLowerCase().isNotEmpty&&
+                _ideaCategoryController.text.trim().toLowerCase().isNotEmpty&&
+                _addressController.text.trim().toLowerCase().isNotEmpty&&
+                _fundingController.text.trim().toLowerCase().isNotEmpty&&
+                _ideaDescriptionController.text.trim().toLowerCase().isNotEmpty)
+            {
+              databaseHelper.addDataIdea(
+                  _ideaTitleController.text.trim(),
+                  mangmentdropdownValue.trim(),
+                  _ideaCategoryController.text.trim(),
+                  _addressController.text.trim(),
+                  _fundingController.text.trim(),
+                  _ideaDescriptionController.text.trim()
+              );
+              Navigator.of(context).push(new MaterialPageRoute(
                 builder: (BuildContext context) => new IdeaMakerTimeline(),
-              )
-          );
-          print("Save");
+              ));
+              print("Save");
+
+            }
+            else{
+              showSnackBar();
+              print("Please Enter All Data");}
+
+          });
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -277,15 +291,28 @@ class AddIdeaState extends State<AddIdea> {
   }
 
 
+
+
   final TextEditingController _ideaTitleController = new TextEditingController();
   final TextEditingController _ideaCategoryController = new TextEditingController();
   final TextEditingController _fundingController = new TextEditingController();
   final TextEditingController _managementTypeController = new TextEditingController();
   final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _ideaDescriptionController = new TextEditingController();
+
+
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Please Write All Data!')));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
       appBar: AppBar(
         title: Text(
           'Add Idea',
@@ -402,7 +429,7 @@ class AddIdeaState extends State<AddIdea> {
                                     ),
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -415,6 +442,59 @@ class AddIdeaState extends State<AddIdea> {
           ),
         ],
       ),
+
+      /*
+          _ideaTitleController.text.trim(),
+              mangmentdropdownValue.trim(),
+              _ideaCategoryController.text.trim(),
+              _addressController.text.trim(),
+              _fundingController.text.trim(),
+              _ideaDescriptionController.text.trim());
+
+
+       */
+
+
+  /*    floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          setState(() {
+            if( _ideaTitleController.text.trim().toLowerCase().isNotEmpty&&
+                mangmentdropdownValue.trim().toLowerCase().isNotEmpty&&
+                _ideaCategoryController.text.trim().toLowerCase().isNotEmpty&&
+                _addressController.text.trim().toLowerCase().isNotEmpty&&
+                _fundingController.text.trim().toLowerCase().isNotEmpty&&
+                _ideaDescriptionController.text.trim().toLowerCase().isNotEmpty)
+            {
+              databaseHelper.addDataIdea(
+                  _ideaTitleController.text.trim(),
+                  mangmentdropdownValue.trim(),
+                  _ideaCategoryController.text.trim(),
+                  _addressController.text.trim(),
+                  _fundingController.text.trim(),
+                  _ideaDescriptionController.text.trim()
+              );
+              Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
+              ));
+              print("Save");
+
+            }
+            else{
+              showSnackBar();
+              print("Please Enter All Data");}
+
+          });
+        },
+        label: Text(
+          'Add Idea',
+          style: TextStyle(
+            color: Colors.grey.shade300,
+          ),
+        ),
+        backgroundColor: Color(0xff1B4F72),
+      ),
+*/
+
     );
   }
 
@@ -425,11 +505,11 @@ class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
-    //ده كدا خط مستقيم علي الشمال
+    //ÇãÔí ãä ÇáÈÏÇíå Úáí ÇáÔãÇá áÍÏ Øæá ÇáßæäÊíäÑ æäÞÕ ãä Øæáå 50
+    //Ïå ßÏÇ ÎØ ãÓÊÞíã Úáí ÇáÔãÇá
     path.lineTo(0.0, size.height);
-//دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
-    // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
+//ÏáæÞÊí ÇäÇ æÇÞÝ Úáí ÇáÔãÇá Úä Øæá ÇáßæäÊíäÑ - 50 æåÚãá ÍÇÌÊíä
+    // æåÊÍÑ ãä äÞØÊí Çáí äÞØå ÇáãæÌå Çáí åíÇ ßäÊÑæá ÈæíäÊ æåÊÌÑß ÈÚÏíä ááÇäÏ ÈæíäÊ Çáí åíÇ Ýí äÕ ÇáãæÌå áãÇ ÊÒá
 
     var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
 
@@ -438,8 +518,8 @@ class WaveClipper1 extends CustomClipper<Path> {
         firstEndPoint.dx, firstEndPoint.dy);
 
     var secondEndPoint = Offset(
-        size.width, //كدا معناها ان كمل بقي خلاص لحد اخر العرض
-        size.height / 2); //كده معناه ان الطول نقص منه 2
+        size.width, //ßÏÇ ãÚäÇåÇ Çä ßãá ÈÞí ÎáÇÕ áÍÏ ÇÎÑ ÇáÚÑÖ
+        size.height / 2); //ßÏå ãÚäÇå Çä ÇáØæá äÞÕ ãäå 2
 
     var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,

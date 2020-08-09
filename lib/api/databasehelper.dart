@@ -43,7 +43,7 @@ class DatabaseHelper {
   }
 
   //registration fo Comoany
-  companyRegister(String name,  String address, String gender, String qualifiction,String mobile, String interstingfield, String ideamakerBio, String website, String size, String ownernaem, String ownerphono, String owneraddress,) async {
+  companyRegister(String name,  String address, String gender, String qualifiction,String mobile, String interstingfield, String ideamakerBio, String website, String size, String ownernaem, String ownerphono, String owneraddress,String companyemail) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString('token');
     print('Token : $token');
@@ -68,7 +68,8 @@ class DatabaseHelper {
         "ideamakerBio":"$ideamakerBio",
         "ownernaem": "$ownernaem",
         "ownerphono":"$ownerphono",
-        "owneraddress":"$owneraddress"
+        "owneraddress":"$owneraddress",
+        "companyemail":"$companyemail"
       }
     };
     // make POST request
@@ -591,7 +592,7 @@ class DatabaseHelper {
       'Content-Type': 'application/json',
       'Authorization': '$token'
     });
-    print(id.toString() + ' hhhhhhh idea final');
+    //print(id.toString() + '  idea final');
     // print(response.body);
     print("body getCompanyApply job${response.body}");
     return json.decode(response.body.toString());

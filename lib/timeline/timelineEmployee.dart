@@ -8,6 +8,7 @@ import 'package:successroad/api/databasehelper.dart';
 import 'package:successroad/favorite/showfavoritejobs.dart';
 import 'package:successroad/jobs/addjob.dart';
 import 'package:successroad/jobs/showjob.dart';
+import 'package:successroad/timeline/choocenavigationEmployee.dart';
 
 class TimeLineJobs extends StatefulWidget {
   TimeLineJobs({Key key, this.title}) : super(key: key);
@@ -36,20 +37,26 @@ class TimeLineJobsState extends State<TimeLineJobs> {
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
-            /* ListTile(
+            Container(
+
+              height: 280.0,
+              child: Image.asset("assets/Office.png",),
+            ),
+            ListTile(
               title: Text(
-                "Account",
+                "Timeline",
                 style: TextStyle(
                   color: Color(0xff1B4F72),
                 ),
               ),
               trailing: Icon(
-                Icons.arrow_back_ios,
+                Icons.arrow_forward,
                 color: Color(0xff1B4F72),
               ),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddJobs())),
-            ),*/
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EmployeeTimeline())),
+            ),
+            Divider(),
             ListTile(
               title: Text(
                 "Favorites",
@@ -59,37 +66,13 @@ class TimeLineJobsState extends State<TimeLineJobs> {
               ),
               trailing: Icon(
                 Icons.favorite,
-                color: Colors.red,
+                color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ShowFavoriteJobs())),
             ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "Setting",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.settings,
-                color: Color(0xff1B4F72),
-              ),
-            ),
-            Divider(),
-            ListTile(
-              title: Text(
-                "About Us",
-                style: TextStyle(
-                  color: Color(0xff1B4F72),
-                ),
-              ),
-              trailing: Icon(
-                Icons.filter_frames,
-                color: Color(0xff1B4F72),
-              ),
-            ),
+
+
             Divider(),
             ListTile(
               title: Text(
@@ -262,7 +245,7 @@ class ItemList extends StatelessWidget {
                                 ],
                               ),
                               Divider(),
-                             /* Row(
+                              Row(
                                 children: <Widget>[
                                   Text(
                                     "catagory: ",
@@ -279,9 +262,9 @@ class ItemList extends StatelessWidget {
                                         fontSize: 15),
                                   ),
                                 ],
-                              ),*/
+                              ),
                               Divider(),
-                             /* Expanded(
+                              Expanded(
                                 child: Text(
                                   list[i]["description"],
                                   style: TextStyle(
@@ -289,7 +272,7 @@ class ItemList extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 13),
                                 ),
-                              ),*/
+                              ),
                             ],
                           ),
                         )

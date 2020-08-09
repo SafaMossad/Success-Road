@@ -16,7 +16,7 @@ class AddJobs extends StatefulWidget {
 
 class AddJobsState extends State<AddJobs> {
   @override
-  //ده الي هيتحطلي من البدايه
+  //Ïå Çáí åíÊÍØáí ãä ÇáÈÏÇíå
 
 //gender controlling
   String genderDropdownValue = 'male';
@@ -41,18 +41,18 @@ class AddJobsState extends State<AddJobs> {
   final TextEditingController _jobTitleController = new TextEditingController();
   final TextEditingController _jobTypeController = new TextEditingController();
   final TextEditingController _jobCategoryController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController _addressController = new TextEditingController();
   final TextEditingController _salaryController = new TextEditingController();
   final TextEditingController _genderController = new TextEditingController();
   final TextEditingController _countryController = new TextEditingController();
   final TextEditingController _cityController = new TextEditingController();
   final TextEditingController _qualificationController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController _experienceController =
-      new TextEditingController();
+  new TextEditingController();
   final TextEditingController _jobDescriptionController =
-      new TextEditingController();
+  new TextEditingController();
 
   String jobtybeDropdownValue = 'Full-Time';
 
@@ -70,7 +70,7 @@ class AddJobsState extends State<AddJobs> {
     });
   }
 
-  //ده الي هيتحطلي من البدايه
+  //Ïå Çáí åíÊÍØáí ãä ÇáÈÏÇíå
   Widget _jobTitle() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -143,7 +143,7 @@ class AddJobsState extends State<AddJobs> {
                   });
                 },
                 items:
-                    jobtybeItems.map<DropdownMenuItem<String>>((String value) {
+                jobtybeItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -283,7 +283,7 @@ class AddJobsState extends State<AddJobs> {
                   });
                 },
                 items:
-                    genderItems.map<DropdownMenuItem<String>>((String value) {
+                genderItems.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -376,6 +376,7 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
+
   Widget _buildLoginBtns() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -383,7 +384,9 @@ class AddJobsState extends State<AddJobs> {
       child: RaisedButton(
         elevation: 20.0,
         onPressed: () {
-          databaseHelper.addDataJobs(
+          setState(() {
+            /*
+             databaseHelper.addDataJobs(
               _jobTitleController.text.trim(),
               jobtybeDropdownValue.trim(),
               _jobCategoryController.text.trim(),
@@ -396,7 +399,40 @@ class AddJobsState extends State<AddJobs> {
           Navigator.of(context).push(new MaterialPageRoute(
             builder: (BuildContext context) => new IdeaMakerTimeline(),
           ));
-          print("Save");
+
+             */
+            if( _jobTitleController.text.trim().toLowerCase().isNotEmpty&&
+                jobtybeDropdownValue.trim().toLowerCase().isNotEmpty&&
+                _jobCategoryController.text.trim().toLowerCase().isNotEmpty&&
+                _addressController.text.trim().toLowerCase().isNotEmpty&&
+                _salaryController.text.trim().toLowerCase().isNotEmpty&&
+                genderDropdownValue.trim().toLowerCase().isNotEmpty&&
+                _qualificationController.text.trim().toLowerCase().isNotEmpty&&
+                _experienceController.text.trim().toLowerCase().isNotEmpty&&
+                _jobDescriptionController.text.trim().toLowerCase().isNotEmpty)
+            {
+              databaseHelper.addDataJobs(
+                  _jobTitleController.text.trim(),
+                  jobtybeDropdownValue.trim(),
+                  _jobCategoryController.text.trim(),
+                  _addressController.text.trim(),
+                  _salaryController.text.trim(),
+                  genderDropdownValue.trim(),
+                  _qualificationController.text.trim(),
+                  _experienceController.text.trim(),
+                  _jobDescriptionController.text.trim());
+
+              Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
+              ));
+              print("Save");
+
+            }
+            else{
+              showSnackBar();
+              print("Please Enter All Data");}
+
+          });
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -417,9 +453,21 @@ class AddJobsState extends State<AddJobs> {
     );
   }
 
+
+
+
+
+  final GlobalKey<ScaffoldState> scaffoldState = new GlobalKey<ScaffoldState>();
+
+
+  showSnackBar(){
+    scaffoldState.currentState.showSnackBar(new SnackBar(content: new Text('Please Write All Data!')));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldState,
+
       appBar: AppBar(
         title: Text(
           'Add Job',
@@ -446,13 +494,13 @@ class AddJobsState extends State<AddJobs> {
                   height: 350,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFF0a2f52),
-                      Color(0xff2E86C1),
-                    ],
-                  )),
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFF0a2f52),
+                          Color(0xff2E86C1),
+                        ],
+                      )),
                 ),
               ),
               Stack(
@@ -529,7 +577,7 @@ class AddJobsState extends State<AddJobs> {
                                         ),
                                         Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: <Widget>[
 //                                              _buildLoginBtn(),
 //                                              SizedBox(
@@ -555,6 +603,72 @@ class AddJobsState extends State<AddJobs> {
           ),
         ],
       ),
+
+
+/*
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          setState(() {
+            */
+/*
+             databaseHelper.addDataJobs(
+              _jobTitleController.text.trim(),
+              jobtybeDropdownValue.trim(),
+              _jobCategoryController.text.trim(),
+              _addressController.text.trim(),
+              _salaryController.text.trim(),
+              genderDropdownValue.trim(),
+              _qualificationController.text.trim(),
+              _experienceController.text.trim(),
+              _jobDescriptionController.text.trim());
+          Navigator.of(context).push(new MaterialPageRoute(
+            builder: (BuildContext context) => new IdeaMakerTimeline(),
+          ));
+
+             *//*
+
+            if( _jobTitleController.text.trim().toLowerCase().isNotEmpty&&
+                jobtybeDropdownValue.trim().toLowerCase().isNotEmpty&&
+                _jobCategoryController.text.trim().toLowerCase().isNotEmpty&&
+                _addressController.text.trim().toLowerCase().isNotEmpty&&
+                _salaryController.text.trim().toLowerCase().isNotEmpty&&
+                genderDropdownValue.trim().toLowerCase().isNotEmpty&&
+                _qualificationController.text.trim().toLowerCase().isNotEmpty&&
+                _experienceController.text.trim().toLowerCase().isNotEmpty&&
+                _jobDescriptionController.text.trim().toLowerCase().isNotEmpty)
+            {
+              databaseHelper.addDataJobs(
+                  _jobTitleController.text.trim(),
+                  jobtybeDropdownValue.trim(),
+                  _jobCategoryController.text.trim(),
+                  _addressController.text.trim(),
+                  _salaryController.text.trim(),
+                  genderDropdownValue.trim(),
+                  _qualificationController.text.trim(),
+                  _experienceController.text.trim(),
+                  _jobDescriptionController.text.trim());
+
+              Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) => new IdeaMakerTimeline(),
+              ));
+              print("Save");
+
+            }
+            else{
+              showSnackBar();
+              print("Please Enter All Data");}
+
+          });
+        },
+        label: Text(
+          'Add Job',
+          style: TextStyle(
+            color: Colors.grey.shade300,
+          ),
+        ),
+        backgroundColor: Color(0xff1B4F72),
+      ),
+*/
     );
   }
 }
@@ -563,11 +677,11 @@ class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    //امشي من البدايه علي الشمال لحد طول الكونتينر ونقص من طوله 50
-    //ده كدا خط مستقيم علي الشمال
+    //ÇãÔí ãä ÇáÈÏÇíå Úáí ÇáÔãÇá áÍÏ Øæá ÇáßæäÊíäÑ æäÞÕ ãä Øæáå 50
+    //Ïå ßÏÇ ÎØ ãÓÊÞíã Úáí ÇáÔãÇá
     path.lineTo(0.0, size.height);
-//دلوقتي انا واقف علي الشمال عن طول الكونتينر - 50 وهعمل حاجتين
-    // وهتحر من نقطتي الي نقطه الموجه الي هيا كنترول بوينت وهتجرك بعدين للاند بوينت الي هيا في نص الموجه لما تزل
+//ÏáæÞÊí ÇäÇ æÇÞÝ Úáí ÇáÔãÇá Úä Øæá ÇáßæäÊíäÑ - 50 æåÚãá ÍÇÌÊíä
+    // æåÊÍÑ ãä äÞØÊí Çáí äÞØå ÇáãæÌå Çáí åíÇ ßäÊÑæá ÈæíäÊ æåÊÌÑß ÈÚÏíä ááÇäÏ ÈæíäÊ Çáí åíÇ Ýí äÕ ÇáãæÌå áãÇ ÊÒá
 
     var firstEndPoint = Offset(size.width / 2 - 20, size.height - 60);
 
@@ -576,8 +690,8 @@ class WaveClipper1 extends CustomClipper<Path> {
         firstEndPoint.dx, firstEndPoint.dy);
 
     var secondEndPoint = Offset(
-        size.width, //كدا معناها ان كمل بقي خلاص لحد اخر العرض
-        size.height / 2); //كده معناه ان الطول نقص منه 2
+        size.width, //ßÏÇ ãÚäÇåÇ Çä ßãá ÈÞí ÎáÇÕ áÍÏ ÇÎÑ ÇáÚÑÖ
+        size.height / 2); //ßÏå ãÚäÇå Çä ÇáØæá äÞÕ ãäå 2
 
     var secondControlPoint = Offset(size.width * 0.84, size.height - 50);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,

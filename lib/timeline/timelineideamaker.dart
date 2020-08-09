@@ -474,6 +474,11 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
       drawer: new Drawer(
         child: ListView(
           children: <Widget>[
+            Container(
+
+              height: 280.0,
+              child: Image.asset("assets/Office.png",),
+            ),
             ListTile(
               title: Text(
                 "TimeLine",
@@ -482,7 +487,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 ),
               ),
               trailing: Icon(
-                Icons.arrow_back_ios,
+                Icons.arrow_forward,
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
@@ -497,7 +502,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 ),
               ),
               trailing: Icon(
-                Icons.settings,
+                Icons.domain,
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
@@ -514,7 +519,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 ),
               ),
               trailing: Icon(
-                Icons.settings,
+                Icons.domain,
                 color: Color(0xff1B4F72),
               ),
               onTap: () => Navigator.push(
@@ -522,7 +527,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                   MaterialPageRoute(
                       builder: (context) => CompanyDashboardjobs())),
             ),
-            Divider(),
+           /* Divider(),
             ListTile(
               title: Text(
                 "Setting",
@@ -561,6 +566,7 @@ class TimeLineIdeaState extends State<TimeLineIdea> {
                 color: Color(0xff1B4F72),
               ),
             ),
+            Divider(),*/
             Divider(),
             ListTile(
               title: Text(
